@@ -2,15 +2,19 @@
 
 One PR carries the proposal, implementation and validation through to final acceptance. Design approval allows implementation to begin; it never merges the proposal.
 
+**Owner-managed changes:** DavidZWZ may review, approve and accept their own or coauthored changes without another reviewer, including maintainer integrations of another contributor's PR. Their own PRs do not receive automatic reviewer requests. The exception is bound to GitHub account ID `57624585` and the current Write-or-higher permission in the trusted default-branch policy; mentions, labels and commit author names do not grant it. Commit-bound lifecycle records, implementation evidence, required CI and manual merge still apply. The non-author requirements below apply to everyone else.
+
 ## Reviewer workflow
 
 1. Review the proposal in **Files changed**. Submit comments or **Request changes**, and let the author revise it in the same PR.
-2. When the plan is sound, post `/approve-plan <commit-sha>` as a new PR conversation comment. Use the full current 40-character commit SHA from the PR's **Commits** tab. This binds approval to the exact proposal you reviewed and prevents a delayed command from approving a different commit.
+2. When the plan is sound, post `/approve-plan <commit-sha>` as a new PR conversation comment. Use the full current 40-character commit SHA from the PR's **Commits** tab. This records the exact proposal you reviewed. If processing is delayed, the reviewed commit must still be an ancestor of the current head and the proposal file must be identical; changed proposals require a new review. Final implementation acceptance always requires the current head SHA.
 3. The bot records the reviewer, approval time, approved commit and proposal content, then adds `plan-approved`. The PR stays open. GitHub's **Approve** button alone does not advance the plan stage.
 4. The author implements the agreed scope in the same PR and supplies runnable code, tests and evidence. Final implementation approval is separate from design approval.
 5. A maintainer verifies the implementation, records acceptance for the current commit, submits the final GitHub approval, and manually merges once all required checks pass.
 
-An assigned reviewer must be a repository collaborator and appear in the Track roster in [review-policy.json](../../.github/review-policy.json). GitHub review-request history preserves the assignment after a review is submitted. Maintainers with Write, Maintain or Admin access can also approve plans. PR authors and declared coauthors cannot approve their own plans or accept their own implementations.
+An assigned reviewer must be a repository collaborator and appear in the Track roster in [review-policy.json](../../.github/review-policy.json). GitHub review-request history preserves the assignment after a review is submitted. Maintainers with Write, Maintain or Admin access can also approve plans. Except for DavidZWZ's owner-managed changes above, PR authors and declared coauthors cannot approve their own plans or accept their own implementations.
+
+Lifecycle commands are processed from PR conversation comments and do not depend on a fork workflow being approved. GitHub reviews update natively; the proposal index polls their current state from trusted default-branch code every 5 minutes, subject to scheduling delays. No review-event relay is required. A GitHub approval, review edit or dismissal alone does not grant or revoke recorded plan approval; use the lifecycle commands for that decision.
 
 ## Commands
 
@@ -29,7 +33,13 @@ Evidence should link to the reproducible run report, logs or validation attachme
 
 Changing the approved proposal file requires another design review. Keep routine progress and implementation links in PR comments or the PR description so they do not silently alter the approved scope. Reapproval does not reset the original delivery deadline. Any new commit invalidates final implementation acceptance, so submit and accept the new commit before merging.
 
-Commands normally run after the comment event. GitHub can coalesce queued runs; hourly reconciliation also recovers unprocessed commands and updates deadlines. Maintainers can use **Actions → Proposal lifecycle → Run workflow** to reconcile immediately. Replaying a processed command does not create another approval or reset dates.
+Commands are recovered from immutable PR comments in chronological order. The automation writers share a serialized queue that can retain up to 100 waiting runs. Hourly recovery revisits recently updated PRs and a rotating shard of older PRs, covering every open PR daily. Maintainers can use **Actions → Proposal lifecycle → Run workflow**, optionally supplying comma-separated PR numbers, to reconcile immediately. Comment history remains the durable recovery source if the queue fills or an API call fails.
+
+Repeated approval of an unchanged plan preserves implementation progress, final acceptance and the existing deadline. New approval and submission records use the original command timestamp, not the delayed processing time. Existing deadlines remain unchanged. Historical commands older than an already processed decision cannot undo that decision.
+
+For the November automation incident, maintainers can select explicit PR numbers and enable **recover_rejected**. This revalidates only legacy SHA-mismatch or missing-plan rejections using live permissions, commit ancestry and identical proposal content, and annotates recovered bot responses. It does not bypass scope, authorship, evidence, CI or final acceptance requirements. Unrelated rejections are not replayed.
+
+Rate-limit failures report quota/reset and request identifiers without tokens or response bodies. Short limits and transient read failures receive bounded retries. Incomplete work fails visibly and remains eligible for recovery; uncertain writes are not blindly repeated. The proposal index caches unchanged display records, while lifecycle authority and merge checks always use live state.
 
 ## Environment first-version deadline
 
@@ -52,11 +62,13 @@ The `contribution-ready` check is supplied by the trusted default-branch lifecyc
 
 1. Exactly one completed proposal and a recorded approval matching its current content.
 2. Implementation changes under `apps/` for Environment or `tasks/` for Task, rather than only a proposal, screenshots or documentation.
-3. An implementation submission and non-author maintainer acceptance for the exact current commit, each linked to evidence.
+3. An implementation submission and maintainer acceptance for the exact current commit, each linked to evidence. Acceptance must be non-author except for the explicit DavidZWZ owner exception.
 4. For Environment contributions, successful `public-runtime (18)`, `public-runtime (22)` and `base-runtime-compatibility` checks for that commit. Missing, failed, skipped or stale checks do not pass. Task validation currently requires maintainer review of the task's submitted harness results; this gate does not claim to run a universal Task evaluator.
 
 Repository maintenance PRs that do not change contribution packages do not require a proposal, but still require normal branch review. Deleting a proposal, renaming its title, adding labels or using the same commit in another PR cannot turn an incomplete contribution into an accepted one.
 
-`main` also requires an up-to-date branch, a final approving review from a person with Write or higher access, dismissal of stale approvals, approval of the most recent reviewable push, and resolved review conversations. These requirements apply to administrators as well. Auto-merge is disabled. Read-role reviewers can contribute scientific review, while a qualified maintainer provides the final branch-protection approval and merge.
+Edits to existing worked examples explicitly listed in the default branch's `documentation_examples` policy are documentation maintenance, not accepted Task contributions. This exception applies only to modifications of those exact files. New proposals, additions, deletions, renames, App/Task implementation changes, an explicit contribution Track, or an existing contribution lifecycle record still trigger the contribution gate. A policy change in the PR itself cannot grant an exception. The final merge policy below still applies.
+
+`main` also requires an up-to-date branch, a final approving review from a person with Write or higher access, dismissal of stale approvals, approval of the most recent reviewable push, and resolved review conversations. These requirements apply to administrators as well, with one explicit exception: repository owner **DavidZWZ** may complete final merges without a second review and use the owner-managed lifecycle route above. Required status checks, the contribution lifecycle gate, branch freshness, and conversation resolution remain enforced; proposal approval alone still does not permit merge. Auto-merge is disabled. Read-role reviewers can contribute scientific review, while a qualified maintainer provides the final branch-protection approval and merge.
 
 The bot never calls the merge endpoint and never executes contributor code with its write token. Its state is stored in an authenticated GitHub Actions comment. The automatically generated index is published to `proposal-index`, so index updates need no exception to `main` protection.

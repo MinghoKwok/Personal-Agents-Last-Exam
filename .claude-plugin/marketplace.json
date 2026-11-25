@@ -11,13 +11,13 @@
       "name": "pale-env",
       "source": "./skills/env",
       "description": "Skills for the Environment Track: designing, building, testing and reviewing App environments.",
-      "version": "0.1.0"
+      "version": "0.2.0"
     },
     {
       "name": "pale-task",
       "source": "./skills/task",
       "description": "Skills for the Task Track: personas and histories, scenario scripts, rubrics, rollouts and review.",
-      "version": "0.1.0"
+      "version": "0.2.0"
     },
     {
       "name": "pale-general",

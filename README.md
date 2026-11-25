@@ -86,7 +86,7 @@ Representative challenges include, but are not limited to:
 
 🧪 **Task difficulty (implementation review):** the designated SOTA models from **GPT, Claude, and Gemini at the time of evaluation**, each acting as a personal agent, must fail all submitted unhinted rollouts, with a mean rubric score **below 50%**, or **below 30% for flagship tasks**. Submit **at least 1 rollout per model**; **5 are recommended for priority review**. A separate hint-assisted run must achieve **100%** and pass all success gates.
 
-[📋 Contribution guide](CONTRIBUTING.md) · [🗂️ Proposal list and progress](https://github.com/MatrAIx-ai/Personal-Agents-Last-Exam/blob/proposal-index/proposals/proposal-list.md)
+[📋 Contribution guide](CONTRIBUTING.md) · [📦 LifePack task format](docs/lifepack-task-format.md) · [🗂️ Proposal list and progress](https://github.com/MatrAIx-ai/Personal-Agents-Last-Exam/blob/proposal-index/proposals/proposal-list.md)
 
 ## 🎓 Research leadership and co-authorship
 

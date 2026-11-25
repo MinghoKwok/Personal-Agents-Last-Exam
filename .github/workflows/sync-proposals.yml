@@ -1,24 +1,21 @@
 name: Sync proposal list
 
 on:
-  pull_request_target:
-    branches: [main]
-    types: [opened, edited, synchronize, reopened, closed, labeled, unlabeled, ready_for_review, converted_to_draft, review_requested, review_request_removed]
   workflow_run:
-    workflows: [Proposal review event, Proposal lifecycle]
+    workflows: [Proposal lifecycle, Assign proposal reviewers]
     types: [completed]
   push:
     branches: [main]
     paths:
       - .github/workflows/sync-proposals.yml
-      - .github/workflows/proposal-review-events.yml
       - scripts/sync_proposals.py
+      - scripts/review_identity.py
       - scripts/proposal_lifecycle.py
       - tests/test_sync_proposals.py
       - proposals/**
       - README.md
   schedule:
-    - cron: '7,22,37,52 * * * *'
+    - cron: '3,8,13,18,23,28,33,38,43,48,53,58 * * * *'
   workflow_dispatch:
 
 permissions:
@@ -26,11 +23,13 @@ permissions:
   pull-requests: read
 
 concurrency:
-  group: proposal-list-sync
+  group: proposal-automation-writer
+  queue: max
   cancel-in-progress: false
 
 jobs:
   sync:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:

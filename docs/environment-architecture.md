@@ -9,7 +9,7 @@ Keep one implementation per App and one shared runtime. Domains classify workflo
 | App | Business records, transitions, tools, incoming-event effects and App data migrations | Task narrative, global clock scheduling or another App's state |
 | Core | Shared validation, policy enforcement, state commits and lifecycle | Domain-specific migrations or a sample task's date |
 | Messaging | Receiver contracts, trusted bindings, grants and delivery receipts | A second mailbox/calendar or task decisions |
-| Task package (LifePack draft) | Persona, history, timeline, initial workspace, instructions and grading | A separate implementation of each App |
+| Task package ([LifePack v1.0](lifepack-task-format.md)) | Persona, history, timeline, initial workspace, instructions and grading | A separate implementation of each App |
 | Runner / user harness | Loading the task, scheduling sessions/events, user interaction and aligned evidence | App business rules |
 
 The LifePack adapter, global scheduler and user harness are planned components. `examples/scenario.json` is an App event example, not a competing full task format.
@@ -31,7 +31,7 @@ For Web/CUA, HTTP services, larger media or other interfaces, record the require
 
 A trusted registry can set `initial_time`; without it, the deterministic baseline is the Unix epoch. The App-only reference launcher reads optional `fixtures/clock.json` for its example time. A task supplies its own `virtual_now` to Infra's `env.load_seed`. Core validates and records that time; reset restores the loaded time and data baseline. Agent callers cannot set the clock. Real diagnostic timestamps remain separate.
 
-This is per-App time initialization, not a global scheduler. A future runner must initialize all task instances from one timeline and restore clock, event cursor, user-harness state and Agent state consistently.
+For later sessions, runtime 1.6.0 adds the Infra-only `env.advance_time` operation. It advances the clock/version without replacing business records or the reset baseline. The external caller must process earlier due events, synchronize all enabled instances, verify the clocks, then resume actors. Event handlers observe their event time during processing. See the [time contract and executable example](runtime-time.md). This is a per-App primitive, not a global scheduler; a runner still owns the event cursor, user-harness state and Agent timeline.
 
 An optional `plugin.migrateState(raw, target)` performs App-owned data migration; Core validates the result before accepting it. Framework envelope migrations remain in Core. Never add `if app_id == ...` branches to Core for individual products.
 

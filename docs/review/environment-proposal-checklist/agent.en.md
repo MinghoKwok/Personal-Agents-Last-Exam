@@ -14,9 +14,9 @@ The reviewer then works through `human.en.md` (or `human.zh-Hans.md`). These che
 
 1. **Baseline.** Read the proposal file, the PR description and comments, related proposals and the current template. Record the PR number, head commit, date and scope.
 2. **Can the bot read it?** Check what `scripts/sync_proposals.py` reads: the PR title format, exactly one file at `proposals/environment/<slug>.md`, unchanged headings and field labels, no `[Fill in: …]`, and an exact primary domain. If the proposal cannot be read, stop with “insufficient evidence”.
-3. **Trace core workflows.** For each core workflow write one line: precondition → action or event → expected business outcome → a failure or control example.
+3. **Trace core workflows and dependencies.** For each core workflow write one line: precondition → action or event → expected business outcome → a failure or control example. Follow the guide's [dependency verification steps](../environment-proposal.md#verify-the-dependency-not-only-its-name): list every required/optional personal App, including separate Agent tool use, then other App connections. Open the actual versioned interfaces, distinguish implementations from proposals, and record capability gaps, owners and fallbacks. Check supplied examples against existing receiver schemas when feasible; record what was checked versus what remains a plan.
 4. **Judge D1–D8.** Give each of the 24 checks one verdict and quote the proposal.
-5. **Write the report.** Header, workflow traces, the 24-row table, findings grouped as design gaps, clarifications and optional improvements, the Human judge list and the recommendation.
+5. **Write the report.** Header, workflow traces, dependency evidence table, the 24-row table, findings grouped as design gaps, clarifications and optional improvements, the Human judge list and the recommendation. Include the receiver/runtime revision and any example-validation results; do not describe schema checks as completed App integration tests.
 6. **Hand to the user.** Do not post comments or push. The user decides what happens next.
 
 ## Verdicts
@@ -185,8 +185,8 @@ Guide: “Prevent duplicate effects, silent conflicts and irreproducible state. 
 
 - **What to check:** Writes return evidence, retries do not repeat effects, and conflicts are visible.
 - **Look at:** §3 State and lifecycle; Operations and access.
-- **✓ Approve:** Writes return a receipt and a version; the same `request_id` returns the same result; a stale `expected_version` is rejected; reads change nothing.
-- **◐ Partial approve:** Retry, commit or concurrency behavior is incompletely described; ask for the missing guarantee rather than infer that duplicate effects occur.
+- **✓ Approve:** Writes return a receipt and a version; the same `request_id` returns the same result; a stale `expected_version` is rejected; reads do not mutate business state. If evaluator records are promised, map them to App history, existing Core audit and the supplied Agent execution records. Ordinary reads and denials already have audit rows; describe caller/commit correlation, replay counting and snapshot retention before reset. Missing fields in Core audit alone do not require a Core change.
+- **◐ Partial approve:** Retry, commit or concurrency behavior is incompletely described, or required evaluator fields have no verified source. Identify the missing App-owned record, supplied evidence artifact or correlation/counting rule; do not infer that rejected calls leave no audit or that optional diagnostics provide complete evidence. Review the App evidence plan without adding an external recorder implementation requirement.
 - **? Human judge:** Domain-specific conflicts, such as two people buying the last seat, need a decision on the expected behavior.
 - **✗ Reject:** A retry can repeat an effect (a double charge), or conflicting writes silently overwrite each other.
 - **Source:** Guide · State and lifecycle; PR #12 docs/review/app-implementation.md (Versions and concurrency)
@@ -227,10 +227,10 @@ Guide: “Tasks choose scenario content/timing; Apps define effects; Infra sched
 
 #### D5.3 · Send and receive directions and receiver contracts
 
-- **What to check:** Send and receive are declared separately, and each message targets a receiver-owned contract.
+- **What to check:** Send and receive are declared separately, and each message targets an actual receiver-owned contract. Open the pinned declaration, schema and receiving operation; a contract name alone is not evidence of compatibility.
 - **Look at:** §3 Internal personal apps; Other apps and websites; Events and notifications.
-- **✓ Approve:** Each direction is stated (send-only, receive-only, both or none), and each message names the receiver’s contract and version and the change expected in the receiving App. `None` is valid when the declared workflows need no messaging; do not require Mail integration by default.
-- **◐ Partial approve:** Directions are stated; receiver contracts are not linked.
+- **✓ Approve:** Each direction is stated (send-only, receive-only, both or none), the reviewed receiver interface supports the intended fields/files and effect, and supplied examples agree with its versioned schema. Record whether an example is a payload or a full wire message, and any validation performed. `None` is valid when the declared workflows need no messaging; do not require Mail integration by default.
+- **◐ Partial approve:** Contract links or required fields are missing, compatibility is unverified, or a supplied example does not match the existing schema. State the exact gap and smallest correction; do not require finished implementation evidence.
 - **? Human judge:** The receiver it needs does not exist yet (for example, Calendar has no messaging receiver): a platform decision.
 - **✗ Reject:** It plans a private copy of Mail or Calendar, or assumes a notification creates a Calendar event on its own.
 - **Source:** Guide · Events, time and messaging; Integration expectations; PR #12 docs/app-integrations.md
@@ -275,13 +275,13 @@ Guide: “Attribute platform dependencies correctly instead of calling them cont
 
 #### D7.1 · Required versus optional dependencies
 
-- **What to check:** Each dependency is marked required or optional and linked to the exact interface it uses.
+- **What to check:** First enumerate which personal Apps each workflow needs, including separate Agent tool calls; also enumerate other App connections. Check whether the required App and operation actually exist at the reviewed revision, not merely whether the proposal names them. Confirm the package runs independently with only its own files, the pinned shared runtime and declared dependencies.
 - **Look at:** §3 Internal personal apps; Other apps and websites; §4 App integrations; License and external dependencies.
-- **✓ Approve:** Each dependency names the existing App, links the exact tool or receive-schema file and version, says what changes in that App, and is marked required or optional; run-time external services are replayed or controlled.
-- **◐ Partial approve:** Dependencies are listed without required or optional, or without version links.
-- **? Human judge:** Whether a dependency should be required is debatable.
-- **✗ Reject:** A required capability that does not exist is treated as available.
-- **Source:** Guide · Dependencies and effort; Integration expectations; PR #12 docs/app-integrations.md
+- **✓ Approve:** Each dependency is required or optional for a named workflow, links the reviewed package and exact public interface/version, and has the needed implemented capability. A planned capability is explicitly bounded by an owner, sequence and feasible fallback or scope exclusion. Run-time external services are replayed or controlled; an optional App integration may still be required by a particular linked Task. The proposal states the standalone package boundary and its declared dependencies.
+- **◐ Partial approve:** Dependencies lack scope/version links, an App exists but the needed operation is unverified, a capability gap has no clear owner/fallback yet, or the standalone package boundary is missing. Ask the author to supply missing information rather than reject for omission alone. Shared IDs do not establish a Contacts implementation; test fixtures do not establish a production Messages App.
+- **? Human judge:** Whether a dependency should be required, a new receiver should be built, or an adapter/fallback is acceptable needs a maintainer/platform decision.
+- **✗ Reject:** A required capability that does not exist is treated as available, or the design requires undeclared dependencies, hard-coded repository-relative paths outside the package, or access to another App's private implementation or state. A pinned shared runtime and declared dependencies used through public interfaces are allowed.
+- **Source:** Guide · Dependencies and effort; Integration expectations; PR #12 docs/app-integrations.md; docs/review/app-implementation.md (Package and contract)
 
 #### D7.2 · Owners and sequence
 
@@ -319,10 +319,10 @@ Guide: “An independent reviewer needs observable acceptance criteria rather th
 
 #### D8.2 · Business tests and receiver-side checks
 
-- **What to check:** The Validation and reset row plans business tests, reset checks and integration checks that look at the receiving App.
+- **What to check:** The Validation and reset row plans business tests, reset checks and integration checks that look at the receiving App and the actual result the caller needs.
 - **Look at:** §4 Validation and reset; App integrations.
-- **✓ Approve:** Business tests, reset checks and public-runtime integration checks are named, and each integration is checked in the receiving App (its records, files or receipt), not by the sender’s return value.
-- **◐ Partial approve:** Business tests are named; integration checks rely on the sender’s success.
+- **✓ Approve:** Business tests, reset checks and public-runtime integration checks are named. Each integration checks the receiving App's records/files or receipt, distinguishes delivery acknowledgement from a business decision, and defines sender/receiver outcomes on relevant rejection, retry or unknown acknowledgement paths. The plan does not assume automatic sender rollback.
+- **◐ Partial approve:** Integration checks rely on sender success, assume an unverified business result in a delivery receipt, or leave failure/commit boundaries unclear. Identify the needed interface or platform decision.
 - **? Human judge:** Which runtime capabilities are needed is a platform decision.
 - **✗ Reject:** There is no validation plan.
 - **Source:** Guide · Verifiability; Integration expectations; PR #12 docs/app-attachments.md
@@ -331,7 +331,7 @@ Guide: “An independent reviewer needs observable acceptance criteria rather th
 
 - **What to check:** Each deliverable has an observable pass condition that an independent reviewer can check.
 - **Look at:** §4 Deliverable / quality check column.
-- **✓ Approve:** Every deliverable has a pass condition someone else can observe, and the points that need human review are named.
+- **✓ Approve:** Every deliverable has a pass condition someone else can observe, and the points that need human review are named. For promised evaluation records, identify the source and join: App revisions/state, Core outcome evidence and supplied tool calls/arguments/results. Plan checks of required content and failure coverage; optional diagnostic logs alone do not establish that coverage.
 - **◐ Partial approve:** Some deliverables have no pass condition.
 - **? Human judge:** Acceptance depends on subjective quality, such as how realistic the assets look.
 - **✗ Reject:** Acceptance rests on a promised number of tests or screenshots.

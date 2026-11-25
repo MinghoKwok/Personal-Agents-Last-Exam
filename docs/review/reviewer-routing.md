@@ -1,0 +1,56 @@
+# Proposal reviewer routing
+
+New Environment and Task proposal PRs receive one review request automatically. PR events process the affected PR while retaining same-author and domain history for routing. A reconciliation every six hours and a manual **Run workflow** option pick up eligible open proposals missed by an earlier event. Existing assignments are checked before fetching proposal contents, reducing unnecessary API calls.
+
+**Owner exception:** PRs authored by DavidZWZ (verified GitHub ID `57624585`) are self-managed and do not receive automatic reviewer requests. DavidZWZ can review and accept their own changes; no external reviewer is required. Explicitly requested optional reviews are preserved. All other authors retain the routing below. The live index identifies owner review separately from the external-review backlog.
+
+## Domain owners
+
+The proposal file's **Primary domain** selects the owner. Secondary domains provide context and do not create extra review requests.
+
+| Track | Reviewer | Primary domains |
+| :--- | :--- | :--- |
+| Environment | skyve2012 | Money & insurance; Work & business; Learning & research; News & information |
+| Environment | Jasonya | Health & care; Fitness & wellbeing; Home & utilities; Food & dining; Weather & outdoors |
+| Environment | Chenngzz | Travel & commuting; Shopping & groceries; Social & communities; Media & entertainment; Games & play; Public service & law |
+| Task | TianyuCodings | Work & business; Money & insurance; Public service & law; News & information |
+| Task | Yeechin-is-here | Health & care; Fitness & wellbeing; Home & utilities; Food & dining; Weather & outdoors |
+| Task | haolun-wu | Travel & commuting; Shopping & groceries; Learning & research; Social & communities; Media & entertainment; Games & play |
+
+## Selection order
+
+1. Preserve existing human/team review requests and prior review assignments. A submitted review does not cause another automatic request. Removing a human reviewer or team manually is respected; the bot will not add them back. Copilot, Codex and other automated accounts do not fill the human reviewer position, even if they were explicitly requested or removed. Their reviews remain available alongside the assigned human review.
+2. Apply an explicit maintainer override from the default-branch policy, when present. The paired health-plan and pharmacy proposals #64 and #63 retain their existing Jasonya assignment.
+3. Reuse the reviewer from the most recent earlier proposal by the **same GitHub author, in the same Track and primary domain**. Closed proposals can establish continuity; drafts and explicitly removed reviewers cannot. Different domains remain with their respective owners.
+4. Otherwise, use the domain owner above.
+5. Exclude the PR author and declared coauthors. If the domain owner is an author, use the remaining configured reviewer with the fewest pending requests within that Track; policy order breaks ties. This is not a general round-robin rebalance.
+
+GitHub's review-request endpoint validates the selected reviewer's eligibility. A rejected request is reported for maintainer attention and makes the workflow fail visibly, without silently substituting someone else. An override that conflicts with authorship also requires a maintainer decision. The workflow does not rely on collaborator-list visibility, which can differ between an owner's token and the built-in Actions token.
+
+## Drafts, corrections and manual control
+
+- Drafts keep their state and wait for **Ready for review**. The workflow never changes Draft status.
+- Use the proposal title format and exactly one proposal file in the matching directory. Fill in the primary domain and authors/GitHub handles. Missing or conflicting metadata is reported in the workflow summary; correcting the PR triggers another attempt.
+- Maintainers can assign or change reviewers directly in GitHub. For a new PR that should remain manually routed, apply the `review-routing:manual` label. An existing review request, completed review assignment or explicit reviewer removal is not automatically overridden.
+- Changing a domain after assignment does not transfer an ongoing review. A maintainer should make any necessary handoff explicitly.
+- The workflow requests reviewers only. It does not change assignees, approve plans, start deadlines, accept implementations or merge PRs. The existing [proposal lifecycle](proposal-lifecycle.md) remains in force.
+
+## Workload visibility
+
+The live [Proposal list](../../proposals/proposal-list.md) includes six reviewers' pending request counts, alongside open proposals, initial-review backlog and drafts. Completed reviews leave the pending queue, so these numbers are current workload rather than lifetime credit. A PR with two requested reviewers contributes to both reviewers' counts.
+
+The **Assign proposal reviewers** Actions summary records each new assignment and its reason, plus drafts and routing problems. Event-run summaries cover the selected PR; full reconciliations show the complete routing distribution. The proposal index refreshes after successful routing and polls current review state every 5 minutes from trusted default-branch code, subject to GitHub scheduling delays. Failed bot runs do not launch another full index scan. Automated reviews do not count as human approval or remove a proposal from the initial human-review backlog.
+
+## Implementation
+
+The reviewer pools, domain map and explained overrides live in [`.github/review-policy.json`](../../.github/review-policy.json). Change them through a reviewed maintenance PR. The workflow checks out only default-branch code with credentials persistence disabled; it reads proposal text at its exact head commit as data and never executes contributor code. It rechecks the PR and review history before requesting a reviewer.
+
+The workflow needs no paid AI service or additional secret. It uses the repository's GitHub Actions token with read access to contents/issues and write access to pull requests. It has no permission to change branch protection or publish code.
+
+For a read-only local preview, authenticate a token with repository read access and run:
+
+```sh
+python3 scripts/assign_proposal_reviewers.py
+```
+
+`--apply` sends the review requests. The default JSON report is `/tmp/proposal-review-routing.json`; use `--output` to choose another location. Local or workflow failures can be safely retried: existing assignments are preserved.

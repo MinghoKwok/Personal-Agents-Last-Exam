@@ -65,19 +65,33 @@ class FakeAPI:
 
 
 class ProposalSyncTests(unittest.TestCase):
+    def test_owner_proposal_is_not_external_reviewer_backlog(self):
+        api = FakeAPI(pr(user={"login": "DavidZWZ", "id": 57624585}), self.task)
+        records = sync.collect(api, self.domains, "main")
+        self.assertEqual(records[0]["review"], "Owner review; no external reviewer required")
+        self.assertIn("0 awaiting initial review", sync.render(records, api.repository))
+        api.pr["user"]["id"] = 17
+        self.assertEqual(sync.collect(api, self.domains, "main")[0]["review"], "Awaiting review")
+
     def setUp(self):
         self.domains = sync.domains_from_readme((ROOT / "README.md").read_text())
         template = (ROOT / "proposals/templates/task-proposal.md").read_text()
         self.task = template.replace("`[Fill in: a concise task title]`", "Airport pickup")
         self.task = self.task.replace("`[Fill in: one domain from the table below]`", "Travel & commuting")
         self.task = self.task.replace("`[Fill in: other relevant domains, or None]`", "Money & insurance")
-        self.task = self.task.replace("`[Fill in: the central personalization challenge or insight]`",
-                                      "Resolve a changed arrival time against the user's mobility needs.")
+        self.task = self.task.replace(
+            "`[Fill in: 1–2 sentences on why the right action depends on this person's history, boundaries or relationships rather than the surface request alone]`",
+            "Resolve a changed arrival time against the user's mobility needs.",
+        )
 
     def test_real_templates_and_domains_are_readable(self):
         self.assertEqual(len(self.domains), 15)
         self.assertEqual(sync.field(self.task, "Primary domain"), "Travel & commuting")
         self.assertTrue(sync.answer(self.task, "What makes this distinct and personal").startswith("Resolve"))
+        legacy = "## 4. What makes this distinct and personal\n\n**✍️ Your answer (required):** Legacy summary.\n\nDetails."
+        self.assertEqual(sync.answer(legacy, "What makes this distinct and personal"), "Legacy summary.")
+        example = (ROOT / "proposals/task/lena-spring-gathering.md").read_text()
+        self.assertTrue(sync.answer(example, "What makes this distinct and personal").startswith("When an earlier cutoff"))
         empty = (ROOT / "proposals/templates/task-proposal.md").read_text()
         self.assertEqual(sync.field(empty, "Short task title"), "")
         self.assertEqual(sync.answer(empty, "What makes this distinct and personal"), "")
@@ -239,12 +253,141 @@ class ProposalSyncTests(unittest.TestCase):
             sync.ensure_index_branch(api, "main")
         self.assertEqual(request.call_args.args[2], {"ref": "refs/heads/proposal-index", "sha": "base"})
 
+    def test_empty_field_does_not_capture_the_next_line(self):
+        text = ("- **Primary domain (required):**\n"
+                "- **Secondary domains (optional):**\n\n"
+                "### Domain names\n")
+        self.assertEqual(sync.field(text, "Primary domain"), "")
+        self.assertEqual(sync.field(text, "Secondary domains"), "")
+        filled = "  * **Primary domain (required):**   Travel & commuting  \n"
+        self.assertEqual(sync.field(filled, "Primary domain"), "Travel & commuting")
+        api = FakeAPI(pr(), self.task.replace("Money & insurance", ""))
+        self.assertEqual(sync.collect(api, self.domains, "main")[0]["secondary"], "")
+
+    def test_one_unreadable_proposal_is_flagged_without_aborting_the_index(self):
+        api = FakeAPI(pr(), self.task)
+        with patch.object(api, "contents", side_effect=ValueError("Expected a regular file")):
+            item = sync.collect(api, self.domains, "main")[0]
+        self.assertIn("regular Markdown file", item["issue"])
+        self.assertEqual(item["primary"], "Travel & commuting")  # Title fallback.
+        many = [{"filename": f"assets/{n}.png", "status": "added"} for n in range(3000)]
+        with patch.object(api, "pages", side_effect=lambda path, **_: many if path.endswith("/files") else []):
+            text, path, issue = sync.proposal_text(api, api.pr, "task")
+        self.assertEqual((text, path), ("", ""))
+        self.assertIn("too many files", issue)
+        self.assertIn("Metadata: " + sync.escape_cell(item["issue"]), sync.render([item], api.repository))
+
+    def test_long_cells_end_on_a_whole_word_and_never_inside_a_link(self):
+        text = "A portal modelled on Regulations.gov (https://www.regulations.gov/docket) with comments"
+        cut = sync.escape_cell(text, 45)
+        self.assertEqual(cut, "A portal modelled on Regulations.gov…")
+        self.assertNotIn("http", cut)
+        self.assertEqual(sync.escape_cell("word " * 10, 23), "word word word word…")
+        self.assertEqual(sync.escape_cell("abcde fghij", 11), "abcde fghij")
+        self.assertEqual(sync.escape_cell("x" * 30, 10), "x" * 9 + "…")
+        self.assertLessEqual(len(sync.escape_cell("word " * 100)), 240)
+
+    def test_bare_links_keep_underscores_while_text_is_still_escaped(self):
+        cell = sync.escape_cell("Zotero https://www.zotero.org/support/collections_and_tags uses snake_case | x")
+        self.assertIn("https://www.zotero.org/support/collections_and_tags", cell)
+        self.assertIn(r"snake\_case", cell)
+        self.assertIn(r"\| x", cell)
+        hostile = sync.escape_cell("https://bad.example/a|b[c]*d`e!f")
+        self.assertEqual(hostile, r"https://bad.example/a\|b\[c\]\*d\`e\!f")
+
     def test_oversized_proposal_is_not_parsed(self):
         api = FakeAPI(pr(), "x" * (sync.MAX_PROPOSAL_BYTES + 1))
         text, _, issue = sync.proposal_text(api, api.pr, "task")
         self.assertEqual(text, "")
         self.assertIn("200 KB", issue)
 
+    def test_workload_counts_only_pending_open_non_draft_requests(self):
+        api = FakeAPI(pr(requested_reviewers=[{"login": "haolun-wu"}]), self.task)
+        active = sync.collect(api, self.domains, "main")[0]
+        records = [active, {**active, "number": 43, "status": "Draft"},
+                   {**active, "number": 44, "status": "Accepted"},
+                   {**active, "number": 45, "status": "Closed"},
+                   {**active, "number": 46, "reviewers": [], "review": "Approved (1)"},
+                   {**active, "number": 47, "reviewers": [], "review": "Awaiting review"}]
+        rendered = sync.render(records, api.repository)
+        self.assertIn("3 open non-draft proposals · 1 awaiting initial review · 1 drafts", rendered)
+        line = next(x for x in rendered.splitlines() if x.startswith("| Task | [haolun-wu]"))
+        self.assertTrue(line.endswith("| 1 |"), line)
+
+    def test_exhausted_quota_is_reported_as_a_rate_limit(self):
+        from email.message import Message
+        from io import BytesIO
+        from urllib.error import HTTPError
+        api = sync.GitHub("example/benchmark", None)
+        headers = Message()
+        headers["x-ratelimit-remaining"] = "0"
+        headers["x-ratelimit-reset"] = "1795305600"
+        limited = HTTPError("https://api.github.com/x", 403, "Forbidden", headers, BytesIO(b"{}"))
+        with patch.object(sync, "urlopen", side_effect=limited), patch.object(sync.time, "sleep"):
+            with self.assertRaises(sync.RateLimited) as caught:
+                api.request("/repos/example/benchmark")
+        self.assertEqual(caught.exception.reset, 1795305600)
+        denied = HTTPError("https://api.github.com/x", 403, "Forbidden", Message(), BytesIO(b"{}"))
+        with patch.object(sync, "urlopen", side_effect=denied):
+            with self.assertRaises(sync.APIError) as caught:
+                api.request("/repos/example/benchmark")
+        self.assertNotIsInstance(caught.exception, sync.RateLimited)
+
+    def test_rate_limit_notice_reports_incomplete_work_with_the_reset_time(self):
+        from contextlib import redirect_stdout
+        from io import StringIO
+        out = StringIO()
+        with redirect_stdout(out):
+            sync.rate_limit_notice("Proposal sync", sync.RateLimited(403, "limited", 1795305600))
+        self.assertTrue(out.getvalue().startswith("::error title=GitHub API rate limit::Proposal sync is incomplete"))
+        self.assertIn("00:00 UTC", out.getvalue())
+
+    def test_cache_reuses_unchanged_proposals_and_refreshes_changed_ones(self):
+        live = pr(head={"sha": "h1"}, updated_at="2026-11-21T10:00:00Z")
+        api = FakeAPI(live, self.task)
+        cache = {}
+        first = sync.collect(api, self.domains, "main", cache, now=1000)
+        self.assertEqual(list(cache), ["42"])
+        api.calls.clear()
+        self.assertEqual(sync.collect(api, self.domains, "main", cache, now=2000), first)
+        self.assertFalse([c for c in api.calls if "/pulls/42/" in str(c) or isinstance(c, tuple) and c[0] == api.path])
+        live["updated_at"] = "2026-11-21T11:00:00Z"
+        api.calls.clear()
+        sync.collect(api, self.domains, "main", cache, now=3000)
+        self.assertTrue(any("/pulls/42/files" in str(c) for c in api.calls))
+        api.calls.clear()
+        sync.collect(api, self.domains, "main", cache, now=3000 + sync.OPEN_REFRESH_SECONDS)
+        self.assertTrue(any("/pulls/42/files" in str(c) for c in api.calls), "open PRs are re-read after the refresh window")
+        live["state"] = "closed"
+        live["updated_at"] = "2026-11-21T12:00:00Z"
+        sync.collect(api, self.domains, "main", cache, now=10_000)
+        api.calls.clear()
+        sync.collect(api, self.domains, "main", cache, now=10_000 + 10 * sync.OPEN_REFRESH_SECONDS)
+        self.assertFalse(any("/pulls/42/files" in str(c) for c in api.calls), "closed, unchanged PRs stay cached")
+
+    def test_listing_without_update_time_is_never_served_from_cache(self):
+        api = FakeAPI(pr(), self.task)
+        cache = {"42": {"key": None, "fetched": 0, "record": {"number": 42}}}
+        records = sync.collect(api, self.domains, "main", cache, now=1)
+        self.assertEqual(records[0]["primary"], "Travel & commuting")
+        self.assertEqual(cache["42"]["record"], {"number": 42})
+
+    def test_cache_is_discarded_when_code_or_policy_changes(self):
+        api = sync.GitHub("example/benchmark", None)
+        stored = sync.cache_content({"42": {"key": ["t", "h"], "fetched": 1, "record": {}}}, "old")
+        with patch.object(api, "contents", return_value=encoded(stored)):
+            self.assertEqual(sync.load_cache(api, "new"), {})
+            self.assertIn("42", sync.load_cache(api, "old"))
+        with patch.object(api, "contents", return_value=encoded("not json")):
+            self.assertEqual(sync.load_cache(api, "old"), {})
+        with patch.object(api, "contents", return_value=None):
+            self.assertEqual(sync.load_cache(api, "old"), {})
+        self.assertEqual(len(sync.cache_fingerprint()), 64)
+
+    def test_cache_is_written_only_to_the_index_branch(self):
+        api = sync.GitHub("example/benchmark", None)
+        with self.assertRaises(ValueError):
+            sync.publish(api, "main", "{}", sync.CACHE_PATH, "Update proposal cache")
 
 if __name__ == "__main__":
     unittest.main()

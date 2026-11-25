@@ -1,0 +1,43 @@
+name: Assign proposal reviewers
+
+on:
+  pull_request_target:
+    branches: [main]
+    types: [opened, edited, synchronize, reopened, ready_for_review]
+  push:
+    branches: [main]
+    paths:
+      - .github/review-policy.json
+      - .github/workflows/assign-proposal-reviewers.yml
+      - scripts/assign_proposal_reviewers.py
+      - scripts/review_identity.py
+  schedule:
+    - cron: '41 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: read
+
+concurrency:
+  group: proposal-automation-writer
+  queue: max
+  cancel-in-progress: false
+
+jobs:
+  assign:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out trusted default-branch code only
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+      - name: Check routing logic
+        run: python3 -m unittest discover -s tests -v
+      - name: Assign missing proposal reviewers
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/assign_proposal_reviewers.py --apply

@@ -18,9 +18,11 @@ import sys
 from urllib.parse import quote, urlparse
 
 try:
-    from .sync_proposals import APIError, GitHub, PROPOSAL_PATH, decode_file, field, track
+    from .review_identity import can_self_review
+    from .sync_proposals import APIError, GitHub, RateLimited, rate_limit_notice, PROPOSAL_PATH, decode_file, field, track
 except ImportError:
-    from sync_proposals import APIError, GitHub, PROPOSAL_PATH, decode_file, field, track
+    from review_identity import can_self_review
+    from sync_proposals import APIError, GitHub, RateLimited, rate_limit_notice, PROPOSAL_PATH, decode_file, field, track
 
 ROOT = Path(__file__).resolve().parents[1]
 MARKER = "<!-- pale-lifecycle:v1\n"
@@ -112,9 +114,16 @@ def render_state(state, now):
     return "\n".join(lines)
 
 
-def classify(pr, files, state):
-    paths = [f["filename"] for f in files if f.get("status") != "removed" and PROPOSAL_PATH.fullmatch(f["filename"])]
-    touched = any(PROPOSAL_PATH.fullmatch(f.get(k, "")) for f in files for k in ("filename", "previous_filename"))
+def classify(pr, files, state, documentation_examples=()):
+    # Only the trusted default-branch policy can identify existing worked
+    # examples. New files, deletions and renames still receive contribution
+    # classification, including a rename into an allowlisted example path.
+    examples = set(documentation_examples)
+    proposal_files = [f for f in files if not (
+        f["filename"] in examples and f.get("status") == "modified"
+        and not f.get("previous_filename"))]
+    paths = [f["filename"] for f in proposal_files if f.get("status") != "removed" and PROPOSAL_PATH.fullmatch(f["filename"])]
+    touched = any(PROPOSAL_PATH.fullmatch(f.get(k, "")) for f in proposal_files for k in ("filename", "previous_filename"))
     implementation = any(f["filename"].startswith(("apps/", "tasks/")) for f in files)
     candidate = bool(track(pr) or touched or implementation or state.get("track"))
     if not candidate:
@@ -160,7 +169,7 @@ def checked_sha(args, head, evidence=False):
 
 
 def apply_command(state, command, args, *, actor, maintainer, assigned, author, coauthor,
-                  pr, kind, path, blob, files, rules, now, comment_id):
+                  pr, kind, path, blob, files, rules, now, comment_id, actor_id=None, approval_head=None):
     state = copy.deepcopy(state)
     if comment_id in state.get("processed", []):
         return state, False
@@ -168,24 +177,26 @@ def apply_command(state, command, args, *, actor, maintainer, assigned, author, 
         raise ValueError("Lifecycle commands require one completed Environment or Task proposal")
     if pr["state"] != "open" or pr["base"]["ref"] != "main":
         raise ValueError("Commands apply only to open PRs targeting main")
-    reviewer = (maintainer or assigned) and not author and not coauthor
+    self_review = maintainer and can_self_review(actor, actor_id, rules)
+    reviewer = (maintainer or assigned) and (self_review or not (author or coauthor))
     participant = author or reviewer
     head = pr["head"]["sha"]
     valid = approval_valid(state, path, blob)
     if command == "approve-plan":
         if not reviewer:
             raise ValueError("Only an assigned Track reviewer or maintainer may approve; authors and coauthors cannot self-approve")
-        checked_sha(args, head)
+        checked_sha(args, approval_head or head)
         if pr["draft"]:
             raise ValueError("Mark this proposal Ready for review before approving")
-        state["track"] = kind
-        state["approval"] = {"by": actor, "at": iso(now), "head_sha": head, "path": path, "blob_sha": blob}
-        state.setdefault("first_approved_at", iso(now))
-        if kind == "environment":
-            state.setdefault("environment_v1_due_at", iso(timestamp(state["first_approved_at"]) + timedelta(days=rules["environment_v1_days"])))
-        state.pop("acceptance", None)
-        state.pop("submission", None)
-        state["stage"] = "plan-approved"
+        if not valid:
+            state["track"] = kind
+            state["approval"] = {"by": actor, "at": iso(now), "head_sha": approval_head or head, "path": path, "blob_sha": blob}
+            state.setdefault("first_approved_at", iso(now))
+            if kind == "environment":
+                state.setdefault("environment_v1_due_at", iso(timestamp(state["first_approved_at"]) + timedelta(days=rules["environment_v1_days"])))
+            state.pop("acceptance", None)
+            state.pop("submission", None)
+            state["stage"] = "plan-approved"
     elif command == "revoke-plan":
         if not reviewer or not args:
             raise ValueError("An assigned reviewer or maintainer must provide a reason to revoke the plan")
@@ -193,7 +204,7 @@ def apply_command(state, command, args, *, actor, maintainer, assigned, author, 
             state.pop(key, None)
         state["stage"] = "plan-needs-review"
     elif command == "extend-deadline":
-        if not maintainer or author or coauthor or kind != "environment" or not state.get("environment_v1_due_at"):
+        if not maintainer or ((author or coauthor) and not self_review) or kind != "environment" or not state.get("environment_v1_due_at"):
             raise ValueError("A non-author maintainer must extend an approved Environment deadline")
         parts = args.split(maxsplit=1)
         if len(parts) != 2 or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", parts[0]):
@@ -209,11 +220,12 @@ def apply_command(state, command, args, *, actor, maintainer, assigned, author, 
         if command == "start-implementation":
             if not participant or args:
                 raise ValueError("The author or reviewer can use /start-implementation without arguments")
-            state["stage"] = "in-progress"
-            state.pop("acceptance", None)
+            if state.get("stage") not in {"validation", "ready-to-merge"}:
+                state["stage"] = "in-progress"
+                state.pop("acceptance", None)
         elif command in {"submit-implementation", "accept-implementation"}:
             if command == "accept-implementation":
-                if not maintainer or author or coauthor:
+                if not maintainer or ((author or coauthor) and not self_review):
                     raise ValueError("Only a non-author maintainer with write access can accept implementation")
             elif not participant:
                 raise ValueError("Only the author or reviewer can submit implementation")
@@ -267,6 +279,7 @@ class Lifecycle:
         self.api, self.rules = api, rules
         self.now = now or datetime.now(timezone.utc)
         self.base = f"/repos/{api.repository}"
+        self.access_cache = {}
 
     def context(self, pr):
         number = pr["number"]
@@ -275,7 +288,7 @@ class Lifecycle:
             raise ValueError("PR file cap reached; refusing partial classification")
         comments = list(self.api.pages(f"{self.base}/issues/{number}/comments"))
         state, comment_id = load_state(comments, number)
-        kind, path, issue = classify(pr, files, state)
+        kind, path, issue = classify(pr, files, state, self.rules.get("documentation_examples", []))
         blob, text = None, ""
         if path:
             data = self.api.contents(path, pr["head"]["sha"])
@@ -287,14 +300,20 @@ class Lifecycle:
                 "kind": kind, "path": path, "blob": blob, "text": text, "issue": issue}
 
     def access(self, actor):
+        if actor in self.access_cache:
+            return self.access_cache[actor]
         try:
-            self.api.request(f"{self.base}/collaborators/{quote(actor, safe='')}")
+            # Permission lookup is authoritative. A separate collaborator-list
+            # membership probe may be hidden from the built-in Actions token.
+            data = self.api.request(f"{self.base}/collaborators/{quote(actor, safe='')}/permission")
         except APIError as error:
             if error.status == 404:
                 return False, False
             raise
-        data = self.api.request(f"{self.base}/collaborators/{quote(actor, safe='')}/permission")
-        return True, data.get("permission") in {"write", "maintain", "admin"}
+        permission = data.get("permission")
+        result = permission in {"read", "triage", "write", "maintain", "admin"}, permission in {"write", "maintain", "admin"}
+        self.access_cache[actor] = result
+        return result
 
     def is_assigned(self, pr, actor, kind):
         if actor.casefold() not in {u.casefold() for u in self.rules["reviewers"].get(kind, [])}:
@@ -309,7 +328,8 @@ class Lifecycle:
                     assigned = True
                 elif event.get("event") == "review_request_removed":
                     assigned = False
-        return assigned or any(u["login"].casefold() == actor.casefold() for u in pr.get("requested_reviewers", []))
+        result = assigned or any(u["login"].casefold() == actor.casefold() for u in pr.get("requested_reviewers", []))
+        return result
 
     def write_state(self, context, state):
         state["repository"] = self.api.repository
@@ -320,8 +340,11 @@ class Lifecycle:
             existing = next(x for x in context["comments"] if x["id"] == context["comment_id"])
             if existing["body"] != body:
                 self.api.request(f"{self.base}/issues/comments/{context['comment_id']}", "PATCH", {"body": body})
+                existing["body"] = body
         else:
-            self.api.request(f"{self.base}/issues/{state['number']}/comments", "POST", {"body": body})
+            created = self.api.request(f"{self.base}/issues/{state['number']}/comments", "POST", {"body": body})
+            context["comment_id"] = created["id"]
+            context["comments"].append(created)
 
     def update_labels(self, context):
         state, pr = context["state"], context["pr"]
@@ -351,8 +374,9 @@ class Lifecycle:
             self.api.request(f"{self.base}/issues/{pr['number']}/labels", "POST", {"labels": [name]})
         for name in (current & LABELS.keys()) - wanted:
             self.api.request(f"{self.base}/issues/{pr['number']}/labels/{quote(name, safe='')}", "DELETE")
+        pr["labels"] = [{"name": name} for name in (current - LABELS.keys()) | wanted]
 
-    def command(self, event):
+    def command(self, event, context=None, recover_rejected=False):
         number = event["issue"]["number"]
         comment = self.api.request(f"{self.base}/issues/comments/{event['comment']['id']}")
         # Ignore edits/replays with changed text or identity. Commands are immutable
@@ -365,11 +389,21 @@ class Lifecycle:
         parsed = parse_command(comment.get("body"))
         if not parsed:
             return
-        pr = self.api.request(f"{self.base}/pulls/{number}")
-        context = self.context(pr)
+        pr = context["pr"] if context is not None else self.api.request(f"{self.base}/pulls/{number}")
+        context = context if context is not None else self.context(pr)
         result_marker = f"<!-- pale-command-result:{comment['id']} -->"
-        if comment["id"] in context["state"].get("processed", []) or any(
-                trusted_comment(c) and (c.get("body") or "").startswith(result_marker) for c in context["comments"]):
+        rejected = next((c for c in context["comments"] if trusted_comment(c)
+                        and (c.get("body") or "").startswith(result_marker)), None)
+        retryable_rejection = rejected and any(text in rejected["body"] for text in (
+            "Command not applied: Use the full current 40-character PR commit SHA",
+            "Command not applied: The current proposal needs /approve-plan before implementation commands"))
+        if comment["id"] in context["state"].get("processed", []) or (rejected and not (recover_rejected and retryable_rejection)):
+            return
+        # A late historical command must never undo an already processed newer
+        # decision. New runs process the durable comment log chronologically.
+        order = lambda c: (c["created_at"], c["id"])
+        if any(c["id"] in context["state"].get("processed", []) and order(c) > order(comment)
+               for c in context["comments"]):
             return
         actor = comment["user"]["login"]
         collaborator, maintainer = self.access(actor)
@@ -378,18 +412,34 @@ class Lifecycle:
         try:
             if context["issue"]:
                 raise ValueError(context["issue"])
+            approval_head = None
+            if parsed[0] == "approve-plan":
+                approval_head = parsed[1]
+                checked_sha(approval_head, approval_head)
+                if approval_head != pr["head"]["sha"]:
+                    comparison = self.api.request(f"{self.base}/compare/{approval_head}...{pr['head']['sha']}")
+                    if comparison.get("status") not in {"ahead", "identical"}:
+                        raise ValueError("The reviewed commit must be an ancestor of the current PR head")
+                    original = self.api.contents(context["path"], approval_head)
+                    if not original or original.get("sha") != context["blob"]:
+                        raise ValueError("The proposal changed since approval; review the current proposal and post a new command")
             state, changed = apply_command(context["state"], *parsed, actor=actor, maintainer=maintainer,
+                actor_id=comment["user"].get("id"),
                 assigned=collaborator and self.is_assigned(pr, actor, context["kind"]),
                 author=pr["user"]["login"].casefold() == actor.casefold(), coauthor=coauthor,
                 pr=pr, kind=context["kind"], path=context["path"], blob=context["blob"],
-                files=context["files"], rules=self.rules, now=self.now, comment_id=comment["id"])
+                files=context["files"], rules=self.rules, now=timestamp(comment["created_at"]),
+                comment_id=comment["id"], approval_head=approval_head)
             if changed:
                 # Re-read head immediately before persisting authority over a commit.
                 if self.api.request(f"{self.base}/pulls/{number}")["head"]["sha"] != pr["head"]["sha"]:
-                    raise ValueError("The PR changed during processing; review the new commit and post a new command")
+                    raise RuntimeError("The PR changed during processing; retry the pending command against the new commit")
                 self.write_state(context, state)
                 context["state"] = state
                 self.update_labels(context)
+                if rejected:
+                    body = rejected["body"] + "\n\nRecovered after the automation repair; the original command was revalidated against live permissions, ancestry and proposal content."
+                    self.api.request(f"{self.base}/issues/comments/{rejected['id']}", "PATCH", {"body": body})
         except ValueError as error:
             marker = f"<!-- pale-command-result:{comment['id']} -->"
             if not any(trusted_comment(c) and (c.get("body") or "").startswith(marker) for c in context["comments"]):
@@ -398,29 +448,38 @@ class Lifecycle:
                     + "\n\nSee [lifecycle commands](https://github.com/" + self.api.repository
                     + "/blob/main/docs/review/proposal-lifecycle.md)."})
 
-    def reconcile(self, numbers=None):
+    def reconcile(self, numbers=None, *, scheduled=False, recover_rejected=False):
         # Check every PR sharing a head: GitHub statuses belong to commits, not PRs.
         opened = list(self.api.pages(f"{self.base}/pulls", state="open", base="main"))
+        if scheduled and numbers is None:
+            # Recent activity catches dropped events; an hourly shard revisits
+            # every open PR daily without 188 full validations every hour.
+            cutoff = self.now - timedelta(hours=2)
+            numbers = {p["number"] for p in opened if p["number"] % 24 == self.now.hour
+                       or timestamp(p.get("updated_at", "1970-01-01T00:00:00Z")) >= cutoff}
         heads = {p["head"]["sha"] for p in opened if numbers is None or p["number"] in numbers}
         groups = {}
+        errors = []
         for pr in opened:
             if pr["head"]["sha"] not in heads:
                 continue
-            context = self.context(pr)
-            # GitHub may coalesce pending workflow runs. Commands remain in the
-            # PR comment history and are recovered by full/hourly reconciliation.
-            recovered = False
-            for comment in context["comments"]:
+            try:
+                context = self.context(pr)
+            except (ValueError, UnicodeError) as error:
+                errors.append(f"#{pr['number']}: {error}")
+                groups.setdefault(pr["head"]["sha"], []).append((pr["number"], "pending", "Lifecycle metadata requires maintainer review"))
+                continue
+            # The comment log, not workflow delivery order, determines transitions.
+            for comment in sorted(context["comments"], key=lambda c: (c.get("created_at", ""), c["id"])):
                 if (parse_command(comment.get("body")) and comment.get("created_at") == comment.get("updated_at")
                         and timestamp(comment["created_at"]) >= timestamp(self.rules["commands_enabled_after"])
                         and comment["id"] not in context["state"].get("processed", [])
-                        and not any(trusted_comment(c) and (c.get("body") or "").startswith(
-                            f"<!-- pale-command-result:{comment['id']} -->") for c in context["comments"])):
-                    self.command({"issue": {"number": pr["number"]}, "comment": comment})
-                    recovered = True
-            if recovered:
-                pr = self.api.request(f"{self.base}/pulls/{pr['number']}")
-                context = self.context(pr)
+                        and (recover_rejected or not any(trusted_comment(c) and (c.get("body") or "").startswith(
+                            f"<!-- pale-command-result:{comment['id']} -->") for c in context["comments"]))):
+                    self.command({"issue": {"number": pr["number"]}, "comment": comment}, context, recover_rejected)
+            current = self.api.request(f"{self.base}/pulls/{pr['number']}")
+            if current["head"]["sha"] != pr["head"]["sha"]:
+                raise RuntimeError("PR changed during reconciliation; retry against the new commit")
             state = context["state"]
             self.update_labels(context)
             if context["comment_id"]:
@@ -483,21 +542,26 @@ class Lifecycle:
             else:
                 self.api.request(f"{self.base}/check-runs", "POST", payload)
             print(f"{head[:10]}: {status}: {description}")
+        if errors:
+            raise ValueError("; ".join(errors))
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repository", default=os.environ.get("GITHUB_REPOSITORY", "MatrAIx-ai/Personal-Agents-Last-Exam"))
+    parser.add_argument("--prs", default=os.environ.get("PR_NUMBERS", ""), help="Comma-separated PR numbers for targeted recovery")
+    parser.add_argument("--recover-rejected", action="store_true", default=os.environ.get("RECOVER_REJECTED") == "true")
     args = parser.parse_args()
     api = GitHub(args.repository, os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN"))
     lifecycle = Lifecycle(api, policy())
     event_name = os.environ.get("GITHUB_EVENT_NAME", "workflow_dispatch")
     event = json.loads(Path(os.environ["GITHUB_EVENT_PATH"]).read_text()) if os.environ.get("GITHUB_EVENT_PATH") else {}
-    numbers = None
+    numbers = parse_pr_numbers(args.prs)
+    if args.recover_rejected and not numbers:
+        raise ValueError("Recovery of previously rejected commands requires explicit PR numbers")
     if event_name == "issue_comment":
         if event.get("action") != "created" or not event.get("issue", {}).get("pull_request") or not parse_command(event.get("comment", {}).get("body")):
             return
-        lifecycle.command(event)
         numbers = {event["issue"]["number"]}
     elif event_name == "pull_request_target":
         numbers = {event["pull_request"]["number"]}
@@ -509,12 +573,26 @@ def main():
         if not numbers:
             opened = list(api.pages(f"/repos/{args.repository}/pulls", state="open", base="main"))
             numbers = {p["number"] for p in opened if p["head"]["sha"] == trusted_run["head_sha"]}
-    lifecycle.reconcile(numbers)
+    lifecycle.reconcile(numbers, scheduled=event_name == "schedule", recover_rejected=args.recover_rejected)
+
+
+def parse_pr_numbers(value):
+    if not value.strip():
+        return None
+    if not re.fullmatch(r"[0-9,\s]+", value):
+        raise ValueError("PR numbers must be positive integers separated by commas or spaces")
+    numbers = {int(n) for n in re.split(r"[,\s]+", value.strip()) if n}
+    if not numbers or min(numbers) < 1 or len(numbers) > 50:
+        raise ValueError("Select between 1 and 50 PR numbers")
+    return numbers
 
 
 if __name__ == "__main__":
     try:
         main()
+    except RateLimited as error:
+        rate_limit_notice("Proposal lifecycle", error)
+        sys.exit(1)
     except (APIError, ValueError, RuntimeError) as error:
         print(f"Lifecycle failed: {error}", file=sys.stderr)
         sys.exit(1)

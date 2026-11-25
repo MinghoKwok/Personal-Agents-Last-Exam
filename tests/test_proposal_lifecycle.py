@@ -79,6 +79,42 @@ def bot_comment(state, **overrides):
 
 
 class LifecycleTests(unittest.TestCase):
+    def test_owner_can_review_and_accept_own_work_without_another_reviewer(self):
+        owner = dict(actor="DavidZWZ", actor_id=57624585, maintainer=True,
+                     assigned=False, author=True, coauthor=True, files=files(True))
+        state, _ = apply(initial(), **owner)
+        self.assertEqual(state["approval"]["by"], "DavidZWZ")
+        self.assertEqual(gate(state)[0], "pending")
+        state, _ = apply(state, "submit-implementation", HEAD + " https://example.org/evidence", comment_id=2, **owner)
+        state, _ = apply(state, "accept-implementation", HEAD + " https://example.org/evidence", comment_id=3, **owner)
+        self.assertEqual(state["acceptance"]["by"], "DavidZWZ")
+        self.assertEqual(gate(state)[0], "success")
+        self.assertEqual(gate(state, checks=[])[0], "pending")
+        self.assertEqual(gate(state, pr=pr(head={"sha": NEXT}))[0], "pending")
+
+    def test_owner_exception_needs_api_identity_and_current_write_access(self):
+        for login, user_id, maintainer in [("DavidZWZ", 1, True), ("DavidZWZ", None, True),
+                ("DavidZWZ-copy", 57624585, True), ("DavidZWZ", 57624585, False), ("another-admin", 2, True)]:
+            with self.subTest(login=login, user_id=user_id, maintainer=maintainer), self.assertRaises(ValueError):
+                apply(initial(), actor=login, actor_id=user_id, maintainer=maintainer,
+                      assigned=False, author=True, coauthor=True)
+
+    def test_owner_review_still_requires_current_scope_and_evidence(self):
+        owner = dict(actor="DavidZWZ", actor_id=57624585, maintainer=True, assigned=False, author=True)
+        for overrides in [{"args": NEXT}, {"pr": pr(draft=True)}, {"kind": "unknown"}]:
+            with self.subTest(overrides=overrides), self.assertRaises(ValueError):
+                apply(initial(), **owner, **overrides)
+        with self.assertRaises(ValueError):
+            apply(submitted(), "accept-implementation", HEAD + " file:///tmp/log", files=files(True), comment_id=3, **owner)
+
+    def test_permission_endpoint_does_not_need_collaborator_list_visibility(self):
+        for permission, expected in [("admin", (True, True)), ("write", (True, True)),
+                                     ("read", (True, False)), ("none", (False, False))]:
+            api = Mock(repository="example/repo")
+            api.request.return_value = {"permission": permission}
+            self.assertEqual(life.Lifecycle(api, RULES).access("DavidZWZ"), expected)
+            api.request.assert_called_once_with("/repos/example/repo/collaborators/DavidZWZ/permission")
+
     def test_assignment_is_not_design_approval(self):
         self.assertEqual(gate(initial())[0], "pending")
 
@@ -200,6 +236,48 @@ class LifecycleTests(unittest.TestCase):
         self.assertEqual(life.classify(pr(title="Fix tooling"), rows, initial()), (None, None, ""))
         self.assertEqual(gate(initial(), kind=None)[0], "success")
 
+    def test_allowlisted_existing_example_is_documentation_maintenance(self):
+        example = "proposals/task/lena-spring-gathering.md"
+        rows = [{"filename": example, "status": "modified"},
+                {"filename": "proposals/templates/task-proposal.md", "status": "modified"}]
+        self.assertEqual(life.classify(pr(title="Improve the worked example"), rows, initial(), [example]), (None, None, ""))
+        self.assertEqual(life.classify(pr(title="Improve the worked example"), rows, initial())[0], "task")
+
+    def test_new_removed_or_renamed_examples_do_not_bypass_contribution_review(self):
+        example = "proposals/task/lena-spring-gathering.md"
+        for row in [{"filename": example, "status": "added"},
+                    {"filename": example, "status": "removed"},
+                    {"filename": example, "status": "renamed", "previous_filename": "proposals/task/new-task.md"},
+                    {"filename": "docs/example.md", "status": "renamed", "previous_filename": example}]:
+            with self.subTest(row=row):
+                self.assertIsNotNone(life.classify(pr(title="Docs"), [row], initial(), [example])[0])
+
+    def test_example_edit_does_not_hide_new_proposal_or_implementation(self):
+        example = "proposals/task/lena-spring-gathering.md"
+        rows = [{"filename": example, "status": "modified"}]
+        for other in ["apps/demo/plugin.cjs", "tasks/demo/instruction.md", "proposals/task/another-task.md"]:
+            with self.subTest(other=other):
+                result = life.classify(pr(title="Docs"), rows + [{"filename": other, "status": "added"}], initial(), [example])
+                self.assertIsNotNone(result[0])
+
+    def test_explicit_track_and_recorded_lifecycle_cannot_become_example_maintenance(self):
+        example = "proposals/task/lena-spring-gathering.md"
+        rows = [{"filename": example, "status": "modified"}]
+        for p, state in [(pr(title="[Task Proposal] [Food & dining] Example"), initial()),
+                         (pr(title="Docs", labels=[{"name": "track:task"}]), initial()),
+                         (pr(title="Docs", body="- [x] Task Track"), initial()),
+                         (pr(title="Docs"), {**initial(), "track": "task"})]:
+            self.assertIsNotNone(life.classify(p, rows, state, [example])[0])
+
+    def test_context_uses_trusted_policy_for_example_maintenance(self):
+        example = "proposals/task/lena-spring-gathering.md"
+        api = Mock(repository="example/repo")
+        api.pages.side_effect = lambda path, **kwargs: (
+            [{"filename": example, "status": "modified"}] if path.endswith("/files") else [])
+        context = life.Lifecycle(api, {**RULES, "documentation_examples": [example]}, NOW).context(pr(title="Docs"))
+        self.assertIsNone(context["kind"])
+        api.contents.assert_not_called()
+
     def test_spoofed_state_comment_is_ignored(self):
         for changes in [{"user": {"login": "author"}}, {"performed_via_github_app": None}]:
             self.assertIsNone(life.load_state([bot_comment(accepted(), **changes)], 123)[1])
@@ -264,6 +342,8 @@ class LifecycleTests(unittest.TestCase):
         maintenance = pr(number=124, title="Fix documentation")
         api.pages.return_value = [maintenance, pr()]
         def request(path, method="GET", data=None):
+            if path.endswith("/pulls/123"):return pr()
+            if path.endswith("/pulls/124"):return maintenance
             if path.endswith("/status"):return {"statuses": []}
             if "/check-runs?" in path:return {"check_runs": []}
             return {}
@@ -285,6 +365,7 @@ class LifecycleTests(unittest.TestCase):
         draft = pr(title="Fix documentation", draft=True)
         api.pages.return_value = [draft]
         def request(path, method="GET", data=None):
+            if path.endswith("/pulls/123"):return draft
             if path.endswith("/status"):return {"statuses": []}
             if "/check-runs?" in path:
                 return {"check_runs": [{"id": 999, "external_id": "pale-contribution-ready:" + HEAD,
@@ -334,6 +415,20 @@ class LifecycleTests(unittest.TestCase):
         runner = life.Lifecycle(api, RULES, NOW)
         runner.command({"issue": {"number": 123}, "comment": {**comment, "user": {"login": "Jasonya"}}})
         self.assertEqual(api.request.call_count, 1)
+
+    def test_self_review_uses_fresh_comment_user_id_not_event_claim(self):
+        api = Mock(repository="example/repo")
+        comment = {"id": 7, "body": "/approve-plan " + HEAD,
+                   "user": {"login": "DavidZWZ", "id": 17},
+                   "created_at": "2026-11-20T00:00:00Z", "updated_at": "2026-11-20T00:00:00Z"}
+        api.request.side_effect = [comment, pr()]
+        runner = life.Lifecycle(api, RULES, NOW)
+        context = {"pr": pr(), "files": files(), "comments": [], "state": initial(),
+                   "kind": "environment", "path": PATH, "blob": BLOB, "text": "", "issue": ""}
+        with patch.object(runner, "context", return_value=context), patch.object(runner, "access", return_value=(True, True)), \
+                patch.object(life, "apply_command", return_value=(initial(), False)) as command:
+            runner.command({"issue": {"number": 123}, "comment": {**comment, "user": {"login": "DavidZWZ", "id": 57624585}}})
+        self.assertEqual(command.call_args.kwargs["actor_id"], 17)
 
 
 if __name__ == "__main__":

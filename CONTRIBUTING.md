@@ -6,7 +6,7 @@
 
 1. Check the [proposal list](https://github.com/MatrAIx-ai/Personal-Agents-Last-Exam/blob/proposal-index/proposals/proposal-list.md) for related work, then copy the [Environment proposal template](proposals/templates/environment-proposal.md) or [Task proposal template](proposals/templates/task-proposal.md).
 2. Replace the `[Fill in: …]` placeholders, then add the completed design to `proposals/environment/<slug>.md` or `proposals/task/<slug>.md` in your fork. Follow the required/optional labels; explain how any `TBD` decisions will be resolved.
-3. Open a PR against `main`. Use the [PR summary template](proposals/templates/pr-summary.md) to describe the track, stage and proposal, and link the design file. Keep it Draft while writing; request review when ready.
+3. Open a PR against `main`. Use the [PR summary template](proposals/templates/pr-summary.md) to describe the track, stage and proposal, and link the design file. Keep it Draft while writing; mark it Ready for review when ready. A reviewer is assigned automatically by Track and primary domain, preserving same-author continuity and existing manual assignments. See the [reviewer routing policy](docs/review/reviewer-routing.md).
 
 ### 🏷️ Proposal naming
 
@@ -20,6 +20,8 @@ Both tracks use the exact names in the [domain list](#environment-domains). Choo
 ## Review and implementation
 
 > 📝 **Proposal PR** → 🔍 **Design review** → ✅ **Plan approved** → 🛠️ **Implement in the same PR** → 🧪 **Validate & merge**
+
+**Owner-managed work:** DavidZWZ can review, approve and accept their own changes, including maintainer integrations, without another reviewer. Their PRs are not automatically assigned to the reviewer pools. Implementation evidence, commit-bound acceptance and required CI still apply. The non-author review requirements below apply to other contributors. See the [owner exception](docs/review/proposal-lifecycle.md).
 
 - **Design review:** reviewers comment; the author revises. An assigned Track reviewer or non-author maintainer posts `/approve-plan <commit-sha>` using the full current commit SHA. The bot records the approved scope and commit and adds `plan-approved`. The PR stays open; this does not merge the proposal.
 - **Implementation:** once the infrastructure is available, add code and evidence to the same PR. Request a design re-review for substantial scope changes.
@@ -84,13 +86,16 @@ For a proposed App package layout, locally testable Mail/Calendar examples and d
 
 Start with a realistic user situation and a clear personalization idea. The proposal should help reviewers understand the person, the story and what makes the task interesting.
 
+**Final delivery format:** use [LifePack v1.0](docs/lifepack-task-format.md) for the completed task package, context, grading and run evidence. A proposal describes this work; the runnable package follows plan approval in the same PR.
+
 - **Domains:** one primary domain and optional secondary domains from the same [domain list](#environment-domains).
 - **User persona and prior history:** the background, preferences and experiences that matter to the task.
 - **Story outline:** what the user wants, what happens or changes, and what a good outcome looks like. Include a rough time span only if relevant.
 - **What makes this distinct and personal:** the central challenge or insight, why the person's context changes the right action, and what a generic assistant might miss.
+- **Rubric, hint and reference solution:** forbidden and expected rubric items with their evidence and checks, the full-pass rule, the exact hint text, and one reference timeline that earns a full score.
 - **Construction plan and effort:** persona/history/workspace construction, user rollout and scenario scripting, environment integration, rubrics/reference/hints, and agent rollouts with analysis. For each workstream, specify planned coverage, deliverables, quality checks and effort in person-days, plus owners, dependencies, milestone order and expected resources.
 
-After plan approval, task authors develop the executable scenario, precise timeline, context, rubrics and reference solution. Authors then run the required model evaluations themselves and submit traces, scores, configurations, hint-assisted results and failure analysis for implementation review.
+After plan approval, task authors develop the executable scenario, precise timeline, context, grader and replayable reference solution from the approved rubric. Authors then run the required model evaluations themselves and submit traces, scores, configurations, hint-assisted results and failure analysis for implementation review.
 
 The user rollout describes planned user interactions, responses and branches across the story. Specify the **number of sessions**, **simulated world time span**, and **estimated total tokens for one complete scenario across all sessions**, including the token estimate's scope (dialogue, prior context, tool outputs, etc.). The scenario script implements user behavior and world events. An agent rollout is an actual model execution against the script. Plan the work for both; allow multiple valid agent strategies.
 

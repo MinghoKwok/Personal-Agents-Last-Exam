@@ -32,7 +32,7 @@ Notify authors of overlapping proposals and link the existing work. Approval is 
 Template: §3 “Name possible connections and briefly explain their purpose.”
 
 - [ ] H2.1 Every connection is used by a §2 workflow; none is there just for show. (D5.3, D7.1)
-- [ ] H2.2 Connections required by the declared workflows have a feasible plan. No messaging is valid when not needed; do not require Mail or Calendar integration by default. (D5.3)
+- [ ] H2.2 The report lists the personal Apps each workflow needs and verifies the actual App/interface capability, including separate Agent tool use. Required connections have a feasible plan; missing capabilities have owners and fallbacks or a scope exclusion. A named App or proposed contract is not evidence that it exists. No messaging is valid when not needed; do not require Mail or Calendar by default. (D5.3, D7.1)
 
 **H3 · Could the platform and task authors build on it?**
 
@@ -40,13 +40,14 @@ Template: §3 Integration details: Operations and access, State and lifecycle, E
 
 - [ ] H3.1 A task author could set up a starting situation for a specific person and reset it afterwards. (D4.1, D4.3)
 - [ ] H3.2 The actions and events cover what tasks on these workflows will need; nothing essential is missing. (D3.1, D5.1)
+- [ ] H3.3 The App can run on its own: only its package, the shared runtime and its declared dependencies. (D7.1)
 
 **H4 · Could you accept the finished work against this plan?**
 
 Template: “The construction plan defines the scope, deliverables, quality checks and effort that reviewers will follow through implementation and merge in this same PR.”
 
 - [ ] H4.1 The total effort looks realistic for the scope, the people named and the calendar time. (D7.2, D7.3)
-- [ ] H4.2 The planned checks are strong enough that you could accept the work against them at merge. (D8.1, D8.2, D8.3)
+- [ ] H4.2 The planned checks are strong enough for acceptance at merge: actual receiver records/files and caller-visible business results, plus relevant failure/retry outcomes. Supplied message examples were compared with the receiver contract, or the compatibility gap is recorded. Delivery acknowledgement is not automatically a business decision or sender rollback. Promised evaluator records have a feasible path through App history, Core audit and supplied Agent execution records, with explicit correlation and counting rules. Missing fields in Core audit alone do not imply a required Core change. (D4.2, D8.1, D8.2, D8.3)
 - [ ] H4.3 The scope boundary leaves out the right things for a first version; reference-host limits are distinguished from required future adapters. (D2.3)
 
 **H5 · Are the data, assets and run-time dependencies safe to use?**

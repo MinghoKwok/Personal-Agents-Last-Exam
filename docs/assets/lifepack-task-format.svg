@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1140" height="1359" viewBox="0 0 1140 1359" role="img" aria-labelledby="title desc">
+<title id="title">LifePack Task Delivery Format v1.0</title>
+<desc id="desc">Harbor entries are black. LifePack extensions are red. Optional entries have an asterisk. Context includes user history and interaction scripts; evidence is grouped by task ID.</desc>
+<rect width="1140" height="1359" rx="16" fill="#ffffff"/>
+<text x="32" y="50" fill="#171717" font-family="Arial, sans-serif" font-size="30" font-weight="700">LifePack Task Delivery Format</text>
+<text x="32" y="82" fill="#505b65" font-family="Arial, sans-serif" font-size="19">Version 1.0 · Harbor foundation, personal context and reproducible evidence</text>
+<text x="32" y="122" fill="#171717" font-family="Arial, sans-serif" font-size="19">● Harbor entries</text>
+<text x="235" y="122" fill="#b42336" font-family="Arial, sans-serif" font-size="19">● LifePack extensions</text>
+<text x="510" y="122" fill="#505b65" font-family="Arial, sans-serif" font-size="19">* Include when applicable</text>
+<text x="32" y="164" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3"></tspan><tspan fill="#b42336">&lt;delivery-package&gt;/</tspan></text>
+<text x="32" y="193" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">├── </tspan><tspan fill="#b42336">README.md</tspan></text>
+<text x="670" y="193" fill="#505b65" font-family="Arial, sans-serif" font-size="18">Setup and reproduction</text>
+<text x="32" y="222" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">├── </tspan><tspan fill="#b42336">manifest.json</tspan></text>
+<text x="670" y="222" fill="#505b65" font-family="Arial, sans-serif" font-size="18">Package identity and checksums</text>
+<text x="32" y="251" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">├── </tspan><tspan fill="#b42336">tasks/</tspan></text>
+<text x="670" y="251" fill="#505b65" font-family="Arial, sans-serif" font-size="18">Independently runnable tasks</text>
+<text x="32" y="280" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">│   └── </tspan><tspan fill="#b42336">&lt;task-id&gt;/</tspan></text>
+<text x="32" y="309" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">│       ├── </tspan><tspan fill="#171717">task.toml</tspan></text>
+<text x="670" y="309" fill="#505b65" font-family="Arial, sans-serif" font-size="18">Harbor runtime configuration</text>
+<text x="32" y="338" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">│       ├── </tspan><tspan fill="#171717">instruction.md</tspan></text>
+<text x="670" y="338" fill="#505b65" font-family="Arial, sans-serif" font-size="18">Initial user request</text>
+<text x="32" y="367" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">│       ├── </tspan><tspan fill="#b42336">context/</tspan></text>
+<text x="670" y="367" fill="#505b65" font-family="Arial, sans-serif" font-size="18">Personal context and scenario</text>
+<text x="32" y="396" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">│       │   ├── </tspan><tspan fill="#b42336">permissions.yaml</tspan></text>
+<text x="670" y="396" fill="#505b65" font-family="Arial, sans-serif" font-size="18">Authority and action boundaries</text>
+<text x="32" y="425" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">│       │   ├── </tspan><tspan fill="#b42336">timeline.yaml</tspan></text>
+<text x="670" y="425" fill="#505b65" font-family="Arial, sans-serif" font-size="18">One clock, sessions and events</text>
+<text x="32" y="454" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">│       │   ├── </tspan><tspan fill="#b42336">user/</tspan></text>
+<text x="32" y="483" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">│       │   │   ├── </tspan><tspan fill="#b42336">persona.json</tspan></text>
+<text x="670" y="483" fill="#505b65" font-family="Arial, sans-serif" font-size="18">Background and preferences</text>
+<text x="32" y="512" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">│       │   │   ├── </tspan><tspan fill="#b42336">goals.json</tspan></text>
+<text x="670" y="512" fill="#505b65" font-family="Arial, sans-serif" font-size="18">User goals and conditions</text>
+<text x="32" y="541" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">│       │   │   ├── </tspan><tspan fill="#b42336">history.json *</tspan></text>
+<text x="670" y="541" fill="#505b65" font-family="Arial, sans-serif" font-size="18">User history and agent interactions</text>
+<text x="32" y="570" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">│       │   │   └── </tspan><tspan fill="#b42336">script.json *</tspan></text>
+<text x="670" y="570" fill="#505b65" font-family="Arial, sans-serif" font-size="18">Private facts and response branches</text>
+<text x="32" y="599" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">│       │   └── </tspan><tspan fill="#b42336">assets/ *</tspan></text>
+<text x="670" y="599" fill="#505b65" font-family="Arial, sans-serif" font-size="18">Media and sensor observations</text>
+<text x="32" y="628" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">│       ├── </tspan><tspan fill="#171717">environment/</tspan></text>
+<text x="670" y="628" fill="#505b65" font-family="Arial, sans-serif" font-size="18">Shared Apps and pinned dependencies</text>
+<text x="32" y="657" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">│       │   ├── </tspan><tspan fill="#171717">Dockerfile</tspan></text>
+<text x="670" y="657" fill="#505b65" font-family="Arial, sans-serif" font-size="18">Or another supported definition</text>
+<text x="32" y="686" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">│       │   └── </tspan><tspan fill="#b42336">workspace/</tspan></text>
+<text x="670" y="686" fill="#505b65" font-family="Arial, sans-serif" font-size="18">Initial state or checkpoint</text>
+<text x="32" y="715" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">│       │       ├── </tspan><tspan fill="#b42336">meta.json</tspan></text>
+<text x="670" y="715" fill="#505b65" font-family="Arial, sans-serif" font-size="18">Snapshot identity and restore references</text>
+<text x="32" y="744" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">│       │       ├── </tspan><tspan fill="#b42336">&lt;app&gt;/</tspan></text>
+<text x="670" y="744" fill="#505b65" font-family="Arial, sans-serif" font-size="18">App state and account bindings</text>
+<text x="32" y="773" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">│       │       └── </tspan><tspan fill="#b42336">agent/ *</tspan></text>
+<text x="670" y="773" fill="#505b65" font-family="Arial, sans-serif" font-size="18">Checkpoint or portable memory seed</text>
+<text x="32" y="802" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">│       ├── </tspan><tspan fill="#171717">solution/</tspan></text>
+<text x="32" y="831" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">│       │   └── </tspan><tspan fill="#171717">solve.sh</tspan></text>
+<text x="670" y="831" fill="#505b65" font-family="Arial, sans-serif" font-size="18">Executable reference solution</text>
+<text x="32" y="860" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">│       └── </tspan><tspan fill="#171717">tests/</tspan></text>
+<text x="670" y="860" fill="#505b65" font-family="Arial, sans-serif" font-size="18">Private scoring and verification</text>
+<text x="32" y="889" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">│           ├── </tspan><tspan fill="#171717">test.sh</tspan></text>
+<text x="670" y="889" fill="#505b65" font-family="Arial, sans-serif" font-size="18">Harbor verifier entry point</text>
+<text x="32" y="918" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">│           ├── </tspan><tspan fill="#b42336">rules.json *</tspan></text>
+<text x="670" y="918" fill="#505b65" font-family="Arial, sans-serif" font-size="18">Deterministic checks</text>
+<text x="32" y="947" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">│           ├── </tspan><tspan fill="#b42336">rubrics.yaml</tspan></text>
+<text x="670" y="947" fill="#505b65" font-family="Arial, sans-serif" font-size="18">Criteria, weights and success gates</text>
+<text x="32" y="976" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">│           ├── </tspan><tspan fill="#b42336">reference.json *</tspan></text>
+<text x="670" y="976" fill="#505b65" font-family="Arial, sans-serif" font-size="18">Expected results and evidence</text>
+<text x="32" y="1005" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">│           ├── </tspan><tspan fill="#b42336">hints.md</tspan></text>
+<text x="670" y="1005" fill="#505b65" font-family="Arial, sans-serif" font-size="18">Separate hinted validation only</text>
+<text x="32" y="1034" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">│           └── </tspan><tspan fill="#b42336">test_outcomes.py</tspan></text>
+<text x="670" y="1034" fill="#505b65" font-family="Arial, sans-serif" font-size="18">Scoring implementation</text>
+<text x="32" y="1063" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">└── </tspan><tspan fill="#b42336">demo/</tspan></text>
+<text x="670" y="1063" fill="#505b65" font-family="Arial, sans-serif" font-size="18">Organized by task ID</text>
+<text x="32" y="1092" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">    └── </tspan><tspan fill="#b42336">&lt;task-id&gt;/</tspan></text>
+<text x="32" y="1121" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">        ├── </tspan><tspan fill="#b42336">story.md *</tspan></text>
+<text x="670" y="1121" fill="#505b65" font-family="Arial, sans-serif" font-size="18">Human review narrative</text>
+<text x="32" y="1150" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">        ├── </tspan><tspan fill="#b42336">evidence/</tspan></text>
+<text x="670" y="1150" fill="#505b65" font-family="Arial, sans-serif" font-size="18">Complete run records and analysis</text>
+<text x="32" y="1179" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">        │   ├── </tspan><tspan fill="#b42336">manifest.json</tspan></text>
+<text x="670" y="1179" fill="#505b65" font-family="Arial, sans-serif" font-size="18">Run configuration, results and attachments</text>
+<text x="32" y="1208" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">        │   ├── </tspan><tspan fill="#b42336">failure-analysis.md</tspan></text>
+<text x="670" y="1208" fill="#505b65" font-family="Arial, sans-serif" font-size="18">Failures, hints and reproduction</text>
+<text x="32" y="1237" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">        │   └── </tspan><tspan fill="#b42336">runs/</tspan></text>
+<text x="670" y="1237" fill="#505b65" font-family="Arial, sans-serif" font-size="18">Artifacts grouped by run ID</text>
+<text x="32" y="1266" xml:space="preserve" font-family="Menlo, Consolas, monospace" font-size="20"><tspan fill="#969ca3">        └── </tspan><tspan fill="#b42336">screen_shots/ *</tspan></text>
+<text x="670" y="1266" fill="#505b65" font-family="Arial, sans-serif" font-size="18">Review screenshots</text>
+<text x="32" y="1334" fill="#505b65" font-family="Arial, sans-serif" font-size="17">File responsibilities and access rules: docs/lifepack-task-format.md</text>
+</svg>
