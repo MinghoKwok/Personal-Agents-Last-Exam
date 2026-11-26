@@ -1,0 +1,42 @@
+{
+  "scenario": {
+    "allow": [
+      "cpa-portal.cases.list",
+      "cpa-portal.cases.get",
+      "cpa-portal.submissions.list",
+      "cpa-portal.submissions.get",
+      "cpa-portal.submissions.read",
+      "cpa-portal.receipts.list",
+      "cpa-portal.receipts.get",
+      "cpa-portal.submissions.add",
+      "cpa-portal.submissions.withdraw"
+    ],
+    "constraints": {}
+  },
+  "sandbox": {
+    "allow": [
+      "cpa-portal.cases.list",
+      "cpa-portal.cases.get",
+      "cpa-portal.submissions.list",
+      "cpa-portal.submissions.get",
+      "cpa-portal.submissions.read",
+      "cpa-portal.receipts.list",
+      "cpa-portal.receipts.get",
+      "cpa-portal.submissions.add",
+      "cpa-portal.submissions.withdraw"
+    ],
+    "constraints": {}
+  },
+  "read_only": {
+    "allow": [
+      "cpa-portal.cases.list",
+      "cpa-portal.cases.get",
+      "cpa-portal.submissions.list",
+      "cpa-portal.submissions.get",
+      "cpa-portal.submissions.read",
+      "cpa-portal.receipts.list",
+      "cpa-portal.receipts.get"
+    ],
+    "constraints": {}
+  }
+}

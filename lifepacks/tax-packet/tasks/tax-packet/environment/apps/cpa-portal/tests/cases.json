@@ -1,0 +1,19 @@
+{
+  "read": {
+    "name": "cpa-portal.cases.list",
+    "args": {}
+  },
+  "write": {
+    "name": "cpa-portal.submissions.add",
+    "args": {
+      "case_id": "CP-2025-ROWAN",
+      "files": [
+        {
+          "filename": "check.txt",
+          "mime_type": "text/plain",
+          "base64": "U1lOVEhFVElDIEJFTkNITUFSSyBOT1QgRk9SIEZJTElORwpydW50aW1lIGNoZWNrCg=="
+        }
+      ]
+    }
+  }
+}

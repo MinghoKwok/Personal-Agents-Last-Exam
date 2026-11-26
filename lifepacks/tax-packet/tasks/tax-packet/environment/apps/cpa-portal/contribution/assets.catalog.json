@@ -1,0 +1,8 @@
+{
+  "schema_version": "pale.asset-catalog.v1",
+  "catalog_id": "cpa-portal-assets",
+  "app_id": "cpa-portal",
+  "dataset_ref": "dataset.json",
+  "assets": [],
+  "extensions": []
+}

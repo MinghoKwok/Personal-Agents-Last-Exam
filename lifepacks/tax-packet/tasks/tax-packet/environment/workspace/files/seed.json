@@ -1,0 +1,105 @@
+{
+  "account_id": "files-rowan",
+  "owner_person_id": "person-rowan",
+  "files": [
+    {
+      "id": "folder-taxes",
+      "account_id": "files-rowan",
+      "created_at": "2025-02-20T09:00:00-08:00",
+      "updated_at": "2025-02-20T09:00:00-08:00",
+      "history": [
+        {
+          "at": "2025-02-20T09:00:00-08:00",
+          "action": "seeded"
+        }
+      ],
+      "name": "Taxes",
+      "parent_id": null,
+      "kind": "folder",
+      "trashed": false,
+      "versions": []
+    },
+    {
+      "id": "folder-2024",
+      "account_id": "files-rowan",
+      "created_at": "2025-02-20T09:00:00-08:00",
+      "updated_at": "2025-02-20T09:00:00-08:00",
+      "history": [
+        {
+          "at": "2025-02-20T09:00:00-08:00",
+          "action": "seeded"
+        }
+      ],
+      "name": "2024 reference",
+      "parent_id": "folder-taxes",
+      "kind": "folder",
+      "trashed": false,
+      "versions": []
+    },
+    {
+      "id": "folder-2025",
+      "account_id": "files-rowan",
+      "created_at": "2026-01-20T11:00:00-08:00",
+      "updated_at": "2026-01-20T11:00:00-08:00",
+      "history": [
+        {
+          "at": "2026-01-20T11:00:00-08:00",
+          "action": "seeded"
+        }
+      ],
+      "name": "2025 packet",
+      "parent_id": "folder-taxes",
+      "kind": "folder",
+      "trashed": false,
+      "versions": []
+    },
+    {
+      "id": "file-nf-2024",
+      "account_id": "files-rowan",
+      "created_at": "2025-02-20T09:05:00-08:00",
+      "updated_at": "2025-02-20T09:05:00-08:00",
+      "history": [
+        {
+          "at": "2025-02-20T09:05:00-08:00",
+          "action": "seeded"
+        }
+      ],
+      "name": "northfield-1099-2024.pdf",
+      "parent_id": "folder-2024",
+      "kind": "file",
+      "trashed": false,
+      "versions": [
+        {
+          "number": 1,
+          "asset_id": "asset-file-nf-2024-v1",
+          "at": "2025-02-20T09:05:00-08:00",
+          "source": "Northfield Brokerage, issued 2025-02-14"
+        }
+      ]
+    },
+    {
+      "id": "file-organizer-2024",
+      "account_id": "files-rowan",
+      "created_at": "2025-03-03T12:00:00-08:00",
+      "updated_at": "2025-03-03T12:00:00-08:00",
+      "history": [
+        {
+          "at": "2025-03-03T12:00:00-08:00",
+          "action": "seeded"
+        }
+      ],
+      "name": "tax-organizer-2024.pdf",
+      "parent_id": "folder-2024",
+      "kind": "file",
+      "trashed": false,
+      "versions": [
+        {
+          "number": 1,
+          "asset_id": "asset-file-organizer-2024-v1",
+          "at": "2025-03-03T12:00:00-08:00",
+          "source": "Morgan Lee Tax Advisory, sent 2025-03-03"
+        }
+      ]
+    }
+  ]
+}

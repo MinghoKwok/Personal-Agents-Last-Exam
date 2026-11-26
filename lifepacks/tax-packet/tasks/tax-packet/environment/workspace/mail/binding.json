@@ -1,0 +1,16 @@
+{
+  "people": [
+    {
+      "person_id": "person-rowan",
+      "name": "Rowan"
+    }
+  ],
+  "accounts": [
+    {
+      "app_id": "mail",
+      "account_id": "mail-rowan",
+      "owner_person_id": "person-rowan"
+    }
+  ],
+  "objects": {}
+}

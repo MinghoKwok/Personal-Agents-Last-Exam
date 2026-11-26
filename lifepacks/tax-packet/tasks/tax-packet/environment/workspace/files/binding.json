@@ -1,0 +1,16 @@
+{
+  "people": [
+    {
+      "person_id": "person-rowan",
+      "name": "Rowan"
+    }
+  ],
+  "accounts": [
+    {
+      "app_id": "files",
+      "account_id": "files-rowan",
+      "owner_person_id": "person-rowan"
+    }
+  ],
+  "objects": {}
+}

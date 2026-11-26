@@ -1,0 +1,18 @@
+{
+  "scenario": {
+    "allow": [
+      "issuer-docs.accounts.list",
+      "issuer-docs.documents.list",
+      "issuer-docs.documents.download"
+    ],
+    "constraints": {}
+  },
+  "sandbox": {
+    "allow": [
+      "issuer-docs.accounts.list",
+      "issuer-docs.documents.list",
+      "issuer-docs.documents.download"
+    ],
+    "constraints": {}
+  }
+}

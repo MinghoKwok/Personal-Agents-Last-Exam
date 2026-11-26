@@ -1,0 +1,13 @@
+{
+  "schema": "lifepack.goals.v1",
+  "goals": [
+    {"id": "G1", "goal": "One current tax packet for Morgan: the source documents as received, a manifest, a field-level summary by source with totals, and a handoff note.", "completion": "The current set is delivered to case CP-2025-ROWAN in Morgan's portal on delivery day, after Rowan authorizes it."},
+    {"id": "G2", "goal": "The packet stays current as documents arrive, are re-sent or are corrected, without Rowan pointing out what changed."},
+    {"id": "G3", "goal": "Rowan knows what is still missing and what is true at the end: packet ready, packet delivered, return filed."}
+  ],
+  "changes": [
+    {"at": "2026-03-06T18:00:00-08:00", "change": "Rowan adds Bayview Bank as a sixth source and confirms the scope is otherwise complete."},
+    {"at": "2026-03-10T10:00:00-07:00", "change": "Rowan authorizes the upload, conditional on everything being in."}
+  ],
+  "dependencies": ["The Bayview 1099-INT is only available from the bank's document page from 2026-03-10."]
+}

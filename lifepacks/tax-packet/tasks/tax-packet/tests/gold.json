@@ -1,0 +1,240 @@
+{
+  "task": "tax-packet",
+  "currency": "USD",
+  "fields": [
+    "wages",
+    "withholding",
+    "interest",
+    "dividends_1a",
+    "dividends_1b",
+    "proceeds",
+    "basis"
+  ],
+  "documents": {
+    "D01": {
+      "file": "D01-atlas-w2-2025.pdf",
+      "sha256": "eb926768b32a90933b3ae9aeb050dd907ad60f25c6c59ee1fc293dcc75cbc9d9",
+      "bytes": 1238,
+      "role": "current",
+      "reported_cents": {
+        "wages": 4000000,
+        "withholding": 450000
+      }
+    },
+    "D02": {
+      "file": "D02-brook-w2-2025.pdf",
+      "sha256": "cef6d670dc93c140131e4b44b2cbfe550a60c34b18ce208ffbe86363a23c590a",
+      "bytes": 1243,
+      "role": "current",
+      "reported_cents": {
+        "wages": 6000000,
+        "withholding": 750000
+      }
+    },
+    "D03": {
+      "file": "D03-northfield-1099-2025.pdf",
+      "sha256": "67451deee3ea3dea1ea2cbc43e42c5319b3319a294df4e589a76d6a37dcdb157",
+      "bytes": 1304,
+      "role": "superseded_original",
+      "reported_cents": {
+        "dividends_1a": 46000,
+        "dividends_1b": 40000,
+        "proceeds": 1200000,
+        "basis": 1090000
+      }
+    },
+    "D04": {
+      "file": "D04-northfield-1099-2025-export.pdf",
+      "sha256": "4f610e19dd2ebfcb00eee3a47afb2aa7d59fe9d4d72619180de65669cf94d6fe",
+      "bytes": 1369,
+      "role": "duplicate_of_D03",
+      "reported_cents": {}
+    },
+    "D05": {
+      "file": "D05-northfield-1099-2025-corrected.pdf",
+      "sha256": "df59f894ed660ce40dfb4a28da923ffbcfe44b58e1a1156458517caa0db29eb1",
+      "bytes": 1497,
+      "role": "current_correction",
+      "reported_cents": {
+        "dividends_1a": 50000,
+        "dividends_1b": 40000,
+        "proceeds": 1200000,
+        "basis": 1170000
+      }
+    },
+    "D06": {
+      "file": "D06-northfield-1099-2025-forwarded.pdf",
+      "sha256": "67451deee3ea3dea1ea2cbc43e42c5319b3319a294df4e589a76d6a37dcdb157",
+      "bytes": 1304,
+      "role": "reforwarded_original",
+      "reported_cents": {}
+    },
+    "D07": {
+      "file": "D07-ridgeway-1099-2025.pdf",
+      "sha256": "b35597d19f0790ed1b468169580ebe557c4229c70b35f04a7104e8895514e31b",
+      "bytes": 1471,
+      "role": "current",
+      "reported_cents": {
+        "dividends_1a": 30000,
+        "dividends_1b": 20000,
+        "proceeds": 800000,
+        "basis": 760000
+      }
+    },
+    "D08": {
+      "file": "D08-ridgeway-1099-2025-supplement.pdf",
+      "sha256": "86c2d1509baf5203318bbdd3d37c9d66c019f683d0b77e9fc71aeca60458ded0",
+      "bytes": 1502,
+      "role": "supplement_no_new_amounts",
+      "reported_cents": {}
+    },
+    "D09": {
+      "file": "D09-cedar-1099-int-2025.pdf",
+      "sha256": "a86e3fc00c776cabe83e9e6e68fececaa3fd8254cad97bf4af1d310d360578e9",
+      "bytes": 987,
+      "role": "current",
+      "reported_cents": {
+        "interest": 30000
+      }
+    },
+    "D10": {
+      "file": "D10-bayview-1099-int-2025.pdf",
+      "sha256": "7e2a46aa2acfaed1212e149e86cae2dfe516f19a2a80492f86e7e4499ae6665b",
+      "bytes": 1011,
+      "role": "current_released_2026-03-10",
+      "reported_cents": {
+        "interest": 7500
+      }
+    },
+    "D11": {
+      "file": "D11-northfield-1099-2024.pdf",
+      "sha256": "1016f0dab691b4c786f51624b869a754fdef7262389fcb78ab5347d894c3527d",
+      "bytes": 1214,
+      "role": "prior_year_reference",
+      "reported_cents": {
+        "dividends_1a": 41000,
+        "dividends_1b": 35000,
+        "proceeds": 650000,
+        "basis": 610000
+      }
+    },
+    "D12": {
+      "file": "D12-tax-organizer-2024.pdf",
+      "sha256": "053611ad6e819cb55fc54895c1870e8f60b0f67dd3bc11b5ff7bf8fd36b1edc3",
+      "bytes": 1144,
+      "role": "prior_year_reference",
+      "reported_cents": {}
+    }
+  },
+  "delivered_set": [
+    "D01",
+    "D02",
+    "D05",
+    "D07",
+    "D09",
+    "D10"
+  ],
+  "checkpoints": {
+    "S2": {
+      "current_documents": [
+        "D01",
+        "D02",
+        "D03",
+        "D07",
+        "D09"
+      ],
+      "totals_cents": {
+        "wages": 10000000,
+        "withholding": 1200000,
+        "interest": 30000,
+        "dividends_1a": 76000,
+        "dividends_1b": 60000,
+        "proceeds": 2000000,
+        "basis": 1850000
+      }
+    },
+    "S3": {
+      "current_documents": [
+        "D01",
+        "D02",
+        "D05",
+        "D07",
+        "D09"
+      ],
+      "totals_cents": {
+        "wages": 10000000,
+        "withholding": 1200000,
+        "interest": 30000,
+        "dividends_1a": 80000,
+        "dividends_1b": 60000,
+        "proceeds": 2000000,
+        "basis": 1930000
+      }
+    },
+    "S4": {
+      "current_documents": [
+        "D01",
+        "D02",
+        "D05",
+        "D07",
+        "D09"
+      ],
+      "totals_cents": {
+        "wages": 10000000,
+        "withholding": 1200000,
+        "interest": 30000,
+        "dividends_1a": 80000,
+        "dividends_1b": 60000,
+        "proceeds": 2000000,
+        "basis": 1930000
+      }
+    },
+    "S5": {
+      "current_documents": [
+        "D01",
+        "D02",
+        "D05",
+        "D07",
+        "D09",
+        "D10"
+      ],
+      "totals_cents": {
+        "wages": 10000000,
+        "withholding": 1200000,
+        "interest": 37500,
+        "dividends_1a": 80000,
+        "dividends_1b": 60000,
+        "proceeds": 2000000,
+        "basis": 1930000
+      }
+    }
+  },
+  "error_offsets_cents": {
+    "northfield_counted_twice": {
+      "proceeds": [
+        1200000,
+        1200000
+      ],
+      "dividends_1a": [
+        46000,
+        50000
+      ]
+    },
+    "ridgeway_supplement_counted": {
+      "proceeds": [
+        800000
+      ],
+      "basis": [
+        760000
+      ]
+    },
+    "prior_year_counted": {
+      "proceeds": [
+        650000
+      ],
+      "dividends_1a": [
+        41000
+      ]
+    }
+  }
+}

@@ -1,0 +1,22 @@
+# Harbor task configuration for Task #102 (tax-packet).
+# The exact Harbor version is pinned in the package manifest once the shared LifePack loader
+# and session runner (#135) are available; until then this file records the intended budgets.
+version = "1.0"
+
+[metadata]
+author_name = "Minghao Guo"
+category = "personal-agent"
+tags = ["money-and-insurance", "documents", "multi-session", "evidence-versioning"]
+proposal = "https://github.com/MatrAIx-ai/Personal-Agents-Last-Exam/pull/102"
+
+[agent]
+timeout_sec = 3600            # all five sessions together
+
+[verifier]
+timeout_sec = 300
+
+[environment]
+build_timeout_sec = 600
+cpus = 2
+memory_mb = 4096
+storage_mb = 1024

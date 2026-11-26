@@ -1,0 +1,101 @@
+{
+  "schema_version": "pale.asset-catalog.v1",
+  "catalog_id": "tax-packet-files-assets",
+  "app_id": "files",
+  "dataset_ref": "dataset.json",
+  "assets": [
+    {
+      "schema_version": "pale.asset-descriptor.v1",
+      "asset_id": "asset-file-nf-2024-v1",
+      "scope": {
+        "level": "package",
+        "app_id": "files"
+      },
+      "roles": [
+        "content.attachment"
+      ],
+      "subjects": [
+        {
+          "app_id": "files",
+          "account_id": "files-rowan",
+          "object_type": "file",
+          "object_id": "file-nf-2024"
+        }
+      ],
+      "mime_type": "application/pdf",
+      "availability": {
+        "status": "ready"
+      },
+      "storage": {
+        "adapter": "storage.file",
+        "path": "assets/northfield-1099-2024.pdf",
+        "packaging": "bundled"
+      },
+      "integrity": {
+        "bytes": 1214,
+        "sha256": "1016f0dab691b4c786f51624b869a754fdef7262389fcb78ab5347d894c3527d"
+      },
+      "provenance": {
+        "dataset_id": "tax-packet-files",
+        "source_ids": [
+          "authored"
+        ]
+      },
+      "publication": "restricted",
+      "access": {
+        "audience": [
+          "agent"
+        ],
+        "rule": "parent_object"
+      },
+      "extensions": []
+    },
+    {
+      "schema_version": "pale.asset-descriptor.v1",
+      "asset_id": "asset-file-organizer-2024-v1",
+      "scope": {
+        "level": "package",
+        "app_id": "files"
+      },
+      "roles": [
+        "content.attachment"
+      ],
+      "subjects": [
+        {
+          "app_id": "files",
+          "account_id": "files-rowan",
+          "object_type": "file",
+          "object_id": "file-organizer-2024"
+        }
+      ],
+      "mime_type": "application/pdf",
+      "availability": {
+        "status": "ready"
+      },
+      "storage": {
+        "adapter": "storage.file",
+        "path": "assets/tax-organizer-2024.pdf",
+        "packaging": "bundled"
+      },
+      "integrity": {
+        "bytes": 1144,
+        "sha256": "053611ad6e819cb55fc54895c1870e8f60b0f67dd3bc11b5ff7bf8fd36b1edc3"
+      },
+      "provenance": {
+        "dataset_id": "tax-packet-files",
+        "source_ids": [
+          "authored"
+        ]
+      },
+      "publication": "restricted",
+      "access": {
+        "audience": [
+          "agent"
+        ],
+        "rule": "parent_object"
+      },
+      "extensions": []
+    }
+  ],
+  "extensions": []
+}

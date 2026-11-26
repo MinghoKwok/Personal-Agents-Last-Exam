@@ -1,0 +1,2598 @@
+{
+ "variant": "main",
+ "sessions": [
+  {
+   "id": "S1",
+   "start": "2026-02-03T09:00:00-08:00",
+   "end": "2026-02-03T09:00:00-08:00",
+   "files": {
+    "data": {
+     "account_id": "files-rowan",
+     "owner_person_id": "person-rowan",
+     "files": [
+      {
+       "id": "folder-taxes",
+       "account_id": "files-rowan",
+       "created_at": "2025-02-20T09:00:00-08:00",
+       "updated_at": "2025-02-20T09:00:00-08:00",
+       "history": [
+        {
+         "at": "2025-02-20T09:00:00-08:00",
+         "action": "seeded"
+        }
+       ],
+       "name": "Taxes",
+       "parent_id": null,
+       "kind": "folder",
+       "trashed": false,
+       "versions": []
+      },
+      {
+       "id": "folder-2024",
+       "account_id": "files-rowan",
+       "created_at": "2025-02-20T09:00:00-08:00",
+       "updated_at": "2025-02-20T09:00:00-08:00",
+       "history": [
+        {
+         "at": "2025-02-20T09:00:00-08:00",
+         "action": "seeded"
+        }
+       ],
+       "name": "2024 reference",
+       "parent_id": "folder-taxes",
+       "kind": "folder",
+       "trashed": false,
+       "versions": []
+      },
+      {
+       "id": "folder-2025",
+       "account_id": "files-rowan",
+       "created_at": "2026-01-20T11:00:00-08:00",
+       "updated_at": "2026-01-20T11:00:00-08:00",
+       "history": [
+        {
+         "at": "2026-01-20T11:00:00-08:00",
+         "action": "seeded"
+        }
+       ],
+       "name": "2025 packet",
+       "parent_id": "folder-taxes",
+       "kind": "folder",
+       "trashed": false,
+       "versions": []
+      },
+      {
+       "id": "file-nf-2024",
+       "account_id": "files-rowan",
+       "created_at": "2025-02-20T09:05:00-08:00",
+       "updated_at": "2025-02-20T09:05:00-08:00",
+       "history": [
+        {
+         "at": "2025-02-20T09:05:00-08:00",
+         "action": "seeded"
+        }
+       ],
+       "name": "northfield-1099-2024.pdf",
+       "parent_id": "folder-2024",
+       "kind": "file",
+       "trashed": false,
+       "versions": [
+        {
+         "number": 1,
+         "asset_id": "asset-file-nf-2024-v1",
+         "at": "2025-02-20T09:05:00-08:00",
+         "source": "Northfield Brokerage, issued 2025-02-14"
+        }
+       ]
+      },
+      {
+       "id": "file-organizer-2024",
+       "account_id": "files-rowan",
+       "created_at": "2025-03-03T12:00:00-08:00",
+       "updated_at": "2025-03-03T12:00:00-08:00",
+       "history": [
+        {
+         "at": "2025-03-03T12:00:00-08:00",
+         "action": "seeded"
+        }
+       ],
+       "name": "tax-organizer-2024.pdf",
+       "parent_id": "folder-2024",
+       "kind": "file",
+       "trashed": false,
+       "versions": [
+        {
+         "number": 1,
+         "asset_id": "asset-file-organizer-2024-v1",
+         "at": "2025-03-03T12:00:00-08:00",
+         "source": "Morgan Lee Tax Advisory, sent 2025-03-03"
+        }
+       ]
+      },
+      {
+       "id": "file-1",
+       "account_id": "files-rowan",
+       "created_at": "2026-02-03T09:00:00-08:00",
+       "updated_at": "2026-02-03T09:00:00-08:00",
+       "history": [
+        {
+         "at": "2026-02-03T09:00:00-08:00",
+         "action": "created"
+        },
+        {
+         "at": "2026-02-03T09:00:00-08:00",
+         "action": "version_added"
+        }
+       ],
+       "name": "inventory.md",
+       "parent_id": "folder-2025",
+       "kind": "file",
+       "trashed": false,
+       "versions": [
+        {
+         "number": 1,
+         "asset_id": "att-e659881e3d8f91eb31481d43dd35c9ecd36b8ae2",
+         "at": "2026-02-03T09:00:00-08:00",
+         "source": "agent"
+        }
+       ]
+      }
+     ]
+    },
+    "blobs": {
+     "asset-file-nf-2024-v1": "JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvQ29udGVudHMgNCAwIFIgL1Jlc291cmNlcyA8PCAvRm9udCA8PCAvRjEgNSAwIFIgPj4gPj4gPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0xlbmd0aCA1MTcgPj4Kc3RyZWFtCkJUCi9GMSAxMSBUZgoxMyBUTAo1NCA3NjAgVGQKKFNZTlRIRVRJQyBCRU5DSE1BUksgTk9UIEZPUiBGSUxJTkcpIFRqClQqIChOb3J0aGZpZWxkIEJyb2tlcmFnZSAyMDI0IENvbnNvbGlkYXRlZCBGb3JtIDEwOTkpIFRqClQqICgpIFRqClQqIChBY2NvdW50IGhvbGRlcjogUm93YW4gRWxsaXMpIFRqClQqIChBY2NvdW50OiBpbmRpdmlkdWFsIGJyb2tlcmFnZSwgbGFzdCBmb3VyIDIyMDgpIFRqClQqIChJc3N1ZWQ6IDIwMjUtMDItMTQpIFRqClQqIChGb3JtIDEwOTktRElWKSBUagpUKiAoICBCb3ggMWEgIFRvdGFsIG9yZGluYXJ5IGRpdmlkZW5kczogNDEwLjAwKSBUagpUKiAoICBCb3ggMWIgIFF1YWxpZmllZCBkaXZpZGVuZHM6IDM1MC4wMCkgVGoKVCogKEZvcm0gMTA5OS1CKSBUagpUKiAoICBUb3RhbCBwcm9jZWVkczogNiw1MDAuMDApIFRqClQqICggIFRvdGFsIGNvc3QgYmFzaXM6IDYsMTAwLjAwKSBUagpUKiAoKSBUagpUKiAoU1lOVEhFVElDIEJFTkNITUFSSyBOT1QgRk9SIEZJTElORykgVGoKRVQKZW5kc3RyZWFtCmVuZG9iago1IDAgb2JqCjw8IC9UeXBlIC9Gb250IC9TdWJ0eXBlIC9UeXBlMSAvQmFzZUZvbnQgL0hlbHZldGljYSA+PgplbmRvYmoKNiAwIG9iago8PCAvVGl0bGUgKE5vcnRoZmllbGQgQnJva2VyYWdlIDIwMjQgQ29uc29saWRhdGVkIEZvcm0gMTA5OSkgL1Byb2R1Y2VyIChQQUxFIHN5bnRoZXRpYyBmaXh0dXJlKSA+PgplbmRvYmoKeHJlZgowIDcKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDE1IDAwMDAwIG4gCjAwMDAwMDAwNjQgMDAwMDAgbiAKMDAwMDAwMDEyMSAwMDAwMCBuIAowMDAwMDAwMjQ3IDAwMDAwIG4gCjAwMDAwMDA4MTUgMDAwMDAgbiAKMDAwMDAwMDg4NSAwMDAwMCBuIAp0cmFpbGVyCjw8IC9TaXplIDcgL1Jvb3QgMSAwIFIgL0luZm8gNiAwIFIgPj4Kc3RhcnR4cmVmCjk5OQolJUVPRgo=",
+     "asset-file-organizer-2024-v1": "JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvQ29udGVudHMgNCAwIFIgL1Jlc291cmNlcyA8PCAvRm9udCA8PCAvRjEgNSAwIFIgPj4gPj4gPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0xlbmd0aCA0MzUgPj4Kc3RyZWFtCkJUCi9GMSAxMSBUZgoxMyBUTAo1NCA3NjAgVGQKKFNZTlRIRVRJQyBCRU5DSE1BUksgTk9UIEZPUiBGSUxJTkcpIFRqClQqIChNb3JnYW4gTGVlIFRheCBBZHZpc29yeSAtIDIwMjQgVGF4IE9yZ2FuaXplciBmb3IgUm93YW4gRWxsaXMpIFRqClQqICgpIFRqClQqIChQcmVwYXJlZCBmb3IgdGhlIDIwMjQgdGF4IHllYXIuIFNlbnQgMjAyNS0wMy0wMy4pIFRqClQqIChFbXBsb3llcjogQXRsYXMgTGFicywgSW5jLikgVGoKVCogKEFjY291bnRzOiBOb3J0aGZpZWxkIEJyb2tlcmFnZSwgQ2VkYXIgQmFuaywgQmF5dmlldyBCYW5rIHNhdmluZ3MuKSBUagpUKiAoUGxlYXNlIHJldHVybiB0aGUgY29tcGxldGVkIG9yZ2FuaXplciB3aXRoIHlvdXIgMjAyNCBmb3Jtcy4pIFRqClQqICgpIFRqClQqIChTWU5USEVUSUMgQkVOQ0hNQVJLIE5PVCBGT1IgRklMSU5HKSBUagpFVAplbmRzdHJlYW0KZW5kb2JqCjUgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNlRm9udCAvSGVsdmV0aWNhID4+CmVuZG9iago2IDAgb2JqCjw8IC9UaXRsZSAoTW9yZ2FuIExlZSBUYXggQWR2aXNvcnkgLSAyMDI0IFRheCBPcmdhbml6ZXIgZm9yIFJvd2FuIEVsbGlzKSAvUHJvZHVjZXIgKFBBTEUgc3ludGhldGljIGZpeHR1cmUpID4+CmVuZG9iagp4cmVmCjAgNwowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAwMTUgMDAwMDAgbiAKMDAwMDAwMDA2NCAwMDAwMCBuIAowMDAwMDAwMTIxIDAwMDAwIG4gCjAwMDAwMDAyNDcgMDAwMDAgbiAKMDAwMDAwMDczMyAwMDAwMCBuIAowMDAwMDAwODAzIDAwMDAwIG4gCnRyYWlsZXIKPDwgL1NpemUgNyAvUm9vdCAxIDAgUiAvSW5mbyA2IDAgUiA+PgpzdGFydHhyZWYKOTI5CiUlRU9GCg==",
+     "att-e659881e3d8f91eb31481d43dd35c9ecd36b8ae2": "IyBTb3VyY2UgaW52ZW50b3J5ICgyMDI1IHRheCBwYWNrZXQpCgotIEF0bGFzIExhYnMgVy0yOiBwcmVzZW50IChlbWFpbCBvZiAyMDI2LTAxLTI3KQotIEJyb29rIFN5c3RlbXMgVy0yOiBtaXNzaW5nCi0gTm9ydGhmaWVsZCBCcm9rZXJhZ2UgMTA5OTogbWlzc2luZyAoZXhwZWN0ZWQgYnkgMjAyNi0wMi0xNCkKLSBSaWRnZXdheSBJbnZlc3QgMTA5OTogbWlzc2luZwotIENlZGFyIEJhbmsgMTA5OS1JTlQ6IHByZXNlbnQgKGVtYWlsIG9mIDIwMjYtMDEtMjkpCgpMYXN0IHllYXIncyBzdGF0ZW1lbnQgYW5kIG9yZ2FuaXplciBpbiBUYXhlcy8yMDI0IHJlZmVyZW5jZSBhcmUgcmVmZXJlbmNlIG9ubHkgYW5kIHN0YXkgb3V0IG9mIHRoZSBwYWNrZXQuCg=="
+    }
+   },
+   "portal": {
+    "account_id": "cpa-portal-rowan",
+    "owner_person_id": "person-rowan",
+    "firm": {
+     "firm_id": "firm-lee",
+     "name": "Morgan Lee Tax Advisory",
+     "time_zone": "America/Los_Angeles",
+     "accepted_types": [
+      "application/pdf",
+      "text/plain",
+      "text/csv",
+      "application/json"
+     ],
+     "max_file_bytes": 262144,
+     "max_case_bytes": 1048576
+    },
+    "cases": [
+     {
+      "case_id": "CP-2025-ROWAN",
+      "title": "2025 individual return: supporting records",
+      "status": "open",
+      "access": "upload",
+      "opened_at": "2026-01-20T10:00:00-08:00",
+      "cutoff": null,
+      "late_submission_policy": "accept_for_review"
+     },
+     {
+      "case_id": "CP-2024-ROWAN",
+      "title": "2024 individual return: supporting records",
+      "status": "closed",
+      "access": "view",
+      "opened_at": "2025-01-21T10:00:00-08:00",
+      "cutoff": null,
+      "late_submission_policy": "reject"
+     }
+    ],
+    "submissions": [
+     {
+      "submission_id": "sb-0001",
+      "case_id": "CP-2024-ROWAN",
+      "request_ids": [],
+      "submitted_at": "2025-03-07T16:00:00-08:00",
+      "actor": "client",
+      "standing": "on_time",
+      "replaces": [],
+      "superseded_by": null,
+      "withdrawn_at": null,
+      "note": "2024 packet index.",
+      "files": [
+       {
+        "file_id": "sb-0001-f1",
+        "filename": "2024-packet-index.txt",
+        "mime_type": "text/plain",
+        "size": 131,
+        "sha256": "1fc9d73c4dd37c439b7ce260cc304def63aa1e8059ca7a017721074395dc1b6b",
+        "base64": "U1lOVEhFVElDIEJFTkNITUFSSyBOT1QgRk9SIEZJTElORwoyMDI0IHBhY2tldCBpbmRleCBmb3IgUm93YW46IEF0bGFzIFctMiwgQ2VkYXIgMTA5OS1JTlQsIE5vcnRoZmllbGQgMjAyNCBjb25zb2xpZGF0ZWQgc3RhdGVtZW50Lgo="
+       }
+      ]
+     }
+    ],
+    "receipts": [
+     {
+      "receipt_id": "rc-0001",
+      "submission_id": "sb-0001",
+      "case_id": "CP-2024-ROWAN",
+      "at": "2025-03-07T16:00:00-08:00",
+      "kind": "submitted",
+      "standing": "on_time",
+      "files": [
+       {
+        "file_id": "sb-0001-f1",
+        "filename": "2024-packet-index.txt",
+        "mime_type": "text/plain",
+        "size": 131,
+        "sha256": "1fc9d73c4dd37c439b7ce260cc304def63aa1e8059ca7a017721074395dc1b6b"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "S2",
+   "start": "2026-02-18T10:00:00-08:00",
+   "end": "2026-02-18T10:00:00-08:00",
+   "files": {
+    "data": {
+     "account_id": "files-rowan",
+     "owner_person_id": "person-rowan",
+     "files": [
+      {
+       "id": "folder-taxes",
+       "account_id": "files-rowan",
+       "created_at": "2025-02-20T09:00:00-08:00",
+       "updated_at": "2025-02-20T09:00:00-08:00",
+       "history": [
+        {
+         "at": "2025-02-20T09:00:00-08:00",
+         "action": "seeded"
+        }
+       ],
+       "name": "Taxes",
+       "parent_id": null,
+       "kind": "folder",
+       "trashed": false,
+       "versions": []
+      },
+      {
+       "id": "folder-2024",
+       "account_id": "files-rowan",
+       "created_at": "2025-02-20T09:00:00-08:00",
+       "updated_at": "2025-02-20T09:00:00-08:00",
+       "history": [
+        {
+         "at": "2025-02-20T09:00:00-08:00",
+         "action": "seeded"
+        }
+       ],
+       "name": "2024 reference",
+       "parent_id": "folder-taxes",
+       "kind": "folder",
+       "trashed": false,
+       "versions": []
+      },
+      {
+       "id": "folder-2025",
+       "account_id": "files-rowan",
+       "created_at": "2026-01-20T11:00:00-08:00",
+       "updated_at": "2026-01-20T11:00:00-08:00",
+       "history": [
+        {
+         "at": "2026-01-20T11:00:00-08:00",
+         "action": "seeded"
+        }
+       ],
+       "name": "2025 packet",
+       "parent_id": "folder-taxes",
+       "kind": "folder",
+       "trashed": false,
+       "versions": []
+      },
+      {
+       "id": "file-nf-2024",
+       "account_id": "files-rowan",
+       "created_at": "2025-02-20T09:05:00-08:00",
+       "updated_at": "2025-02-20T09:05:00-08:00",
+       "history": [
+        {
+         "at": "2025-02-20T09:05:00-08:00",
+         "action": "seeded"
+        }
+       ],
+       "name": "northfield-1099-2024.pdf",
+       "parent_id": "folder-2024",
+       "kind": "file",
+       "trashed": false,
+       "versions": [
+        {
+         "number": 1,
+         "asset_id": "asset-file-nf-2024-v1",
+         "at": "2025-02-20T09:05:00-08:00",
+         "source": "Northfield Brokerage, issued 2025-02-14"
+        }
+       ]
+      },
+      {
+       "id": "file-organizer-2024",
+       "account_id": "files-rowan",
+       "created_at": "2025-03-03T12:00:00-08:00",
+       "updated_at": "2025-03-03T12:00:00-08:00",
+       "history": [
+        {
+         "at": "2025-03-03T12:00:00-08:00",
+         "action": "seeded"
+        }
+       ],
+       "name": "tax-organizer-2024.pdf",
+       "parent_id": "folder-2024",
+       "kind": "file",
+       "trashed": false,
+       "versions": [
+        {
+         "number": 1,
+         "asset_id": "asset-file-organizer-2024-v1",
+         "at": "2025-03-03T12:00:00-08:00",
+         "source": "Morgan Lee Tax Advisory, sent 2025-03-03"
+        }
+       ]
+      },
+      {
+       "id": "file-1",
+       "account_id": "files-rowan",
+       "created_at": "2026-02-03T09:00:00-08:00",
+       "updated_at": "2026-02-03T09:00:00-08:00",
+       "history": [
+        {
+         "at": "2026-02-03T09:00:00-08:00",
+         "action": "created"
+        },
+        {
+         "at": "2026-02-03T09:00:00-08:00",
+         "action": "version_added"
+        }
+       ],
+       "name": "inventory.md",
+       "parent_id": "folder-2025",
+       "kind": "file",
+       "trashed": false,
+       "versions": [
+        {
+         "number": 1,
+         "asset_id": "att-e659881e3d8f91eb31481d43dd35c9ecd36b8ae2",
+         "at": "2026-02-03T09:00:00-08:00",
+         "source": "agent"
+        }
+       ]
+      },
+      {
+       "id": "file-2",
+       "account_id": "files-rowan",
+       "created_at": "2026-02-18T10:00:00-08:00",
+       "updated_at": "2026-02-18T10:00:00-08:00",
+       "history": [
+        {
+         "at": "2026-02-18T10:00:00-08:00",
+         "action": "created"
+        },
+        {
+         "at": "2026-02-18T10:00:00-08:00",
+         "action": "version_added"
+        }
+       ],
+       "name": "manifest.md",
+       "parent_id": "folder-2025",
+       "kind": "file",
+       "trashed": false,
+       "versions": [
+        {
+         "number": 1,
+         "asset_id": "att-9538531e6891fadec9bf859ed9f9b34789b4d4aa",
+         "at": "2026-02-18T10:00:00-08:00",
+         "source": "agent"
+        }
+       ]
+      },
+      {
+       "id": "file-3",
+       "account_id": "files-rowan",
+       "created_at": "2026-02-18T10:00:00-08:00",
+       "updated_at": "2026-02-18T10:00:00-08:00",
+       "history": [
+        {
+         "at": "2026-02-18T10:00:00-08:00",
+         "action": "created"
+        },
+        {
+         "at": "2026-02-18T10:00:00-08:00",
+         "action": "version_added"
+        }
+       ],
+       "name": "summary.md",
+       "parent_id": "folder-2025",
+       "kind": "file",
+       "trashed": false,
+       "versions": [
+        {
+         "number": 1,
+         "asset_id": "att-31d893fa284b0ee6a3b78b0e6d22033d6f1f47e2",
+         "at": "2026-02-18T10:00:00-08:00",
+         "source": "agent"
+        }
+       ]
+      },
+      {
+       "id": "file-4",
+       "account_id": "files-rowan",
+       "created_at": "2026-02-18T10:00:00-08:00",
+       "updated_at": "2026-02-18T10:00:00-08:00",
+       "history": [
+        {
+         "at": "2026-02-18T10:00:00-08:00",
+         "action": "created"
+        },
+        {
+         "at": "2026-02-18T10:00:00-08:00",
+         "action": "version_added"
+        }
+       ],
+       "name": "handoff-note.md",
+       "parent_id": "folder-2025",
+       "kind": "file",
+       "trashed": false,
+       "versions": [
+        {
+         "number": 1,
+         "asset_id": "att-304ab68e6766091f143bfbd1f9ca98e92260a9d7",
+         "at": "2026-02-18T10:00:00-08:00",
+         "source": "agent"
+        }
+       ]
+      }
+     ]
+    },
+    "blobs": {
+     "asset-file-nf-2024-v1": "JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvQ29udGVudHMgNCAwIFIgL1Jlc291cmNlcyA8PCAvRm9udCA8PCAvRjEgNSAwIFIgPj4gPj4gPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0xlbmd0aCA1MTcgPj4Kc3RyZWFtCkJUCi9GMSAxMSBUZgoxMyBUTAo1NCA3NjAgVGQKKFNZTlRIRVRJQyBCRU5DSE1BUksgTk9UIEZPUiBGSUxJTkcpIFRqClQqIChOb3J0aGZpZWxkIEJyb2tlcmFnZSAyMDI0IENvbnNvbGlkYXRlZCBGb3JtIDEwOTkpIFRqClQqICgpIFRqClQqIChBY2NvdW50IGhvbGRlcjogUm93YW4gRWxsaXMpIFRqClQqIChBY2NvdW50OiBpbmRpdmlkdWFsIGJyb2tlcmFnZSwgbGFzdCBmb3VyIDIyMDgpIFRqClQqIChJc3N1ZWQ6IDIwMjUtMDItMTQpIFRqClQqIChGb3JtIDEwOTktRElWKSBUagpUKiAoICBCb3ggMWEgIFRvdGFsIG9yZGluYXJ5IGRpdmlkZW5kczogNDEwLjAwKSBUagpUKiAoICBCb3ggMWIgIFF1YWxpZmllZCBkaXZpZGVuZHM6IDM1MC4wMCkgVGoKVCogKEZvcm0gMTA5OS1CKSBUagpUKiAoICBUb3RhbCBwcm9jZWVkczogNiw1MDAuMDApIFRqClQqICggIFRvdGFsIGNvc3QgYmFzaXM6IDYsMTAwLjAwKSBUagpUKiAoKSBUagpUKiAoU1lOVEhFVElDIEJFTkNITUFSSyBOT1QgRk9SIEZJTElORykgVGoKRVQKZW5kc3RyZWFtCmVuZG9iago1IDAgb2JqCjw8IC9UeXBlIC9Gb250IC9TdWJ0eXBlIC9UeXBlMSAvQmFzZUZvbnQgL0hlbHZldGljYSA+PgplbmRvYmoKNiAwIG9iago8PCAvVGl0bGUgKE5vcnRoZmllbGQgQnJva2VyYWdlIDIwMjQgQ29uc29saWRhdGVkIEZvcm0gMTA5OSkgL1Byb2R1Y2VyIChQQUxFIHN5bnRoZXRpYyBmaXh0dXJlKSA+PgplbmRvYmoKeHJlZgowIDcKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDE1IDAwMDAwIG4gCjAwMDAwMDAwNjQgMDAwMDAgbiAKMDAwMDAwMDEyMSAwMDAwMCBuIAowMDAwMDAwMjQ3IDAwMDAwIG4gCjAwMDAwMDA4MTUgMDAwMDAgbiAKMDAwMDAwMDg4NSAwMDAwMCBuIAp0cmFpbGVyCjw8IC9TaXplIDcgL1Jvb3QgMSAwIFIgL0luZm8gNiAwIFIgPj4Kc3RhcnR4cmVmCjk5OQolJUVPRgo=",
+     "asset-file-organizer-2024-v1": "JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvQ29udGVudHMgNCAwIFIgL1Jlc291cmNlcyA8PCAvRm9udCA8PCAvRjEgNSAwIFIgPj4gPj4gPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0xlbmd0aCA0MzUgPj4Kc3RyZWFtCkJUCi9GMSAxMSBUZgoxMyBUTAo1NCA3NjAgVGQKKFNZTlRIRVRJQyBCRU5DSE1BUksgTk9UIEZPUiBGSUxJTkcpIFRqClQqIChNb3JnYW4gTGVlIFRheCBBZHZpc29yeSAtIDIwMjQgVGF4IE9yZ2FuaXplciBmb3IgUm93YW4gRWxsaXMpIFRqClQqICgpIFRqClQqIChQcmVwYXJlZCBmb3IgdGhlIDIwMjQgdGF4IHllYXIuIFNlbnQgMjAyNS0wMy0wMy4pIFRqClQqIChFbXBsb3llcjogQXRsYXMgTGFicywgSW5jLikgVGoKVCogKEFjY291bnRzOiBOb3J0aGZpZWxkIEJyb2tlcmFnZSwgQ2VkYXIgQmFuaywgQmF5dmlldyBCYW5rIHNhdmluZ3MuKSBUagpUKiAoUGxlYXNlIHJldHVybiB0aGUgY29tcGxldGVkIG9yZ2FuaXplciB3aXRoIHlvdXIgMjAyNCBmb3Jtcy4pIFRqClQqICgpIFRqClQqIChTWU5USEVUSUMgQkVOQ0hNQVJLIE5PVCBGT1IgRklMSU5HKSBUagpFVAplbmRzdHJlYW0KZW5kb2JqCjUgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNlRm9udCAvSGVsdmV0aWNhID4+CmVuZG9iago2IDAgb2JqCjw8IC9UaXRsZSAoTW9yZ2FuIExlZSBUYXggQWR2aXNvcnkgLSAyMDI0IFRheCBPcmdhbml6ZXIgZm9yIFJvd2FuIEVsbGlzKSAvUHJvZHVjZXIgKFBBTEUgc3ludGhldGljIGZpeHR1cmUpID4+CmVuZG9iagp4cmVmCjAgNwowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAwMTUgMDAwMDAgbiAKMDAwMDAwMDA2NCAwMDAwMCBuIAowMDAwMDAwMTIxIDAwMDAwIG4gCjAwMDAwMDAyNDcgMDAwMDAgbiAKMDAwMDAwMDczMyAwMDAwMCBuIAowMDAwMDAwODAzIDAwMDAwIG4gCnRyYWlsZXIKPDwgL1NpemUgNyAvUm9vdCAxIDAgUiAvSW5mbyA2IDAgUiA+PgpzdGFydHhyZWYKOTI5CiUlRU9GCg==",
+     "att-e659881e3d8f91eb31481d43dd35c9ecd36b8ae2": "IyBTb3VyY2UgaW52ZW50b3J5ICgyMDI1IHRheCBwYWNrZXQpCgotIEF0bGFzIExhYnMgVy0yOiBwcmVzZW50IChlbWFpbCBvZiAyMDI2LTAxLTI3KQotIEJyb29rIFN5c3RlbXMgVy0yOiBtaXNzaW5nCi0gTm9ydGhmaWVsZCBCcm9rZXJhZ2UgMTA5OTogbWlzc2luZyAoZXhwZWN0ZWQgYnkgMjAyNi0wMi0xNCkKLSBSaWRnZXdheSBJbnZlc3QgMTA5OTogbWlzc2luZwotIENlZGFyIEJhbmsgMTA5OS1JTlQ6IHByZXNlbnQgKGVtYWlsIG9mIDIwMjYtMDEtMjkpCgpMYXN0IHllYXIncyBzdGF0ZW1lbnQgYW5kIG9yZ2FuaXplciBpbiBUYXhlcy8yMDI0IHJlZmVyZW5jZSBhcmUgcmVmZXJlbmNlIG9ubHkgYW5kIHN0YXkgb3V0IG9mIHRoZSBwYWNrZXQuCg==",
+     "att-9538531e6891fadec9bf859ed9f9b34789b4d4aa": "IyBQYWNrZXQgbWFuaWZlc3QKCi0gQXRsYXMgTGFicyBXLTIgKGF0bGFzLXcyLTIwMjUucGRmKTogcHJlc2VudAotIEJyb29rIFN5c3RlbXMgVy0yIChicm9vay13Mi0yMDI1LnBkZik6IHByZXNlbnQKLSBOb3J0aGZpZWxkIEJyb2tlcmFnZSAxMDk5OiBwcmVzZW50LCBzdGF0ZW1lbnQgTkYtMjAyNS0yMjA4LUEgKG5vcnRoZmllbGQtMTA5OS0yMDI1LnBkZikKLSBUaGUgZG93bmxvYWRlZCBjb3B5IG9mIE5GLTIwMjUtMjIwOC1BIGlzIGEgZHVwbGljYXRlIGFuZCBpcyBub3QgdXNlZAotIFJpZGdld2F5IEludmVzdCB0YXggc3RhdGVtZW50IChyaWRnZXdheS0xMDk5LTIwMjUucGRmKTogcHJlc2VudDsgdGhlIHN1cHBsZW1lbnQgcmVwZWF0cyB0aGUgc2FtZSBzYWxlcyBhbmQgaXMgZGV0YWlsIG9ubHkKLSBDZWRhciBCYW5rIDEwOTktSU5UIChjZWRhci0xMDk5LWludC0yMDI1LnBkZik6IHByZXNlbnQK",
+     "att-31d893fa284b0ee6a3b78b0e6d22033d6f1f47e2": "IyBGaWVsZCBzdW1tYXJ5ICgyMDI1KQoKIyMgQnkgc291cmNlCi0gQXRsYXMgTGFicyBXLTI6IHdhZ2VzIDQwLDAwMC4wMDsgd2l0aGhlbGQgNCw1MDAuMDAKLSBCcm9vayBTeXN0ZW1zIFctMjogd2FnZXMgNjAsMDAwLjAwOyB3aXRoaGVsZCA3LDUwMC4wMAotIENlZGFyIEJhbmsgMTA5OS1JTlQ6IGludGVyZXN0IDMwMC4wMAotIE5vcnRoZmllbGQgMTA5OS1ESVYvQjogMWEgNDYwLjAwOyAxYiA0MDAuMDA7IHByb2NlZWRzIDEyLDAwMC4wMDsgYmFzaXMgMTAsOTAwLjAwCi0gUmlkZ2V3YXkgMTA5OS1ESVYvQjogMWEgMzAwLjAwOyAxYiAyMDAuMDA7IHByb2NlZWRzIDgsMDAwLjAwOyBiYXNpcyA3LDYwMC4wMAoKIyMgVG90YWxzCldhZ2VzOiAxMDAsMDAwLjAwCkZlZGVyYWwgaW5jb21lIHRheCB3aXRoaGVsZDogMTIsMDAwLjAwCkludGVyZXN0OiAzMDAuMDAKRGl2aWRlbmRzIDFhICh0b3RhbCBvcmRpbmFyeSk6IDc2MC4wMApEaXZpZGVuZHMgMWIgKHF1YWxpZmllZCwgcGFydCBvZiAxYSk6IDYwMC4wMAoxMDk5LUIgcHJvY2VlZHM6IDIwLDAwMC4wMAoxMDk5LUIgcmVwb3J0ZWQgYmFzaXM6IDE4LDUwMC4wMAo=",
+     "att-304ab68e6766091f143bfbd1f9ca98e92260a9d7": "SGFuZG9mZiBub3RlIGZvciBNb3JnYW4gTGVlIChjYXNlIENQLTIwMjUtUk9XQU4pCgpBbGwgZml2ZSBpbnRha2Ugc291cmNlcyBhcmUgaW4uIE5vcnRoZmllbGQgdmFsdWVzIGZvbGxvdyBzdGF0ZW1lbnQgTkYtMjAyNS0yMjA4LUEuCgpCb3ggMWIgaXMgcGFydCBvZiAxYSBhbmQgaXMgbGlzdGVkIHNlcGFyYXRlbHkuIFJvd2FuIGhhcyBub3QgZmlsZWQgYSByZXR1cm47IGZpbGluZyBpcyBNb3JnYW4ncyBzdGVwLgo="
+    }
+   },
+   "portal": {
+    "account_id": "cpa-portal-rowan",
+    "owner_person_id": "person-rowan",
+    "firm": {
+     "firm_id": "firm-lee",
+     "name": "Morgan Lee Tax Advisory",
+     "time_zone": "America/Los_Angeles",
+     "accepted_types": [
+      "application/pdf",
+      "text/plain",
+      "text/csv",
+      "application/json"
+     ],
+     "max_file_bytes": 262144,
+     "max_case_bytes": 1048576
+    },
+    "cases": [
+     {
+      "case_id": "CP-2025-ROWAN",
+      "title": "2025 individual return: supporting records",
+      "status": "open",
+      "access": "upload",
+      "opened_at": "2026-01-20T10:00:00-08:00",
+      "cutoff": null,
+      "late_submission_policy": "accept_for_review"
+     },
+     {
+      "case_id": "CP-2024-ROWAN",
+      "title": "2024 individual return: supporting records",
+      "status": "closed",
+      "access": "view",
+      "opened_at": "2025-01-21T10:00:00-08:00",
+      "cutoff": null,
+      "late_submission_policy": "reject"
+     }
+    ],
+    "submissions": [
+     {
+      "submission_id": "sb-0001",
+      "case_id": "CP-2024-ROWAN",
+      "request_ids": [],
+      "submitted_at": "2025-03-07T16:00:00-08:00",
+      "actor": "client",
+      "standing": "on_time",
+      "replaces": [],
+      "superseded_by": null,
+      "withdrawn_at": null,
+      "note": "2024 packet index.",
+      "files": [
+       {
+        "file_id": "sb-0001-f1",
+        "filename": "2024-packet-index.txt",
+        "mime_type": "text/plain",
+        "size": 131,
+        "sha256": "1fc9d73c4dd37c439b7ce260cc304def63aa1e8059ca7a017721074395dc1b6b",
+        "base64": "U1lOVEhFVElDIEJFTkNITUFSSyBOT1QgRk9SIEZJTElORwoyMDI0IHBhY2tldCBpbmRleCBmb3IgUm93YW46IEF0bGFzIFctMiwgQ2VkYXIgMTA5OS1JTlQsIE5vcnRoZmllbGQgMjAyNCBjb25zb2xpZGF0ZWQgc3RhdGVtZW50Lgo="
+       }
+      ]
+     }
+    ],
+    "receipts": [
+     {
+      "receipt_id": "rc-0001",
+      "submission_id": "sb-0001",
+      "case_id": "CP-2024-ROWAN",
+      "at": "2025-03-07T16:00:00-08:00",
+      "kind": "submitted",
+      "standing": "on_time",
+      "files": [
+       {
+        "file_id": "sb-0001-f1",
+        "filename": "2024-packet-index.txt",
+        "mime_type": "text/plain",
+        "size": 131,
+        "sha256": "1fc9d73c4dd37c439b7ce260cc304def63aa1e8059ca7a017721074395dc1b6b"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "S3",
+   "start": "2026-03-02T09:30:00-08:00",
+   "end": "2026-03-02T09:30:00-08:00",
+   "files": {
+    "data": {
+     "account_id": "files-rowan",
+     "owner_person_id": "person-rowan",
+     "files": [
+      {
+       "id": "folder-taxes",
+       "account_id": "files-rowan",
+       "created_at": "2025-02-20T09:00:00-08:00",
+       "updated_at": "2025-02-20T09:00:00-08:00",
+       "history": [
+        {
+         "at": "2025-02-20T09:00:00-08:00",
+         "action": "seeded"
+        }
+       ],
+       "name": "Taxes",
+       "parent_id": null,
+       "kind": "folder",
+       "trashed": false,
+       "versions": []
+      },
+      {
+       "id": "folder-2024",
+       "account_id": "files-rowan",
+       "created_at": "2025-02-20T09:00:00-08:00",
+       "updated_at": "2025-02-20T09:00:00-08:00",
+       "history": [
+        {
+         "at": "2025-02-20T09:00:00-08:00",
+         "action": "seeded"
+        }
+       ],
+       "name": "2024 reference",
+       "parent_id": "folder-taxes",
+       "kind": "folder",
+       "trashed": false,
+       "versions": []
+      },
+      {
+       "id": "folder-2025",
+       "account_id": "files-rowan",
+       "created_at": "2026-01-20T11:00:00-08:00",
+       "updated_at": "2026-01-20T11:00:00-08:00",
+       "history": [
+        {
+         "at": "2026-01-20T11:00:00-08:00",
+         "action": "seeded"
+        }
+       ],
+       "name": "2025 packet",
+       "parent_id": "folder-taxes",
+       "kind": "folder",
+       "trashed": false,
+       "versions": []
+      },
+      {
+       "id": "file-nf-2024",
+       "account_id": "files-rowan",
+       "created_at": "2025-02-20T09:05:00-08:00",
+       "updated_at": "2025-02-20T09:05:00-08:00",
+       "history": [
+        {
+         "at": "2025-02-20T09:05:00-08:00",
+         "action": "seeded"
+        }
+       ],
+       "name": "northfield-1099-2024.pdf",
+       "parent_id": "folder-2024",
+       "kind": "file",
+       "trashed": false,
+       "versions": [
+        {
+         "number": 1,
+         "asset_id": "asset-file-nf-2024-v1",
+         "at": "2025-02-20T09:05:00-08:00",
+         "source": "Northfield Brokerage, issued 2025-02-14"
+        }
+       ]
+      },
+      {
+       "id": "file-organizer-2024",
+       "account_id": "files-rowan",
+       "created_at": "2025-03-03T12:00:00-08:00",
+       "updated_at": "2025-03-03T12:00:00-08:00",
+       "history": [
+        {
+         "at": "2025-03-03T12:00:00-08:00",
+         "action": "seeded"
+        }
+       ],
+       "name": "tax-organizer-2024.pdf",
+       "parent_id": "folder-2024",
+       "kind": "file",
+       "trashed": false,
+       "versions": [
+        {
+         "number": 1,
+         "asset_id": "asset-file-organizer-2024-v1",
+         "at": "2025-03-03T12:00:00-08:00",
+         "source": "Morgan Lee Tax Advisory, sent 2025-03-03"
+        }
+       ]
+      },
+      {
+       "id": "file-1",
+       "account_id": "files-rowan",
+       "created_at": "2026-02-03T09:00:00-08:00",
+       "updated_at": "2026-02-03T09:00:00-08:00",
+       "history": [
+        {
+         "at": "2026-02-03T09:00:00-08:00",
+         "action": "created"
+        },
+        {
+         "at": "2026-02-03T09:00:00-08:00",
+         "action": "version_added"
+        }
+       ],
+       "name": "inventory.md",
+       "parent_id": "folder-2025",
+       "kind": "file",
+       "trashed": false,
+       "versions": [
+        {
+         "number": 1,
+         "asset_id": "att-e659881e3d8f91eb31481d43dd35c9ecd36b8ae2",
+         "at": "2026-02-03T09:00:00-08:00",
+         "source": "agent"
+        }
+       ]
+      },
+      {
+       "id": "file-2",
+       "account_id": "files-rowan",
+       "created_at": "2026-02-18T10:00:00-08:00",
+       "updated_at": "2026-03-02T09:30:00-08:00",
+       "history": [
+        {
+         "at": "2026-02-18T10:00:00-08:00",
+         "action": "created"
+        },
+        {
+         "at": "2026-02-18T10:00:00-08:00",
+         "action": "version_added"
+        },
+        {
+         "at": "2026-03-02T09:30:00-08:00",
+         "action": "version_added"
+        }
+       ],
+       "name": "manifest.md",
+       "parent_id": "folder-2025",
+       "kind": "file",
+       "trashed": false,
+       "versions": [
+        {
+         "number": 1,
+         "asset_id": "att-9538531e6891fadec9bf859ed9f9b34789b4d4aa",
+         "at": "2026-02-18T10:00:00-08:00",
+         "source": "agent"
+        },
+        {
+         "number": 2,
+         "asset_id": "att-f2eee1ba695974b814a2ea18269172ffa4d91032",
+         "at": "2026-03-02T09:30:00-08:00",
+         "source": "agent"
+        }
+       ]
+      },
+      {
+       "id": "file-3",
+       "account_id": "files-rowan",
+       "created_at": "2026-02-18T10:00:00-08:00",
+       "updated_at": "2026-03-02T09:30:00-08:00",
+       "history": [
+        {
+         "at": "2026-02-18T10:00:00-08:00",
+         "action": "created"
+        },
+        {
+         "at": "2026-02-18T10:00:00-08:00",
+         "action": "version_added"
+        },
+        {
+         "at": "2026-03-02T09:30:00-08:00",
+         "action": "version_added"
+        }
+       ],
+       "name": "summary.md",
+       "parent_id": "folder-2025",
+       "kind": "file",
+       "trashed": false,
+       "versions": [
+        {
+         "number": 1,
+         "asset_id": "att-31d893fa284b0ee6a3b78b0e6d22033d6f1f47e2",
+         "at": "2026-02-18T10:00:00-08:00",
+         "source": "agent"
+        },
+        {
+         "number": 2,
+         "asset_id": "att-c7883527a49be3d7916e4ce174cf1e3e247f0dbf",
+         "at": "2026-03-02T09:30:00-08:00",
+         "source": "agent"
+        }
+       ]
+      },
+      {
+       "id": "file-4",
+       "account_id": "files-rowan",
+       "created_at": "2026-02-18T10:00:00-08:00",
+       "updated_at": "2026-03-02T09:30:00-08:00",
+       "history": [
+        {
+         "at": "2026-02-18T10:00:00-08:00",
+         "action": "created"
+        },
+        {
+         "at": "2026-02-18T10:00:00-08:00",
+         "action": "version_added"
+        },
+        {
+         "at": "2026-03-02T09:30:00-08:00",
+         "action": "version_added"
+        }
+       ],
+       "name": "handoff-note.md",
+       "parent_id": "folder-2025",
+       "kind": "file",
+       "trashed": false,
+       "versions": [
+        {
+         "number": 1,
+         "asset_id": "att-304ab68e6766091f143bfbd1f9ca98e92260a9d7",
+         "at": "2026-02-18T10:00:00-08:00",
+         "source": "agent"
+        },
+        {
+         "number": 2,
+         "asset_id": "att-053e85e0656ee9c5994ada84ca037090d420e1d3",
+         "at": "2026-03-02T09:30:00-08:00",
+         "source": "agent"
+        }
+       ]
+      }
+     ]
+    },
+    "blobs": {
+     "asset-file-nf-2024-v1": "JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvQ29udGVudHMgNCAwIFIgL1Jlc291cmNlcyA8PCAvRm9udCA8PCAvRjEgNSAwIFIgPj4gPj4gPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0xlbmd0aCA1MTcgPj4Kc3RyZWFtCkJUCi9GMSAxMSBUZgoxMyBUTAo1NCA3NjAgVGQKKFNZTlRIRVRJQyBCRU5DSE1BUksgTk9UIEZPUiBGSUxJTkcpIFRqClQqIChOb3J0aGZpZWxkIEJyb2tlcmFnZSAyMDI0IENvbnNvbGlkYXRlZCBGb3JtIDEwOTkpIFRqClQqICgpIFRqClQqIChBY2NvdW50IGhvbGRlcjogUm93YW4gRWxsaXMpIFRqClQqIChBY2NvdW50OiBpbmRpdmlkdWFsIGJyb2tlcmFnZSwgbGFzdCBmb3VyIDIyMDgpIFRqClQqIChJc3N1ZWQ6IDIwMjUtMDItMTQpIFRqClQqIChGb3JtIDEwOTktRElWKSBUagpUKiAoICBCb3ggMWEgIFRvdGFsIG9yZGluYXJ5IGRpdmlkZW5kczogNDEwLjAwKSBUagpUKiAoICBCb3ggMWIgIFF1YWxpZmllZCBkaXZpZGVuZHM6IDM1MC4wMCkgVGoKVCogKEZvcm0gMTA5OS1CKSBUagpUKiAoICBUb3RhbCBwcm9jZWVkczogNiw1MDAuMDApIFRqClQqICggIFRvdGFsIGNvc3QgYmFzaXM6IDYsMTAwLjAwKSBUagpUKiAoKSBUagpUKiAoU1lOVEhFVElDIEJFTkNITUFSSyBOT1QgRk9SIEZJTElORykgVGoKRVQKZW5kc3RyZWFtCmVuZG9iago1IDAgb2JqCjw8IC9UeXBlIC9Gb250IC9TdWJ0eXBlIC9UeXBlMSAvQmFzZUZvbnQgL0hlbHZldGljYSA+PgplbmRvYmoKNiAwIG9iago8PCAvVGl0bGUgKE5vcnRoZmllbGQgQnJva2VyYWdlIDIwMjQgQ29uc29saWRhdGVkIEZvcm0gMTA5OSkgL1Byb2R1Y2VyIChQQUxFIHN5bnRoZXRpYyBmaXh0dXJlKSA+PgplbmRvYmoKeHJlZgowIDcKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDE1IDAwMDAwIG4gCjAwMDAwMDAwNjQgMDAwMDAgbiAKMDAwMDAwMDEyMSAwMDAwMCBuIAowMDAwMDAwMjQ3IDAwMDAwIG4gCjAwMDAwMDA4MTUgMDAwMDAgbiAKMDAwMDAwMDg4NSAwMDAwMCBuIAp0cmFpbGVyCjw8IC9TaXplIDcgL1Jvb3QgMSAwIFIgL0luZm8gNiAwIFIgPj4Kc3RhcnR4cmVmCjk5OQolJUVPRgo=",
+     "asset-file-organizer-2024-v1": "JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvQ29udGVudHMgNCAwIFIgL1Jlc291cmNlcyA8PCAvRm9udCA8PCAvRjEgNSAwIFIgPj4gPj4gPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0xlbmd0aCA0MzUgPj4Kc3RyZWFtCkJUCi9GMSAxMSBUZgoxMyBUTAo1NCA3NjAgVGQKKFNZTlRIRVRJQyBCRU5DSE1BUksgTk9UIEZPUiBGSUxJTkcpIFRqClQqIChNb3JnYW4gTGVlIFRheCBBZHZpc29yeSAtIDIwMjQgVGF4IE9yZ2FuaXplciBmb3IgUm93YW4gRWxsaXMpIFRqClQqICgpIFRqClQqIChQcmVwYXJlZCBmb3IgdGhlIDIwMjQgdGF4IHllYXIuIFNlbnQgMjAyNS0wMy0wMy4pIFRqClQqIChFbXBsb3llcjogQXRsYXMgTGFicywgSW5jLikgVGoKVCogKEFjY291bnRzOiBOb3J0aGZpZWxkIEJyb2tlcmFnZSwgQ2VkYXIgQmFuaywgQmF5dmlldyBCYW5rIHNhdmluZ3MuKSBUagpUKiAoUGxlYXNlIHJldHVybiB0aGUgY29tcGxldGVkIG9yZ2FuaXplciB3aXRoIHlvdXIgMjAyNCBmb3Jtcy4pIFRqClQqICgpIFRqClQqIChTWU5USEVUSUMgQkVOQ0hNQVJLIE5PVCBGT1IgRklMSU5HKSBUagpFVAplbmRzdHJlYW0KZW5kb2JqCjUgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNlRm9udCAvSGVsdmV0aWNhID4+CmVuZG9iago2IDAgb2JqCjw8IC9UaXRsZSAoTW9yZ2FuIExlZSBUYXggQWR2aXNvcnkgLSAyMDI0IFRheCBPcmdhbml6ZXIgZm9yIFJvd2FuIEVsbGlzKSAvUHJvZHVjZXIgKFBBTEUgc3ludGhldGljIGZpeHR1cmUpID4+CmVuZG9iagp4cmVmCjAgNwowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAwMTUgMDAwMDAgbiAKMDAwMDAwMDA2NCAwMDAwMCBuIAowMDAwMDAwMTIxIDAwMDAwIG4gCjAwMDAwMDAyNDcgMDAwMDAgbiAKMDAwMDAwMDczMyAwMDAwMCBuIAowMDAwMDAwODAzIDAwMDAwIG4gCnRyYWlsZXIKPDwgL1NpemUgNyAvUm9vdCAxIDAgUiAvSW5mbyA2IDAgUiA+PgpzdGFydHhyZWYKOTI5CiUlRU9GCg==",
+     "att-e659881e3d8f91eb31481d43dd35c9ecd36b8ae2": "IyBTb3VyY2UgaW52ZW50b3J5ICgyMDI1IHRheCBwYWNrZXQpCgotIEF0bGFzIExhYnMgVy0yOiBwcmVzZW50IChlbWFpbCBvZiAyMDI2LTAxLTI3KQotIEJyb29rIFN5c3RlbXMgVy0yOiBtaXNzaW5nCi0gTm9ydGhmaWVsZCBCcm9rZXJhZ2UgMTA5OTogbWlzc2luZyAoZXhwZWN0ZWQgYnkgMjAyNi0wMi0xNCkKLSBSaWRnZXdheSBJbnZlc3QgMTA5OTogbWlzc2luZwotIENlZGFyIEJhbmsgMTA5OS1JTlQ6IHByZXNlbnQgKGVtYWlsIG9mIDIwMjYtMDEtMjkpCgpMYXN0IHllYXIncyBzdGF0ZW1lbnQgYW5kIG9yZ2FuaXplciBpbiBUYXhlcy8yMDI0IHJlZmVyZW5jZSBhcmUgcmVmZXJlbmNlIG9ubHkgYW5kIHN0YXkgb3V0IG9mIHRoZSBwYWNrZXQuCg==",
+     "att-9538531e6891fadec9bf859ed9f9b34789b4d4aa": "IyBQYWNrZXQgbWFuaWZlc3QKCi0gQXRsYXMgTGFicyBXLTIgKGF0bGFzLXcyLTIwMjUucGRmKTogcHJlc2VudAotIEJyb29rIFN5c3RlbXMgVy0yIChicm9vay13Mi0yMDI1LnBkZik6IHByZXNlbnQKLSBOb3J0aGZpZWxkIEJyb2tlcmFnZSAxMDk5OiBwcmVzZW50LCBzdGF0ZW1lbnQgTkYtMjAyNS0yMjA4LUEgKG5vcnRoZmllbGQtMTA5OS0yMDI1LnBkZikKLSBUaGUgZG93bmxvYWRlZCBjb3B5IG9mIE5GLTIwMjUtMjIwOC1BIGlzIGEgZHVwbGljYXRlIGFuZCBpcyBub3QgdXNlZAotIFJpZGdld2F5IEludmVzdCB0YXggc3RhdGVtZW50IChyaWRnZXdheS0xMDk5LTIwMjUucGRmKTogcHJlc2VudDsgdGhlIHN1cHBsZW1lbnQgcmVwZWF0cyB0aGUgc2FtZSBzYWxlcyBhbmQgaXMgZGV0YWlsIG9ubHkKLSBDZWRhciBCYW5rIDEwOTktSU5UIChjZWRhci0xMDk5LWludC0yMDI1LnBkZik6IHByZXNlbnQK",
+     "att-31d893fa284b0ee6a3b78b0e6d22033d6f1f47e2": "IyBGaWVsZCBzdW1tYXJ5ICgyMDI1KQoKIyMgQnkgc291cmNlCi0gQXRsYXMgTGFicyBXLTI6IHdhZ2VzIDQwLDAwMC4wMDsgd2l0aGhlbGQgNCw1MDAuMDAKLSBCcm9vayBTeXN0ZW1zIFctMjogd2FnZXMgNjAsMDAwLjAwOyB3aXRoaGVsZCA3LDUwMC4wMAotIENlZGFyIEJhbmsgMTA5OS1JTlQ6IGludGVyZXN0IDMwMC4wMAotIE5vcnRoZmllbGQgMTA5OS1ESVYvQjogMWEgNDYwLjAwOyAxYiA0MDAuMDA7IHByb2NlZWRzIDEyLDAwMC4wMDsgYmFzaXMgMTAsOTAwLjAwCi0gUmlkZ2V3YXkgMTA5OS1ESVYvQjogMWEgMzAwLjAwOyAxYiAyMDAuMDA7IHByb2NlZWRzIDgsMDAwLjAwOyBiYXNpcyA3LDYwMC4wMAoKIyMgVG90YWxzCldhZ2VzOiAxMDAsMDAwLjAwCkZlZGVyYWwgaW5jb21lIHRheCB3aXRoaGVsZDogMTIsMDAwLjAwCkludGVyZXN0OiAzMDAuMDAKRGl2aWRlbmRzIDFhICh0b3RhbCBvcmRpbmFyeSk6IDc2MC4wMApEaXZpZGVuZHMgMWIgKHF1YWxpZmllZCwgcGFydCBvZiAxYSk6IDYwMC4wMAoxMDk5LUIgcHJvY2VlZHM6IDIwLDAwMC4wMAoxMDk5LUIgcmVwb3J0ZWQgYmFzaXM6IDE4LDUwMC4wMAo=",
+     "att-304ab68e6766091f143bfbd1f9ca98e92260a9d7": "SGFuZG9mZiBub3RlIGZvciBNb3JnYW4gTGVlIChjYXNlIENQLTIwMjUtUk9XQU4pCgpBbGwgZml2ZSBpbnRha2Ugc291cmNlcyBhcmUgaW4uIE5vcnRoZmllbGQgdmFsdWVzIGZvbGxvdyBzdGF0ZW1lbnQgTkYtMjAyNS0yMjA4LUEuCgpCb3ggMWIgaXMgcGFydCBvZiAxYSBhbmQgaXMgbGlzdGVkIHNlcGFyYXRlbHkuIFJvd2FuIGhhcyBub3QgZmlsZWQgYSByZXR1cm47IGZpbGluZyBpcyBNb3JnYW4ncyBzdGVwLgo=",
+     "att-f2eee1ba695974b814a2ea18269172ffa4d91032": "IyBQYWNrZXQgbWFuaWZlc3QKCi0gQXRsYXMgTGFicyBXLTIgKGF0bGFzLXcyLTIwMjUucGRmKTogcHJlc2VudAotIEJyb29rIFN5c3RlbXMgVy0yIChicm9vay13Mi0yMDI1LnBkZik6IHByZXNlbnQKLSBOb3J0aGZpZWxkIEJyb2tlcmFnZSAxMDk5OiBwcmVzZW50LCBzdGF0ZW1lbnQgTkYtMjAyNS0yMjA4LUIgKENPUlJFQ1RFRCwgbm9ydGhmaWVsZC0xMDk5LTIwMjUtY29ycmVjdGVkLnBkZikKLSBTdGF0ZW1lbnQgTkYtMjAyNS0yMjA4LUE6IHN1cGVyc2VkZWQgYnkgdGhlIGNvcnJlY3Rpb24gb2YgMjAyNi0wMy0wMjsgdGhlIGRvd25sb2FkZWQgZHVwbGljYXRlIGFuZCB0aGUgcmUtZm9yd2FyZGVkIGNvcHkgYXJlIG5vdCB1c2VkCi0gUmlkZ2V3YXkgSW52ZXN0IHRheCBzdGF0ZW1lbnQgKHJpZGdld2F5LTEwOTktMjAyNS5wZGYpOiBwcmVzZW50OyB0aGUgc3VwcGxlbWVudCByZXBlYXRzIHRoZSBzYW1lIHNhbGVzIGFuZCBpcyBkZXRhaWwgb25seQotIENlZGFyIEJhbmsgMTA5OS1JTlQgKGNlZGFyLTEwOTktaW50LTIwMjUucGRmKTogcHJlc2VudAo=",
+     "att-c7883527a49be3d7916e4ce174cf1e3e247f0dbf": "IyBGaWVsZCBzdW1tYXJ5ICgyMDI1KQoKIyMgQnkgc291cmNlCi0gQXRsYXMgTGFicyBXLTI6IHdhZ2VzIDQwLDAwMC4wMDsgd2l0aGhlbGQgNCw1MDAuMDAKLSBCcm9vayBTeXN0ZW1zIFctMjogd2FnZXMgNjAsMDAwLjAwOyB3aXRoaGVsZCA3LDUwMC4wMAotIENlZGFyIEJhbmsgMTA5OS1JTlQ6IGludGVyZXN0IDMwMC4wMAotIE5vcnRoZmllbGQgMTA5OS1ESVYvQjogMWEgNTAwLjAwOyAxYiA0MDAuMDA7IHByb2NlZWRzIDEyLDAwMC4wMDsgYmFzaXMgMTEsNzAwLjAwCi0gUmlkZ2V3YXkgMTA5OS1ESVYvQjogMWEgMzAwLjAwOyAxYiAyMDAuMDA7IHByb2NlZWRzIDgsMDAwLjAwOyBiYXNpcyA3LDYwMC4wMAoKIyMgVG90YWxzCldhZ2VzOiAxMDAsMDAwLjAwCkZlZGVyYWwgaW5jb21lIHRheCB3aXRoaGVsZDogMTIsMDAwLjAwCkludGVyZXN0OiAzMDAuMDAKRGl2aWRlbmRzIDFhICh0b3RhbCBvcmRpbmFyeSk6IDgwMC4wMApEaXZpZGVuZHMgMWIgKHF1YWxpZmllZCwgcGFydCBvZiAxYSk6IDYwMC4wMAoxMDk5LUIgcHJvY2VlZHM6IDIwLDAwMC4wMAoxMDk5LUIgcmVwb3J0ZWQgYmFzaXM6IDE5LDMwMC4wMAo=",
+     "att-053e85e0656ee9c5994ada84ca037090d420e1d3": "SGFuZG9mZiBub3RlIGZvciBNb3JnYW4gTGVlIChjYXNlIENQLTIwMjUtUk9XQU4pCgpOb3J0aGZpZWxkIHZhbHVlcyBmb2xsb3cgdGhlIGNvcnJlY3RlZCBzdGF0ZW1lbnQgTkYtMjAyNS0yMjA4LUIgb2YgMjAyNi0wMy0wMi4KCkJveCAxYiBpcyBwYXJ0IG9mIDFhIGFuZCBpcyBsaXN0ZWQgc2VwYXJhdGVseS4gUm93YW4gaGFzIG5vdCBmaWxlZCBhIHJldHVybjsgZmlsaW5nIGlzIE1vcmdhbidzIHN0ZXAuCg=="
+    }
+   },
+   "portal": {
+    "account_id": "cpa-portal-rowan",
+    "owner_person_id": "person-rowan",
+    "firm": {
+     "firm_id": "firm-lee",
+     "name": "Morgan Lee Tax Advisory",
+     "time_zone": "America/Los_Angeles",
+     "accepted_types": [
+      "application/pdf",
+      "text/plain",
+      "text/csv",
+      "application/json"
+     ],
+     "max_file_bytes": 262144,
+     "max_case_bytes": 1048576
+    },
+    "cases": [
+     {
+      "case_id": "CP-2025-ROWAN",
+      "title": "2025 individual return: supporting records",
+      "status": "open",
+      "access": "upload",
+      "opened_at": "2026-01-20T10:00:00-08:00",
+      "cutoff": null,
+      "late_submission_policy": "accept_for_review"
+     },
+     {
+      "case_id": "CP-2024-ROWAN",
+      "title": "2024 individual return: supporting records",
+      "status": "closed",
+      "access": "view",
+      "opened_at": "2025-01-21T10:00:00-08:00",
+      "cutoff": null,
+      "late_submission_policy": "reject"
+     }
+    ],
+    "submissions": [
+     {
+      "submission_id": "sb-0001",
+      "case_id": "CP-2024-ROWAN",
+      "request_ids": [],
+      "submitted_at": "2025-03-07T16:00:00-08:00",
+      "actor": "client",
+      "standing": "on_time",
+      "replaces": [],
+      "superseded_by": null,
+      "withdrawn_at": null,
+      "note": "2024 packet index.",
+      "files": [
+       {
+        "file_id": "sb-0001-f1",
+        "filename": "2024-packet-index.txt",
+        "mime_type": "text/plain",
+        "size": 131,
+        "sha256": "1fc9d73c4dd37c439b7ce260cc304def63aa1e8059ca7a017721074395dc1b6b",
+        "base64": "U1lOVEhFVElDIEJFTkNITUFSSyBOT1QgRk9SIEZJTElORwoyMDI0IHBhY2tldCBpbmRleCBmb3IgUm93YW46IEF0bGFzIFctMiwgQ2VkYXIgMTA5OS1JTlQsIE5vcnRoZmllbGQgMjAyNCBjb25zb2xpZGF0ZWQgc3RhdGVtZW50Lgo="
+       }
+      ]
+     }
+    ],
+    "receipts": [
+     {
+      "receipt_id": "rc-0001",
+      "submission_id": "sb-0001",
+      "case_id": "CP-2024-ROWAN",
+      "at": "2025-03-07T16:00:00-08:00",
+      "kind": "submitted",
+      "standing": "on_time",
+      "files": [
+       {
+        "file_id": "sb-0001-f1",
+        "filename": "2024-packet-index.txt",
+        "mime_type": "text/plain",
+        "size": 131,
+        "sha256": "1fc9d73c4dd37c439b7ce260cc304def63aa1e8059ca7a017721074395dc1b6b"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "S4",
+   "start": "2026-03-06T18:00:00-08:00",
+   "end": "2026-03-06T18:00:00-08:00",
+   "files": {
+    "data": {
+     "account_id": "files-rowan",
+     "owner_person_id": "person-rowan",
+     "files": [
+      {
+       "id": "folder-taxes",
+       "account_id": "files-rowan",
+       "created_at": "2025-02-20T09:00:00-08:00",
+       "updated_at": "2025-02-20T09:00:00-08:00",
+       "history": [
+        {
+         "at": "2025-02-20T09:00:00-08:00",
+         "action": "seeded"
+        }
+       ],
+       "name": "Taxes",
+       "parent_id": null,
+       "kind": "folder",
+       "trashed": false,
+       "versions": []
+      },
+      {
+       "id": "folder-2024",
+       "account_id": "files-rowan",
+       "created_at": "2025-02-20T09:00:00-08:00",
+       "updated_at": "2025-02-20T09:00:00-08:00",
+       "history": [
+        {
+         "at": "2025-02-20T09:00:00-08:00",
+         "action": "seeded"
+        }
+       ],
+       "name": "2024 reference",
+       "parent_id": "folder-taxes",
+       "kind": "folder",
+       "trashed": false,
+       "versions": []
+      },
+      {
+       "id": "folder-2025",
+       "account_id": "files-rowan",
+       "created_at": "2026-01-20T11:00:00-08:00",
+       "updated_at": "2026-01-20T11:00:00-08:00",
+       "history": [
+        {
+         "at": "2026-01-20T11:00:00-08:00",
+         "action": "seeded"
+        }
+       ],
+       "name": "2025 packet",
+       "parent_id": "folder-taxes",
+       "kind": "folder",
+       "trashed": false,
+       "versions": []
+      },
+      {
+       "id": "file-nf-2024",
+       "account_id": "files-rowan",
+       "created_at": "2025-02-20T09:05:00-08:00",
+       "updated_at": "2025-02-20T09:05:00-08:00",
+       "history": [
+        {
+         "at": "2025-02-20T09:05:00-08:00",
+         "action": "seeded"
+        }
+       ],
+       "name": "northfield-1099-2024.pdf",
+       "parent_id": "folder-2024",
+       "kind": "file",
+       "trashed": false,
+       "versions": [
+        {
+         "number": 1,
+         "asset_id": "asset-file-nf-2024-v1",
+         "at": "2025-02-20T09:05:00-08:00",
+         "source": "Northfield Brokerage, issued 2025-02-14"
+        }
+       ]
+      },
+      {
+       "id": "file-organizer-2024",
+       "account_id": "files-rowan",
+       "created_at": "2025-03-03T12:00:00-08:00",
+       "updated_at": "2025-03-03T12:00:00-08:00",
+       "history": [
+        {
+         "at": "2025-03-03T12:00:00-08:00",
+         "action": "seeded"
+        }
+       ],
+       "name": "tax-organizer-2024.pdf",
+       "parent_id": "folder-2024",
+       "kind": "file",
+       "trashed": false,
+       "versions": [
+        {
+         "number": 1,
+         "asset_id": "asset-file-organizer-2024-v1",
+         "at": "2025-03-03T12:00:00-08:00",
+         "source": "Morgan Lee Tax Advisory, sent 2025-03-03"
+        }
+       ]
+      },
+      {
+       "id": "file-1",
+       "account_id": "files-rowan",
+       "created_at": "2026-02-03T09:00:00-08:00",
+       "updated_at": "2026-02-03T09:00:00-08:00",
+       "history": [
+        {
+         "at": "2026-02-03T09:00:00-08:00",
+         "action": "created"
+        },
+        {
+         "at": "2026-02-03T09:00:00-08:00",
+         "action": "version_added"
+        }
+       ],
+       "name": "inventory.md",
+       "parent_id": "folder-2025",
+       "kind": "file",
+       "trashed": false,
+       "versions": [
+        {
+         "number": 1,
+         "asset_id": "att-e659881e3d8f91eb31481d43dd35c9ecd36b8ae2",
+         "at": "2026-02-03T09:00:00-08:00",
+         "source": "agent"
+        }
+       ]
+      },
+      {
+       "id": "file-2",
+       "account_id": "files-rowan",
+       "created_at": "2026-02-18T10:00:00-08:00",
+       "updated_at": "2026-03-06T18:00:00-08:00",
+       "history": [
+        {
+         "at": "2026-02-18T10:00:00-08:00",
+         "action": "created"
+        },
+        {
+         "at": "2026-02-18T10:00:00-08:00",
+         "action": "version_added"
+        },
+        {
+         "at": "2026-03-02T09:30:00-08:00",
+         "action": "version_added"
+        },
+        {
+         "at": "2026-03-06T18:00:00-08:00",
+         "action": "version_added"
+        }
+       ],
+       "name": "manifest.md",
+       "parent_id": "folder-2025",
+       "kind": "file",
+       "trashed": false,
+       "versions": [
+        {
+         "number": 1,
+         "asset_id": "att-9538531e6891fadec9bf859ed9f9b34789b4d4aa",
+         "at": "2026-02-18T10:00:00-08:00",
+         "source": "agent"
+        },
+        {
+         "number": 2,
+         "asset_id": "att-f2eee1ba695974b814a2ea18269172ffa4d91032",
+         "at": "2026-03-02T09:30:00-08:00",
+         "source": "agent"
+        },
+        {
+         "number": 3,
+         "asset_id": "att-594012e71f70abefa1bcae7680dee5fb4a216c33",
+         "at": "2026-03-06T18:00:00-08:00",
+         "source": "agent"
+        }
+       ]
+      },
+      {
+       "id": "file-3",
+       "account_id": "files-rowan",
+       "created_at": "2026-02-18T10:00:00-08:00",
+       "updated_at": "2026-03-06T18:00:00-08:00",
+       "history": [
+        {
+         "at": "2026-02-18T10:00:00-08:00",
+         "action": "created"
+        },
+        {
+         "at": "2026-02-18T10:00:00-08:00",
+         "action": "version_added"
+        },
+        {
+         "at": "2026-03-02T09:30:00-08:00",
+         "action": "version_added"
+        },
+        {
+         "at": "2026-03-06T18:00:00-08:00",
+         "action": "version_added"
+        }
+       ],
+       "name": "summary.md",
+       "parent_id": "folder-2025",
+       "kind": "file",
+       "trashed": false,
+       "versions": [
+        {
+         "number": 1,
+         "asset_id": "att-31d893fa284b0ee6a3b78b0e6d22033d6f1f47e2",
+         "at": "2026-02-18T10:00:00-08:00",
+         "source": "agent"
+        },
+        {
+         "number": 2,
+         "asset_id": "att-c7883527a49be3d7916e4ce174cf1e3e247f0dbf",
+         "at": "2026-03-02T09:30:00-08:00",
+         "source": "agent"
+        },
+        {
+         "number": 3,
+         "asset_id": "att-7c458254dc24d8559827459fb647dbb1babab88f",
+         "at": "2026-03-06T18:00:00-08:00",
+         "source": "agent"
+        }
+       ]
+      },
+      {
+       "id": "file-4",
+       "account_id": "files-rowan",
+       "created_at": "2026-02-18T10:00:00-08:00",
+       "updated_at": "2026-03-06T18:00:00-08:00",
+       "history": [
+        {
+         "at": "2026-02-18T10:00:00-08:00",
+         "action": "created"
+        },
+        {
+         "at": "2026-02-18T10:00:00-08:00",
+         "action": "version_added"
+        },
+        {
+         "at": "2026-03-02T09:30:00-08:00",
+         "action": "version_added"
+        },
+        {
+         "at": "2026-03-06T18:00:00-08:00",
+         "action": "version_added"
+        }
+       ],
+       "name": "handoff-note.md",
+       "parent_id": "folder-2025",
+       "kind": "file",
+       "trashed": false,
+       "versions": [
+        {
+         "number": 1,
+         "asset_id": "att-304ab68e6766091f143bfbd1f9ca98e92260a9d7",
+         "at": "2026-02-18T10:00:00-08:00",
+         "source": "agent"
+        },
+        {
+         "number": 2,
+         "asset_id": "att-053e85e0656ee9c5994ada84ca037090d420e1d3",
+         "at": "2026-03-02T09:30:00-08:00",
+         "source": "agent"
+        },
+        {
+         "number": 3,
+         "asset_id": "att-d2cdddf31486ea1cdb6ae4bc61cd2c08fca9b950",
+         "at": "2026-03-06T18:00:00-08:00",
+         "source": "agent"
+        }
+       ]
+      }
+     ]
+    },
+    "blobs": {
+     "asset-file-nf-2024-v1": "JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvQ29udGVudHMgNCAwIFIgL1Jlc291cmNlcyA8PCAvRm9udCA8PCAvRjEgNSAwIFIgPj4gPj4gPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0xlbmd0aCA1MTcgPj4Kc3RyZWFtCkJUCi9GMSAxMSBUZgoxMyBUTAo1NCA3NjAgVGQKKFNZTlRIRVRJQyBCRU5DSE1BUksgTk9UIEZPUiBGSUxJTkcpIFRqClQqIChOb3J0aGZpZWxkIEJyb2tlcmFnZSAyMDI0IENvbnNvbGlkYXRlZCBGb3JtIDEwOTkpIFRqClQqICgpIFRqClQqIChBY2NvdW50IGhvbGRlcjogUm93YW4gRWxsaXMpIFRqClQqIChBY2NvdW50OiBpbmRpdmlkdWFsIGJyb2tlcmFnZSwgbGFzdCBmb3VyIDIyMDgpIFRqClQqIChJc3N1ZWQ6IDIwMjUtMDItMTQpIFRqClQqIChGb3JtIDEwOTktRElWKSBUagpUKiAoICBCb3ggMWEgIFRvdGFsIG9yZGluYXJ5IGRpdmlkZW5kczogNDEwLjAwKSBUagpUKiAoICBCb3ggMWIgIFF1YWxpZmllZCBkaXZpZGVuZHM6IDM1MC4wMCkgVGoKVCogKEZvcm0gMTA5OS1CKSBUagpUKiAoICBUb3RhbCBwcm9jZWVkczogNiw1MDAuMDApIFRqClQqICggIFRvdGFsIGNvc3QgYmFzaXM6IDYsMTAwLjAwKSBUagpUKiAoKSBUagpUKiAoU1lOVEhFVElDIEJFTkNITUFSSyBOT1QgRk9SIEZJTElORykgVGoKRVQKZW5kc3RyZWFtCmVuZG9iago1IDAgb2JqCjw8IC9UeXBlIC9Gb250IC9TdWJ0eXBlIC9UeXBlMSAvQmFzZUZvbnQgL0hlbHZldGljYSA+PgplbmRvYmoKNiAwIG9iago8PCAvVGl0bGUgKE5vcnRoZmllbGQgQnJva2VyYWdlIDIwMjQgQ29uc29saWRhdGVkIEZvcm0gMTA5OSkgL1Byb2R1Y2VyIChQQUxFIHN5bnRoZXRpYyBmaXh0dXJlKSA+PgplbmRvYmoKeHJlZgowIDcKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDE1IDAwMDAwIG4gCjAwMDAwMDAwNjQgMDAwMDAgbiAKMDAwMDAwMDEyMSAwMDAwMCBuIAowMDAwMDAwMjQ3IDAwMDAwIG4gCjAwMDAwMDA4MTUgMDAwMDAgbiAKMDAwMDAwMDg4NSAwMDAwMCBuIAp0cmFpbGVyCjw8IC9TaXplIDcgL1Jvb3QgMSAwIFIgL0luZm8gNiAwIFIgPj4Kc3RhcnR4cmVmCjk5OQolJUVPRgo=",
+     "asset-file-organizer-2024-v1": "JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvQ29udGVudHMgNCAwIFIgL1Jlc291cmNlcyA8PCAvRm9udCA8PCAvRjEgNSAwIFIgPj4gPj4gPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0xlbmd0aCA0MzUgPj4Kc3RyZWFtCkJUCi9GMSAxMSBUZgoxMyBUTAo1NCA3NjAgVGQKKFNZTlRIRVRJQyBCRU5DSE1BUksgTk9UIEZPUiBGSUxJTkcpIFRqClQqIChNb3JnYW4gTGVlIFRheCBBZHZpc29yeSAtIDIwMjQgVGF4IE9yZ2FuaXplciBmb3IgUm93YW4gRWxsaXMpIFRqClQqICgpIFRqClQqIChQcmVwYXJlZCBmb3IgdGhlIDIwMjQgdGF4IHllYXIuIFNlbnQgMjAyNS0wMy0wMy4pIFRqClQqIChFbXBsb3llcjogQXRsYXMgTGFicywgSW5jLikgVGoKVCogKEFjY291bnRzOiBOb3J0aGZpZWxkIEJyb2tlcmFnZSwgQ2VkYXIgQmFuaywgQmF5dmlldyBCYW5rIHNhdmluZ3MuKSBUagpUKiAoUGxlYXNlIHJldHVybiB0aGUgY29tcGxldGVkIG9yZ2FuaXplciB3aXRoIHlvdXIgMjAyNCBmb3Jtcy4pIFRqClQqICgpIFRqClQqIChTWU5USEVUSUMgQkVOQ0hNQVJLIE5PVCBGT1IgRklMSU5HKSBUagpFVAplbmRzdHJlYW0KZW5kb2JqCjUgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNlRm9udCAvSGVsdmV0aWNhID4+CmVuZG9iago2IDAgb2JqCjw8IC9UaXRsZSAoTW9yZ2FuIExlZSBUYXggQWR2aXNvcnkgLSAyMDI0IFRheCBPcmdhbml6ZXIgZm9yIFJvd2FuIEVsbGlzKSAvUHJvZHVjZXIgKFBBTEUgc3ludGhldGljIGZpeHR1cmUpID4+CmVuZG9iagp4cmVmCjAgNwowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAwMTUgMDAwMDAgbiAKMDAwMDAwMDA2NCAwMDAwMCBuIAowMDAwMDAwMTIxIDAwMDAwIG4gCjAwMDAwMDAyNDcgMDAwMDAgbiAKMDAwMDAwMDczMyAwMDAwMCBuIAowMDAwMDAwODAzIDAwMDAwIG4gCnRyYWlsZXIKPDwgL1NpemUgNyAvUm9vdCAxIDAgUiAvSW5mbyA2IDAgUiA+PgpzdGFydHhyZWYKOTI5CiUlRU9GCg==",
+     "att-e659881e3d8f91eb31481d43dd35c9ecd36b8ae2": "IyBTb3VyY2UgaW52ZW50b3J5ICgyMDI1IHRheCBwYWNrZXQpCgotIEF0bGFzIExhYnMgVy0yOiBwcmVzZW50IChlbWFpbCBvZiAyMDI2LTAxLTI3KQotIEJyb29rIFN5c3RlbXMgVy0yOiBtaXNzaW5nCi0gTm9ydGhmaWVsZCBCcm9rZXJhZ2UgMTA5OTogbWlzc2luZyAoZXhwZWN0ZWQgYnkgMjAyNi0wMi0xNCkKLSBSaWRnZXdheSBJbnZlc3QgMTA5OTogbWlzc2luZwotIENlZGFyIEJhbmsgMTA5OS1JTlQ6IHByZXNlbnQgKGVtYWlsIG9mIDIwMjYtMDEtMjkpCgpMYXN0IHllYXIncyBzdGF0ZW1lbnQgYW5kIG9yZ2FuaXplciBpbiBUYXhlcy8yMDI0IHJlZmVyZW5jZSBhcmUgcmVmZXJlbmNlIG9ubHkgYW5kIHN0YXkgb3V0IG9mIHRoZSBwYWNrZXQuCg==",
+     "att-9538531e6891fadec9bf859ed9f9b34789b4d4aa": "IyBQYWNrZXQgbWFuaWZlc3QKCi0gQXRsYXMgTGFicyBXLTIgKGF0bGFzLXcyLTIwMjUucGRmKTogcHJlc2VudAotIEJyb29rIFN5c3RlbXMgVy0yIChicm9vay13Mi0yMDI1LnBkZik6IHByZXNlbnQKLSBOb3J0aGZpZWxkIEJyb2tlcmFnZSAxMDk5OiBwcmVzZW50LCBzdGF0ZW1lbnQgTkYtMjAyNS0yMjA4LUEgKG5vcnRoZmllbGQtMTA5OS0yMDI1LnBkZikKLSBUaGUgZG93bmxvYWRlZCBjb3B5IG9mIE5GLTIwMjUtMjIwOC1BIGlzIGEgZHVwbGljYXRlIGFuZCBpcyBub3QgdXNlZAotIFJpZGdld2F5IEludmVzdCB0YXggc3RhdGVtZW50IChyaWRnZXdheS0xMDk5LTIwMjUucGRmKTogcHJlc2VudDsgdGhlIHN1cHBsZW1lbnQgcmVwZWF0cyB0aGUgc2FtZSBzYWxlcyBhbmQgaXMgZGV0YWlsIG9ubHkKLSBDZWRhciBCYW5rIDEwOTktSU5UIChjZWRhci0xMDk5LWludC0yMDI1LnBkZik6IHByZXNlbnQK",
+     "att-31d893fa284b0ee6a3b78b0e6d22033d6f1f47e2": "IyBGaWVsZCBzdW1tYXJ5ICgyMDI1KQoKIyMgQnkgc291cmNlCi0gQXRsYXMgTGFicyBXLTI6IHdhZ2VzIDQwLDAwMC4wMDsgd2l0aGhlbGQgNCw1MDAuMDAKLSBCcm9vayBTeXN0ZW1zIFctMjogd2FnZXMgNjAsMDAwLjAwOyB3aXRoaGVsZCA3LDUwMC4wMAotIENlZGFyIEJhbmsgMTA5OS1JTlQ6IGludGVyZXN0IDMwMC4wMAotIE5vcnRoZmllbGQgMTA5OS1ESVYvQjogMWEgNDYwLjAwOyAxYiA0MDAuMDA7IHByb2NlZWRzIDEyLDAwMC4wMDsgYmFzaXMgMTAsOTAwLjAwCi0gUmlkZ2V3YXkgMTA5OS1ESVYvQjogMWEgMzAwLjAwOyAxYiAyMDAuMDA7IHByb2NlZWRzIDgsMDAwLjAwOyBiYXNpcyA3LDYwMC4wMAoKIyMgVG90YWxzCldhZ2VzOiAxMDAsMDAwLjAwCkZlZGVyYWwgaW5jb21lIHRheCB3aXRoaGVsZDogMTIsMDAwLjAwCkludGVyZXN0OiAzMDAuMDAKRGl2aWRlbmRzIDFhICh0b3RhbCBvcmRpbmFyeSk6IDc2MC4wMApEaXZpZGVuZHMgMWIgKHF1YWxpZmllZCwgcGFydCBvZiAxYSk6IDYwMC4wMAoxMDk5LUIgcHJvY2VlZHM6IDIwLDAwMC4wMAoxMDk5LUIgcmVwb3J0ZWQgYmFzaXM6IDE4LDUwMC4wMAo=",
+     "att-304ab68e6766091f143bfbd1f9ca98e92260a9d7": "SGFuZG9mZiBub3RlIGZvciBNb3JnYW4gTGVlIChjYXNlIENQLTIwMjUtUk9XQU4pCgpBbGwgZml2ZSBpbnRha2Ugc291cmNlcyBhcmUgaW4uIE5vcnRoZmllbGQgdmFsdWVzIGZvbGxvdyBzdGF0ZW1lbnQgTkYtMjAyNS0yMjA4LUEuCgpCb3ggMWIgaXMgcGFydCBvZiAxYSBhbmQgaXMgbGlzdGVkIHNlcGFyYXRlbHkuIFJvd2FuIGhhcyBub3QgZmlsZWQgYSByZXR1cm47IGZpbGluZyBpcyBNb3JnYW4ncyBzdGVwLgo=",
+     "att-f2eee1ba695974b814a2ea18269172ffa4d91032": "IyBQYWNrZXQgbWFuaWZlc3QKCi0gQXRsYXMgTGFicyBXLTIgKGF0bGFzLXcyLTIwMjUucGRmKTogcHJlc2VudAotIEJyb29rIFN5c3RlbXMgVy0yIChicm9vay13Mi0yMDI1LnBkZik6IHByZXNlbnQKLSBOb3J0aGZpZWxkIEJyb2tlcmFnZSAxMDk5OiBwcmVzZW50LCBzdGF0ZW1lbnQgTkYtMjAyNS0yMjA4LUIgKENPUlJFQ1RFRCwgbm9ydGhmaWVsZC0xMDk5LTIwMjUtY29ycmVjdGVkLnBkZikKLSBTdGF0ZW1lbnQgTkYtMjAyNS0yMjA4LUE6IHN1cGVyc2VkZWQgYnkgdGhlIGNvcnJlY3Rpb24gb2YgMjAyNi0wMy0wMjsgdGhlIGRvd25sb2FkZWQgZHVwbGljYXRlIGFuZCB0aGUgcmUtZm9yd2FyZGVkIGNvcHkgYXJlIG5vdCB1c2VkCi0gUmlkZ2V3YXkgSW52ZXN0IHRheCBzdGF0ZW1lbnQgKHJpZGdld2F5LTEwOTktMjAyNS5wZGYpOiBwcmVzZW50OyB0aGUgc3VwcGxlbWVudCByZXBlYXRzIHRoZSBzYW1lIHNhbGVzIGFuZCBpcyBkZXRhaWwgb25seQotIENlZGFyIEJhbmsgMTA5OS1JTlQgKGNlZGFyLTEwOTktaW50LTIwMjUucGRmKTogcHJlc2VudAo=",
+     "att-c7883527a49be3d7916e4ce174cf1e3e247f0dbf": "IyBGaWVsZCBzdW1tYXJ5ICgyMDI1KQoKIyMgQnkgc291cmNlCi0gQXRsYXMgTGFicyBXLTI6IHdhZ2VzIDQwLDAwMC4wMDsgd2l0aGhlbGQgNCw1MDAuMDAKLSBCcm9vayBTeXN0ZW1zIFctMjogd2FnZXMgNjAsMDAwLjAwOyB3aXRoaGVsZCA3LDUwMC4wMAotIENlZGFyIEJhbmsgMTA5OS1JTlQ6IGludGVyZXN0IDMwMC4wMAotIE5vcnRoZmllbGQgMTA5OS1ESVYvQjogMWEgNTAwLjAwOyAxYiA0MDAuMDA7IHByb2NlZWRzIDEyLDAwMC4wMDsgYmFzaXMgMTEsNzAwLjAwCi0gUmlkZ2V3YXkgMTA5OS1ESVYvQjogMWEgMzAwLjAwOyAxYiAyMDAuMDA7IHByb2NlZWRzIDgsMDAwLjAwOyBiYXNpcyA3LDYwMC4wMAoKIyMgVG90YWxzCldhZ2VzOiAxMDAsMDAwLjAwCkZlZGVyYWwgaW5jb21lIHRheCB3aXRoaGVsZDogMTIsMDAwLjAwCkludGVyZXN0OiAzMDAuMDAKRGl2aWRlbmRzIDFhICh0b3RhbCBvcmRpbmFyeSk6IDgwMC4wMApEaXZpZGVuZHMgMWIgKHF1YWxpZmllZCwgcGFydCBvZiAxYSk6IDYwMC4wMAoxMDk5LUIgcHJvY2VlZHM6IDIwLDAwMC4wMAoxMDk5LUIgcmVwb3J0ZWQgYmFzaXM6IDE5LDMwMC4wMAo=",
+     "att-053e85e0656ee9c5994ada84ca037090d420e1d3": "SGFuZG9mZiBub3RlIGZvciBNb3JnYW4gTGVlIChjYXNlIENQLTIwMjUtUk9XQU4pCgpOb3J0aGZpZWxkIHZhbHVlcyBmb2xsb3cgdGhlIGNvcnJlY3RlZCBzdGF0ZW1lbnQgTkYtMjAyNS0yMjA4LUIgb2YgMjAyNi0wMy0wMi4KCkJveCAxYiBpcyBwYXJ0IG9mIDFhIGFuZCBpcyBsaXN0ZWQgc2VwYXJhdGVseS4gUm93YW4gaGFzIG5vdCBmaWxlZCBhIHJldHVybjsgZmlsaW5nIGlzIE1vcmdhbidzIHN0ZXAuCg==",
+     "att-594012e71f70abefa1bcae7680dee5fb4a216c33": "IyBQYWNrZXQgbWFuaWZlc3QKCi0gQXRsYXMgTGFicyBXLTIgKGF0bGFzLXcyLTIwMjUucGRmKTogcHJlc2VudAotIEJyb29rIFN5c3RlbXMgVy0yIChicm9vay13Mi0yMDI1LnBkZik6IHByZXNlbnQKLSBOb3J0aGZpZWxkIEJyb2tlcmFnZSAxMDk5OiBwcmVzZW50LCBzdGF0ZW1lbnQgTkYtMjAyNS0yMjA4LUIgKENPUlJFQ1RFRCwgbm9ydGhmaWVsZC0xMDk5LTIwMjUtY29ycmVjdGVkLnBkZikKLSBTdGF0ZW1lbnQgTkYtMjAyNS0yMjA4LUE6IHN1cGVyc2VkZWQgYnkgdGhlIGNvcnJlY3Rpb24gb2YgMjAyNi0wMy0wMjsgdGhlIGRvd25sb2FkZWQgZHVwbGljYXRlIGFuZCB0aGUgcmUtZm9yd2FyZGVkIGNvcHkgYXJlIG5vdCB1c2VkCi0gUmlkZ2V3YXkgSW52ZXN0IHRheCBzdGF0ZW1lbnQgKHJpZGdld2F5LTEwOTktMjAyNS5wZGYpOiBwcmVzZW50OyB0aGUgc3VwcGxlbWVudCByZXBlYXRzIHRoZSBzYW1lIHNhbGVzIGFuZCBpcyBkZXRhaWwgb25seQotIENlZGFyIEJhbmsgMTA5OS1JTlQgKGNlZGFyLTEwOTktaW50LTIwMjUucGRmKTogcHJlc2VudAotIEJheXZpZXcgQmFuayAxMDk5LUlOVDogbWlzc2luZywgYXZhaWxhYmxlIG9uIHRoZSBiYW5rJ3MgZG9jdW1lbnRzIHBhZ2Ugb24gMjAyNi0wMy0xMAo=",
+     "att-7c458254dc24d8559827459fb647dbb1babab88f": "IyBGaWVsZCBzdW1tYXJ5ICgyMDI1KQoKIyMgQnkgc291cmNlCi0gQXRsYXMgTGFicyBXLTI6IHdhZ2VzIDQwLDAwMC4wMDsgd2l0aGhlbGQgNCw1MDAuMDAKLSBCcm9vayBTeXN0ZW1zIFctMjogd2FnZXMgNjAsMDAwLjAwOyB3aXRoaGVsZCA3LDUwMC4wMAotIENlZGFyIEJhbmsgMTA5OS1JTlQ6IGludGVyZXN0IDMwMC4wMAotIE5vcnRoZmllbGQgMTA5OS1ESVYvQjogMWEgNTAwLjAwOyAxYiA0MDAuMDA7IHByb2NlZWRzIDEyLDAwMC4wMDsgYmFzaXMgMTEsNzAwLjAwCi0gUmlkZ2V3YXkgMTA5OS1ESVYvQjogMWEgMzAwLjAwOyAxYiAyMDAuMDA7IHByb2NlZWRzIDgsMDAwLjAwOyBiYXNpcyA3LDYwMC4wMAoKIyMgVG90YWxzCldhZ2VzOiAxMDAsMDAwLjAwCkZlZGVyYWwgaW5jb21lIHRheCB3aXRoaGVsZDogMTIsMDAwLjAwCkludGVyZXN0IChzdWJ0b3RhbDsgQmF5dmlldyBwZW5kaW5nKTogMzAwLjAwCkRpdmlkZW5kcyAxYSAodG90YWwgb3JkaW5hcnkpOiA4MDAuMDAKRGl2aWRlbmRzIDFiIChxdWFsaWZpZWQsIHBhcnQgb2YgMWEpOiA2MDAuMDAKMTA5OS1CIHByb2NlZWRzOiAyMCwwMDAuMDAKMTA5OS1CIHJlcG9ydGVkIGJhc2lzOiAxOSwzMDAuMDAK",
+     "att-d2cdddf31486ea1cdb6ae4bc61cd2c08fca9b950": "SGFuZG9mZiBub3RlIGZvciBNb3JnYW4gTGVlIChjYXNlIENQLTIwMjUtUk9XQU4pCgpOb3J0aGZpZWxkIHZhbHVlcyBmb2xsb3cgdGhlIGNvcnJlY3RlZCBzdGF0ZW1lbnQgTkYtMjAyNS0yMjA4LUIgb2YgMjAyNi0wMy0wMi4KQmF5dmlldyBCYW5rIHNhdmluZ3MgKGNsb3NlZCAyMDI1LTA4LTI5KSBpcyBhIHNpeHRoIHNvdXJjZTsgaXRzIDEwOTktSU5UIGlzIGV4cGVjdGVkIG9uIDIwMjYtMDMtMTAuIEludGVyZXN0IGlzIGEgc3VidG90YWwgdW50aWwgdGhlbi4KQm94IDFiIGlzIHBhcnQgb2YgMWEgYW5kIGlzIGxpc3RlZCBzZXBhcmF0ZWx5LiBSb3dhbiBoYXMgbm90IGZpbGVkIGEgcmV0dXJuOyBmaWxpbmcgaXMgTW9yZ2FuJ3Mgc3RlcC4K"
+    }
+   },
+   "portal": {
+    "account_id": "cpa-portal-rowan",
+    "owner_person_id": "person-rowan",
+    "firm": {
+     "firm_id": "firm-lee",
+     "name": "Morgan Lee Tax Advisory",
+     "time_zone": "America/Los_Angeles",
+     "accepted_types": [
+      "application/pdf",
+      "text/plain",
+      "text/csv",
+      "application/json"
+     ],
+     "max_file_bytes": 262144,
+     "max_case_bytes": 1048576
+    },
+    "cases": [
+     {
+      "case_id": "CP-2025-ROWAN",
+      "title": "2025 individual return: supporting records",
+      "status": "open",
+      "access": "upload",
+      "opened_at": "2026-01-20T10:00:00-08:00",
+      "cutoff": null,
+      "late_submission_policy": "accept_for_review"
+     },
+     {
+      "case_id": "CP-2024-ROWAN",
+      "title": "2024 individual return: supporting records",
+      "status": "closed",
+      "access": "view",
+      "opened_at": "2025-01-21T10:00:00-08:00",
+      "cutoff": null,
+      "late_submission_policy": "reject"
+     }
+    ],
+    "submissions": [
+     {
+      "submission_id": "sb-0001",
+      "case_id": "CP-2024-ROWAN",
+      "request_ids": [],
+      "submitted_at": "2025-03-07T16:00:00-08:00",
+      "actor": "client",
+      "standing": "on_time",
+      "replaces": [],
+      "superseded_by": null,
+      "withdrawn_at": null,
+      "note": "2024 packet index.",
+      "files": [
+       {
+        "file_id": "sb-0001-f1",
+        "filename": "2024-packet-index.txt",
+        "mime_type": "text/plain",
+        "size": 131,
+        "sha256": "1fc9d73c4dd37c439b7ce260cc304def63aa1e8059ca7a017721074395dc1b6b",
+        "base64": "U1lOVEhFVElDIEJFTkNITUFSSyBOT1QgRk9SIEZJTElORwoyMDI0IHBhY2tldCBpbmRleCBmb3IgUm93YW46IEF0bGFzIFctMiwgQ2VkYXIgMTA5OS1JTlQsIE5vcnRoZmllbGQgMjAyNCBjb25zb2xpZGF0ZWQgc3RhdGVtZW50Lgo="
+       }
+      ]
+     }
+    ],
+    "receipts": [
+     {
+      "receipt_id": "rc-0001",
+      "submission_id": "sb-0001",
+      "case_id": "CP-2024-ROWAN",
+      "at": "2025-03-07T16:00:00-08:00",
+      "kind": "submitted",
+      "standing": "on_time",
+      "files": [
+       {
+        "file_id": "sb-0001-f1",
+        "filename": "2024-packet-index.txt",
+        "mime_type": "text/plain",
+        "size": 131,
+        "sha256": "1fc9d73c4dd37c439b7ce260cc304def63aa1e8059ca7a017721074395dc1b6b"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "S5",
+   "start": "2026-03-10T10:00:00-07:00",
+   "end": "2026-03-10T10:00:00-07:00",
+   "files": {
+    "data": {
+     "account_id": "files-rowan",
+     "owner_person_id": "person-rowan",
+     "files": [
+      {
+       "id": "folder-taxes",
+       "account_id": "files-rowan",
+       "created_at": "2025-02-20T09:00:00-08:00",
+       "updated_at": "2025-02-20T09:00:00-08:00",
+       "history": [
+        {
+         "at": "2025-02-20T09:00:00-08:00",
+         "action": "seeded"
+        }
+       ],
+       "name": "Taxes",
+       "parent_id": null,
+       "kind": "folder",
+       "trashed": false,
+       "versions": []
+      },
+      {
+       "id": "folder-2024",
+       "account_id": "files-rowan",
+       "created_at": "2025-02-20T09:00:00-08:00",
+       "updated_at": "2025-02-20T09:00:00-08:00",
+       "history": [
+        {
+         "at": "2025-02-20T09:00:00-08:00",
+         "action": "seeded"
+        }
+       ],
+       "name": "2024 reference",
+       "parent_id": "folder-taxes",
+       "kind": "folder",
+       "trashed": false,
+       "versions": []
+      },
+      {
+       "id": "folder-2025",
+       "account_id": "files-rowan",
+       "created_at": "2026-01-20T11:00:00-08:00",
+       "updated_at": "2026-01-20T11:00:00-08:00",
+       "history": [
+        {
+         "at": "2026-01-20T11:00:00-08:00",
+         "action": "seeded"
+        }
+       ],
+       "name": "2025 packet",
+       "parent_id": "folder-taxes",
+       "kind": "folder",
+       "trashed": false,
+       "versions": []
+      },
+      {
+       "id": "file-nf-2024",
+       "account_id": "files-rowan",
+       "created_at": "2025-02-20T09:05:00-08:00",
+       "updated_at": "2025-02-20T09:05:00-08:00",
+       "history": [
+        {
+         "at": "2025-02-20T09:05:00-08:00",
+         "action": "seeded"
+        }
+       ],
+       "name": "northfield-1099-2024.pdf",
+       "parent_id": "folder-2024",
+       "kind": "file",
+       "trashed": false,
+       "versions": [
+        {
+         "number": 1,
+         "asset_id": "asset-file-nf-2024-v1",
+         "at": "2025-02-20T09:05:00-08:00",
+         "source": "Northfield Brokerage, issued 2025-02-14"
+        }
+       ]
+      },
+      {
+       "id": "file-organizer-2024",
+       "account_id": "files-rowan",
+       "created_at": "2025-03-03T12:00:00-08:00",
+       "updated_at": "2025-03-03T12:00:00-08:00",
+       "history": [
+        {
+         "at": "2025-03-03T12:00:00-08:00",
+         "action": "seeded"
+        }
+       ],
+       "name": "tax-organizer-2024.pdf",
+       "parent_id": "folder-2024",
+       "kind": "file",
+       "trashed": false,
+       "versions": [
+        {
+         "number": 1,
+         "asset_id": "asset-file-organizer-2024-v1",
+         "at": "2025-03-03T12:00:00-08:00",
+         "source": "Morgan Lee Tax Advisory, sent 2025-03-03"
+        }
+       ]
+      },
+      {
+       "id": "file-1",
+       "account_id": "files-rowan",
+       "created_at": "2026-02-03T09:00:00-08:00",
+       "updated_at": "2026-02-03T09:00:00-08:00",
+       "history": [
+        {
+         "at": "2026-02-03T09:00:00-08:00",
+         "action": "created"
+        },
+        {
+         "at": "2026-02-03T09:00:00-08:00",
+         "action": "version_added"
+        }
+       ],
+       "name": "inventory.md",
+       "parent_id": "folder-2025",
+       "kind": "file",
+       "trashed": false,
+       "versions": [
+        {
+         "number": 1,
+         "asset_id": "att-e659881e3d8f91eb31481d43dd35c9ecd36b8ae2",
+         "at": "2026-02-03T09:00:00-08:00",
+         "source": "agent"
+        }
+       ]
+      },
+      {
+       "id": "file-2",
+       "account_id": "files-rowan",
+       "created_at": "2026-02-18T10:00:00-08:00",
+       "updated_at": "2026-03-10T10:00:00-07:00",
+       "history": [
+        {
+         "at": "2026-02-18T10:00:00-08:00",
+         "action": "created"
+        },
+        {
+         "at": "2026-02-18T10:00:00-08:00",
+         "action": "version_added"
+        },
+        {
+         "at": "2026-03-02T09:30:00-08:00",
+         "action": "version_added"
+        },
+        {
+         "at": "2026-03-06T18:00:00-08:00",
+         "action": "version_added"
+        },
+        {
+         "at": "2026-03-10T10:00:00-07:00",
+         "action": "version_added"
+        }
+       ],
+       "name": "manifest.md",
+       "parent_id": "folder-2025",
+       "kind": "file",
+       "trashed": false,
+       "versions": [
+        {
+         "number": 1,
+         "asset_id": "att-9538531e6891fadec9bf859ed9f9b34789b4d4aa",
+         "at": "2026-02-18T10:00:00-08:00",
+         "source": "agent"
+        },
+        {
+         "number": 2,
+         "asset_id": "att-f2eee1ba695974b814a2ea18269172ffa4d91032",
+         "at": "2026-03-02T09:30:00-08:00",
+         "source": "agent"
+        },
+        {
+         "number": 3,
+         "asset_id": "att-594012e71f70abefa1bcae7680dee5fb4a216c33",
+         "at": "2026-03-06T18:00:00-08:00",
+         "source": "agent"
+        },
+        {
+         "number": 4,
+         "asset_id": "att-aea54060b179039e6db166fc0fd22f7399b9cfc1",
+         "at": "2026-03-10T10:00:00-07:00",
+         "source": "agent"
+        }
+       ]
+      },
+      {
+       "id": "file-3",
+       "account_id": "files-rowan",
+       "created_at": "2026-02-18T10:00:00-08:00",
+       "updated_at": "2026-03-10T10:00:00-07:00",
+       "history": [
+        {
+         "at": "2026-02-18T10:00:00-08:00",
+         "action": "created"
+        },
+        {
+         "at": "2026-02-18T10:00:00-08:00",
+         "action": "version_added"
+        },
+        {
+         "at": "2026-03-02T09:30:00-08:00",
+         "action": "version_added"
+        },
+        {
+         "at": "2026-03-06T18:00:00-08:00",
+         "action": "version_added"
+        },
+        {
+         "at": "2026-03-10T10:00:00-07:00",
+         "action": "version_added"
+        }
+       ],
+       "name": "summary.md",
+       "parent_id": "folder-2025",
+       "kind": "file",
+       "trashed": false,
+       "versions": [
+        {
+         "number": 1,
+         "asset_id": "att-31d893fa284b0ee6a3b78b0e6d22033d6f1f47e2",
+         "at": "2026-02-18T10:00:00-08:00",
+         "source": "agent"
+        },
+        {
+         "number": 2,
+         "asset_id": "att-c7883527a49be3d7916e4ce174cf1e3e247f0dbf",
+         "at": "2026-03-02T09:30:00-08:00",
+         "source": "agent"
+        },
+        {
+         "number": 3,
+         "asset_id": "att-7c458254dc24d8559827459fb647dbb1babab88f",
+         "at": "2026-03-06T18:00:00-08:00",
+         "source": "agent"
+        },
+        {
+         "number": 4,
+         "asset_id": "att-eef36c101fdf684af4d33669782bb2024d26ceff",
+         "at": "2026-03-10T10:00:00-07:00",
+         "source": "agent"
+        }
+       ]
+      },
+      {
+       "id": "file-4",
+       "account_id": "files-rowan",
+       "created_at": "2026-02-18T10:00:00-08:00",
+       "updated_at": "2026-03-10T10:00:00-07:00",
+       "history": [
+        {
+         "at": "2026-02-18T10:00:00-08:00",
+         "action": "created"
+        },
+        {
+         "at": "2026-02-18T10:00:00-08:00",
+         "action": "version_added"
+        },
+        {
+         "at": "2026-03-02T09:30:00-08:00",
+         "action": "version_added"
+        },
+        {
+         "at": "2026-03-06T18:00:00-08:00",
+         "action": "version_added"
+        },
+        {
+         "at": "2026-03-10T10:00:00-07:00",
+         "action": "version_added"
+        }
+       ],
+       "name": "handoff-note.md",
+       "parent_id": "folder-2025",
+       "kind": "file",
+       "trashed": false,
+       "versions": [
+        {
+         "number": 1,
+         "asset_id": "att-304ab68e6766091f143bfbd1f9ca98e92260a9d7",
+         "at": "2026-02-18T10:00:00-08:00",
+         "source": "agent"
+        },
+        {
+         "number": 2,
+         "asset_id": "att-053e85e0656ee9c5994ada84ca037090d420e1d3",
+         "at": "2026-03-02T09:30:00-08:00",
+         "source": "agent"
+        },
+        {
+         "number": 3,
+         "asset_id": "att-d2cdddf31486ea1cdb6ae4bc61cd2c08fca9b950",
+         "at": "2026-03-06T18:00:00-08:00",
+         "source": "agent"
+        },
+        {
+         "number": 4,
+         "asset_id": "att-74a655ff7a9394988bb28a8361eb732c267c2370",
+         "at": "2026-03-10T10:00:00-07:00",
+         "source": "agent"
+        }
+       ]
+      }
+     ]
+    },
+    "blobs": {
+     "asset-file-nf-2024-v1": "JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvQ29udGVudHMgNCAwIFIgL1Jlc291cmNlcyA8PCAvRm9udCA8PCAvRjEgNSAwIFIgPj4gPj4gPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0xlbmd0aCA1MTcgPj4Kc3RyZWFtCkJUCi9GMSAxMSBUZgoxMyBUTAo1NCA3NjAgVGQKKFNZTlRIRVRJQyBCRU5DSE1BUksgTk9UIEZPUiBGSUxJTkcpIFRqClQqIChOb3J0aGZpZWxkIEJyb2tlcmFnZSAyMDI0IENvbnNvbGlkYXRlZCBGb3JtIDEwOTkpIFRqClQqICgpIFRqClQqIChBY2NvdW50IGhvbGRlcjogUm93YW4gRWxsaXMpIFRqClQqIChBY2NvdW50OiBpbmRpdmlkdWFsIGJyb2tlcmFnZSwgbGFzdCBmb3VyIDIyMDgpIFRqClQqIChJc3N1ZWQ6IDIwMjUtMDItMTQpIFRqClQqIChGb3JtIDEwOTktRElWKSBUagpUKiAoICBCb3ggMWEgIFRvdGFsIG9yZGluYXJ5IGRpdmlkZW5kczogNDEwLjAwKSBUagpUKiAoICBCb3ggMWIgIFF1YWxpZmllZCBkaXZpZGVuZHM6IDM1MC4wMCkgVGoKVCogKEZvcm0gMTA5OS1CKSBUagpUKiAoICBUb3RhbCBwcm9jZWVkczogNiw1MDAuMDApIFRqClQqICggIFRvdGFsIGNvc3QgYmFzaXM6IDYsMTAwLjAwKSBUagpUKiAoKSBUagpUKiAoU1lOVEhFVElDIEJFTkNITUFSSyBOT1QgRk9SIEZJTElORykgVGoKRVQKZW5kc3RyZWFtCmVuZG9iago1IDAgb2JqCjw8IC9UeXBlIC9Gb250IC9TdWJ0eXBlIC9UeXBlMSAvQmFzZUZvbnQgL0hlbHZldGljYSA+PgplbmRvYmoKNiAwIG9iago8PCAvVGl0bGUgKE5vcnRoZmllbGQgQnJva2VyYWdlIDIwMjQgQ29uc29saWRhdGVkIEZvcm0gMTA5OSkgL1Byb2R1Y2VyIChQQUxFIHN5bnRoZXRpYyBmaXh0dXJlKSA+PgplbmRvYmoKeHJlZgowIDcKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDE1IDAwMDAwIG4gCjAwMDAwMDAwNjQgMDAwMDAgbiAKMDAwMDAwMDEyMSAwMDAwMCBuIAowMDAwMDAwMjQ3IDAwMDAwIG4gCjAwMDAwMDA4MTUgMDAwMDAgbiAKMDAwMDAwMDg4NSAwMDAwMCBuIAp0cmFpbGVyCjw8IC9TaXplIDcgL1Jvb3QgMSAwIFIgL0luZm8gNiAwIFIgPj4Kc3RhcnR4cmVmCjk5OQolJUVPRgo=",
+     "asset-file-organizer-2024-v1": "JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvQ29udGVudHMgNCAwIFIgL1Jlc291cmNlcyA8PCAvRm9udCA8PCAvRjEgNSAwIFIgPj4gPj4gPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0xlbmd0aCA0MzUgPj4Kc3RyZWFtCkJUCi9GMSAxMSBUZgoxMyBUTAo1NCA3NjAgVGQKKFNZTlRIRVRJQyBCRU5DSE1BUksgTk9UIEZPUiBGSUxJTkcpIFRqClQqIChNb3JnYW4gTGVlIFRheCBBZHZpc29yeSAtIDIwMjQgVGF4IE9yZ2FuaXplciBmb3IgUm93YW4gRWxsaXMpIFRqClQqICgpIFRqClQqIChQcmVwYXJlZCBmb3IgdGhlIDIwMjQgdGF4IHllYXIuIFNlbnQgMjAyNS0wMy0wMy4pIFRqClQqIChFbXBsb3llcjogQXRsYXMgTGFicywgSW5jLikgVGoKVCogKEFjY291bnRzOiBOb3J0aGZpZWxkIEJyb2tlcmFnZSwgQ2VkYXIgQmFuaywgQmF5dmlldyBCYW5rIHNhdmluZ3MuKSBUagpUKiAoUGxlYXNlIHJldHVybiB0aGUgY29tcGxldGVkIG9yZ2FuaXplciB3aXRoIHlvdXIgMjAyNCBmb3Jtcy4pIFRqClQqICgpIFRqClQqIChTWU5USEVUSUMgQkVOQ0hNQVJLIE5PVCBGT1IgRklMSU5HKSBUagpFVAplbmRzdHJlYW0KZW5kb2JqCjUgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNlRm9udCAvSGVsdmV0aWNhID4+CmVuZG9iago2IDAgb2JqCjw8IC9UaXRsZSAoTW9yZ2FuIExlZSBUYXggQWR2aXNvcnkgLSAyMDI0IFRheCBPcmdhbml6ZXIgZm9yIFJvd2FuIEVsbGlzKSAvUHJvZHVjZXIgKFBBTEUgc3ludGhldGljIGZpeHR1cmUpID4+CmVuZG9iagp4cmVmCjAgNwowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAwMTUgMDAwMDAgbiAKMDAwMDAwMDA2NCAwMDAwMCBuIAowMDAwMDAwMTIxIDAwMDAwIG4gCjAwMDAwMDAyNDcgMDAwMDAgbiAKMDAwMDAwMDczMyAwMDAwMCBuIAowMDAwMDAwODAzIDAwMDAwIG4gCnRyYWlsZXIKPDwgL1NpemUgNyAvUm9vdCAxIDAgUiAvSW5mbyA2IDAgUiA+PgpzdGFydHhyZWYKOTI5CiUlRU9GCg==",
+     "att-e659881e3d8f91eb31481d43dd35c9ecd36b8ae2": "IyBTb3VyY2UgaW52ZW50b3J5ICgyMDI1IHRheCBwYWNrZXQpCgotIEF0bGFzIExhYnMgVy0yOiBwcmVzZW50IChlbWFpbCBvZiAyMDI2LTAxLTI3KQotIEJyb29rIFN5c3RlbXMgVy0yOiBtaXNzaW5nCi0gTm9ydGhmaWVsZCBCcm9rZXJhZ2UgMTA5OTogbWlzc2luZyAoZXhwZWN0ZWQgYnkgMjAyNi0wMi0xNCkKLSBSaWRnZXdheSBJbnZlc3QgMTA5OTogbWlzc2luZwotIENlZGFyIEJhbmsgMTA5OS1JTlQ6IHByZXNlbnQgKGVtYWlsIG9mIDIwMjYtMDEtMjkpCgpMYXN0IHllYXIncyBzdGF0ZW1lbnQgYW5kIG9yZ2FuaXplciBpbiBUYXhlcy8yMDI0IHJlZmVyZW5jZSBhcmUgcmVmZXJlbmNlIG9ubHkgYW5kIHN0YXkgb3V0IG9mIHRoZSBwYWNrZXQuCg==",
+     "att-9538531e6891fadec9bf859ed9f9b34789b4d4aa": "IyBQYWNrZXQgbWFuaWZlc3QKCi0gQXRsYXMgTGFicyBXLTIgKGF0bGFzLXcyLTIwMjUucGRmKTogcHJlc2VudAotIEJyb29rIFN5c3RlbXMgVy0yIChicm9vay13Mi0yMDI1LnBkZik6IHByZXNlbnQKLSBOb3J0aGZpZWxkIEJyb2tlcmFnZSAxMDk5OiBwcmVzZW50LCBzdGF0ZW1lbnQgTkYtMjAyNS0yMjA4LUEgKG5vcnRoZmllbGQtMTA5OS0yMDI1LnBkZikKLSBUaGUgZG93bmxvYWRlZCBjb3B5IG9mIE5GLTIwMjUtMjIwOC1BIGlzIGEgZHVwbGljYXRlIGFuZCBpcyBub3QgdXNlZAotIFJpZGdld2F5IEludmVzdCB0YXggc3RhdGVtZW50IChyaWRnZXdheS0xMDk5LTIwMjUucGRmKTogcHJlc2VudDsgdGhlIHN1cHBsZW1lbnQgcmVwZWF0cyB0aGUgc2FtZSBzYWxlcyBhbmQgaXMgZGV0YWlsIG9ubHkKLSBDZWRhciBCYW5rIDEwOTktSU5UIChjZWRhci0xMDk5LWludC0yMDI1LnBkZik6IHByZXNlbnQK",
+     "att-31d893fa284b0ee6a3b78b0e6d22033d6f1f47e2": "IyBGaWVsZCBzdW1tYXJ5ICgyMDI1KQoKIyMgQnkgc291cmNlCi0gQXRsYXMgTGFicyBXLTI6IHdhZ2VzIDQwLDAwMC4wMDsgd2l0aGhlbGQgNCw1MDAuMDAKLSBCcm9vayBTeXN0ZW1zIFctMjogd2FnZXMgNjAsMDAwLjAwOyB3aXRoaGVsZCA3LDUwMC4wMAotIENlZGFyIEJhbmsgMTA5OS1JTlQ6IGludGVyZXN0IDMwMC4wMAotIE5vcnRoZmllbGQgMTA5OS1ESVYvQjogMWEgNDYwLjAwOyAxYiA0MDAuMDA7IHByb2NlZWRzIDEyLDAwMC4wMDsgYmFzaXMgMTAsOTAwLjAwCi0gUmlkZ2V3YXkgMTA5OS1ESVYvQjogMWEgMzAwLjAwOyAxYiAyMDAuMDA7IHByb2NlZWRzIDgsMDAwLjAwOyBiYXNpcyA3LDYwMC4wMAoKIyMgVG90YWxzCldhZ2VzOiAxMDAsMDAwLjAwCkZlZGVyYWwgaW5jb21lIHRheCB3aXRoaGVsZDogMTIsMDAwLjAwCkludGVyZXN0OiAzMDAuMDAKRGl2aWRlbmRzIDFhICh0b3RhbCBvcmRpbmFyeSk6IDc2MC4wMApEaXZpZGVuZHMgMWIgKHF1YWxpZmllZCwgcGFydCBvZiAxYSk6IDYwMC4wMAoxMDk5LUIgcHJvY2VlZHM6IDIwLDAwMC4wMAoxMDk5LUIgcmVwb3J0ZWQgYmFzaXM6IDE4LDUwMC4wMAo=",
+     "att-304ab68e6766091f143bfbd1f9ca98e92260a9d7": "SGFuZG9mZiBub3RlIGZvciBNb3JnYW4gTGVlIChjYXNlIENQLTIwMjUtUk9XQU4pCgpBbGwgZml2ZSBpbnRha2Ugc291cmNlcyBhcmUgaW4uIE5vcnRoZmllbGQgdmFsdWVzIGZvbGxvdyBzdGF0ZW1lbnQgTkYtMjAyNS0yMjA4LUEuCgpCb3ggMWIgaXMgcGFydCBvZiAxYSBhbmQgaXMgbGlzdGVkIHNlcGFyYXRlbHkuIFJvd2FuIGhhcyBub3QgZmlsZWQgYSByZXR1cm47IGZpbGluZyBpcyBNb3JnYW4ncyBzdGVwLgo=",
+     "att-f2eee1ba695974b814a2ea18269172ffa4d91032": "IyBQYWNrZXQgbWFuaWZlc3QKCi0gQXRsYXMgTGFicyBXLTIgKGF0bGFzLXcyLTIwMjUucGRmKTogcHJlc2VudAotIEJyb29rIFN5c3RlbXMgVy0yIChicm9vay13Mi0yMDI1LnBkZik6IHByZXNlbnQKLSBOb3J0aGZpZWxkIEJyb2tlcmFnZSAxMDk5OiBwcmVzZW50LCBzdGF0ZW1lbnQgTkYtMjAyNS0yMjA4LUIgKENPUlJFQ1RFRCwgbm9ydGhmaWVsZC0xMDk5LTIwMjUtY29ycmVjdGVkLnBkZikKLSBTdGF0ZW1lbnQgTkYtMjAyNS0yMjA4LUE6IHN1cGVyc2VkZWQgYnkgdGhlIGNvcnJlY3Rpb24gb2YgMjAyNi0wMy0wMjsgdGhlIGRvd25sb2FkZWQgZHVwbGljYXRlIGFuZCB0aGUgcmUtZm9yd2FyZGVkIGNvcHkgYXJlIG5vdCB1c2VkCi0gUmlkZ2V3YXkgSW52ZXN0IHRheCBzdGF0ZW1lbnQgKHJpZGdld2F5LTEwOTktMjAyNS5wZGYpOiBwcmVzZW50OyB0aGUgc3VwcGxlbWVudCByZXBlYXRzIHRoZSBzYW1lIHNhbGVzIGFuZCBpcyBkZXRhaWwgb25seQotIENlZGFyIEJhbmsgMTA5OS1JTlQgKGNlZGFyLTEwOTktaW50LTIwMjUucGRmKTogcHJlc2VudAo=",
+     "att-c7883527a49be3d7916e4ce174cf1e3e247f0dbf": "IyBGaWVsZCBzdW1tYXJ5ICgyMDI1KQoKIyMgQnkgc291cmNlCi0gQXRsYXMgTGFicyBXLTI6IHdhZ2VzIDQwLDAwMC4wMDsgd2l0aGhlbGQgNCw1MDAuMDAKLSBCcm9vayBTeXN0ZW1zIFctMjogd2FnZXMgNjAsMDAwLjAwOyB3aXRoaGVsZCA3LDUwMC4wMAotIENlZGFyIEJhbmsgMTA5OS1JTlQ6IGludGVyZXN0IDMwMC4wMAotIE5vcnRoZmllbGQgMTA5OS1ESVYvQjogMWEgNTAwLjAwOyAxYiA0MDAuMDA7IHByb2NlZWRzIDEyLDAwMC4wMDsgYmFzaXMgMTEsNzAwLjAwCi0gUmlkZ2V3YXkgMTA5OS1ESVYvQjogMWEgMzAwLjAwOyAxYiAyMDAuMDA7IHByb2NlZWRzIDgsMDAwLjAwOyBiYXNpcyA3LDYwMC4wMAoKIyMgVG90YWxzCldhZ2VzOiAxMDAsMDAwLjAwCkZlZGVyYWwgaW5jb21lIHRheCB3aXRoaGVsZDogMTIsMDAwLjAwCkludGVyZXN0OiAzMDAuMDAKRGl2aWRlbmRzIDFhICh0b3RhbCBvcmRpbmFyeSk6IDgwMC4wMApEaXZpZGVuZHMgMWIgKHF1YWxpZmllZCwgcGFydCBvZiAxYSk6IDYwMC4wMAoxMDk5LUIgcHJvY2VlZHM6IDIwLDAwMC4wMAoxMDk5LUIgcmVwb3J0ZWQgYmFzaXM6IDE5LDMwMC4wMAo=",
+     "att-053e85e0656ee9c5994ada84ca037090d420e1d3": "SGFuZG9mZiBub3RlIGZvciBNb3JnYW4gTGVlIChjYXNlIENQLTIwMjUtUk9XQU4pCgpOb3J0aGZpZWxkIHZhbHVlcyBmb2xsb3cgdGhlIGNvcnJlY3RlZCBzdGF0ZW1lbnQgTkYtMjAyNS0yMjA4LUIgb2YgMjAyNi0wMy0wMi4KCkJveCAxYiBpcyBwYXJ0IG9mIDFhIGFuZCBpcyBsaXN0ZWQgc2VwYXJhdGVseS4gUm93YW4gaGFzIG5vdCBmaWxlZCBhIHJldHVybjsgZmlsaW5nIGlzIE1vcmdhbidzIHN0ZXAuCg==",
+     "att-594012e71f70abefa1bcae7680dee5fb4a216c33": "IyBQYWNrZXQgbWFuaWZlc3QKCi0gQXRsYXMgTGFicyBXLTIgKGF0bGFzLXcyLTIwMjUucGRmKTogcHJlc2VudAotIEJyb29rIFN5c3RlbXMgVy0yIChicm9vay13Mi0yMDI1LnBkZik6IHByZXNlbnQKLSBOb3J0aGZpZWxkIEJyb2tlcmFnZSAxMDk5OiBwcmVzZW50LCBzdGF0ZW1lbnQgTkYtMjAyNS0yMjA4LUIgKENPUlJFQ1RFRCwgbm9ydGhmaWVsZC0xMDk5LTIwMjUtY29ycmVjdGVkLnBkZikKLSBTdGF0ZW1lbnQgTkYtMjAyNS0yMjA4LUE6IHN1cGVyc2VkZWQgYnkgdGhlIGNvcnJlY3Rpb24gb2YgMjAyNi0wMy0wMjsgdGhlIGRvd25sb2FkZWQgZHVwbGljYXRlIGFuZCB0aGUgcmUtZm9yd2FyZGVkIGNvcHkgYXJlIG5vdCB1c2VkCi0gUmlkZ2V3YXkgSW52ZXN0IHRheCBzdGF0ZW1lbnQgKHJpZGdld2F5LTEwOTktMjAyNS5wZGYpOiBwcmVzZW50OyB0aGUgc3VwcGxlbWVudCByZXBlYXRzIHRoZSBzYW1lIHNhbGVzIGFuZCBpcyBkZXRhaWwgb25seQotIENlZGFyIEJhbmsgMTA5OS1JTlQgKGNlZGFyLTEwOTktaW50LTIwMjUucGRmKTogcHJlc2VudAotIEJheXZpZXcgQmFuayAxMDk5LUlOVDogbWlzc2luZywgYXZhaWxhYmxlIG9uIHRoZSBiYW5rJ3MgZG9jdW1lbnRzIHBhZ2Ugb24gMjAyNi0wMy0xMAo=",
+     "att-7c458254dc24d8559827459fb647dbb1babab88f": "IyBGaWVsZCBzdW1tYXJ5ICgyMDI1KQoKIyMgQnkgc291cmNlCi0gQXRsYXMgTGFicyBXLTI6IHdhZ2VzIDQwLDAwMC4wMDsgd2l0aGhlbGQgNCw1MDAuMDAKLSBCcm9vayBTeXN0ZW1zIFctMjogd2FnZXMgNjAsMDAwLjAwOyB3aXRoaGVsZCA3LDUwMC4wMAotIENlZGFyIEJhbmsgMTA5OS1JTlQ6IGludGVyZXN0IDMwMC4wMAotIE5vcnRoZmllbGQgMTA5OS1ESVYvQjogMWEgNTAwLjAwOyAxYiA0MDAuMDA7IHByb2NlZWRzIDEyLDAwMC4wMDsgYmFzaXMgMTEsNzAwLjAwCi0gUmlkZ2V3YXkgMTA5OS1ESVYvQjogMWEgMzAwLjAwOyAxYiAyMDAuMDA7IHByb2NlZWRzIDgsMDAwLjAwOyBiYXNpcyA3LDYwMC4wMAoKIyMgVG90YWxzCldhZ2VzOiAxMDAsMDAwLjAwCkZlZGVyYWwgaW5jb21lIHRheCB3aXRoaGVsZDogMTIsMDAwLjAwCkludGVyZXN0IChzdWJ0b3RhbDsgQmF5dmlldyBwZW5kaW5nKTogMzAwLjAwCkRpdmlkZW5kcyAxYSAodG90YWwgb3JkaW5hcnkpOiA4MDAuMDAKRGl2aWRlbmRzIDFiIChxdWFsaWZpZWQsIHBhcnQgb2YgMWEpOiA2MDAuMDAKMTA5OS1CIHByb2NlZWRzOiAyMCwwMDAuMDAKMTA5OS1CIHJlcG9ydGVkIGJhc2lzOiAxOSwzMDAuMDAK",
+     "att-d2cdddf31486ea1cdb6ae4bc61cd2c08fca9b950": "SGFuZG9mZiBub3RlIGZvciBNb3JnYW4gTGVlIChjYXNlIENQLTIwMjUtUk9XQU4pCgpOb3J0aGZpZWxkIHZhbHVlcyBmb2xsb3cgdGhlIGNvcnJlY3RlZCBzdGF0ZW1lbnQgTkYtMjAyNS0yMjA4LUIgb2YgMjAyNi0wMy0wMi4KQmF5dmlldyBCYW5rIHNhdmluZ3MgKGNsb3NlZCAyMDI1LTA4LTI5KSBpcyBhIHNpeHRoIHNvdXJjZTsgaXRzIDEwOTktSU5UIGlzIGV4cGVjdGVkIG9uIDIwMjYtMDMtMTAuIEludGVyZXN0IGlzIGEgc3VidG90YWwgdW50aWwgdGhlbi4KQm94IDFiIGlzIHBhcnQgb2YgMWEgYW5kIGlzIGxpc3RlZCBzZXBhcmF0ZWx5LiBSb3dhbiBoYXMgbm90IGZpbGVkIGEgcmV0dXJuOyBmaWxpbmcgaXMgTW9yZ2FuJ3Mgc3RlcC4K",
+     "att-aea54060b179039e6db166fc0fd22f7399b9cfc1": "IyBQYWNrZXQgbWFuaWZlc3QKCi0gQXRsYXMgTGFicyBXLTIgKGF0bGFzLXcyLTIwMjUucGRmKTogcHJlc2VudAotIEJyb29rIFN5c3RlbXMgVy0yIChicm9vay13Mi0yMDI1LnBkZik6IHByZXNlbnQKLSBOb3J0aGZpZWxkIEJyb2tlcmFnZSAxMDk5OiBwcmVzZW50LCBzdGF0ZW1lbnQgTkYtMjAyNS0yMjA4LUIgKENPUlJFQ1RFRCwgbm9ydGhmaWVsZC0xMDk5LTIwMjUtY29ycmVjdGVkLnBkZikKLSBTdGF0ZW1lbnQgTkYtMjAyNS0yMjA4LUE6IHN1cGVyc2VkZWQgYnkgdGhlIGNvcnJlY3Rpb24gb2YgMjAyNi0wMy0wMjsgdGhlIGRvd25sb2FkZWQgZHVwbGljYXRlIGFuZCB0aGUgcmUtZm9yd2FyZGVkIGNvcHkgYXJlIG5vdCB1c2VkCi0gUmlkZ2V3YXkgSW52ZXN0IHRheCBzdGF0ZW1lbnQgKHJpZGdld2F5LTEwOTktMjAyNS5wZGYpOiBwcmVzZW50OyB0aGUgc3VwcGxlbWVudCByZXBlYXRzIHRoZSBzYW1lIHNhbGVzIGFuZCBpcyBkZXRhaWwgb25seQotIENlZGFyIEJhbmsgMTA5OS1JTlQgKGNlZGFyLTEwOTktaW50LTIwMjUucGRmKTogcHJlc2VudAotIEJheXZpZXcgQmFuayAxMDk5LUlOVCAoYmF5dmlldy0xMDk5LWludC0yMDI1LnBkZik6IHByZXNlbnQK",
+     "att-eef36c101fdf684af4d33669782bb2024d26ceff": "IyBGaWVsZCBzdW1tYXJ5ICgyMDI1KQoKIyMgQnkgc291cmNlCi0gQXRsYXMgTGFicyBXLTI6IHdhZ2VzIDQwLDAwMC4wMDsgd2l0aGhlbGQgNCw1MDAuMDAKLSBCcm9vayBTeXN0ZW1zIFctMjogd2FnZXMgNjAsMDAwLjAwOyB3aXRoaGVsZCA3LDUwMC4wMAotIENlZGFyIEJhbmsgMTA5OS1JTlQ6IGludGVyZXN0IDMwMC4wMAotIEJheXZpZXcgQmFuayAxMDk5LUlOVDogaW50ZXJlc3QgNzUuMDAKLSBOb3J0aGZpZWxkIDEwOTktRElWL0I6IDFhIDUwMC4wMDsgMWIgNDAwLjAwOyBwcm9jZWVkcyAxMiwwMDAuMDA7IGJhc2lzIDExLDcwMC4wMAotIFJpZGdld2F5IDEwOTktRElWL0I6IDFhIDMwMC4wMDsgMWIgMjAwLjAwOyBwcm9jZWVkcyA4LDAwMC4wMDsgYmFzaXMgNyw2MDAuMDAKCiMjIFRvdGFscwpXYWdlczogMTAwLDAwMC4wMApGZWRlcmFsIGluY29tZSB0YXggd2l0aGhlbGQ6IDEyLDAwMC4wMApJbnRlcmVzdDogMzc1LjAwCkRpdmlkZW5kcyAxYSAodG90YWwgb3JkaW5hcnkpOiA4MDAuMDAKRGl2aWRlbmRzIDFiIChxdWFsaWZpZWQsIHBhcnQgb2YgMWEpOiA2MDAuMDAKMTA5OS1CIHByb2NlZWRzOiAyMCwwMDAuMDAKMTA5OS1CIHJlcG9ydGVkIGJhc2lzOiAxOSwzMDAuMDAK",
+     "att-74a655ff7a9394988bb28a8361eb732c267c2370": "SGFuZG9mZiBub3RlIGZvciBNb3JnYW4gTGVlIChjYXNlIENQLTIwMjUtUk9XQU4pCgpOb3J0aGZpZWxkIHZhbHVlcyBmb2xsb3cgdGhlIGNvcnJlY3RlZCBzdGF0ZW1lbnQgTkYtMjAyNS0yMjA4LUIgb2YgMjAyNi0wMy0wMi4KQmF5dmlldyBCYW5rIHNhdmluZ3MgKGNsb3NlZCAyMDI1LTA4LTI5KSBpcyBpbmNsdWRlZCB3aXRoIGl0cyAxMDk5LUlOVC4KQm94IDFiIGlzIHBhcnQgb2YgMWEgYW5kIGlzIGxpc3RlZCBzZXBhcmF0ZWx5LiBSb3dhbiBoYXMgbm90IGZpbGVkIGEgcmV0dXJuOyBmaWxpbmcgaXMgTW9yZ2FuJ3Mgc3RlcC4K"
+    }
+   },
+   "portal": {
+    "account_id": "cpa-portal-rowan",
+    "owner_person_id": "person-rowan",
+    "firm": {
+     "firm_id": "firm-lee",
+     "name": "Morgan Lee Tax Advisory",
+     "time_zone": "America/Los_Angeles",
+     "accepted_types": [
+      "application/pdf",
+      "text/plain",
+      "text/csv",
+      "application/json"
+     ],
+     "max_file_bytes": 262144,
+     "max_case_bytes": 1048576
+    },
+    "cases": [
+     {
+      "case_id": "CP-2025-ROWAN",
+      "title": "2025 individual return: supporting records",
+      "status": "open",
+      "access": "upload",
+      "opened_at": "2026-01-20T10:00:00-08:00",
+      "cutoff": null,
+      "late_submission_policy": "accept_for_review"
+     },
+     {
+      "case_id": "CP-2024-ROWAN",
+      "title": "2024 individual return: supporting records",
+      "status": "closed",
+      "access": "view",
+      "opened_at": "2025-01-21T10:00:00-08:00",
+      "cutoff": null,
+      "late_submission_policy": "reject"
+     }
+    ],
+    "submissions": [
+     {
+      "submission_id": "sb-0001",
+      "case_id": "CP-2024-ROWAN",
+      "request_ids": [],
+      "submitted_at": "2025-03-07T16:00:00-08:00",
+      "actor": "client",
+      "standing": "on_time",
+      "replaces": [],
+      "superseded_by": null,
+      "withdrawn_at": null,
+      "note": "2024 packet index.",
+      "files": [
+       {
+        "file_id": "sb-0001-f1",
+        "filename": "2024-packet-index.txt",
+        "mime_type": "text/plain",
+        "size": 131,
+        "sha256": "1fc9d73c4dd37c439b7ce260cc304def63aa1e8059ca7a017721074395dc1b6b",
+        "base64": "U1lOVEhFVElDIEJFTkNITUFSSyBOT1QgRk9SIEZJTElORwoyMDI0IHBhY2tldCBpbmRleCBmb3IgUm93YW46IEF0bGFzIFctMiwgQ2VkYXIgMTA5OS1JTlQsIE5vcnRoZmllbGQgMjAyNCBjb25zb2xpZGF0ZWQgc3RhdGVtZW50Lgo="
+       }
+      ]
+     },
+     {
+      "submission_id": "sb-0002",
+      "case_id": "CP-2025-ROWAN",
+      "request_ids": [],
+      "submitted_at": "2026-03-10T10:00:00-07:00",
+      "actor": "assistant",
+      "standing": "on_time",
+      "replaces": [],
+      "superseded_by": null,
+      "withdrawn_at": null,
+      "note": "Source documents, 2025",
+      "files": [
+       {
+        "file_id": "sb-0002-f1",
+        "filename": "atlas-w2-2025.pdf",
+        "mime_type": "application/pdf",
+        "size": 1238,
+        "sha256": "eb926768b32a90933b3ae9aeb050dd907ad60f25c6c59ee1fc293dcc75cbc9d9",
+        "base64": "JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvQ29udGVudHMgNCAwIFIgL1Jlc291cmNlcyA8PCAvRm9udCA8PCAvRjEgNSAwIFIgPj4gPj4gPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0xlbmd0aCA1MzMgPj4Kc3RyZWFtCkJUCi9GMSAxMSBUZgoxMyBUTAo1NCA3NjAgVGQKKFNZTlRIRVRJQyBCRU5DSE1BUksgTk9UIEZPUiBGSUxJTkcpIFRqClQqIChGb3JtIFctMiBXYWdlIGFuZCBUYXggU3RhdGVtZW50IDIwMjUgLSBBdGxhcyBMYWJzLCBJbmMuKSBUagpUKiAoKSBUagpUKiAoRW1wbG95ZXI6IEF0bGFzIExhYnMsIEluYy4pIFRqClQqIChFbXBsb3llZTogUm93YW4gRWxsaXMpIFRqClQqIChFbXBsb3llZSBJRDogbGFzdCBmb3VyIDc3MzEpIFRqClQqIChFbXBsb3ltZW50IHBlcmlvZDogSmFudWFyeSAxIHRvIEp1bmUgMTMsIDIwMjUpIFRqClQqIChCb3ggMSAgV2FnZXMsIHRpcHMsIG90aGVyIGNvbXBlbnNhdGlvbjogNDAsMDAwLjAwKSBUagpUKiAoQm94IDIgIEZlZGVyYWwgaW5jb21lIHRheCB3aXRoaGVsZDogNCw1MDAuMDApIFRqClQqIChJc3N1ZWQ6IDIwMjYtMDEtMjcpIFRqClQqIChEb2N1bWVudCByZWZlcmVuY2U6IEFULVcyLTIwMjUtNzczMSkgVGoKVCogKCkgVGoKVCogKFNZTlRIRVRJQyBCRU5DSE1BUksgTk9UIEZPUiBGSUxJTkcpIFRqCkVUCmVuZHN0cmVhbQplbmRvYmoKNSAwIG9iago8PCAvVHlwZSAvRm9udCAvU3VidHlwZSAvVHlwZTEgL0Jhc2VGb250IC9IZWx2ZXRpY2EgPj4KZW5kb2JqCjYgMCBvYmoKPDwgL1RpdGxlIChGb3JtIFctMiBXYWdlIGFuZCBUYXggU3RhdGVtZW50IDIwMjUgLSBBdGxhcyBMYWJzLCBJbmMuKSAvUHJvZHVjZXIgKFBBTEUgc3ludGhldGljIGZpeHR1cmUpID4+CmVuZG9iagp4cmVmCjAgNwowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAwMTUgMDAwMDAgbiAKMDAwMDAwMDA2NCAwMDAwMCBuIAowMDAwMDAwMTIxIDAwMDAwIG4gCjAwMDAwMDAyNDcgMDAwMDAgbiAKMDAwMDAwMDgzMSAwMDAwMCBuIAowMDAwMDAwOTAxIDAwMDAwIG4gCnRyYWlsZXIKPDwgL1NpemUgNyAvUm9vdCAxIDAgUiAvSW5mbyA2IDAgUiA+PgpzdGFydHhyZWYKMTAyMgolJUVPRgo="
+       },
+       {
+        "file_id": "sb-0002-f2",
+        "filename": "brook-w2-2025.pdf",
+        "mime_type": "application/pdf",
+        "size": 1243,
+        "sha256": "cef6d670dc93c140131e4b44b2cbfe550a60c34b18ce208ffbe86363a23c590a",
+        "base64": "JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvQ29udGVudHMgNCAwIFIgL1Jlc291cmNlcyA8PCAvRm9udCA8PCAvRjEgNSAwIFIgPj4gPj4gPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0xlbmd0aCA1MzcgPj4Kc3RyZWFtCkJUCi9GMSAxMSBUZgoxMyBUTAo1NCA3NjAgVGQKKFNZTlRIRVRJQyBCRU5DSE1BUksgTk9UIEZPUiBGSUxJTkcpIFRqClQqIChGb3JtIFctMiBXYWdlIGFuZCBUYXggU3RhdGVtZW50IDIwMjUgLSBCcm9vayBTeXN0ZW1zIExMQykgVGoKVCogKCkgVGoKVCogKEVtcGxveWVyOiBCcm9vayBTeXN0ZW1zIExMQykgVGoKVCogKEVtcGxveWVlOiBSb3dhbiBFbGxpcykgVGoKVCogKEVtcGxveWVlIElEOiBsYXN0IGZvdXIgNzczMSkgVGoKVCogKEVtcGxveW1lbnQgcGVyaW9kOiBKdW5lIDMwIHRvIERlY2VtYmVyIDMxLCAyMDI1KSBUagpUKiAoQm94IDEgIFdhZ2VzLCB0aXBzLCBvdGhlciBjb21wZW5zYXRpb246IDYwLDAwMC4wMCkgVGoKVCogKEJveCAyICBGZWRlcmFsIGluY29tZSB0YXggd2l0aGhlbGQ6IDcsNTAwLjAwKSBUagpUKiAoSXNzdWVkOiAyMDI2LTAxLTI3KSBUagpUKiAoRG9jdW1lbnQgcmVmZXJlbmNlOiBCUi1XMi0yMDI1LTc3MzEpIFRqClQqICgpIFRqClQqIChTWU5USEVUSUMgQkVOQ0hNQVJLIE5PVCBGT1IgRklMSU5HKSBUagpFVAplbmRzdHJlYW0KZW5kb2JqCjUgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNlRm9udCAvSGVsdmV0aWNhID4+CmVuZG9iago2IDAgb2JqCjw8IC9UaXRsZSAoRm9ybSBXLTIgV2FnZSBhbmQgVGF4IFN0YXRlbWVudCAyMDI1IC0gQnJvb2sgU3lzdGVtcyBMTEMpIC9Qcm9kdWNlciAoUEFMRSBzeW50aGV0aWMgZml4dHVyZSkgPj4KZW5kb2JqCnhyZWYKMCA3CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDAxNSAwMDAwMCBuIAowMDAwMDAwMDY0IDAwMDAwIG4gCjAwMDAwMDAxMjEgMDAwMDAgbiAKMDAwMDAwMDI0NyAwMDAwMCBuIAowMDAwMDAwODM1IDAwMDAwIG4gCjAwMDAwMDA5MDUgMDAwMDAgbiAKdHJhaWxlcgo8PCAvU2l6ZSA3IC9Sb290IDEgMCBSIC9JbmZvIDYgMCBSID4+CnN0YXJ0eHJlZgoxMDI3CiUlRU9GCg=="
+       },
+       {
+        "file_id": "sb-0002-f3",
+        "filename": "northfield-1099-2025-corrected.pdf",
+        "mime_type": "application/pdf",
+        "size": 1497,
+        "sha256": "df59f894ed660ce40dfb4a28da923ffbcfe44b58e1a1156458517caa0db29eb1",
+        "base64": "JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvQ29udGVudHMgNCAwIFIgL1Jlc291cmNlcyA8PCAvRm9udCA8PCAvRjEgNSAwIFIgPj4gPj4gPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0xlbmd0aCA3ODkgPj4Kc3RyZWFtCkJUCi9GMSAxMSBUZgoxMyBUTAo1NCA3NjAgVGQKKFNZTlRIRVRJQyBCRU5DSE1BUksgTk9UIEZPUiBGSUxJTkcpIFRqClQqIChOb3J0aGZpZWxkIEJyb2tlcmFnZSAyMDI1IENvbnNvbGlkYXRlZCBGb3JtIDEwOTkgQ09SUkVDVEVEKSBUagpUKiAoKSBUagpUKiAoQWNjb3VudCBob2xkZXI6IFJvd2FuIEVsbGlzKSBUagpUKiAoQWNjb3VudDogaW5kaXZpZHVhbCBicm9rZXJhZ2UsIGxhc3QgZm91ciAyMjA4KSBUagpUKiAoSXNzdWVkOiAyMDI2LTAzLTAyKSBUagpUKiAoRm9ybSAxMDk5LURJVikgVGoKVCogKCAgQm94IDFhICBUb3RhbCBvcmRpbmFyeSBkaXZpZGVuZHM6IDUwMC4wMCkgVGoKVCogKCAgQm94IDFiICBRdWFsaWZpZWQgZGl2aWRlbmRzOiA0MDAuMDApIFRqClQqIChGb3JtIDEwOTktQiBcKGNvdmVyZWQgc2VjdXJpdGllcywgYmFzaXMgcmVwb3J0ZWQgdG8gdGhlIElSU1wpKSBUagpUKiAoICBUb3RhbCBwcm9jZWVkczogMTIsMDAwLjAwKSBUagpUKiAoICBUb3RhbCBjb3N0IGJhc2lzOiAxMSw3MDAuMDApIFRqClQqIChTdGF0ZW1lbnQgSUQ6IE5GLTIwMjUtMjIwOC1CKSBUagpUKiAoQ09SUkVDVEVEOiB0aGlzIHN0YXRlbWVudCByZXBsYWNlcyBzdGF0ZW1lbnQgTkYtMjAyNS0yMjA4LUEgXChpc3N1ZWQgMjAyNi0wMi0xNFwpIGluIGZ1bGwuKSBUagpUKiAoQ29ycmVjdGVkIGl0ZW1zOiAxMDk5LURJViBib3ggMWE7IDEwOTktQiBjb3N0IGJhc2lzIGZvciB0d28gbG90cy4pIFRqClQqICgpIFRqClQqIChTWU5USEVUSUMgQkVOQ0hNQVJLIE5PVCBGT1IgRklMSU5HKSBUagpFVAplbmRzdHJlYW0KZW5kb2JqCjUgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNlRm9udCAvSGVsdmV0aWNhID4+CmVuZG9iago2IDAgb2JqCjw8IC9UaXRsZSAoTm9ydGhmaWVsZCBCcm9rZXJhZ2UgMjAyNSBDb25zb2xpZGF0ZWQgRm9ybSAxMDk5IENPUlJFQ1RFRCkgL1Byb2R1Y2VyIChQQUxFIHN5bnRoZXRpYyBmaXh0dXJlKSA+PgplbmRvYmoKeHJlZgowIDcKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDE1IDAwMDAwIG4gCjAwMDAwMDAwNjQgMDAwMDAgbiAKMDAwMDAwMDEyMSAwMDAwMCBuIAowMDAwMDAwMjQ3IDAwMDAwIG4gCjAwMDAwMDEwODcgMDAwMDAgbiAKMDAwMDAwMTE1NyAwMDAwMCBuIAp0cmFpbGVyCjw8IC9TaXplIDcgL1Jvb3QgMSAwIFIgL0luZm8gNiAwIFIgPj4Kc3RhcnR4cmVmCjEyODEKJSVFT0YK"
+       },
+       {
+        "file_id": "sb-0002-f4",
+        "filename": "ridgeway-1099-2025.pdf",
+        "mime_type": "application/pdf",
+        "size": 1471,
+        "sha256": "b35597d19f0790ed1b468169580ebe557c4229c70b35f04a7104e8895514e31b",
+        "base64": "JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvQ29udGVudHMgNCAwIFIgL1Jlc291cmNlcyA8PCAvRm9udCA8PCAvRjEgNSAwIFIgPj4gPj4gPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0xlbmd0aCA3ODcgPj4Kc3RyZWFtCkJUCi9GMSAxMSBUZgoxMyBUTAo1NCA3NjAgVGQKKFNZTlRIRVRJQyBCRU5DSE1BUksgTk9UIEZPUiBGSUxJTkcpIFRqClQqIChSaWRnZXdheSBJbnZlc3QgMjAyNSBUYXggU3RhdGVtZW50KSBUagpUKiAoKSBUagpUKiAoQWNjb3VudCBob2xkZXI6IFJvd2FuIEVsbGlzKSBUagpUKiAoQWNjb3VudDogaW5kaXZpZHVhbCBicm9rZXJhZ2UsIGxhc3QgZm91ciA1MTYwKSBUagpUKiAoSXNzdWVkOiAyMDI2LTAyLTEyKSBUagpUKiAoRm9ybSAxMDk5LURJVikgVGoKVCogKCAgQm94IDFhICBUb3RhbCBvcmRpbmFyeSBkaXZpZGVuZHM6IDMwMC4wMCkgVGoKVCogKCAgQm94IDFiICBRdWFsaWZpZWQgZGl2aWRlbmRzOiAyMDAuMDApIFRqClQqIChGb3JtIDEwOTktQiBcKGNvdmVyZWQgc2VjdXJpdGllcywgYmFzaXMgcmVwb3J0ZWQgdG8gdGhlIElSU1wpKSBUagpUKiAoICBSVy0yNS0wNDEyICBzb2xkIDIwMjUtMDQtMTIgIHByb2NlZWRzIDMsMDAwLjAwICBjb3N0IGJhc2lzIDIsODUwLjAwKSBUagpUKiAoICBSVy0yNS0wODA3ICBzb2xkIDIwMjUtMDgtMDcgIHByb2NlZWRzIDIsODAwLjAwICBjb3N0IGJhc2lzIDIsNzEwLjAwKSBUagpUKiAoICBSVy0yNS0xMTE5ICBzb2xkIDIwMjUtMTEtMTkgIHByb2NlZWRzIDIsMjAwLjAwICBjb3N0IGJhc2lzIDIsMDQwLjAwKSBUagpUKiAoICBUb3RhbCBwcm9jZWVkczogOCwwMDAuMDApIFRqClQqICggIFRvdGFsIGNvc3QgYmFzaXM6IDcsNjAwLjAwKSBUagpUKiAoKSBUagpUKiAoU1lOVEhFVElDIEJFTkNITUFSSyBOT1QgRk9SIEZJTElORykgVGoKRVQKZW5kc3RyZWFtCmVuZG9iago1IDAgb2JqCjw8IC9UeXBlIC9Gb250IC9TdWJ0eXBlIC9UeXBlMSAvQmFzZUZvbnQgL0hlbHZldGljYSA+PgplbmRvYmoKNiAwIG9iago8PCAvVGl0bGUgKFJpZGdld2F5IEludmVzdCAyMDI1IFRheCBTdGF0ZW1lbnQpIC9Qcm9kdWNlciAoUEFMRSBzeW50aGV0aWMgZml4dHVyZSkgPj4KZW5kb2JqCnhyZWYKMCA3CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDAxNSAwMDAwMCBuIAowMDAwMDAwMDY0IDAwMDAwIG4gCjAwMDAwMDAxMjEgMDAwMDAgbiAKMDAwMDAwMDI0NyAwMDAwMCBuIAowMDAwMDAxMDg1IDAwMDAwIG4gCjAwMDAwMDExNTUgMDAwMDAgbiAKdHJhaWxlcgo8PCAvU2l6ZSA3IC9Sb290IDEgMCBSIC9JbmZvIDYgMCBSID4+CnN0YXJ0eHJlZgoxMjU1CiUlRU9GCg=="
+       },
+       {
+        "file_id": "sb-0002-f5",
+        "filename": "cedar-1099-int-2025.pdf",
+        "mime_type": "application/pdf",
+        "size": 987,
+        "sha256": "a86e3fc00c776cabe83e9e6e68fececaa3fd8254cad97bf4af1d310d360578e9",
+        "base64": "JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvQ29udGVudHMgNCAwIFIgL1Jlc291cmNlcyA8PCAvRm9udCA8PCAvRjEgNSAwIFIgPj4gPj4gPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0xlbmd0aCAzMDkgPj4Kc3RyZWFtCkJUCi9GMSAxMSBUZgoxMyBUTAo1NCA3NjAgVGQKKFNZTlRIRVRJQyBCRU5DSE1BUksgTk9UIEZPUiBGSUxJTkcpIFRqClQqIChDZWRhciBCYW5rIEZvcm0gMTA5OS1JTlQgMjAyNSkgVGoKVCogKCkgVGoKVCogKFJlY2lwaWVudDogUm93YW4gRWxsaXMpIFRqClQqIChBY2NvdW50OiBjaGVja2luZywgbGFzdCBmb3VyIDA5MzcpIFRqClQqIChJc3N1ZWQ6IDIwMjYtMDEtMjkpIFRqClQqIChCb3ggMSAgSW50ZXJlc3QgaW5jb21lOiAzMDAuMDApIFRqClQqICgpIFRqClQqIChTWU5USEVUSUMgQkVOQ0hNQVJLIE5PVCBGT1IgRklMSU5HKSBUagpFVAplbmRzdHJlYW0KZW5kb2JqCjUgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNlRm9udCAvSGVsdmV0aWNhID4+CmVuZG9iago2IDAgb2JqCjw8IC9UaXRsZSAoQ2VkYXIgQmFuayBGb3JtIDEwOTktSU5UIDIwMjUpIC9Qcm9kdWNlciAoUEFMRSBzeW50aGV0aWMgZml4dHVyZSkgPj4KZW5kb2JqCnhyZWYKMCA3CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDAxNSAwMDAwMCBuIAowMDAwMDAwMDY0IDAwMDAwIG4gCjAwMDAwMDAxMjEgMDAwMDAgbiAKMDAwMDAwMDI0NyAwMDAwMCBuIAowMDAwMDAwNjA3IDAwMDAwIG4gCjAwMDAwMDA2NzcgMDAwMDAgbiAKdHJhaWxlcgo8PCAvU2l6ZSA3IC9Sb290IDEgMCBSIC9JbmZvIDYgMCBSID4+CnN0YXJ0eHJlZgo3NzIKJSVFT0YK"
+       },
+       {
+        "file_id": "sb-0002-f6",
+        "filename": "bayview-1099-int-2025.pdf",
+        "mime_type": "application/pdf",
+        "size": 1011,
+        "sha256": "7e2a46aa2acfaed1212e149e86cae2dfe516f19a2a80492f86e7e4499ae6665b",
+        "base64": "JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvQ29udGVudHMgNCAwIFIgL1Jlc291cmNlcyA8PCAvRm9udCA8PCAvRjEgNSAwIFIgPj4gPj4gPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0xlbmd0aCAzMzEgPj4Kc3RyZWFtCkJUCi9GMSAxMSBUZgoxMyBUTAo1NCA3NjAgVGQKKFNZTlRIRVRJQyBCRU5DSE1BUksgTk9UIEZPUiBGSUxJTkcpIFRqClQqIChCYXl2aWV3IEJhbmsgRm9ybSAxMDk5LUlOVCAyMDI1KSBUagpUKiAoKSBUagpUKiAoUmVjaXBpZW50OiBSb3dhbiBFbGxpcykgVGoKVCogKEFjY291bnQ6IHNhdmluZ3MsIGxhc3QgZm91ciA0NDEwIFwoY2xvc2VkIDIwMjUtMDgtMjlcKSkgVGoKVCogKElzc3VlZDogMjAyNi0wMy0xMCkgVGoKVCogKEJveCAxICBJbnRlcmVzdCBpbmNvbWU6IDc1LjAwKSBUagpUKiAoKSBUagpUKiAoU1lOVEhFVElDIEJFTkNITUFSSyBOT1QgRk9SIEZJTElORykgVGoKRVQKZW5kc3RyZWFtCmVuZG9iago1IDAgb2JqCjw8IC9UeXBlIC9Gb250IC9TdWJ0eXBlIC9UeXBlMSAvQmFzZUZvbnQgL0hlbHZldGljYSA+PgplbmRvYmoKNiAwIG9iago8PCAvVGl0bGUgKEJheXZpZXcgQmFuayBGb3JtIDEwOTktSU5UIDIwMjUpIC9Qcm9kdWNlciAoUEFMRSBzeW50aGV0aWMgZml4dHVyZSkgPj4KZW5kb2JqCnhyZWYKMCA3CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDAxNSAwMDAwMCBuIAowMDAwMDAwMDY0IDAwMDAwIG4gCjAwMDAwMDAxMjEgMDAwMDAgbiAKMDAwMDAwMDI0NyAwMDAwMCBuIAowMDAwMDAwNjI5IDAwMDAwIG4gCjAwMDAwMDA2OTkgMDAwMDAgbiAKdHJhaWxlcgo8PCAvU2l6ZSA3IC9Sb290IDEgMCBSIC9JbmZvIDYgMCBSID4+CnN0YXJ0eHJlZgo3OTYKJSVFT0YK"
+       }
+      ]
+     },
+     {
+      "submission_id": "sb-0003",
+      "case_id": "CP-2025-ROWAN",
+      "request_ids": [],
+      "submitted_at": "2026-03-10T10:00:00-07:00",
+      "actor": "assistant",
+      "standing": "on_time",
+      "replaces": [],
+      "superseded_by": null,
+      "withdrawn_at": null,
+      "note": "Manifest, summary and handoff note",
+      "files": [
+       {
+        "file_id": "sb-0003-f1",
+        "filename": "manifest.md",
+        "mime_type": "text/plain",
+        "size": 603,
+        "sha256": "6af26d34e4ec590b6baea1485c6e43ab56d6e30721c2402562c34072c82046b4",
+        "base64": "IyBQYWNrZXQgbWFuaWZlc3QKCi0gQXRsYXMgTGFicyBXLTIgKGF0bGFzLXcyLTIwMjUucGRmKTogcHJlc2VudAotIEJyb29rIFN5c3RlbXMgVy0yIChicm9vay13Mi0yMDI1LnBkZik6IHByZXNlbnQKLSBOb3J0aGZpZWxkIEJyb2tlcmFnZSAxMDk5OiBwcmVzZW50LCBzdGF0ZW1lbnQgTkYtMjAyNS0yMjA4LUIgKENPUlJFQ1RFRCwgbm9ydGhmaWVsZC0xMDk5LTIwMjUtY29ycmVjdGVkLnBkZikKLSBTdGF0ZW1lbnQgTkYtMjAyNS0yMjA4LUE6IHN1cGVyc2VkZWQgYnkgdGhlIGNvcnJlY3Rpb24gb2YgMjAyNi0wMy0wMjsgdGhlIGRvd25sb2FkZWQgZHVwbGljYXRlIGFuZCB0aGUgcmUtZm9yd2FyZGVkIGNvcHkgYXJlIG5vdCB1c2VkCi0gUmlkZ2V3YXkgSW52ZXN0IHRheCBzdGF0ZW1lbnQgKHJpZGdld2F5LTEwOTktMjAyNS5wZGYpOiBwcmVzZW50OyB0aGUgc3VwcGxlbWVudCByZXBlYXRzIHRoZSBzYW1lIHNhbGVzIGFuZCBpcyBkZXRhaWwgb25seQotIENlZGFyIEJhbmsgMTA5OS1JTlQgKGNlZGFyLTEwOTktaW50LTIwMjUucGRmKTogcHJlc2VudAotIEJheXZpZXcgQmFuayAxMDk5LUlOVCAoYmF5dmlldy0xMDk5LWludC0yMDI1LnBkZik6IHByZXNlbnQK"
+       },
+       {
+        "file_id": "sb-0003-f2",
+        "filename": "summary.md",
+        "mime_type": "text/plain",
+        "size": 615,
+        "sha256": "4c0c14cad5a6696bc76d78cf3456bc14577910c07c7b69bbc1542abc36c62f31",
+        "base64": "IyBGaWVsZCBzdW1tYXJ5ICgyMDI1KQoKIyMgQnkgc291cmNlCi0gQXRsYXMgTGFicyBXLTI6IHdhZ2VzIDQwLDAwMC4wMDsgd2l0aGhlbGQgNCw1MDAuMDAKLSBCcm9vayBTeXN0ZW1zIFctMjogd2FnZXMgNjAsMDAwLjAwOyB3aXRoaGVsZCA3LDUwMC4wMAotIENlZGFyIEJhbmsgMTA5OS1JTlQ6IGludGVyZXN0IDMwMC4wMAotIEJheXZpZXcgQmFuayAxMDk5LUlOVDogaW50ZXJlc3QgNzUuMDAKLSBOb3J0aGZpZWxkIDEwOTktRElWL0I6IDFhIDUwMC4wMDsgMWIgNDAwLjAwOyBwcm9jZWVkcyAxMiwwMDAuMDA7IGJhc2lzIDExLDcwMC4wMAotIFJpZGdld2F5IDEwOTktRElWL0I6IDFhIDMwMC4wMDsgMWIgMjAwLjAwOyBwcm9jZWVkcyA4LDAwMC4wMDsgYmFzaXMgNyw2MDAuMDAKCiMjIFRvdGFscwpXYWdlczogMTAwLDAwMC4wMApGZWRlcmFsIGluY29tZSB0YXggd2l0aGhlbGQ6IDEyLDAwMC4wMApJbnRlcmVzdDogMzc1LjAwCkRpdmlkZW5kcyAxYSAodG90YWwgb3JkaW5hcnkpOiA4MDAuMDAKRGl2aWRlbmRzIDFiIChxdWFsaWZpZWQsIHBhcnQgb2YgMWEpOiA2MDAuMDAKMTA5OS1CIHByb2NlZWRzOiAyMCwwMDAuMDAKMTA5OS1CIHJlcG9ydGVkIGJhc2lzOiAxOSwzMDAuMDAK"
+       },
+       {
+        "file_id": "sb-0003-f3",
+        "filename": "handoff-note.md",
+        "mime_type": "text/plain",
+        "size": 303,
+        "sha256": "742203d446c006bd0f15d479a8d07e7ba01c1e987934aae9903f11196ee6dd3f",
+        "base64": "SGFuZG9mZiBub3RlIGZvciBNb3JnYW4gTGVlIChjYXNlIENQLTIwMjUtUk9XQU4pCgpOb3J0aGZpZWxkIHZhbHVlcyBmb2xsb3cgdGhlIGNvcnJlY3RlZCBzdGF0ZW1lbnQgTkYtMjAyNS0yMjA4LUIgb2YgMjAyNi0wMy0wMi4KQmF5dmlldyBCYW5rIHNhdmluZ3MgKGNsb3NlZCAyMDI1LTA4LTI5KSBpcyBpbmNsdWRlZCB3aXRoIGl0cyAxMDk5LUlOVC4KQm94IDFiIGlzIHBhcnQgb2YgMWEgYW5kIGlzIGxpc3RlZCBzZXBhcmF0ZWx5LiBSb3dhbiBoYXMgbm90IGZpbGVkIGEgcmV0dXJuOyBmaWxpbmcgaXMgTW9yZ2FuJ3Mgc3RlcC4K"
+       }
+      ]
+     }
+    ],
+    "receipts": [
+     {
+      "receipt_id": "rc-0001",
+      "submission_id": "sb-0001",
+      "case_id": "CP-2024-ROWAN",
+      "at": "2025-03-07T16:00:00-08:00",
+      "kind": "submitted",
+      "standing": "on_time",
+      "files": [
+       {
+        "file_id": "sb-0001-f1",
+        "filename": "2024-packet-index.txt",
+        "mime_type": "text/plain",
+        "size": 131,
+        "sha256": "1fc9d73c4dd37c439b7ce260cc304def63aa1e8059ca7a017721074395dc1b6b"
+       }
+      ]
+     },
+     {
+      "receipt_id": "rc-0002",
+      "submission_id": "sb-0002",
+      "case_id": "CP-2025-ROWAN",
+      "at": "2026-03-10T10:00:00-07:00",
+      "kind": "submitted",
+      "standing": "on_time",
+      "files": [
+       {
+        "file_id": "sb-0002-f1",
+        "filename": "atlas-w2-2025.pdf",
+        "mime_type": "application/pdf",
+        "size": 1238,
+        "sha256": "eb926768b32a90933b3ae9aeb050dd907ad60f25c6c59ee1fc293dcc75cbc9d9"
+       },
+       {
+        "file_id": "sb-0002-f2",
+        "filename": "brook-w2-2025.pdf",
+        "mime_type": "application/pdf",
+        "size": 1243,
+        "sha256": "cef6d670dc93c140131e4b44b2cbfe550a60c34b18ce208ffbe86363a23c590a"
+       },
+       {
+        "file_id": "sb-0002-f3",
+        "filename": "northfield-1099-2025-corrected.pdf",
+        "mime_type": "application/pdf",
+        "size": 1497,
+        "sha256": "df59f894ed660ce40dfb4a28da923ffbcfe44b58e1a1156458517caa0db29eb1"
+       },
+       {
+        "file_id": "sb-0002-f4",
+        "filename": "ridgeway-1099-2025.pdf",
+        "mime_type": "application/pdf",
+        "size": 1471,
+        "sha256": "b35597d19f0790ed1b468169580ebe557c4229c70b35f04a7104e8895514e31b"
+       },
+       {
+        "file_id": "sb-0002-f5",
+        "filename": "cedar-1099-int-2025.pdf",
+        "mime_type": "application/pdf",
+        "size": 987,
+        "sha256": "a86e3fc00c776cabe83e9e6e68fececaa3fd8254cad97bf4af1d310d360578e9"
+       },
+       {
+        "file_id": "sb-0002-f6",
+        "filename": "bayview-1099-int-2025.pdf",
+        "mime_type": "application/pdf",
+        "size": 1011,
+        "sha256": "7e2a46aa2acfaed1212e149e86cae2dfe516f19a2a80492f86e7e4499ae6665b"
+       }
+      ]
+     },
+     {
+      "receipt_id": "rc-0003",
+      "submission_id": "sb-0003",
+      "case_id": "CP-2025-ROWAN",
+      "at": "2026-03-10T10:00:00-07:00",
+      "kind": "submitted",
+      "standing": "on_time",
+      "files": [
+       {
+        "file_id": "sb-0003-f1",
+        "filename": "manifest.md",
+        "mime_type": "text/plain",
+        "size": 603,
+        "sha256": "6af26d34e4ec590b6baea1485c6e43ab56d6e30721c2402562c34072c82046b4"
+       },
+       {
+        "file_id": "sb-0003-f2",
+        "filename": "summary.md",
+        "mime_type": "text/plain",
+        "size": 615,
+        "sha256": "4c0c14cad5a6696bc76d78cf3456bc14577910c07c7b69bbc1542abc36c62f31"
+       },
+       {
+        "file_id": "sb-0003-f3",
+        "filename": "handoff-note.md",
+        "mime_type": "text/plain",
+        "size": 303,
+        "sha256": "742203d446c006bd0f15d479a8d07e7ba01c1e987934aae9903f11196ee6dd3f"
+       }
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "messages_to_user": [
+  {
+   "session": "S1",
+   "at": "2026-02-03T09:00:00-08:00",
+   "seq": 9,
+   "text": "I started an inventory of the five intake sources. Atlas and Cedar are in; Brook, Northfield and Ridgeway are still missing. Nothing has been uploaded."
+  },
+  {
+   "session": "S2",
+   "at": "2026-02-18T10:00:00-08:00",
+   "seq": 22,
+   "text": "All five intake sources are in. I saved a manifest, a field summary and a handoff draft; the downloaded Northfield copy and the Ridgeway supplement are not counted twice."
+  },
+  {
+   "session": "S3",
+   "at": "2026-03-02T09:30:00-08:00",
+   "seq": 29,
+   "text": "Northfield sent a corrected statement that replaces the February one in full. I updated the manifest, summary and handoff note to the corrected values."
+  },
+  {
+   "session": "S4",
+   "at": "2026-03-06T18:00:00-08:00",
+   "seq": 37,
+   "text": "I added Bayview as a sixth source. Its 1099-INT is not available until March 10, so the packet is not complete yet. The forwarded Northfield file is the old statement, so the corrected values stay in place."
+  },
+  {
+   "session": "S5",
+   "at": "2026-03-10T10:00:00-07:00",
+   "seq": 60,
+   "text": "Everything is in and verified, so the packet is ready. I uploaded it to CP-2025-ROWAN and checked the portal receipt against the files; it was delivered. Your return has not been filed; that is Morgan's step."
+  }
+ ],
+ "tool_calls": [
+  {
+   "session": "S1",
+   "at": "2026-02-03T09:00:00-08:00",
+   "seq": 1,
+   "tool": "mail.search",
+   "args": {},
+   "status": "ok"
+  },
+  {
+   "session": "S1",
+   "at": "2026-02-03T09:00:00-08:00",
+   "seq": 2,
+   "tool": "mail.get",
+   "args": {
+    "id": "m-cpa-sheet"
+   },
+   "status": "ok"
+  },
+  {
+   "session": "S1",
+   "at": "2026-02-03T09:00:00-08:00",
+   "seq": 3,
+   "tool": "mail.get",
+   "args": {
+    "id": "m-atlas-w2"
+   },
+   "status": "ok"
+  },
+  {
+   "session": "S1",
+   "at": "2026-02-03T09:00:00-08:00",
+   "seq": 4,
+   "tool": "mail.attachment.get",
+   "args": {
+    "id": "m-atlas-w2",
+    "asset_id": "att-m-atlas-w2-d01"
+   },
+   "status": "ok"
+  },
+  {
+   "session": "S1",
+   "at": "2026-02-03T09:00:00-08:00",
+   "seq": 5,
+   "tool": "mail.get",
+   "args": {
+    "id": "m-cedar-1099"
+   },
+   "status": "ok"
+  },
+  {
+   "session": "S1",
+   "at": "2026-02-03T09:00:00-08:00",
+   "seq": 6,
+   "tool": "mail.attachment.get",
+   "args": {
+    "id": "m-cedar-1099",
+    "asset_id": "att-m-cedar-1099-d09"
+   },
+   "status": "ok"
+  },
+  {
+   "session": "S1",
+   "at": "2026-02-03T09:00:00-08:00",
+   "seq": 7,
+   "tool": "files.list",
+   "args": {},
+   "status": "ok"
+  },
+  {
+   "session": "S1",
+   "at": "2026-02-03T09:00:00-08:00",
+   "seq": 8,
+   "tool": "files.put",
+   "args": {
+    "parent_id": "folder-2025",
+    "file": {
+     "filename": "inventory.md",
+     "mime_type": "text/plain",
+     "base64": "<496 chars>",
+     "sha256": "dc1d30637c34f487f54e2d00e8f3e1aa8543ad27808f6fb78fdc6d38e5734318"
+    },
+    "source": "agent"
+   },
+   "status": "committed"
+  },
+  {
+   "session": "S2",
+   "at": "2026-02-18T10:00:00-08:00",
+   "seq": 10,
+   "tool": "mail.search",
+   "args": {},
+   "status": "ok"
+  },
+  {
+   "session": "S2",
+   "at": "2026-02-18T10:00:00-08:00",
+   "seq": 11,
+   "tool": "mail.get",
+   "args": {
+    "id": "ev-brook-w2"
+   },
+   "status": "ok"
+  },
+  {
+   "session": "S2",
+   "at": "2026-02-18T10:00:00-08:00",
+   "seq": 12,
+   "tool": "mail.attachment.get",
+   "args": {
+    "id": "ev-brook-w2",
+    "asset_id": "att-9db9a032c25b2064311e770d5b70c5bdc7d9de3d"
+   },
+   "status": "ok"
+  },
+  {
+   "session": "S2",
+   "at": "2026-02-18T10:00:00-08:00",
+   "seq": 13,
+   "tool": "mail.get",
+   "args": {
+    "id": "ev-northfield-1099"
+   },
+   "status": "ok"
+  },
+  {
+   "session": "S2",
+   "at": "2026-02-18T10:00:00-08:00",
+   "seq": 14,
+   "tool": "mail.attachment.get",
+   "args": {
+    "id": "ev-northfield-1099",
+    "asset_id": "att-a27e55817651d09dae652f88904be7df7af876cd"
+   },
+   "status": "ok"
+  },
+  {
+   "session": "S2",
+   "at": "2026-02-18T10:00:00-08:00",
+   "seq": 15,
+   "tool": "mail.get",
+   "args": {
+    "id": "ev-northfield-export"
+   },
+   "status": "ok"
+  },
+  {
+   "session": "S2",
+   "at": "2026-02-18T10:00:00-08:00",
+   "seq": 16,
+   "tool": "mail.attachment.get",
+   "args": {
+    "id": "ev-northfield-export",
+    "asset_id": "att-b68fe7404672d58d06a2c17e76f602362f588d6c"
+   },
+   "status": "ok"
+  },
+  {
+   "session": "S2",
+   "at": "2026-02-18T10:00:00-08:00",
+   "seq": 17,
+   "tool": "mail.get",
+   "args": {
+    "id": "ev-ridgeway-1099"
+   },
+   "status": "ok"
+  },
+  {
+   "session": "S2",
+   "at": "2026-02-18T10:00:00-08:00",
+   "seq": 18,
+   "tool": "mail.attachment.get",
+   "args": {
+    "id": "ev-ridgeway-1099",
+    "asset_id": "att-8b94045daca97fc5ae5d05aaaa2e775344291d5b"
+   },
+   "status": "ok"
+  },
+  {
+   "session": "S2",
+   "at": "2026-02-18T10:00:00-08:00",
+   "seq": 19,
+   "tool": "files.put",
+   "args": {
+    "parent_id": "folder-2025",
+    "file": {
+     "filename": "manifest.md",
+     "mime_type": "text/plain",
+     "base64": "<608 chars>",
+     "sha256": "eba6b9c6ef7aafbdc96501a5fe88d1ef3b835c6baa53c32ade8b6609ad57d347"
+    },
+    "source": "agent"
+   },
+   "status": "committed"
+  },
+  {
+   "session": "S2",
+   "at": "2026-02-18T10:00:00-08:00",
+   "seq": 20,
+   "tool": "files.put",
+   "args": {
+    "parent_id": "folder-2025",
+    "file": {
+     "filename": "summary.md",
+     "mime_type": "text/plain",
+     "base64": "<768 chars>",
+     "sha256": "f60088b06bdf4002f93a81ee2d91094e3db7580b148d7b88e029664edbb4cf0a"
+    },
+    "source": "agent"
+   },
+   "status": "committed"
+  },
+  {
+   "session": "S2",
+   "at": "2026-02-18T10:00:00-08:00",
+   "seq": 21,
+   "tool": "files.put",
+   "args": {
+    "parent_id": "folder-2025",
+    "file": {
+     "filename": "handoff-note.md",
+     "mime_type": "text/plain",
+     "base64": "<316 chars>",
+     "sha256": "06d82121b314c93cc31651fb856d36e72250a07c80b1224895f85d7ea915cb47"
+    },
+    "source": "agent"
+   },
+   "status": "committed"
+  },
+  {
+   "session": "S3",
+   "at": "2026-03-02T09:30:00-08:00",
+   "seq": 23,
+   "tool": "mail.search",
+   "args": {
+    "query": "Form 1099"
+   },
+   "status": "ok"
+  },
+  {
+   "session": "S3",
+   "at": "2026-03-02T09:30:00-08:00",
+   "seq": 24,
+   "tool": "mail.get",
+   "args": {
+    "id": "ev-northfield-corrected"
+   },
+   "status": "ok"
+  },
+  {
+   "session": "S3",
+   "at": "2026-03-02T09:30:00-08:00",
+   "seq": 25,
+   "tool": "mail.attachment.get",
+   "args": {
+    "id": "ev-northfield-corrected",
+    "asset_id": "att-ab1fecce7cdfb25f632485ac8ca533aee4bc519d"
+   },
+   "status": "ok"
+  },
+  {
+   "session": "S3",
+   "at": "2026-03-02T09:30:00-08:00",
+   "seq": 26,
+   "tool": "files.put",
+   "args": {
+    "id": "file-2",
+    "file": {
+     "filename": "manifest.md",
+     "mime_type": "text/plain",
+     "base64": "<724 chars>",
+     "sha256": "9a41fabfad53bc353ab0faaec1228e95603f255a35c363d9432bd329183a1baa"
+    },
+    "source": "agent"
+   },
+   "status": "committed"
+  },
+  {
+   "session": "S3",
+   "at": "2026-03-02T09:30:00-08:00",
+   "seq": 27,
+   "tool": "files.put",
+   "args": {
+    "id": "file-3",
+    "file": {
+     "filename": "summary.md",
+     "mime_type": "text/plain",
+     "base64": "<768 chars>",
+     "sha256": "84a42016cb6ccb3257c19e6e36c5f82593fd0d11793b846d92a181389c46559f"
+    },
+    "source": "agent"
+   },
+   "status": "committed"
+  },
+  {
+   "session": "S3",
+   "at": "2026-03-02T09:30:00-08:00",
+   "seq": 28,
+   "tool": "files.put",
+   "args": {
+    "id": "file-4",
+    "file": {
+     "filename": "handoff-note.md",
+     "mime_type": "text/plain",
+     "base64": "<312 chars>",
+     "sha256": "769ae3b2875a38155fede9422b8121f7b0ef8f5520a9852f1a9304c4145de789"
+    },
+    "source": "agent"
+   },
+   "status": "committed"
+  },
+  {
+   "session": "S4",
+   "at": "2026-03-06T18:00:00-08:00",
+   "seq": 30,
+   "tool": "mail.search",
+   "args": {},
+   "status": "ok"
+  },
+  {
+   "session": "S4",
+   "at": "2026-03-06T18:00:00-08:00",
+   "seq": 31,
+   "tool": "mail.get",
+   "args": {
+    "id": "ev-bayview-notice"
+   },
+   "status": "ok"
+  },
+  {
+   "session": "S4",
+   "at": "2026-03-06T18:00:00-08:00",
+   "seq": 32,
+   "tool": "mail.get",
+   "args": {
+    "id": "ev-northfield-forward"
+   },
+   "status": "ok"
+  },
+  {
+   "session": "S4",
+   "at": "2026-03-06T18:00:00-08:00",
+   "seq": 33,
+   "tool": "mail.attachment.get",
+   "args": {
+    "id": "ev-northfield-forward",
+    "asset_id": "att-2780424e7cc78b1942468f465489dd34a5a09b0f"
+   },
+   "status": "ok"
+  },
+  {
+   "session": "S4",
+   "at": "2026-03-06T18:00:00-08:00",
+   "seq": 34,
+   "tool": "files.put",
+   "args": {
+    "id": "file-2",
+    "file": {
+     "filename": "manifest.md",
+     "mime_type": "text/plain",
+     "base64": "<840 chars>",
+     "sha256": "3cde4febc4d4edc9c8c8f1185f2dec5a9fc169503fda7850d7b1b27b8940035e"
+    },
+    "source": "agent"
+   },
+   "status": "committed"
+  },
+  {
+   "session": "S4",
+   "at": "2026-03-06T18:00:00-08:00",
+   "seq": 35,
+   "tool": "files.put",
+   "args": {
+    "id": "file-3",
+    "file": {
+     "filename": "summary.md",
+     "mime_type": "text/plain",
+     "base64": "<804 chars>",
+     "sha256": "4c33123fbe0003bfd0342d7af5331b609502f994749a1e4969fb989be8f0a630"
+    },
+    "source": "agent"
+   },
+   "status": "committed"
+  },
+  {
+   "session": "S4",
+   "at": "2026-03-06T18:00:00-08:00",
+   "seq": 36,
+   "tool": "files.put",
+   "args": {
+    "id": "file-4",
+    "file": {
+     "filename": "handoff-note.md",
+     "mime_type": "text/plain",
+     "base64": "<488 chars>",
+     "sha256": "e48aa4cd49b009e32a68fdbd048a7d2711076794aee06f5e3e467864d3371b96"
+    },
+    "source": "agent"
+   },
+   "status": "committed"
+  },
+  {
+   "session": "S5",
+   "at": "2026-03-10T10:00:00-07:00",
+   "seq": 38,
+   "tool": "issuer-docs.accounts.list",
+   "args": {},
+   "status": "ok"
+  },
+  {
+   "session": "S5",
+   "at": "2026-03-10T10:00:00-07:00",
+   "seq": 39,
+   "tool": "issuer-docs.documents.list",
+   "args": {
+    "account_ref": "bayview-savings-4410",
+    "kind": "tax_form"
+   },
+   "status": "ok"
+  },
+  {
+   "session": "S5",
+   "at": "2026-03-10T10:00:00-07:00",
+   "seq": 40,
+   "tool": "issuer-docs.documents.download",
+   "args": {
+    "document_id": "bv-1099int-2025"
+   },
+   "status": "ok"
+  },
+  {
+   "session": "S5",
+   "at": "2026-03-10T10:00:00-07:00",
+   "seq": 41,
+   "tool": "files.put",
+   "args": {
+    "id": "file-2",
+    "file": {
+     "filename": "manifest.md",
+     "mime_type": "text/plain",
+     "base64": "<804 chars>",
+     "sha256": "6af26d34e4ec590b6baea1485c6e43ab56d6e30721c2402562c34072c82046b4"
+    },
+    "source": "agent"
+   },
+   "status": "committed"
+  },
+  {
+   "session": "S5",
+   "at": "2026-03-10T10:00:00-07:00",
+   "seq": 42,
+   "tool": "files.put",
+   "args": {
+    "id": "file-3",
+    "file": {
+     "filename": "summary.md",
+     "mime_type": "text/plain",
+     "base64": "<820 chars>",
+     "sha256": "4c0c14cad5a6696bc76d78cf3456bc14577910c07c7b69bbc1542abc36c62f31"
+    },
+    "source": "agent"
+   },
+   "status": "committed"
+  },
+  {
+   "session": "S5",
+   "at": "2026-03-10T10:00:00-07:00",
+   "seq": 43,
+   "tool": "files.put",
+   "args": {
+    "id": "file-4",
+    "file": {
+     "filename": "handoff-note.md",
+     "mime_type": "text/plain",
+     "base64": "<404 chars>",
+     "sha256": "742203d446c006bd0f15d479a8d07e7ba01c1e987934aae9903f11196ee6dd3f"
+    },
+    "source": "agent"
+   },
+   "status": "committed"
+  },
+  {
+   "session": "S5",
+   "at": "2026-03-10T10:00:00-07:00",
+   "seq": 44,
+   "tool": "files.read",
+   "args": {
+    "id": "file-2"
+   },
+   "status": "ok"
+  },
+  {
+   "session": "S5",
+   "at": "2026-03-10T10:00:00-07:00",
+   "seq": 45,
+   "tool": "files.read",
+   "args": {
+    "id": "file-3"
+   },
+   "status": "ok"
+  },
+  {
+   "session": "S5",
+   "at": "2026-03-10T10:00:00-07:00",
+   "seq": 46,
+   "tool": "files.read",
+   "args": {
+    "id": "file-4"
+   },
+   "status": "ok"
+  },
+  {
+   "session": "S5",
+   "at": "2026-03-10T10:00:00-07:00",
+   "seq": 47,
+   "tool": "mail.get",
+   "args": {
+    "id": "m-atlas-w2"
+   },
+   "status": "ok"
+  },
+  {
+   "session": "S5",
+   "at": "2026-03-10T10:00:00-07:00",
+   "seq": 48,
+   "tool": "mail.attachment.get",
+   "args": {
+    "id": "m-atlas-w2",
+    "asset_id": "att-m-atlas-w2-d01"
+   },
+   "status": "ok"
+  },
+  {
+   "session": "S5",
+   "at": "2026-03-10T10:00:00-07:00",
+   "seq": 49,
+   "tool": "mail.get",
+   "args": {
+    "id": "ev-brook-w2"
+   },
+   "status": "ok"
+  },
+  {
+   "session": "S5",
+   "at": "2026-03-10T10:00:00-07:00",
+   "seq": 50,
+   "tool": "mail.attachment.get",
+   "args": {
+    "id": "ev-brook-w2",
+    "asset_id": "att-9db9a032c25b2064311e770d5b70c5bdc7d9de3d"
+   },
+   "status": "ok"
+  },
+  {
+   "session": "S5",
+   "at": "2026-03-10T10:00:00-07:00",
+   "seq": 51,
+   "tool": "mail.get",
+   "args": {
+    "id": "ev-northfield-corrected"
+   },
+   "status": "ok"
+  },
+  {
+   "session": "S5",
+   "at": "2026-03-10T10:00:00-07:00",
+   "seq": 52,
+   "tool": "mail.attachment.get",
+   "args": {
+    "id": "ev-northfield-corrected",
+    "asset_id": "att-ab1fecce7cdfb25f632485ac8ca533aee4bc519d"
+   },
+   "status": "ok"
+  },
+  {
+   "session": "S5",
+   "at": "2026-03-10T10:00:00-07:00",
+   "seq": 53,
+   "tool": "mail.get",
+   "args": {
+    "id": "ev-ridgeway-1099"
+   },
+   "status": "ok"
+  },
+  {
+   "session": "S5",
+   "at": "2026-03-10T10:00:00-07:00",
+   "seq": 54,
+   "tool": "mail.attachment.get",
+   "args": {
+    "id": "ev-ridgeway-1099",
+    "asset_id": "att-8b94045daca97fc5ae5d05aaaa2e775344291d5b"
+   },
+   "status": "ok"
+  },
+  {
+   "session": "S5",
+   "at": "2026-03-10T10:00:00-07:00",
+   "seq": 55,
+   "tool": "mail.get",
+   "args": {
+    "id": "m-cedar-1099"
+   },
+   "status": "ok"
+  },
+  {
+   "session": "S5",
+   "at": "2026-03-10T10:00:00-07:00",
+   "seq": 56,
+   "tool": "mail.attachment.get",
+   "args": {
+    "id": "m-cedar-1099",
+    "asset_id": "att-m-cedar-1099-d09"
+   },
+   "status": "ok"
+  },
+  {
+   "session": "S5",
+   "at": "2026-03-10T10:00:00-07:00",
+   "seq": 57,
+   "tool": "cpa-portal.submissions.add",
+   "args": {
+    "case_id": "CP-2025-ROWAN",
+    "files": [
+     {
+      "filename": "atlas-w2-2025.pdf",
+      "mime_type": "application/pdf",
+      "base64": "<1652 chars>",
+      "sha256": "eb926768b32a90933b3ae9aeb050dd907ad60f25c6c59ee1fc293dcc75cbc9d9"
+     },
+     {
+      "filename": "brook-w2-2025.pdf",
+      "mime_type": "application/pdf",
+      "base64": "<1660 chars>",
+      "sha256": "cef6d670dc93c140131e4b44b2cbfe550a60c34b18ce208ffbe86363a23c590a"
+     },
+     {
+      "filename": "northfield-1099-2025-corrected.pdf",
+      "mime_type": "application/pdf",
+      "base64": "<1996 chars>",
+      "sha256": "df59f894ed660ce40dfb4a28da923ffbcfe44b58e1a1156458517caa0db29eb1"
+     },
+     {
+      "filename": "ridgeway-1099-2025.pdf",
+      "mime_type": "application/pdf",
+      "base64": "<1964 chars>",
+      "sha256": "b35597d19f0790ed1b468169580ebe557c4229c70b35f04a7104e8895514e31b"
+     },
+     {
+      "filename": "cedar-1099-int-2025.pdf",
+      "mime_type": "application/pdf",
+      "base64": "<1316 chars>",
+      "sha256": "a86e3fc00c776cabe83e9e6e68fececaa3fd8254cad97bf4af1d310d360578e9"
+     },
+     {
+      "filename": "bayview-1099-int-2025.pdf",
+      "mime_type": "application/pdf",
+      "base64": "<1348 chars>",
+      "sha256": "7e2a46aa2acfaed1212e149e86cae2dfe516f19a2a80492f86e7e4499ae6665b"
+     }
+    ],
+    "note": "Source documents, 2025"
+   },
+   "status": "committed"
+  },
+  {
+   "session": "S5",
+   "at": "2026-03-10T10:00:00-07:00",
+   "seq": 58,
+   "tool": "cpa-portal.submissions.add",
+   "args": {
+    "case_id": "CP-2025-ROWAN",
+    "files": [
+     {
+      "filename": "manifest.md",
+      "mime_type": "text/plain",
+      "base64": "<804 chars>",
+      "sha256": "6af26d34e4ec590b6baea1485c6e43ab56d6e30721c2402562c34072c82046b4"
+     },
+     {
+      "filename": "summary.md",
+      "mime_type": "text/plain",
+      "base64": "<820 chars>",
+      "sha256": "4c0c14cad5a6696bc76d78cf3456bc14577910c07c7b69bbc1542abc36c62f31"
+     },
+     {
+      "filename": "handoff-note.md",
+      "mime_type": "text/plain",
+      "base64": "<404 chars>",
+      "sha256": "742203d446c006bd0f15d479a8d07e7ba01c1e987934aae9903f11196ee6dd3f"
+     }
+    ],
+    "note": "Manifest, summary and handoff note"
+   },
+   "status": "committed"
+  },
+  {
+   "session": "S5",
+   "at": "2026-03-10T10:00:00-07:00",
+   "seq": 59,
+   "tool": "cpa-portal.receipts.list",
+   "args": {
+    "case_id": "CP-2025-ROWAN"
+   },
+   "status": "ok"
+  }
+ ]
+}

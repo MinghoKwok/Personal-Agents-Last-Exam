@@ -1,0 +1,101 @@
+{
+  "schema_version": "pale.asset-catalog.v1",
+  "catalog_id": "tax-packet-mail-assets",
+  "app_id": "mail",
+  "dataset_ref": "dataset.json",
+  "assets": [
+    {
+      "schema_version": "pale.asset-descriptor.v1",
+      "asset_id": "att-m-atlas-w2-d01",
+      "scope": {
+        "level": "package",
+        "app_id": "mail"
+      },
+      "roles": [
+        "content.attachment"
+      ],
+      "subjects": [
+        {
+          "app_id": "mail",
+          "account_id": "mail-rowan",
+          "object_type": "message",
+          "object_id": "m-atlas-w2"
+        }
+      ],
+      "mime_type": "application/pdf",
+      "availability": {
+        "status": "ready"
+      },
+      "storage": {
+        "adapter": "storage.file",
+        "path": "assets/atlas-w2-2025.pdf",
+        "packaging": "bundled"
+      },
+      "integrity": {
+        "bytes": 1238,
+        "sha256": "eb926768b32a90933b3ae9aeb050dd907ad60f25c6c59ee1fc293dcc75cbc9d9"
+      },
+      "provenance": {
+        "dataset_id": "tax-packet-mail",
+        "source_ids": [
+          "authored"
+        ]
+      },
+      "publication": "restricted",
+      "access": {
+        "audience": [
+          "agent"
+        ],
+        "rule": "parent_object"
+      },
+      "extensions": []
+    },
+    {
+      "schema_version": "pale.asset-descriptor.v1",
+      "asset_id": "att-m-cedar-1099-d09",
+      "scope": {
+        "level": "package",
+        "app_id": "mail"
+      },
+      "roles": [
+        "content.attachment"
+      ],
+      "subjects": [
+        {
+          "app_id": "mail",
+          "account_id": "mail-rowan",
+          "object_type": "message",
+          "object_id": "m-cedar-1099"
+        }
+      ],
+      "mime_type": "application/pdf",
+      "availability": {
+        "status": "ready"
+      },
+      "storage": {
+        "adapter": "storage.file",
+        "path": "assets/cedar-1099-int-2025.pdf",
+        "packaging": "bundled"
+      },
+      "integrity": {
+        "bytes": 987,
+        "sha256": "a86e3fc00c776cabe83e9e6e68fececaa3fd8254cad97bf4af1d310d360578e9"
+      },
+      "provenance": {
+        "dataset_id": "tax-packet-mail",
+        "source_ids": [
+          "authored"
+        ]
+      },
+      "publication": "restricted",
+      "access": {
+        "audience": [
+          "agent"
+        ],
+        "rule": "parent_object"
+      },
+      "extensions": []
+    }
+  ],
+  "extensions": []
+}

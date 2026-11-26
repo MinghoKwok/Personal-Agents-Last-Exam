@@ -1,0 +1,325 @@
+[
+  {
+    "session": "S2",
+    "event": {
+      "event_id": "ev-brook-w2",
+      "at": "2026-02-10T08:20:00-08:00",
+      "operation": "mail.receive_attachments",
+      "payload": {
+        "recipient_account_id": "mail-rowan",
+        "message": {
+          "specversion": "1.0",
+          "id": "ev-brook-w2",
+          "source": "urn:pale:app:brook-payroll:account:brook-systems",
+          "type": "org.pale.mail.attachments.v1",
+          "time": "2026-02-10T08:20:00-08:00",
+          "datacontenttype": "application/json",
+          "dataschema": "urn:pale:email-attachments-payload:1",
+          "data": {
+            "channel": "channel.email.attachments",
+            "recipient": {
+              "kind": "person_ref",
+              "id": "person-rowan"
+            },
+            "source_object": {
+              "app_id": "brook-payroll",
+              "account_id": "brook-systems",
+              "object_type": "message",
+              "object_id": "ev-brook-w2"
+            },
+            "content": {
+              "title": "Your 2025 Form W-2",
+              "body": {
+                "format": "text/plain",
+                "text": "Your 2025 Form W-2 from Brook Systems LLC is attached."
+              },
+              "attachments": [
+                {
+                  "filename": "brook-w2-2025.pdf",
+                  "mime_type": "application/pdf",
+                  "base64": "JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvQ29udGVudHMgNCAwIFIgL1Jlc291cmNlcyA8PCAvRm9udCA8PCAvRjEgNSAwIFIgPj4gPj4gPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0xlbmd0aCA1MzcgPj4Kc3RyZWFtCkJUCi9GMSAxMSBUZgoxMyBUTAo1NCA3NjAgVGQKKFNZTlRIRVRJQyBCRU5DSE1BUksgTk9UIEZPUiBGSUxJTkcpIFRqClQqIChGb3JtIFctMiBXYWdlIGFuZCBUYXggU3RhdGVtZW50IDIwMjUgLSBCcm9vayBTeXN0ZW1zIExMQykgVGoKVCogKCkgVGoKVCogKEVtcGxveWVyOiBCcm9vayBTeXN0ZW1zIExMQykgVGoKVCogKEVtcGxveWVlOiBSb3dhbiBFbGxpcykgVGoKVCogKEVtcGxveWVlIElEOiBsYXN0IGZvdXIgNzczMSkgVGoKVCogKEVtcGxveW1lbnQgcGVyaW9kOiBKdW5lIDMwIHRvIERlY2VtYmVyIDMxLCAyMDI1KSBUagpUKiAoQm94IDEgIFdhZ2VzLCB0aXBzLCBvdGhlciBjb21wZW5zYXRpb246IDYwLDAwMC4wMCkgVGoKVCogKEJveCAyICBGZWRlcmFsIGluY29tZSB0YXggd2l0aGhlbGQ6IDcsNTAwLjAwKSBUagpUKiAoSXNzdWVkOiAyMDI2LTAxLTI3KSBUagpUKiAoRG9jdW1lbnQgcmVmZXJlbmNlOiBCUi1XMi0yMDI1LTc3MzEpIFRqClQqICgpIFRqClQqIChTWU5USEVUSUMgQkVOQ0hNQVJLIE5PVCBGT1IgRklMSU5HKSBUagpFVAplbmRzdHJlYW0KZW5kb2JqCjUgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNlRm9udCAvSGVsdmV0aWNhID4+CmVuZG9iago2IDAgb2JqCjw8IC9UaXRsZSAoRm9ybSBXLTIgV2FnZSBhbmQgVGF4IFN0YXRlbWVudCAyMDI1IC0gQnJvb2sgU3lzdGVtcyBMTEMpIC9Qcm9kdWNlciAoUEFMRSBzeW50aGV0aWMgZml4dHVyZSkgPj4KZW5kb2JqCnhyZWYKMCA3CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDAxNSAwMDAwMCBuIAowMDAwMDAwMDY0IDAwMDAwIG4gCjAwMDAwMDAxMjEgMDAwMDAgbiAKMDAwMDAwMDI0NyAwMDAwMCBuIAowMDAwMDAwODM1IDAwMDAwIG4gCjAwMDAwMDA5MDUgMDAwMDAgbiAKdHJhaWxlcgo8PCAvU2l6ZSA3IC9Sb290IDEgMCBSIC9JbmZvIDYgMCBSID4+CnN0YXJ0eHJlZgoxMDI3CiUlRU9GCg==",
+                  "sha256": "cef6d670dc93c140131e4b44b2cbfe550a60c34b18ce208ffbe86363a23c590a"
+                }
+              ]
+            },
+            "extensions": []
+          }
+        }
+      }
+    }
+  },
+  {
+    "session": "S2",
+    "event": {
+      "event_id": "ev-ridgeway-1099",
+      "at": "2026-02-12T06:30:00-08:00",
+      "operation": "mail.receive_attachments",
+      "payload": {
+        "recipient_account_id": "mail-rowan",
+        "message": {
+          "specversion": "1.0",
+          "id": "ev-ridgeway-1099",
+          "source": "urn:pale:app:ridgeway-invest:account:ridgeway-5160",
+          "type": "org.pale.mail.attachments.v1",
+          "time": "2026-02-12T06:30:00-08:00",
+          "datacontenttype": "application/json",
+          "dataschema": "urn:pale:email-attachments-payload:1",
+          "data": {
+            "channel": "channel.email.attachments",
+            "recipient": {
+              "kind": "person_ref",
+              "id": "person-rowan"
+            },
+            "source_object": {
+              "app_id": "ridgeway-invest",
+              "account_id": "ridgeway-5160",
+              "object_type": "message",
+              "object_id": "ev-ridgeway-1099"
+            },
+            "content": {
+              "title": "Your 2025 tax statement is ready",
+              "body": {
+                "format": "text/plain",
+                "text": "Your 2025 Tax Statement for the account ending 5160 is attached, with supplemental information on your sales."
+              },
+              "attachments": [
+                {
+                  "filename": "ridgeway-1099-2025.pdf",
+                  "mime_type": "application/pdf",
+                  "base64": "JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvQ29udGVudHMgNCAwIFIgL1Jlc291cmNlcyA8PCAvRm9udCA8PCAvRjEgNSAwIFIgPj4gPj4gPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0xlbmd0aCA3ODcgPj4Kc3RyZWFtCkJUCi9GMSAxMSBUZgoxMyBUTAo1NCA3NjAgVGQKKFNZTlRIRVRJQyBCRU5DSE1BUksgTk9UIEZPUiBGSUxJTkcpIFRqClQqIChSaWRnZXdheSBJbnZlc3QgMjAyNSBUYXggU3RhdGVtZW50KSBUagpUKiAoKSBUagpUKiAoQWNjb3VudCBob2xkZXI6IFJvd2FuIEVsbGlzKSBUagpUKiAoQWNjb3VudDogaW5kaXZpZHVhbCBicm9rZXJhZ2UsIGxhc3QgZm91ciA1MTYwKSBUagpUKiAoSXNzdWVkOiAyMDI2LTAyLTEyKSBUagpUKiAoRm9ybSAxMDk5LURJVikgVGoKVCogKCAgQm94IDFhICBUb3RhbCBvcmRpbmFyeSBkaXZpZGVuZHM6IDMwMC4wMCkgVGoKVCogKCAgQm94IDFiICBRdWFsaWZpZWQgZGl2aWRlbmRzOiAyMDAuMDApIFRqClQqIChGb3JtIDEwOTktQiBcKGNvdmVyZWQgc2VjdXJpdGllcywgYmFzaXMgcmVwb3J0ZWQgdG8gdGhlIElSU1wpKSBUagpUKiAoICBSVy0yNS0wNDEyICBzb2xkIDIwMjUtMDQtMTIgIHByb2NlZWRzIDMsMDAwLjAwICBjb3N0IGJhc2lzIDIsODUwLjAwKSBUagpUKiAoICBSVy0yNS0wODA3ICBzb2xkIDIwMjUtMDgtMDcgIHByb2NlZWRzIDIsODAwLjAwICBjb3N0IGJhc2lzIDIsNzEwLjAwKSBUagpUKiAoICBSVy0yNS0xMTE5ICBzb2xkIDIwMjUtMTEtMTkgIHByb2NlZWRzIDIsMjAwLjAwICBjb3N0IGJhc2lzIDIsMDQwLjAwKSBUagpUKiAoICBUb3RhbCBwcm9jZWVkczogOCwwMDAuMDApIFRqClQqICggIFRvdGFsIGNvc3QgYmFzaXM6IDcsNjAwLjAwKSBUagpUKiAoKSBUagpUKiAoU1lOVEhFVElDIEJFTkNITUFSSyBOT1QgRk9SIEZJTElORykgVGoKRVQKZW5kc3RyZWFtCmVuZG9iago1IDAgb2JqCjw8IC9UeXBlIC9Gb250IC9TdWJ0eXBlIC9UeXBlMSAvQmFzZUZvbnQgL0hlbHZldGljYSA+PgplbmRvYmoKNiAwIG9iago8PCAvVGl0bGUgKFJpZGdld2F5IEludmVzdCAyMDI1IFRheCBTdGF0ZW1lbnQpIC9Qcm9kdWNlciAoUEFMRSBzeW50aGV0aWMgZml4dHVyZSkgPj4KZW5kb2JqCnhyZWYKMCA3CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDAxNSAwMDAwMCBuIAowMDAwMDAwMDY0IDAwMDAwIG4gCjAwMDAwMDAxMjEgMDAwMDAgbiAKMDAwMDAwMDI0NyAwMDAwMCBuIAowMDAwMDAxMDg1IDAwMDAwIG4gCjAwMDAwMDExNTUgMDAwMDAgbiAKdHJhaWxlcgo8PCAvU2l6ZSA3IC9Sb290IDEgMCBSIC9JbmZvIDYgMCBSID4+CnN0YXJ0eHJlZgoxMjU1CiUlRU9GCg==",
+                  "sha256": "b35597d19f0790ed1b468169580ebe557c4229c70b35f04a7104e8895514e31b"
+                },
+                {
+                  "filename": "ridgeway-1099-2025-supplement.pdf",
+                  "mime_type": "application/pdf",
+                  "base64": "JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvQ29udGVudHMgNCAwIFIgL1Jlc291cmNlcyA8PCAvRm9udCA8PCAvRjEgNSAwIFIgPj4gPj4gPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0xlbmd0aCA4MDcgPj4Kc3RyZWFtCkJUCi9GMSAxMSBUZgoxMyBUTAo1NCA3NjAgVGQKKFNZTlRIRVRJQyBCRU5DSE1BUksgTk9UIEZPUiBGSUxJTkcpIFRqClQqIChSaWRnZXdheSBJbnZlc3QgMjAyNSBTdXBwbGVtZW50YWwgSW5mb3JtYXRpb24pIFRqClQqICgpIFRqClQqIChBY2NvdW50IGhvbGRlcjogUm93YW4gRWxsaXMpIFRqClQqIChBY2NvdW50OiBpbmRpdmlkdWFsIGJyb2tlcmFnZSwgbGFzdCBmb3VyIDUxNjApIFRqClQqIChTdXBwbGVtZW50YWwgZGV0YWlsIGZvciBzYWxlcyBhbHJlYWR5IHJlcG9ydGVkIG9uIHRoZSAyMDI1IFRheCBTdGF0ZW1lbnQuKSBUagpUKiAoTm90IGEgc2VwYXJhdGUgdGF4IGZvcm07IGFtb3VudHMgYXJlIGluY2x1ZGVkIGluIHRoZSBUYXggU3RhdGVtZW50IHRvdGFscy4pIFRqClQqICggIFJXLTI1LTA0MTIgIHNvbGQgMjAyNS0wNC0xMiAgcHJvY2VlZHMgMywwMDAuMDAgIGNvc3QgYmFzaXMgMiw4NTAuMDAgIGhvbGRpbmcgcGVyaW9kOiBsb25nIHRlcm0gIHdhc2ggc2FsZTogbm9uZSkgVGoKVCogKCAgUlctMjUtMDgwNyAgc29sZCAyMDI1LTA4LTA3ICBwcm9jZWVkcyAyLDgwMC4wMCAgY29zdCBiYXNpcyAyLDcxMC4wMCAgaG9sZGluZyBwZXJpb2Q6IGxvbmcgdGVybSAgd2FzaCBzYWxlOiBub25lKSBUagpUKiAoICBSVy0yNS0xMTE5ICBzb2xkIDIwMjUtMTEtMTkgIHByb2NlZWRzIDIsMjAwLjAwICBjb3N0IGJhc2lzIDIsMDQwLjAwICBob2xkaW5nIHBlcmlvZDogbG9uZyB0ZXJtICB3YXNoIHNhbGU6IG5vbmUpIFRqClQqICgpIFRqClQqIChTWU5USEVUSUMgQkVOQ0hNQVJLIE5PVCBGT1IgRklMSU5HKSBUagpFVAplbmRzdHJlYW0KZW5kb2JqCjUgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNlRm9udCAvSGVsdmV0aWNhID4+CmVuZG9iago2IDAgb2JqCjw8IC9UaXRsZSAoUmlkZ2V3YXkgSW52ZXN0IDIwMjUgU3VwcGxlbWVudGFsIEluZm9ybWF0aW9uKSAvUHJvZHVjZXIgKFBBTEUgc3ludGhldGljIGZpeHR1cmUpID4+CmVuZG9iagp4cmVmCjAgNwowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAwMTUgMDAwMDAgbiAKMDAwMDAwMDA2NCAwMDAwMCBuIAowMDAwMDAwMTIxIDAwMDAwIG4gCjAwMDAwMDAyNDcgMDAwMDAgbiAKMDAwMDAwMTEwNSAwMDAwMCBuIAowMDAwMDAxMTc1IDAwMDAwIG4gCnRyYWlsZXIKPDwgL1NpemUgNyAvUm9vdCAxIDAgUiAvSW5mbyA2IDAgUiA+PgpzdGFydHhyZWYKMTI4NgolJUVPRgo=",
+                  "sha256": "86c2d1509baf5203318bbdd3d37c9d66c019f683d0b77e9fc71aeca60458ded0"
+                }
+              ]
+            },
+            "extensions": []
+          }
+        }
+      }
+    }
+  },
+  {
+    "session": "S2",
+    "event": {
+      "event_id": "ev-northfield-1099",
+      "at": "2026-02-14T06:00:00-08:00",
+      "operation": "mail.receive_attachments",
+      "payload": {
+        "recipient_account_id": "mail-rowan",
+        "message": {
+          "specversion": "1.0",
+          "id": "ev-northfield-1099",
+          "source": "urn:pale:app:northfield-brokerage:account:northfield-2208",
+          "type": "org.pale.mail.attachments.v1",
+          "time": "2026-02-14T06:00:00-08:00",
+          "datacontenttype": "application/json",
+          "dataschema": "urn:pale:email-attachments-payload:1",
+          "data": {
+            "channel": "channel.email.attachments",
+            "recipient": {
+              "kind": "person_ref",
+              "id": "person-rowan"
+            },
+            "source_object": {
+              "app_id": "northfield-brokerage",
+              "account_id": "northfield-2208",
+              "object_type": "message",
+              "object_id": "ev-northfield-1099"
+            },
+            "content": {
+              "title": "Your 2025 consolidated Form 1099",
+              "body": {
+                "format": "text/plain",
+                "text": "Your 2025 consolidated Form 1099 (statement NF-2025-2208-A) for the account ending 2208 is attached."
+              },
+              "attachments": [
+                {
+                  "filename": "northfield-1099-2025.pdf",
+                  "mime_type": "application/pdf",
+                  "base64": "JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvQ29udGVudHMgNCAwIFIgL1Jlc291cmNlcyA8PCAvRm9udCA8PCAvRjEgNSAwIFIgPj4gPj4gPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0xlbmd0aCA2MDYgPj4Kc3RyZWFtCkJUCi9GMSAxMSBUZgoxMyBUTAo1NCA3NjAgVGQKKFNZTlRIRVRJQyBCRU5DSE1BUksgTk9UIEZPUiBGSUxJTkcpIFRqClQqIChOb3J0aGZpZWxkIEJyb2tlcmFnZSAyMDI1IENvbnNvbGlkYXRlZCBGb3JtIDEwOTkpIFRqClQqICgpIFRqClQqIChBY2NvdW50IGhvbGRlcjogUm93YW4gRWxsaXMpIFRqClQqIChBY2NvdW50OiBpbmRpdmlkdWFsIGJyb2tlcmFnZSwgbGFzdCBmb3VyIDIyMDgpIFRqClQqIChJc3N1ZWQ6IDIwMjYtMDItMTQpIFRqClQqIChGb3JtIDEwOTktRElWKSBUagpUKiAoICBCb3ggMWEgIFRvdGFsIG9yZGluYXJ5IGRpdmlkZW5kczogNDYwLjAwKSBUagpUKiAoICBCb3ggMWIgIFF1YWxpZmllZCBkaXZpZGVuZHM6IDQwMC4wMCkgVGoKVCogKEZvcm0gMTA5OS1CIFwoY292ZXJlZCBzZWN1cml0aWVzLCBiYXNpcyByZXBvcnRlZCB0byB0aGUgSVJTXCkpIFRqClQqICggIFRvdGFsIHByb2NlZWRzOiAxMiwwMDAuMDApIFRqClQqICggIFRvdGFsIGNvc3QgYmFzaXM6IDEwLDkwMC4wMCkgVGoKVCogKFN0YXRlbWVudCBJRDogTkYtMjAyNS0yMjA4LUEpIFRqClQqICgpIFRqClQqIChTWU5USEVUSUMgQkVOQ0hNQVJLIE5PVCBGT1IgRklMSU5HKSBUagpFVAplbmRzdHJlYW0KZW5kb2JqCjUgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNlRm9udCAvSGVsdmV0aWNhID4+CmVuZG9iago2IDAgb2JqCjw8IC9UaXRsZSAoTm9ydGhmaWVsZCBCcm9rZXJhZ2UgMjAyNSBDb25zb2xpZGF0ZWQgRm9ybSAxMDk5KSAvUHJvZHVjZXIgKFBBTEUgc3ludGhldGljIGZpeHR1cmUpID4+CmVuZG9iagp4cmVmCjAgNwowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAwMTUgMDAwMDAgbiAKMDAwMDAwMDA2NCAwMDAwMCBuIAowMDAwMDAwMTIxIDAwMDAwIG4gCjAwMDAwMDAyNDcgMDAwMDAgbiAKMDAwMDAwMDkwNCAwMDAwMCBuIAowMDAwMDAwOTc0IDAwMDAwIG4gCnRyYWlsZXIKPDwgL1NpemUgNyAvUm9vdCAxIDAgUiAvSW5mbyA2IDAgUiA+PgpzdGFydHhyZWYKMTA4OAolJUVPRgo=",
+                  "sha256": "67451deee3ea3dea1ea2cbc43e42c5319b3319a294df4e589a76d6a37dcdb157"
+                }
+              ]
+            },
+            "extensions": []
+          }
+        }
+      }
+    }
+  },
+  {
+    "session": "S2",
+    "event": {
+      "event_id": "ev-northfield-export",
+      "at": "2026-02-16T20:05:00-08:00",
+      "operation": "mail.receive_attachments",
+      "payload": {
+        "recipient_account_id": "mail-rowan",
+        "message": {
+          "specversion": "1.0",
+          "id": "ev-northfield-export",
+          "source": "urn:pale:app:mail:account:rowan-personal",
+          "type": "org.pale.mail.attachments.v1",
+          "time": "2026-02-16T20:05:00-08:00",
+          "datacontenttype": "application/json",
+          "dataschema": "urn:pale:email-attachments-payload:1",
+          "data": {
+            "channel": "channel.email.attachments",
+            "recipient": {
+              "kind": "person_ref",
+              "id": "person-rowan"
+            },
+            "source_object": {
+              "app_id": "mail",
+              "account_id": "rowan-personal",
+              "object_type": "message",
+              "object_id": "ev-northfield-export"
+            },
+            "content": {
+              "title": "Northfield statement (downloaded)",
+              "body": {
+                "format": "text/plain",
+                "text": "Downloaded this from the Northfield site too, in case the email copy is missing anything."
+              },
+              "attachments": [
+                {
+                  "filename": "northfield-1099-2025-export.pdf",
+                  "mime_type": "application/pdf",
+                  "base64": "JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvQ29udGVudHMgNCAwIFIgL1Jlc291cmNlcyA8PCAvRm9udCA8PCAvRjEgNSAwIFIgPj4gPj4gPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0xlbmd0aCA2NzEgPj4Kc3RyZWFtCkJUCi9GMSAxMSBUZgoxMyBUTAo1NCA3NjAgVGQKKFNZTlRIRVRJQyBCRU5DSE1BUksgTk9UIEZPUiBGSUxJTkcpIFRqClQqIChOb3J0aGZpZWxkIEJyb2tlcmFnZSAyMDI1IENvbnNvbGlkYXRlZCBGb3JtIDEwOTkpIFRqClQqICgpIFRqClQqIChBY2NvdW50IGhvbGRlcjogUm93YW4gRWxsaXMpIFRqClQqIChBY2NvdW50OiBpbmRpdmlkdWFsIGJyb2tlcmFnZSwgbGFzdCBmb3VyIDIyMDgpIFRqClQqIChJc3N1ZWQ6IDIwMjYtMDItMTQpIFRqClQqIChGb3JtIDEwOTktRElWKSBUagpUKiAoICBCb3ggMWEgIFRvdGFsIG9yZGluYXJ5IGRpdmlkZW5kczogNDYwLjAwKSBUagpUKiAoICBCb3ggMWIgIFF1YWxpZmllZCBkaXZpZGVuZHM6IDQwMC4wMCkgVGoKVCogKEZvcm0gMTA5OS1CIFwoY292ZXJlZCBzZWN1cml0aWVzLCBiYXNpcyByZXBvcnRlZCB0byB0aGUgSVJTXCkpIFRqClQqICggIFRvdGFsIHByb2NlZWRzOiAxMiwwMDAuMDApIFRqClQqICggIFRvdGFsIGNvc3QgYmFzaXM6IDEwLDkwMC4wMCkgVGoKVCogKFN0YXRlbWVudCBJRDogTkYtMjAyNS0yMjA4LUEpIFRqClQqIChEb3dubG9hZGVkIGNvcHkgZXhwb3J0ZWQgMjAyNi0wMi0xNiBmcm9tIG9ubGluZSBhY2NvdW50LikgVGoKVCogKCkgVGoKVCogKFNZTlRIRVRJQyBCRU5DSE1BUksgTk9UIEZPUiBGSUxJTkcpIFRqCkVUCmVuZHN0cmVhbQplbmRvYmoKNSAwIG9iago8PCAvVHlwZSAvRm9udCAvU3VidHlwZSAvVHlwZTEgL0Jhc2VGb250IC9IZWx2ZXRpY2EgPj4KZW5kb2JqCjYgMCBvYmoKPDwgL1RpdGxlIChOb3J0aGZpZWxkIEJyb2tlcmFnZSAyMDI1IENvbnNvbGlkYXRlZCBGb3JtIDEwOTkpIC9Qcm9kdWNlciAoUEFMRSBzeW50aGV0aWMgZml4dHVyZSkgPj4KZW5kb2JqCnhyZWYKMCA3CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDAxNSAwMDAwMCBuIAowMDAwMDAwMDY0IDAwMDAwIG4gCjAwMDAwMDAxMjEgMDAwMDAgbiAKMDAwMDAwMDI0NyAwMDAwMCBuIAowMDAwMDAwOTY5IDAwMDAwIG4gCjAwMDAwMDEwMzkgMDAwMDAgbiAKdHJhaWxlcgo8PCAvU2l6ZSA3IC9Sb290IDEgMCBSIC9JbmZvIDYgMCBSID4+CnN0YXJ0eHJlZgoxMTUzCiUlRU9GCg==",
+                  "sha256": "4f610e19dd2ebfcb00eee3a47afb2aa7d59fe9d4d72619180de65669cf94d6fe"
+                }
+              ]
+            },
+            "extensions": []
+          }
+        }
+      }
+    }
+  },
+  {
+    "session": "S3",
+    "event": {
+      "event_id": "ev-northfield-corrected",
+      "at": "2026-03-02T06:00:00-08:00",
+      "operation": "mail.receive_attachments",
+      "payload": {
+        "recipient_account_id": "mail-rowan",
+        "message": {
+          "specversion": "1.0",
+          "id": "ev-northfield-corrected",
+          "source": "urn:pale:app:northfield-brokerage:account:northfield-2208",
+          "type": "org.pale.mail.attachments.v1",
+          "time": "2026-03-02T06:00:00-08:00",
+          "datacontenttype": "application/json",
+          "dataschema": "urn:pale:email-attachments-payload:1",
+          "data": {
+            "channel": "channel.email.attachments",
+            "recipient": {
+              "kind": "person_ref",
+              "id": "person-rowan"
+            },
+            "source_object": {
+              "app_id": "northfield-brokerage",
+              "account_id": "northfield-2208",
+              "object_type": "message",
+              "object_id": "ev-northfield-corrected"
+            },
+            "content": {
+              "title": "CORRECTED 2025 consolidated Form 1099",
+              "body": {
+                "format": "text/plain",
+                "text": "A corrected 2025 consolidated Form 1099 (statement NF-2025-2208-B) is attached. It replaces your statement NF-2025-2208-A issued February 14, 2026 in full. Corrected items: 1099-DIV box 1a and the reported cost basis for two lots. Please use the corrected statement for your 2025 return."
+              },
+              "attachments": [
+                {
+                  "filename": "northfield-1099-2025-corrected.pdf",
+                  "mime_type": "application/pdf",
+                  "base64": "JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvQ29udGVudHMgNCAwIFIgL1Jlc291cmNlcyA8PCAvRm9udCA8PCAvRjEgNSAwIFIgPj4gPj4gPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0xlbmd0aCA3ODkgPj4Kc3RyZWFtCkJUCi9GMSAxMSBUZgoxMyBUTAo1NCA3NjAgVGQKKFNZTlRIRVRJQyBCRU5DSE1BUksgTk9UIEZPUiBGSUxJTkcpIFRqClQqIChOb3J0aGZpZWxkIEJyb2tlcmFnZSAyMDI1IENvbnNvbGlkYXRlZCBGb3JtIDEwOTkgQ09SUkVDVEVEKSBUagpUKiAoKSBUagpUKiAoQWNjb3VudCBob2xkZXI6IFJvd2FuIEVsbGlzKSBUagpUKiAoQWNjb3VudDogaW5kaXZpZHVhbCBicm9rZXJhZ2UsIGxhc3QgZm91ciAyMjA4KSBUagpUKiAoSXNzdWVkOiAyMDI2LTAzLTAyKSBUagpUKiAoRm9ybSAxMDk5LURJVikgVGoKVCogKCAgQm94IDFhICBUb3RhbCBvcmRpbmFyeSBkaXZpZGVuZHM6IDUwMC4wMCkgVGoKVCogKCAgQm94IDFiICBRdWFsaWZpZWQgZGl2aWRlbmRzOiA0MDAuMDApIFRqClQqIChGb3JtIDEwOTktQiBcKGNvdmVyZWQgc2VjdXJpdGllcywgYmFzaXMgcmVwb3J0ZWQgdG8gdGhlIElSU1wpKSBUagpUKiAoICBUb3RhbCBwcm9jZWVkczogMTIsMDAwLjAwKSBUagpUKiAoICBUb3RhbCBjb3N0IGJhc2lzOiAxMSw3MDAuMDApIFRqClQqIChTdGF0ZW1lbnQgSUQ6IE5GLTIwMjUtMjIwOC1CKSBUagpUKiAoQ09SUkVDVEVEOiB0aGlzIHN0YXRlbWVudCByZXBsYWNlcyBzdGF0ZW1lbnQgTkYtMjAyNS0yMjA4LUEgXChpc3N1ZWQgMjAyNi0wMi0xNFwpIGluIGZ1bGwuKSBUagpUKiAoQ29ycmVjdGVkIGl0ZW1zOiAxMDk5LURJViBib3ggMWE7IDEwOTktQiBjb3N0IGJhc2lzIGZvciB0d28gbG90cy4pIFRqClQqICgpIFRqClQqIChTWU5USEVUSUMgQkVOQ0hNQVJLIE5PVCBGT1IgRklMSU5HKSBUagpFVAplbmRzdHJlYW0KZW5kb2JqCjUgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNlRm9udCAvSGVsdmV0aWNhID4+CmVuZG9iago2IDAgb2JqCjw8IC9UaXRsZSAoTm9ydGhmaWVsZCBCcm9rZXJhZ2UgMjAyNSBDb25zb2xpZGF0ZWQgRm9ybSAxMDk5IENPUlJFQ1RFRCkgL1Byb2R1Y2VyIChQQUxFIHN5bnRoZXRpYyBmaXh0dXJlKSA+PgplbmRvYmoKeHJlZgowIDcKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDE1IDAwMDAwIG4gCjAwMDAwMDAwNjQgMDAwMDAgbiAKMDAwMDAwMDEyMSAwMDAwMCBuIAowMDAwMDAwMjQ3IDAwMDAwIG4gCjAwMDAwMDEwODcgMDAwMDAgbiAKMDAwMDAwMTE1NyAwMDAwMCBuIAp0cmFpbGVyCjw8IC9TaXplIDcgL1Jvb3QgMSAwIFIgL0luZm8gNiAwIFIgPj4Kc3RhcnR4cmVmCjEyODEKJSVFT0YK",
+                  "sha256": "df59f894ed660ce40dfb4a28da923ffbcfe44b58e1a1156458517caa0db29eb1"
+                }
+              ]
+            },
+            "extensions": []
+          }
+        }
+      }
+    }
+  },
+  {
+    "session": "S4",
+    "event": {
+      "event_id": "ev-bayview-notice",
+      "at": "2026-03-06T16:40:00-08:00",
+      "operation": "mail.deliver",
+      "payload": {
+        "id": "ev-bayview-notice",
+        "thread_id": "ev-bayview-notice",
+        "account_id": "mail-rowan",
+        "from": "notices@bayviewbank.example",
+        "to": [
+          "rowan.ellis@pale.example"
+        ],
+        "subject": "Your 2025 tax form",
+        "body": "Our records show interest was paid in 2025 on your savings account ending 4410, which you closed on August 29, 2025. Your 2025 Form 1099-INT will be available to download from the Documents page of your Bayview Bank online account on March 10, 2026.",
+        "received_at": "2026-03-06T16:40:00-08:00",
+        "folder": "inbox",
+        "read": false,
+        "attachments": []
+      }
+    }
+  },
+  {
+    "session": "S4",
+    "event": {
+      "event_id": "ev-northfield-forward",
+      "at": "2026-03-06T17:50:00-08:00",
+      "operation": "mail.receive_attachments",
+      "payload": {
+        "recipient_account_id": "mail-rowan",
+        "message": {
+          "specversion": "1.0",
+          "id": "ev-northfield-forward",
+          "source": "urn:pale:app:mail:account:rowan-personal",
+          "type": "org.pale.mail.attachments.v1",
+          "time": "2026-03-06T17:50:00-08:00",
+          "datacontenttype": "application/json",
+          "dataschema": "urn:pale:email-attachments-payload:1",
+          "data": {
+            "channel": "channel.email.attachments",
+            "recipient": {
+              "kind": "person_ref",
+              "id": "person-rowan"
+            },
+            "source_object": {
+              "app_id": "mail",
+              "account_id": "rowan-personal",
+              "object_type": "message",
+              "object_id": "ev-northfield-forward"
+            },
+            "content": {
+              "title": "Fwd: Northfield tax statement",
+              "body": {
+                "format": "text/plain",
+                "text": "Found this in my other inbox, forwarding in case you need it."
+              },
+              "attachments": [
+                {
+                  "filename": "northfield-1099-2025-forwarded.pdf",
+                  "mime_type": "application/pdf",
+                  "base64": "JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvQ29udGVudHMgNCAwIFIgL1Jlc291cmNlcyA8PCAvRm9udCA8PCAvRjEgNSAwIFIgPj4gPj4gPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0xlbmd0aCA2MDYgPj4Kc3RyZWFtCkJUCi9GMSAxMSBUZgoxMyBUTAo1NCA3NjAgVGQKKFNZTlRIRVRJQyBCRU5DSE1BUksgTk9UIEZPUiBGSUxJTkcpIFRqClQqIChOb3J0aGZpZWxkIEJyb2tlcmFnZSAyMDI1IENvbnNvbGlkYXRlZCBGb3JtIDEwOTkpIFRqClQqICgpIFRqClQqIChBY2NvdW50IGhvbGRlcjogUm93YW4gRWxsaXMpIFRqClQqIChBY2NvdW50OiBpbmRpdmlkdWFsIGJyb2tlcmFnZSwgbGFzdCBmb3VyIDIyMDgpIFRqClQqIChJc3N1ZWQ6IDIwMjYtMDItMTQpIFRqClQqIChGb3JtIDEwOTktRElWKSBUagpUKiAoICBCb3ggMWEgIFRvdGFsIG9yZGluYXJ5IGRpdmlkZW5kczogNDYwLjAwKSBUagpUKiAoICBCb3ggMWIgIFF1YWxpZmllZCBkaXZpZGVuZHM6IDQwMC4wMCkgVGoKVCogKEZvcm0gMTA5OS1CIFwoY292ZXJlZCBzZWN1cml0aWVzLCBiYXNpcyByZXBvcnRlZCB0byB0aGUgSVJTXCkpIFRqClQqICggIFRvdGFsIHByb2NlZWRzOiAxMiwwMDAuMDApIFRqClQqICggIFRvdGFsIGNvc3QgYmFzaXM6IDEwLDkwMC4wMCkgVGoKVCogKFN0YXRlbWVudCBJRDogTkYtMjAyNS0yMjA4LUEpIFRqClQqICgpIFRqClQqIChTWU5USEVUSUMgQkVOQ0hNQVJLIE5PVCBGT1IgRklMSU5HKSBUagpFVAplbmRzdHJlYW0KZW5kb2JqCjUgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNlRm9udCAvSGVsdmV0aWNhID4+CmVuZG9iago2IDAgb2JqCjw8IC9UaXRsZSAoTm9ydGhmaWVsZCBCcm9rZXJhZ2UgMjAyNSBDb25zb2xpZGF0ZWQgRm9ybSAxMDk5KSAvUHJvZHVjZXIgKFBBTEUgc3ludGhldGljIGZpeHR1cmUpID4+CmVuZG9iagp4cmVmCjAgNwowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAwMTUgMDAwMDAgbiAKMDAwMDAwMDA2NCAwMDAwMCBuIAowMDAwMDAwMTIxIDAwMDAwIG4gCjAwMDAwMDAyNDcgMDAwMDAgbiAKMDAwMDAwMDkwNCAwMDAwMCBuIAowMDAwMDAwOTc0IDAwMDAwIG4gCnRyYWlsZXIKPDwgL1NpemUgNyAvUm9vdCAxIDAgUiAvSW5mbyA2IDAgUiA+PgpzdGFydHhyZWYKMTA4OAolJUVPRgo=",
+                  "sha256": "67451deee3ea3dea1ea2cbc43e42c5319b3319a294df4e589a76d6a37dcdb157"
+                }
+              ]
+            },
+            "extensions": []
+          }
+        }
+      }
+    }
+  }
+]

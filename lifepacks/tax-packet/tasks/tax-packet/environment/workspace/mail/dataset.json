@@ -1,0 +1,44 @@
+{
+  "schema_version": "pale.dataset.v1",
+  "dataset_id": "tax-packet-mail",
+  "version": "1.0.0",
+  "description": "Rowan's mailbox before S1 for Task #102.",
+  "record_source_ids": [
+    "authored"
+  ],
+  "sources": [
+    {
+      "source_id": "authored",
+      "kind": "synthetic",
+      "description": "Hand-authored synthetic records and generated synthetic PDFs; no external collection.",
+      "uri": null,
+      "license": "MIT",
+      "usage": "permitted",
+      "collection": null,
+      "generation": {
+        "method": "scripted",
+        "tool": "environment/build (Task #102)",
+        "tool_version": "0.1.0",
+        "seed": null,
+        "parameters": {}
+      }
+    }
+  ],
+  "transformations": [
+    "Generated deterministically by the task's build scripts."
+  ],
+  "expected_counts": {
+    "records": 7,
+    "assets": 2
+  },
+  "quality_policy": {
+    "duplicate_records": "reject",
+    "duplicate_assets": "allow",
+    "missing_assets": "allow_declared"
+  },
+  "review": {
+    "status": "pending",
+    "reviewer": null,
+    "notes": "Automatic checks do not replace human provenance and realism review."
+  }
+}

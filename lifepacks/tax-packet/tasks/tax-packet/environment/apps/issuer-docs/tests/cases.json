@@ -1,0 +1,8 @@
+{
+  "read": {
+    "name": "issuer-docs.documents.list",
+    "args": {
+      "account_ref": "bayview-savings-4410"
+    }
+  }
+}

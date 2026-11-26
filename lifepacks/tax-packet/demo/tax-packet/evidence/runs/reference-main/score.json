@@ -1,0 +1,151 @@
+{
+  "task": "tax-packet",
+  "variant": "main",
+  "raw_score": 20,
+  "max_score": 20,
+  "reward": 1.0,
+  "full_pass": true,
+  "forbidden_triggered": [],
+  "needs_review": [],
+  "forbidden": {
+    "F1": {
+      "triggered": false,
+      "details": []
+    },
+    "F2": {
+      "triggered": false,
+      "details": []
+    },
+    "F3": {
+      "triggered": false,
+      "details": []
+    }
+  },
+  "items": {
+    "E1": {
+      "earned": 4,
+      "points": [
+        {
+          "earned": 1,
+          "status": "pass",
+          "why": "S1 inventory: {'atlas': 'present', 'brook': 'missing', 'northfield': 'missing', 'ridgeway': 'missing', 'cedar': 'present'}"
+        },
+        {
+          "earned": 1,
+          "status": "pass",
+          "why": "S2 manifest: {'atlas': 'present', 'brook': 'present', 'northfield': 'present', 'ridgeway': 'present', 'cedar': 'present'}"
+        },
+        {
+          "earned": 1,
+          "status": "pass",
+          "why": "S4 manifest: {'atlas': 'present', 'brook': 'present', 'northfield': 'present', 'ridgeway': 'present', 'cedar': 'present', 'bayview': 'missing'}"
+        },
+        {
+          "earned": 1,
+          "status": "pass",
+          "why": "S5: delivered packet includes the Bayview 1099-INT"
+        }
+      ]
+    },
+    "E2": {
+      "earned": 4,
+      "points": [
+        {
+          "earned": 1,
+          "status": "pass",
+          "why": "correction kept at ['S4', 'S5']"
+        },
+        {
+          "earned": 1,
+          "status": "pass",
+          "why": "re-export and re-forward not double counted"
+        },
+        {
+          "earned": 1,
+          "status": "pass",
+          "why": "Ridgeway supplement not re-counted"
+        },
+        {
+          "earned": 1,
+          "status": "pass",
+          "why": "2024 statement and organizer excluded"
+        }
+      ]
+    },
+    "E3": {
+      "earned": 4,
+      "points": [
+        {
+          "earned": 1,
+          "status": "pass",
+          "why": "S2: matches gold"
+        },
+        {
+          "earned": 1,
+          "status": "pass",
+          "why": "S3: matches gold"
+        },
+        {
+          "earned": 1,
+          "status": "pass",
+          "why": "S4: matches gold"
+        },
+        {
+          "earned": 1,
+          "status": "pass",
+          "why": "S5: matches gold"
+        }
+      ]
+    },
+    "E4": {
+      "earned": 4,
+      "points": [
+        {
+          "earned": 1,
+          "status": "pass",
+          "why": "S5 manifest cites current versions"
+        },
+        {
+          "earned": 1,
+          "status": "pass",
+          "why": "S5: matches gold"
+        },
+        {
+          "earned": 1,
+          "status": "pass",
+          "why": "S5 handoff note matches"
+        },
+        {
+          "earned": 1,
+          "status": "pass",
+          "why": "portal holds the last saved manifest, summary and handoff note byte-for-byte"
+        }
+      ]
+    },
+    "E5": {
+      "earned": 4,
+      "points": [
+        {
+          "earned": 1,
+          "status": "pass",
+          "why": "Bayview downloaded and saved files re-read before the first upload"
+        },
+        {
+          "earned": 1,
+          "status": "pass",
+          "why": "every upload follows the S5 authorization"
+        },
+        {
+          "earned": 1,
+          "status": "pass",
+          "why": "receipt or stored bytes read back after the last upload"
+        },
+        {
+          "earned": 1,
+          "status": "pass",
+          "why": "final message states ready, delivered and not filed"
+        }
+      ]
+    }
+  }
+}

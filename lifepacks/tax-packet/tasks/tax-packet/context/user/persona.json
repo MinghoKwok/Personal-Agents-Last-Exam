@@ -1,0 +1,22 @@
+{
+  "schema": "lifepack.persona.v1",
+  "person_id": "person-rowan",
+  "name": "Rowan Ellis",
+  "fictional": true,
+  "time_zone": "America/Los_Angeles",
+  "background": [
+    "Changed jobs during 2025: Atlas Labs, Inc. until June 13, then Brook Systems LLC from June 30.",
+    "Has two brokerage accounts, Northfield Brokerage (ending 2208) and Ridgeway Invest (ending 5160), and a checking account at Cedar Bank (ending 0937).",
+    "Closed a savings account at Bayview Bank (ending 4410) on August 29, 2025, and does not think of it when listing tax sources.",
+    "Completed a personal-tax intake with the accountant Morgan Lee and agreed to deliver supporting records by 2026-03-10. This is a date the two set between them, not a legal deadline."
+  ],
+  "relationships": [
+    {"person": "Morgan Lee", "role": "accountant", "decides": "filing status, residency, deductions and tax owed"}
+  ],
+  "preferences": [
+    "Original records are left untouched.",
+    "Rowan says what still needs confirming; otherwise expects the agent to keep the packet current without being told what changed.",
+    "Short, factual updates; no tax advice."
+  ],
+  "communication": {"style": "brief", "channel": "chat with the agent at each check-in"}
+}

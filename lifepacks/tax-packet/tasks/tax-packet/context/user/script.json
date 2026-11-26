@@ -1,0 +1,21 @@
+{
+  "schema": "lifepack.user-script.v1",
+  "person_id": "person-rowan",
+  "sessions": {
+    "S1": {"opening": "instruction.md"},
+    "S2": {"opening": "This batch arrived; keep organizing and prepare the handoff draft."},
+    "S3": {"opening": "Take a look at the new tax mail and keep things updated."},
+    "S4": {"opening": "Bayview just sent a tax-form notice for the savings account I closed last year. Include it. With Bayview added, I confirm there are no other sources for this intake."},
+    "S5": {"opening": "It's delivery day. Please finish up. If everything is in, upload to Morgan's CP-2025-ROWAN; if something blocks it, tell me what's missing."}
+  },
+  "replies": [
+    {"when": "Before S4, the agent asks whether there are other sources or accounts.", "reply": "Only what's in the intake; I'll tell you if anything new comes up."},
+    {"when": "The agent asks about filing status, deductions, tax owed or what an amount means for the return.", "reply": "That's Morgan's call. Her instruction sheet is in my mail."},
+    {"when": "Before S5, the agent asks for permission to upload.", "reply": "Not yet. I'll tell you on delivery day."},
+    {"when": "The agent asks which Northfield statement to use, or whether a re-sent file matters.", "reply": "Use whatever is current; that's what I need you to keep track of."},
+    {"when": "In S5, the agent says something is missing and asks how to proceed.", "reply": "Then hold the upload and tell me what's missing."}
+  ],
+  "no_reply": "Any other question gets no answer within the session; the agent continues within the limits Rowan gave.",
+  "private_facts": [],
+  "visibility": "The agent sees only the opening messages and the scripted replies, at the times they are sent."
+}

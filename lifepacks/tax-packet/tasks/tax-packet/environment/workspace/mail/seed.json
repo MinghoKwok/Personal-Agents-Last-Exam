@@ -1,0 +1,116 @@
+{
+  "account_id": "mail-rowan",
+  "owner_person_id": "person-rowan",
+  "address": "rowan.ellis@pale.example",
+  "messages": [
+    {
+      "id": "m-2025-organizer",
+      "thread_id": "lee-2024",
+      "account_id": "mail-rowan",
+      "from": "morgan@leetaxadvisory.example",
+      "to": [
+        "rowan.ellis@pale.example"
+      ],
+      "subject": "Your 2024 tax organizer",
+      "body": "Hi Rowan, attached to your portal case CP-2024-ROWAN is your 2024 organizer. Best, Morgan",
+      "received_at": "2025-03-03T11:00:00-08:00",
+      "folder": "archive",
+      "read": true,
+      "attachments": []
+    },
+    {
+      "id": "m-cpa-sheet",
+      "thread_id": "lee-2025",
+      "account_id": "mail-rowan",
+      "from": "morgan@leetaxadvisory.example",
+      "to": [
+        "rowan.ellis@pale.example"
+      ],
+      "subject": "2025 tax intake: records list and how to deliver",
+      "body": "Hi Rowan,\n\nThanks for completing the intake call. For your 2025 return, please send me supporting records for these sources from the intake: Atlas Labs (W-2), Brook Systems (W-2), Northfield Brokerage, Ridgeway Invest and Cedar Bank. We agreed you would deliver them by March 10, 2026.\n\nWhat I need from each form:\n- W-2: box 1 (wages) and box 2 (federal income tax withheld).\n- 1099-INT: box 1 (interest income).\n- 1099-DIV: box 1a (total ordinary dividends) and box 1b (qualified dividends), listed separately. Box 1b is part of 1a; please do not add them together.\n- 1099-B: total proceeds and reported cost basis, as printed.\n\nPlease deliver the source documents as received, plus a short manifest of what is included, a summary of the fields above by source with totals, and a handoff note with anything still open. Upload everything to your case CP-2025-ROWAN in our client portal. I only work from the current set in the portal, so please do not include last year's files.\n\nI decide filing status, deductions and the tax itself; you do not need to work any of that out.\n\nBest,\nMorgan Lee\nMorgan Lee Tax Advisory",
+      "received_at": "2026-01-20T10:30:00-08:00",
+      "folder": "inbox",
+      "read": true,
+      "attachments": []
+    },
+    {
+      "id": "m-brook-benefits",
+      "thread_id": "brook-hr",
+      "account_id": "mail-rowan",
+      "from": "benefits@brooksystems.example",
+      "to": [
+        "rowan.ellis@pale.example"
+      ],
+      "subject": "Reminder: benefits enrollment closes Feb 15",
+      "body": "This is a reminder that the 2026 benefits enrollment window closes on February 15.",
+      "received_at": "2026-01-22T09:00:00-08:00",
+      "folder": "inbox",
+      "read": true,
+      "attachments": []
+    },
+    {
+      "id": "m-atlas-w2",
+      "thread_id": "atlas-w2",
+      "account_id": "mail-rowan",
+      "from": "payroll@atlaslabs.example",
+      "to": [
+        "rowan.ellis@pale.example"
+      ],
+      "subject": "Your 2025 Form W-2",
+      "body": "Your 2025 Form W-2 from Atlas Labs, Inc. is attached. Please keep it with your tax records.",
+      "received_at": "2026-01-27T08:15:00-08:00",
+      "folder": "inbox",
+      "read": true,
+      "attachments": [
+        "att-m-atlas-w2-d01"
+      ]
+    },
+    {
+      "id": "m-cedar-1099",
+      "thread_id": "cedar-1099",
+      "account_id": "mail-rowan",
+      "from": "statements@cedarbank.example",
+      "to": [
+        "rowan.ellis@pale.example"
+      ],
+      "subject": "Your 2025 Form 1099-INT",
+      "body": "Your 2025 Form 1099-INT for your checking account ending 0937 is attached.",
+      "received_at": "2026-01-29T07:40:00-08:00",
+      "folder": "inbox",
+      "read": true,
+      "attachments": [
+        "att-m-cedar-1099-d09"
+      ]
+    },
+    {
+      "id": "m-northfield-schedule",
+      "thread_id": "northfield-tax",
+      "account_id": "mail-rowan",
+      "from": "noreply@northfieldbrokerage.example",
+      "to": [
+        "rowan.ellis@pale.example"
+      ],
+      "subject": "Tax documents: what to expect",
+      "body": "Your 2025 consolidated Form 1099 is scheduled to be available by February 14, 2026. We will email you when it is ready.",
+      "received_at": "2026-01-30T06:00:00-08:00",
+      "folder": "inbox",
+      "read": true,
+      "attachments": []
+    },
+    {
+      "id": "m-newsletter",
+      "thread_id": "newsletter",
+      "account_id": "mail-rowan",
+      "from": "news@cityreader.example",
+      "to": [
+        "rowan.ellis@pale.example"
+      ],
+      "subject": "This week in the city",
+      "body": "Farmers market hours, a new bike lane and weekend events.",
+      "received_at": "2026-02-01T07:00:00-08:00",
+      "folder": "inbox",
+      "read": true,
+      "attachments": []
+    }
+  ]
+}

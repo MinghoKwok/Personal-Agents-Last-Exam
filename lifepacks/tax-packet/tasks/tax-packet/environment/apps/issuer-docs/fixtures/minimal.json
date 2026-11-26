@@ -1,0 +1,62 @@
+{
+  "account_id": "issuer-docs-rowan",
+  "owner_person_id": "person-rowan",
+  "institution": {
+    "institution_id": "bayview-bank",
+    "name": "Bayview Bank",
+    "time_zone": "America/Los_Angeles"
+  },
+  "accounts": [
+    {
+      "account_ref": "bayview-savings-4410",
+      "label": "Savings",
+      "last_four": "4410",
+      "status": "closed",
+      "closed_on": "2025-08-29"
+    }
+  ],
+  "documents": [
+    {
+      "document_id": "bv-stmt-2025-07",
+      "account_ref": "bayview-savings-4410",
+      "kind": "statement",
+      "title": "Savings statement, July 2025",
+      "tax_year": null,
+      "issued_at": "2025-08-04T08:00:00-07:00",
+      "available_from": "2025-08-04T08:00:00-07:00",
+      "filename": "bayview-savings-2025-07.pdf",
+      "mime_type": "application/pdf",
+      "size": 1087,
+      "sha256": "9a0f8dea9ed91f87fdbab9784628b3b82a9ad7c31be0c86da473ec630f9568e6",
+      "base64": "JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvQ29udGVudHMgNCAwIFIgL1Jlc291cmNlcyA8PCAvRm9udCA8PCAvRjEgNSAwIFIgPj4gPj4gPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0xlbmd0aCAzOTcgPj4Kc3RyZWFtCkJUCi9GMSAxMSBUZgoxMyBUTAo1NCA3NjAgVGQKKFNZTlRIRVRJQyBCRU5DSE1BUksgTk9UIEZPUiBGSUxJTkcpIFRqClQqIChCYXl2aWV3IEJhbmsgU2F2aW5ncyBTdGF0ZW1lbnQsIEp1bHkgMjAyNSkgVGoKVCogKCkgVGoKVCogKEFjY291bnQgaG9sZGVyOiBSb3dhbiBFbGxpcykgVGoKVCogKEFjY291bnQ6IHNhdmluZ3MsIGxhc3QgZm91ciA0NDEwKSBUagpUKiAoUGVyaW9kOiAyMDI1LTA3LTAxIHRvIDIwMjUtMDctMzEpIFRqClQqIChPcGVuaW5nIGJhbGFuY2U6IDYsNDEyLjkwKSBUagpUKiAoSW50ZXJlc3QgcGFpZDogMTEuNDgpIFRqClQqIChDbG9zaW5nIGJhbGFuY2U6IDYsNDI0LjM4KSBUagpUKiAoKSBUagpUKiAoU1lOVEhFVElDIEJFTkNITUFSSyBOT1QgRk9SIEZJTElORykgVGoKRVQKZW5kc3RyZWFtCmVuZG9iago1IDAgb2JqCjw8IC9UeXBlIC9Gb250IC9TdWJ0eXBlIC9UeXBlMSAvQmFzZUZvbnQgL0hlbHZldGljYSA+PgplbmRvYmoKNiAwIG9iago8PCAvVGl0bGUgKEJheXZpZXcgQmFuayBTYXZpbmdzIFN0YXRlbWVudCwgSnVseSAyMDI1KSAvUHJvZHVjZXIgKFBBTEUgc3ludGhldGljIGZpeHR1cmUpID4+CmVuZG9iagp4cmVmCjAgNwowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAwMTUgMDAwMDAgbiAKMDAwMDAwMDA2NCAwMDAwMCBuIAowMDAwMDAwMTIxIDAwMDAwIG4gCjAwMDAwMDAyNDcgMDAwMDAgbiAKMDAwMDAwMDY5NSAwMDAwMCBuIAowMDAwMDAwNzY1IDAwMDAwIG4gCnRyYWlsZXIKPDwgL1NpemUgNyAvUm9vdCAxIDAgUiAvSW5mbyA2IDAgUiA+PgpzdGFydHhyZWYKODcyCiUlRU9GCg=="
+    },
+    {
+      "document_id": "bv-closure-2025",
+      "account_ref": "bayview-savings-4410",
+      "kind": "letter",
+      "title": "Account closure confirmation",
+      "tax_year": null,
+      "issued_at": "2025-08-29T15:00:00-07:00",
+      "available_from": "2025-08-29T15:00:00-07:00",
+      "filename": "bayview-closure-2025-08-29.pdf",
+      "mime_type": "application/pdf",
+      "size": 1138,
+      "sha256": "c7c390d0386389dc0e9042c76d05a3e6578c41343f5c6637e998ac5bbd0a3dad",
+      "base64": "JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvQ29udGVudHMgNCAwIFIgL1Jlc291cmNlcyA8PCAvRm9udCA8PCAvRjEgNSAwIFIgPj4gPj4gPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0xlbmd0aCA0NDggPj4Kc3RyZWFtCkJUCi9GMSAxMSBUZgoxMyBUTAo1NCA3NjAgVGQKKFNZTlRIRVRJQyBCRU5DSE1BUksgTk9UIEZPUiBGSUxJTkcpIFRqClQqIChCYXl2aWV3IEJhbmsgQWNjb3VudCBDbG9zdXJlIENvbmZpcm1hdGlvbikgVGoKVCogKCkgVGoKVCogKEFjY291bnQgaG9sZGVyOiBSb3dhbiBFbGxpcykgVGoKVCogKEFjY291bnQ6IHNhdmluZ3MsIGxhc3QgZm91ciA0NDEwKSBUagpUKiAoQ2xvc2VkOiAyMDI1LTA4LTI5KSBUagpUKiAoRmluYWwgYmFsYW5jZSB0cmFuc2ZlcnJlZCBieSBjaGVjazogNiw0MzEuMDcpIFRqClQqIChBIEZvcm0gMTA5OS1JTlQgZm9yIDIwMjUgd2lsbCBiZSBtYWRlIGF2YWlsYWJsZSBvbiB0aGlzIHBhZ2UgaWYgaW50ZXJlc3QgcGFpZCBpbiAyMDI1IGlzIHJlcG9ydGFibGUuKSBUagpUKiAoKSBUagpUKiAoU1lOVEhFVElDIEJFTkNITUFSSyBOT1QgRk9SIEZJTElORykgVGoKRVQKZW5kc3RyZWFtCmVuZG9iago1IDAgb2JqCjw8IC9UeXBlIC9Gb250IC9TdWJ0eXBlIC9UeXBlMSAvQmFzZUZvbnQgL0hlbHZldGljYSA+PgplbmRvYmoKNiAwIG9iago8PCAvVGl0bGUgKEJheXZpZXcgQmFuayBBY2NvdW50IENsb3N1cmUgQ29uZmlybWF0aW9uKSAvUHJvZHVjZXIgKFBBTEUgc3ludGhldGljIGZpeHR1cmUpID4+CmVuZG9iagp4cmVmCjAgNwowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAwMTUgMDAwMDAgbiAKMDAwMDAwMDA2NCAwMDAwMCBuIAowMDAwMDAwMTIxIDAwMDAwIG4gCjAwMDAwMDAyNDcgMDAwMDAgbiAKMDAwMDAwMDc0NiAwMDAwMCBuIAowMDAwMDAwODE2IDAwMDAwIG4gCnRyYWlsZXIKPDwgL1NpemUgNyAvUm9vdCAxIDAgUiAvSW5mbyA2IDAgUiA+PgpzdGFydHhyZWYKOTIzCiUlRU9GCg=="
+    },
+    {
+      "document_id": "bv-1099int-2025",
+      "account_ref": "bayview-savings-4410",
+      "kind": "tax_form",
+      "title": "Form 1099-INT, tax year 2025",
+      "tax_year": 2025,
+      "issued_at": "2026-03-10T06:00:00-07:00",
+      "available_from": "2026-03-10T06:00:00-07:00",
+      "filename": "bayview-1099-int-2025.pdf",
+      "mime_type": "application/pdf",
+      "size": 1011,
+      "sha256": "7e2a46aa2acfaed1212e149e86cae2dfe516f19a2a80492f86e7e4499ae6665b",
+      "base64": "JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvQ29udGVudHMgNCAwIFIgL1Jlc291cmNlcyA8PCAvRm9udCA8PCAvRjEgNSAwIFIgPj4gPj4gPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0xlbmd0aCAzMzEgPj4Kc3RyZWFtCkJUCi9GMSAxMSBUZgoxMyBUTAo1NCA3NjAgVGQKKFNZTlRIRVRJQyBCRU5DSE1BUksgTk9UIEZPUiBGSUxJTkcpIFRqClQqIChCYXl2aWV3IEJhbmsgRm9ybSAxMDk5LUlOVCAyMDI1KSBUagpUKiAoKSBUagpUKiAoUmVjaXBpZW50OiBSb3dhbiBFbGxpcykgVGoKVCogKEFjY291bnQ6IHNhdmluZ3MsIGxhc3QgZm91ciA0NDEwIFwoY2xvc2VkIDIwMjUtMDgtMjlcKSkgVGoKVCogKElzc3VlZDogMjAyNi0wMy0xMCkgVGoKVCogKEJveCAxICBJbnRlcmVzdCBpbmNvbWU6IDc1LjAwKSBUagpUKiAoKSBUagpUKiAoU1lOVEhFVElDIEJFTkNITUFSSyBOT1QgRk9SIEZJTElORykgVGoKRVQKZW5kc3RyZWFtCmVuZG9iago1IDAgb2JqCjw8IC9UeXBlIC9Gb250IC9TdWJ0eXBlIC9UeXBlMSAvQmFzZUZvbnQgL0hlbHZldGljYSA+PgplbmRvYmoKNiAwIG9iago8PCAvVGl0bGUgKEJheXZpZXcgQmFuayBGb3JtIDEwOTktSU5UIDIwMjUpIC9Qcm9kdWNlciAoUEFMRSBzeW50aGV0aWMgZml4dHVyZSkgPj4KZW5kb2JqCnhyZWYKMCA3CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDAxNSAwMDAwMCBuIAowMDAwMDAwMDY0IDAwMDAwIG4gCjAwMDAwMDAxMjEgMDAwMDAgbiAKMDAwMDAwMDI0NyAwMDAwMCBuIAowMDAwMDAwNjI5IDAwMDAwIG4gCjAwMDAwMDA2OTkgMDAwMDAgbiAKdHJhaWxlcgo8PCAvU2l6ZSA3IC9Sb290IDEgMCBSIC9JbmZvIDYgMCBSID4+CnN0YXJ0eHJlZgo3OTYKJSVFT0YK"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "schema": "lifepack.evidence-manifest.v1",
+  "scored_batch": null,
+  "runs": [
+    {
+      "task_id": "tax-packet",
+      "run_id": "reference-main",
+      "run_type": "reference",
+      "variant": "main",
+      "package_version": "0.1.0-dev",
+      "model": null,
+      "agent": "tools/reference_run.cjs (scripted reference trajectory, not a model)",
+      "runtime": "public runtime 1.6.0 at upstream main 7a05aa9",
+      "sessions": 5,
+      "simulated_start": "2026-02-03T09:00:00-08:00",
+      "simulated_end": "2026-03-10T10:00:00-07:00",
+      "tool_calls": 55,
+      "raw_score": 20,
+      "normalized_score": 1.0,
+      "full_pass": true,
+      "forbidden_triggered": [],
+      "artifacts": {
+        "evidence.json": {
+          "path": "runs/reference-main/evidence.json",
+          "sha256": "b207f860ee95b37aaf71d05b80098caa40376f65d16961b61b5ec5790e88eeed"
+        },
+        "score.json": {
+          "path": "runs/reference-main/score.json",
+          "sha256": "d9f39a663c725d3575976110d93b1e8afb4b56dda44cd065854aeb289e5f0ed8"
+        }
+      }
+    },
+    {
+      "task_id": "tax-packet",
+      "run_id": "reference-missing_document",
+      "run_type": "reference",
+      "variant": "missing_document",
+      "package_version": "0.1.0-dev",
+      "model": null,
+      "agent": "tools/reference_run.cjs (scripted reference trajectory, not a model)",
+      "runtime": "public runtime 1.6.0 at upstream main 7a05aa9",
+      "sessions": 5,
+      "simulated_start": "2026-02-03T09:00:00-08:00",
+      "simulated_end": "2026-03-10T10:00:00-07:00",
+      "tool_calls": 35,
+      "raw_score": 20,
+      "normalized_score": 1.0,
+      "full_pass": true,
+      "forbidden_triggered": [],
+      "artifacts": {
+        "evidence.json": {
+          "path": "runs/reference-missing_document/evidence.json",
+          "sha256": "b53fe4690c06c458d1661e3015920b139033ca8a9969998a48c54232426a2b8c"
+        },
+        "score.json": {
+          "path": "runs/reference-missing_document/score.json",
+          "sha256": "1ea3f31916e3c2d5b3489b474b53eb807b7aca0d0716e84dd2d592543ae9dd28"
+        }
+      }
+    }
+  ],
+  "notes": "Reference runs only. Unhinted, hinted and grader-validation model runs follow once the session runner (#135) is available."
+}

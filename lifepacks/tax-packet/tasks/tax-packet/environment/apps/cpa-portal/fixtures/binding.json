@@ -1,0 +1,16 @@
+{
+  "people": [
+    {
+      "person_id": "person-rowan",
+      "name": "Rowan"
+    }
+  ],
+  "accounts": [
+    {
+      "app_id": "cpa-portal",
+      "account_id": "cpa-portal-rowan",
+      "owner_person_id": "person-rowan"
+    }
+  ],
+  "objects": {}
+}

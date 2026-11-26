@@ -1,0 +1,27 @@
+schema: lifepack.timeline.v1
+time_zone: America/Los_Angeles
+load_at: "2026-02-03T08:00:00-08:00"        # env.load_seed virtual_now for every App
+apps: [mail, files, issuer-docs, cpa-portal]
+sessions:
+  - {id: S1, start: "2026-02-03T09:00:00-08:00", opened_by: user, message: instruction.md}
+  - {id: S2, start: "2026-02-18T10:00:00-08:00", opened_by: user, message_ref: script.json#S2}
+  - {id: S3, start: "2026-03-02T09:30:00-08:00", opened_by: user, message_ref: script.json#S3}
+  - {id: S4, start: "2026-03-06T18:00:00-08:00", opened_by: user, message_ref: script.json#S4}
+  - {id: S5, start: "2026-03-10T10:00:00-07:00", opened_by: user, message_ref: script.json#S5}   # after the Mar 8 DST change
+events:
+  # Mail deliveries, in order, from environment/workspace/mail/events.json. Each is applied
+  # with env.apply_event before the session that follows it; none depends on agent actions.
+  source: environment/workspace/mail/events.json
+  order: by event time, then by position in the file
+  time_driven:
+    - {app: issuer-docs, document: bv-1099int-2025, available_from: "2026-03-10T06:00:00-07:00", note: no event; computed from the clock}
+barrier: >-
+  Before each session: apply every due event, then env.advance_time on every App to the session start,
+  then snapshot every App. After each session ends: snapshot every App again for grading.
+termination: S5 ends when the agent ends its turn; grading runs on the S1-S5 end snapshots and the trace.
+variants:
+  main: as above
+  missing_document: Bayview's available_from moved to 2026-03-12; the E5 delivery requirement is replaced (see tests/rubrics.yaml)
+  late_original_renamed: the S4 forward attaches the original Northfield statement under a different file name
+  no_correction_control: the S3 corrected statement is not delivered
+  no_new_account_control: no Bayview notice in S4 and no Bayview document page entry

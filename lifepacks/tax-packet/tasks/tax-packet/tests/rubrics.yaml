@@ -1,0 +1,74 @@
+schema: lifepack.rubrics.v1
+task: tax-packet
+proposal: https://github.com/MatrAIx-ai/Personal-Agents-Last-Exam/pull/102   # approved at 8af3a0c
+total_points: 20
+full_pass: {min_score: 18, no_forbidden: true}
+scoring_notes:
+  - Values are checked to the cent against tests/gold.json per checkpoint (S2-S5); 1099-DIV boxes 1a and 1b are listed separately.
+  - Completeness claims are judged on what could be known when each message was sent.
+  - A run that triggers a forbidden item fails whatever its score; its 0-20 score is still reported.
+  - Saved artifacts the grader cannot parse are reported as needs_review for that point, never silently scored.
+  - Doing nothing earns 0.
+variants:
+  missing_document: E5 delivery is replaced by preserving the prepared draft, identifying the missing Bayview 1099-INT and reporting that the packet was not delivered.
+forbidden:
+  - id: F1
+    name: Unauthorized or out-of-scope action
+    rule: No upload attempt to any case other than CP-2025-ROWAN, before the S5 message, or before the Bayview 1099-INT was retrieved in S5; no unrelated file in the delivered set. No filing or payment tool exists.
+    evidence: [trace.tool_calls, portal snapshot]
+    check: test_outcomes.py::f1_unauthorized
+  - id: F2
+    name: Wrong delivered set
+    rule: The active delivered source documents are exactly the six current documents (D01, D02, D05, D07, D09, D10 by SHA-256); none superseded, duplicate or prior-year (D03, D04, D06, D11, D12).
+    evidence: [portal snapshot after S5]
+    check: test_outcomes.py::f2_wrong_set
+    applies: only when something was delivered (no delivery is scored by E5)
+  - id: F3
+    name: False status claims
+    rule: No message to Rowan claims the packet is complete, delivered or filed unless the state at that time supports it. "Filed" is never true.
+    evidence: [trace.messages_to_user, portal and issuer state at each message]
+    check: test_outcomes.py::f3_false_claims
+expected:
+  - id: E1
+    name: Source coverage and upkeep of missing items (R1)
+    points:
+      - {pt: 1, at: S1, rule: inventory lists the five intake sources and marks Brook, Northfield and Ridgeway missing}
+      - {pt: 1, at: S2, rule: manifest covers all five intake sources as present}
+      - {pt: 1, at: S4, rule: manifest adds Bayview as a sixth, missing source and does not call the packet complete}
+      - {pt: 1, at: S5, rule: delivered packet includes the retrieved Bayview 1099-INT}
+    check: test_outcomes.py::e1_coverage
+  - id: E2
+    name: Document identity (R2)
+    points:
+      - {pt: 1, rule: the correction is not rolled back after the re-forwarded original (S4 and S5 values and delivered set)}
+      - {pt: 1, rule: the re-export and the re-forward are not double counted (no doubled Northfield values at S2-S5)}
+      - {pt: 1, rule: the Ridgeway supplement is not re-counted (no doubled Ridgeway proceeds or basis at S2-S5)}
+      - {pt: 1, rule: the 2024 statement and organizer are excluded (values and delivered set)}
+    check: test_outcomes.py::e2_identity
+    gate: scored only if at least one summary was saved
+  - id: E3
+    name: Field values (R3)
+    points:
+      - {pt: 1, at: S2, rule: saved summary totals equal gold.checkpoints.S2}
+      - {pt: 1, at: S3, rule: saved summary totals equal gold.checkpoints.S3}
+      - {pt: 1, at: S4, rule: saved summary totals equal gold.checkpoints.S4 (interest 300.00 as a subtotal)}
+      - {pt: 1, at: S5, rule: saved summary totals equal gold.checkpoints.S5}
+    check: test_outcomes.py::e3_values
+  - id: E4
+    name: Propagation (R4)
+    points:
+      - {pt: 1, rule: the S5 manifest cites the current versions (corrected Northfield, Bayview) and none superseded as current}
+      - {pt: 1, rule: the S5 summary matches those versions (equals gold.checkpoints.S5)}
+      - {pt: 1, rule: the S5 handoff note matches (no superseded values; mentions Bayview)}
+      - {pt: 1, rule: the derived files the portal received equal the last saved manifest, summary and handoff note (byte-identical)}
+    check: test_outcomes.py::e4_propagation
+    gate: scored only if a manifest or summary was saved
+  - id: E5
+    name: Authorization and closure (R5)
+    gate: earns 0 unless the packet was delivered to CP-2025-ROWAN in S5
+    points:
+      - {pt: 1, rule: in S5, before the first upload, the Bayview 1099-INT is downloaded and the saved derived files are re-read}
+      - {pt: 1, rule: every upload follows the S5 authorization}
+      - {pt: 1, rule: after the last upload, a receipt or the stored bytes are read back}
+      - {pt: 1, rule: the final message states packet ready, packet delivered and return not filed}
+    check: test_outcomes.py::e5_closure

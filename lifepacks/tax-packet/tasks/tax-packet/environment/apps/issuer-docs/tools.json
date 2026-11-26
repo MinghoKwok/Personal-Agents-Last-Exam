@@ -1,0 +1,380 @@
+[
+  {
+    "name": "issuer-docs.accounts.list",
+    "description": "List the customer's accounts at this institution, including closed ones. Read-only.",
+    "read_only": true,
+    "scope": "issuer-docs.accounts.list",
+    "resource_target": "current account",
+    "inputSchema": {
+      "type": "object",
+      "properties": {},
+      "required": [],
+      "additionalProperties": false
+    },
+    "outputSchema": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "const": "ok"
+        },
+        "app_id": {
+          "const": "issuer-docs"
+        },
+        "version": {
+          "type": "object",
+          "properties": {
+            "epoch": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "revision": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "epoch",
+            "revision"
+          ],
+          "additionalProperties": false
+        },
+        "institution": {
+          "type": "object",
+          "properties": {
+            "institution_id": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            "time_zone": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 64
+            }
+          },
+          "required": [
+            "institution_id",
+            "name",
+            "time_zone"
+          ],
+          "additionalProperties": false
+        },
+        "accounts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "account_ref": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+              },
+              "label": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 120
+              },
+              "last_four": {
+                "type": "string",
+                "pattern": "^[0-9]{4}$"
+              },
+              "status": {
+                "enum": [
+                  "open",
+                  "closed"
+                ]
+              },
+              "closed_on": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "account_ref",
+              "label",
+              "last_four",
+              "status",
+              "closed_on"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "now": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "status",
+        "app_id",
+        "version",
+        "institution",
+        "accounts",
+        "now"
+      ],
+      "additionalProperties": false
+    }
+  },
+  {
+    "name": "issuer-docs.documents.list",
+    "description": "List the documents available now for one account, newest first, optionally by kind or tax year. A document that is not yet available is not listed. Read-only.",
+    "read_only": true,
+    "scope": "issuer-docs.documents.list",
+    "resource_target": "current account",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "account_ref": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+        },
+        "kind": {
+          "enum": [
+            "tax_form",
+            "statement",
+            "letter"
+          ]
+        },
+        "tax_year": {
+          "type": "integer",
+          "minimum": 2000,
+          "maximum": 2100
+        }
+      },
+      "required": [
+        "account_ref"
+      ],
+      "additionalProperties": false
+    },
+    "outputSchema": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "const": "ok"
+        },
+        "app_id": {
+          "const": "issuer-docs"
+        },
+        "version": {
+          "type": "object",
+          "properties": {
+            "epoch": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "revision": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "epoch",
+            "revision"
+          ],
+          "additionalProperties": false
+        },
+        "documents": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "document_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+              },
+              "account_ref": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+              },
+              "kind": {
+                "enum": [
+                  "tax_form",
+                  "statement",
+                  "letter"
+                ]
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              "tax_year": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 2000,
+                    "maximum": 2100
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "issued_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "available_from": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "filename": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 160,
+                "pattern": "^[^\\\\/\\u0000-\\u001f\\u007f]+$"
+              },
+              "mime_type": {
+                "enum": [
+                  "application/pdf",
+                  "text/plain"
+                ]
+              },
+              "size": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            },
+            "required": [
+              "document_id",
+              "account_ref",
+              "kind",
+              "title",
+              "tax_year",
+              "issued_at",
+              "available_from",
+              "filename",
+              "mime_type",
+              "size",
+              "sha256"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "now": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "status",
+        "app_id",
+        "version",
+        "documents",
+        "now"
+      ],
+      "additionalProperties": false
+    }
+  },
+  {
+    "name": "issuer-docs.documents.download",
+    "description": "Download one available document: its bytes and SHA-256. Read-only.",
+    "read_only": true,
+    "scope": "issuer-docs.documents.download",
+    "resource_target": "current account",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "document_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+        }
+      },
+      "required": [
+        "document_id"
+      ],
+      "additionalProperties": false
+    },
+    "outputSchema": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "const": "ok"
+        },
+        "app_id": {
+          "const": "issuer-docs"
+        },
+        "version": {
+          "type": "object",
+          "properties": {
+            "epoch": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "revision": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "epoch",
+            "revision"
+          ],
+          "additionalProperties": false
+        },
+        "file": {
+          "type": "object",
+          "properties": {
+            "document_id": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+            },
+            "filename": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^[^\\\\/\\u0000-\\u001f\\u007f]+$"
+            },
+            "mime_type": {
+              "enum": [
+                "application/pdf",
+                "text/plain"
+              ]
+            },
+            "size": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "base64": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "document_id",
+            "filename",
+            "mime_type",
+            "size",
+            "sha256",
+            "base64"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "status",
+        "app_id",
+        "version",
+        "file"
+      ],
+      "additionalProperties": false
+    }
+  }
+]

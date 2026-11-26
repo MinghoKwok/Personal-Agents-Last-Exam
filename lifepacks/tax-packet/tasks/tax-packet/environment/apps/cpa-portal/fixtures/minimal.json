@@ -1,0 +1,80 @@
+{
+  "account_id": "cpa-portal-rowan",
+  "owner_person_id": "person-rowan",
+  "firm": {
+    "firm_id": "firm-lee",
+    "name": "Morgan Lee Tax Advisory",
+    "time_zone": "America/Los_Angeles",
+    "accepted_types": [
+      "application/pdf",
+      "text/plain",
+      "text/csv",
+      "application/json"
+    ],
+    "max_file_bytes": 262144,
+    "max_case_bytes": 1048576
+  },
+  "cases": [
+    {
+      "case_id": "CP-2025-ROWAN",
+      "title": "2025 individual return: supporting records",
+      "status": "open",
+      "access": "upload",
+      "opened_at": "2026-01-20T10:00:00-08:00",
+      "cutoff": null,
+      "late_submission_policy": "accept_for_review"
+    },
+    {
+      "case_id": "CP-2024-ROWAN",
+      "title": "2024 individual return: supporting records",
+      "status": "closed",
+      "access": "view",
+      "opened_at": "2025-01-21T10:00:00-08:00",
+      "cutoff": null,
+      "late_submission_policy": "reject"
+    }
+  ],
+  "submissions": [
+    {
+      "submission_id": "sb-0001",
+      "case_id": "CP-2024-ROWAN",
+      "request_ids": [],
+      "submitted_at": "2025-03-07T16:00:00-08:00",
+      "actor": "client",
+      "standing": "on_time",
+      "replaces": [],
+      "superseded_by": null,
+      "withdrawn_at": null,
+      "note": "2024 packet index.",
+      "files": [
+        {
+          "file_id": "sb-0001-f1",
+          "filename": "2024-packet-index.txt",
+          "mime_type": "text/plain",
+          "size": 131,
+          "sha256": "1fc9d73c4dd37c439b7ce260cc304def63aa1e8059ca7a017721074395dc1b6b",
+          "base64": "U1lOVEhFVElDIEJFTkNITUFSSyBOT1QgRk9SIEZJTElORwoyMDI0IHBhY2tldCBpbmRleCBmb3IgUm93YW46IEF0bGFzIFctMiwgQ2VkYXIgMTA5OS1JTlQsIE5vcnRoZmllbGQgMjAyNCBjb25zb2xpZGF0ZWQgc3RhdGVtZW50Lgo="
+        }
+      ]
+    }
+  ],
+  "receipts": [
+    {
+      "receipt_id": "rc-0001",
+      "submission_id": "sb-0001",
+      "case_id": "CP-2024-ROWAN",
+      "at": "2025-03-07T16:00:00-08:00",
+      "kind": "submitted",
+      "standing": "on_time",
+      "files": [
+        {
+          "file_id": "sb-0001-f1",
+          "filename": "2024-packet-index.txt",
+          "mime_type": "text/plain",
+          "size": 131,
+          "sha256": "1fc9d73c4dd37c439b7ce260cc304def63aa1e8059ca7a017721074395dc1b6b"
+        }
+      ]
+    }
+  ]
+}

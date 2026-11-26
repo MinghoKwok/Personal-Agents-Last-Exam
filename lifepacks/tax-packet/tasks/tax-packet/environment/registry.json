@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "initial_time": "2026-02-03T08:00:00-08:00",
+  "apps": [
+    { "app_id": "cpa-portal", "version": "0.1.0", "path": "apps/cpa-portal" },
+    { "app_id": "issuer-docs", "version": "0.1.0", "path": "apps/issuer-docs" }
+  ]
+}
