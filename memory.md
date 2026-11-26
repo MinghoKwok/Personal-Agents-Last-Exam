@@ -1,6 +1,6 @@
 # Memory
 
-当前状态和长期规则。恢复工作时先读这份。最近更新：2026-11-26（8 个任务提案全部 plan-approved）。
+当前状态和长期规则。恢复工作时先读这份。最近更新：2026-11-26（Counterline 实现和证据已推进 #219，实现报告已发）。
 
 ## 长期规则
 - 回复用中文；代码、命令、文件名和 PR 标题用英文。
@@ -18,7 +18,7 @@
 ## 仓库
 - upstream：MatrAIx-ai/Personal-Agents-Last-Exam
 - fork：MinghoKwok/Personal-Agents-Last-Exam
-- Public runtime 1.6.0（Core API 1.2.0），upstream main `7a05aa9`
+- Public runtime 1.6.0（Core API 1.2.0），upstream main `6933c43`（#260 已合并）
 
 ## PR 状态
 
@@ -32,14 +32,13 @@
 | #128 | 车险理赔 | `task/auto-insurance-claim` | `b4d47f3` | 已批准（2026-11-26） |
 | #129 | 家庭付款年度审计 | `task/household-payment-audit` | `92a197d` | 已批准（2026-11-26） |
 | #133 | 信用卡挽留 | `task/card-retention` | `a4ca31e` | 已批准（2026-11-26） |
-| #219 | Counterline 客服台环境 | `env/counterline-service-desk` | `b3ea9cd` | **2026-11-27 00:18 plan-approved（skyve2012，/approve-plan b3ea9cd）；14 天实现期至 12-11 前后**。实现和证据放进同一个 PR |
+| #219 | Counterline 客服台环境 | `env/counterline-service-desk` | `c684dcc` | 2026-11-27 00:18 plan-approved（skyve2012，/approve-plan b3ea9cd），14 天实现期至 12-11 前后。**实现和证据已推进 PR**（最新：代码 `1e0425d`，证据 `c684dcc`）；实现报告评论已发（见下文 Counterline 一节）；等实现评审 |
 | #222 | Casefold 客户门户环境 | `env/casefold-client-portal` | `bc509fd` | 等评审；已按 #260 补证据计划 |
 
 8 个任务提案全部已批准，现在都已冻结。之后的改动要攒在一起，再申请重新评审。
 
 ## 还没进 PR 的东西（fork 上有备份分支）
 - **#102 实现：** `lifepacks/tax-packet/`，备份在 fork 的 `backup/tax-packet-impl`（`7f5a2a8`，包含合并提交 `442c52d`）。PR 跟踪的 `task/tax-packet` 仍在 `8af3a0c`。推送前先等维护者回答 4 到 5 个问题（见 `tasks/tax-packet/notes.md` 第 5 节）。
-- **Counterline 实现：** `apps/counterline`，备份在 `backup/counterline-skeleton`（`301997a`）。17 个工具全部实现，有 App 自己的 Web 页面（通过包内 `registry.json` 挂在共享 Web Host 上）；业务测试 23 个（T00 到 T20），浏览器测试 29 项，官方验证器 53 项全部通过。还没做：Mail 抄送、T21 结清对账示例、2025 到 2026 交付数据集和覆盖报告、原产品对照截图和证据索引。PR 跟踪的 `env/counterline-service-desk` 不受影响，等 #219 批准后再推进 PR。
 - **#129 数据和评分器：** 本地分支 `impl/household-payment-audit`（基于 upstream main `7a05aa9`），备份在 fork 的 `backup/household-payment-audit`。已完成：数据生成（146 条交易、77 份文档、A 和 B 两个对照版本、隐藏账本）、共享邮件规则 `tests/rules.py`、评分器（100 分制）、自测 12 个用例全部通过。等 #102 答复后再做：Mail、Files、Notes 的种子，context 文件，参考运行，README 和 manifest。
 - **#95 数据和评分器：** 备份在 fork 的 `backup/white-sands-weather`（基于 upstream main `6933c43`）。
   - 天气内容按 Gustline（#126）的 seed 和事件格式编写。用 Gustline 自己的 harness 加载并通过它的 Agent 工具读回：178 项检查全部和 gold 一致，Gustline 自身的 39 个测试也照常通过。
@@ -47,7 +46,18 @@
   - 自测 10 个用例全部通过。
   - E2 是 LLM judge 项，目前由确定性规则代打：规则能确认的给分，确认不了的进复核。
   - 等 #102 答复后再做：Calendar、Mail、Messages 的种子，`history.json`（9 月 9 日和 11 日两段对话），以及参考运行。
-- 恢复方法：`git fetch origin backup/tax-packet-impl backup/counterline-skeleton`。正式推进 PR 时，把实现提交挪到 PR 分支上。
+- 恢复方法：`git fetch origin backup/tax-packet-impl`。正式推进 PR 时，把实现提交挪到 PR 分支上。（Counterline 已进 PR，旧备份 `backup/counterline-skeleton` 不再需要。）
+
+## Counterline（#219）实现状态
+- **已在 PR 里（fork `env/counterline-service-desk`，`d412c0a`）：** 17 个工具；App 自己的 Web 页面；业务测试 29 个（T00 到 T20，T22 到 T27）；浏览器测试 29 项；验证器带 Mail 53 项通过；runtime check 8 步；T21 结清对账（合成账本，契约测试，不声称和 #182 集成）；Mail 抄送 6 个场景（含合同不兼容，以及用 Messaging 替身的"结果未知"）；2025 到 2026 交付数据集（发卡行 59 个工单、129 个日期；网络公司 53 个、114 个日期；全部合成，无空月）；8 个截图序列共 28 步；Zendesk 参考对照 6 页，另有 2 处没有公开参考。
+- **证据入口：** `apps/counterline/evidence/README.md`，按 #260 的 8 列模板。规则：先提交代码，再在干净提交上跑 `npm run evidence`，保证所有报告的 `code_matches_commit` 都是 true，最后提交证据。
+- **在最新 main 上也验证过：** 把包复制到 upstream main `6933c43` 上，验证器 51 项、浏览器 29 项、业务测试 29 个都通过，分支和 main 合并无冲突。
+- **实现报告评论：** 2026-11-26 12:14 发出，https://github.com/MatrAIx-ai/Personal-Agents-Last-Exam/pull/219#issuecomment-7202450687 。按 `docs/review/app-implementation-checklist.md` 的 Review report 表格式。6 张 Zendesk 参考图作为 PR 附件放在 "Reference images" 一节，顺序：W1 搜索、W1 提交表单、W2 快捷回复、W3 按钮消息、W4 列表、W4 详情。
+- **附件核对的范围：** 用户逐张看过 6 个附件，核对的是**附件和流程的对应关系**（顺序和内容都对，地址也对得上），**不是字节哈希**。附件地址在会话环境和用户那边都返回 403，下载不到，所以哈希没有核对过。脚本注释和任何说明里都不能写成"核对过哈希"。原图的 SHA-256 是脚本抓 Zendesk 时算的。
+- **参考附件已写进清单（2026-11-26 推送，`9323b75`）：** `references.json` 记录 6 个附件 ID 和评论链接，证据索引的参考列链到 PR 附件。
+- **为 #133 补的 Counterline 功能（2026-11-26 推送，代码 `9323b75`，证据 `c684dcc`；对照表见 `tasks/card-retention/counterline-gap.md`）：** `consider_closing` 意图和 `closing` 档报价；报价类型 `account_closure`（两步确认，形成承诺，Counterline 自己不销户）；可选的 `max_customer_turns`；"年费让我重新考虑"归为要更好的报价。新增 T28、T29；诊断集 94 条（91 条识别正确，3 条旧的仍列为差异，不设准确率目标）；新增 fixture `retention-closing.json` 和证据序列 `3b-closing`。#219 的补充说明由用户在推送后发（草稿 `pr219-added-work.md`）。
+- **证据采集的偶发问题（`1e0425d` 已修）：** 页面刷新后聊天区会重新渲染，截图前滚动偶尔碰上旧元素被替换；现在遇到这种情况会重试，`npm run evidence` 连续跑了三遍都通过。
+- **模型试跑：** 决定不放进环境 PR（环境轨道不要求，结果也不确定）。以后基于 Counterline 做任务、跑三家模型 rollout 时，再写 MCP 到模型的适配器，需要用户提供 API key。
 
 ## 提案待改清单（冻结中，攒一批再申请重新评审）
 以下问题现在不改，因为提案已冻结，改了就要重新评审。等攒够一批，一起提。
@@ -78,7 +88,7 @@
 
 ## 等待中
 - 维护者回复 #102 的结构问题（2026-11-26 00:30 发出）
-- skyve2012 评审 #219、#222
+- skyve2012 评审 #219 的实现（报告已发）和 #222 的提案
 - #6 作者回复
 - #135 runner
 - 天气环境合并（#95 依赖它）
