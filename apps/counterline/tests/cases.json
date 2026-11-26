@@ -1,0 +1,14 @@
+{
+  "read": {
+    "name": "counterline.commitments.list",
+    "args": {}
+  },
+  "write": {
+    "name": "counterline.cases.open",
+    "args": {
+      "topic_id": "refund_status",
+      "account_ref": "brindle:acct-jordan-1234",
+      "message": "Has my 125.00 credit posted yet?"
+    }
+  }
+}

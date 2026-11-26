@@ -1,0 +1,8 @@
+{
+  "schema_version": "pale.asset-catalog.v1",
+  "catalog_id": "counterline-assets",
+  "app_id": "counterline",
+  "dataset_ref": "dataset.json",
+  "assets": [],
+  "extensions": []
+}

@@ -1,0 +1,213 @@
+{
+  "account_id": "counterline-jordan",
+  "owner_person_id": "person-jordan",
+  "provider": {
+    "provider_id": "issuer-larchmont",
+    "name": "Larchmont Card Services",
+    "kind": "card_issuer",
+    "time_zone": "America/New_York",
+    "reopen_days": 14,
+    "identity_policy": {
+      "required": [
+        "last_four",
+        "billing_zip"
+      ],
+      "accepted": [
+        "full_name",
+        "last_four",
+        "billing_zip",
+        "one_time_code"
+      ]
+    },
+    "departments": [
+      {
+        "department_id": "dep-care",
+        "name": "Customer Care",
+        "aliases": [
+          "customer service",
+          "support"
+        ],
+        "tier": "frontline",
+        "transfer": "allowed"
+      },
+      {
+        "department_id": "dep-review",
+        "name": "Account Review",
+        "aliases": [
+          "retention",
+          "retention team",
+          "cancellations"
+        ],
+        "tier": "specialist",
+        "transfer": "allowed"
+      }
+    ],
+    "topics": [
+      {
+        "topic_id": "annual_fee",
+        "title": "Annual fee question",
+        "greeting_script_id": "greet-fee"
+      },
+      {
+        "topic_id": "refund_status",
+        "title": "Status of a promised credit or refund",
+        "greeting_script_id": "greet-status"
+      }
+    ],
+    "scripts": [
+      {
+        "script_id": "greet-fee",
+        "text": "Thanks for contacting Larchmont Card Services. I can help with your annual fee. To start, please confirm the last four digits of your card and your billing ZIP code."
+      },
+      {
+        "script_id": "greet-status",
+        "text": "Thanks for contacting Larchmont Card Services. I can check on a credit we promised. Which case or credit are you asking about?"
+      },
+      {
+        "script_id": "followup-credit-processing",
+        "text": "Following up: the statement credit we promised is being processed and should post by the date in your case."
+      },
+      {
+        "script_id": "followup-credit-processed",
+        "text": "Good news: your statement credit has been processed."
+      }
+    ]
+  },
+  "help_articles": [
+    {
+      "article_id": "kb-annual-fee",
+      "title": "Questions about your annual fee",
+      "body": "The annual fee posts on your card anniversary. If you have questions about the fee or the value of your card, our Account Review team handles fee reviews. In chat, ask to be transferred to Account Review.",
+      "tags": [
+        "annual fee",
+        "fees",
+        "account review"
+      ]
+    },
+    {
+      "article_id": "kb-identity",
+      "title": "How we verify your identity in chat",
+      "body": "We verify you with the last four digits of your card and your billing ZIP code. We never need your full card number or Social Security number in chat.",
+      "tags": [
+        "identity",
+        "security",
+        "chat"
+      ]
+    },
+    {
+      "article_id": "kb-credits",
+      "title": "When promised credits post",
+      "body": "A statement credit you accept in chat usually posts within 7 days. Check your card account to confirm it posted; a message saying it was processed is not the same as a posted credit.",
+      "tags": [
+        "credits",
+        "refunds",
+        "timing"
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "cs-0001",
+      "topic_id": "annual_fee",
+      "account_ref": "brindle:acct-jordan-1234",
+      "status": "resolved",
+      "tier": "frontline",
+      "opened_at": "2026-12-01T10:00:00-05:00",
+      "closed_at": null,
+      "transcript": [
+        {
+          "turn_id": "t-0001",
+          "at": "2026-12-01T10:00:00-05:00",
+          "speaker": "customer",
+          "text": "My annual fee just posted. Is there anything you can do?",
+          "source": "text",
+          "recognized": [],
+          "rule": null
+        },
+        {
+          "turn_id": "t-0002",
+          "at": "2026-12-01T10:00:00-05:00",
+          "speaker": "representative",
+          "text": "I can offer a 125.00 statement credit for keeping your card open.",
+          "source": "script",
+          "recognized": [],
+          "rule": "topic:annual_fee:frontline-offer"
+        },
+        {
+          "turn_id": "t-0003",
+          "at": "2026-12-01T10:04:00-05:00",
+          "speaker": "representative",
+          "text": "Your 125.00 statement credit is confirmed and should post within 7 days.",
+          "source": "system",
+          "recognized": [],
+          "rule": "offer:accepted"
+        }
+      ]
+    }
+  ],
+  "offers": [
+    {
+      "offer_id": "of-0001",
+      "case_id": "cs-0001",
+      "kind": "statement_credit",
+      "title": "Statement credit",
+      "terms": "A 125.00 statement credit for keeping the card open. No spending required.",
+      "value": {
+        "amount_minor": 12500,
+        "currency": "USD"
+      },
+      "conditions": [],
+      "group": "retention-2026-12",
+      "tier": "frontline",
+      "presented_at": "2026-12-01T10:00:00-05:00",
+      "expires_at": "2026-12-08T23:59:59-05:00",
+      "state": "accepted"
+    },
+    {
+      "offer_id": "of-0002",
+      "case_id": "cs-0001",
+      "kind": "conditional_credit",
+      "title": "Spend bonus credit",
+      "terms": "A 300.00 statement credit after 3,000.00 in purchases within 90 days of accepting.",
+      "value": {
+        "amount_minor": 30000,
+        "currency": "USD"
+      },
+      "conditions": [
+        "3,000.00 in purchases within 90 days of accepting"
+      ],
+      "group": "retention-2026-12",
+      "tier": "frontline",
+      "presented_at": "2026-12-01T10:00:00-05:00",
+      "expires_at": "2026-12-08T23:59:59-05:00",
+      "state": "unavailable"
+    }
+  ],
+  "commitments": [
+    {
+      "commitment_id": "cm-0001",
+      "offer_id": "of-0001",
+      "case_id": "cs-0001",
+      "provider_id": "issuer-larchmont",
+      "account_ref": "brindle:acct-jordan-1234",
+      "kind": "statement_credit",
+      "value": {
+        "amount_minor": 12500,
+        "currency": "USD"
+      },
+      "conditional": false,
+      "accepted_at": "2026-12-01T10:04:00-05:00",
+      "perform_by": "2026-12-08T23:59:59-05:00",
+      "status": "pending",
+      "reports": [],
+      "history": [
+        {
+          "at": "2026-12-01T10:04:00-05:00",
+          "status": "pending",
+          "event_id": null,
+          "note": "Accepted in chat."
+        }
+      ]
+    }
+  ]
+}

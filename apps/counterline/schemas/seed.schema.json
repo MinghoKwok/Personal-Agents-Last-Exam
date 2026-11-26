@@ -1,0 +1,684 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "account_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+    },
+    "owner_person_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+    },
+    "provider": {
+      "type": "object",
+      "properties": {
+        "provider_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "kind": {
+          "enum": [
+            "card_issuer",
+            "internet_provider",
+            "membership_club",
+            "other"
+          ]
+        },
+        "time_zone": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "reopen_days": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 365
+        },
+        "identity_policy": {
+          "type": "object",
+          "properties": {
+            "required": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "full_name",
+                  "last_four",
+                  "billing_zip",
+                  "date_of_birth",
+                  "full_card_number",
+                  "ssn",
+                  "one_time_code"
+                ]
+              }
+            },
+            "accepted": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "full_name",
+                  "last_four",
+                  "billing_zip",
+                  "date_of_birth",
+                  "full_card_number",
+                  "ssn",
+                  "one_time_code"
+                ]
+              }
+            }
+          },
+          "required": [
+            "required",
+            "accepted"
+          ],
+          "additionalProperties": false
+        },
+        "departments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "department_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 120
+              },
+              "aliases": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 120
+                }
+              },
+              "tier": {
+                "enum": [
+                  "frontline",
+                  "specialist"
+                ]
+              },
+              "transfer": {
+                "enum": [
+                  "allowed",
+                  "refused"
+                ]
+              }
+            },
+            "required": [
+              "department_id",
+              "name",
+              "aliases",
+              "tier",
+              "transfer"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "topics": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "topic_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              "greeting_script_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+              }
+            },
+            "required": [
+              "topic_id",
+              "title",
+              "greeting_script_id"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "scripts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "script_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+              },
+              "text": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4000
+              }
+            },
+            "required": [
+              "script_id",
+              "text"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "provider_id",
+        "name",
+        "kind",
+        "time_zone",
+        "reopen_days",
+        "identity_policy",
+        "departments",
+        "topics",
+        "scripts"
+      ],
+      "additionalProperties": false
+    },
+    "help_articles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "article_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "body": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 8000
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 60
+            }
+          }
+        },
+        "required": [
+          "article_id",
+          "title",
+          "body",
+          "tags"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "cases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "case_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+          },
+          "topic_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+          },
+          "account_ref": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "status": {
+            "enum": [
+              "open",
+              "waiting_on_customer",
+              "escalated",
+              "resolved",
+              "closed"
+            ]
+          },
+          "tier": {
+            "enum": [
+              "frontline",
+              "specialist"
+            ]
+          },
+          "opened_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "closed_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "transcript": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "turn_id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+                },
+                "at": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "speaker": {
+                  "enum": [
+                    "customer",
+                    "representative"
+                  ]
+                },
+                "text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 4000
+                },
+                "source": {
+                  "enum": [
+                    "text",
+                    "action",
+                    "script",
+                    "system"
+                  ]
+                },
+                "recognized": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 80
+                  }
+                },
+                "rule": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 120
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "turn_id",
+                "at",
+                "speaker",
+                "text",
+                "source",
+                "recognized",
+                "rule"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "case_id",
+          "topic_id",
+          "account_ref",
+          "status",
+          "tier",
+          "opened_at",
+          "closed_at",
+          "transcript"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "offers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "offer_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+          },
+          "case_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+          },
+          "kind": {
+            "enum": [
+              "statement_credit",
+              "conditional_credit",
+              "fee_waiver",
+              "refund",
+              "product_change",
+              "hold"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "terms": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "amount_minor": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "currency": {
+                    "type": "string",
+                    "pattern": "^[A-Z]{3}$"
+                  }
+                },
+                "required": [
+                  "amount_minor",
+                  "currency"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "conditions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            }
+          },
+          "group": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "tier": {
+            "enum": [
+              "frontline",
+              "specialist"
+            ]
+          },
+          "presented_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "expires_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "state": {
+            "enum": [
+              "presented",
+              "accepted",
+              "declined",
+              "unavailable"
+            ]
+          }
+        },
+        "required": [
+          "offer_id",
+          "case_id",
+          "kind",
+          "title",
+          "terms",
+          "value",
+          "conditions",
+          "group",
+          "tier",
+          "presented_at",
+          "expires_at",
+          "state"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "commitments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "commitment_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+          },
+          "offer_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+          },
+          "case_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+          },
+          "provider_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+          },
+          "account_ref": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "kind": {
+            "enum": [
+              "statement_credit",
+              "conditional_credit",
+              "fee_waiver",
+              "refund",
+              "product_change",
+              "hold"
+            ]
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "amount_minor": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "currency": {
+                    "type": "string",
+                    "pattern": "^[A-Z]{3}$"
+                  }
+                },
+                "required": [
+                  "amount_minor",
+                  "currency"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "conditional": {
+            "type": "boolean"
+          },
+          "accepted_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "perform_by": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "status": {
+            "enum": [
+              "pending",
+              "reported_performed",
+              "partially_reported",
+              "condition_missed",
+              "revoked",
+              "contested"
+            ]
+          },
+          "reports": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "event_id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+                },
+                "at": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "reference_id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+                },
+                "amount_minor": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "currency": {
+                  "type": "string",
+                  "pattern": "^[A-Z]{3}$"
+                }
+              },
+              "required": [
+                "event_id",
+                "at",
+                "reference_id",
+                "amount_minor",
+                "currency"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "history": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "at": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "status": {
+                  "enum": [
+                    "pending",
+                    "reported_performed",
+                    "partially_reported",
+                    "condition_missed",
+                    "revoked",
+                    "contested"
+                  ]
+                },
+                "event_id": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "note": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 400
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "at",
+                "status",
+                "event_id",
+                "note"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "commitment_id",
+          "offer_id",
+          "case_id",
+          "provider_id",
+          "account_ref",
+          "kind",
+          "value",
+          "conditional",
+          "accepted_at",
+          "perform_by",
+          "status",
+          "reports",
+          "history"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "account_id",
+    "owner_person_id",
+    "provider",
+    "help_articles",
+    "cases",
+    "offers",
+    "commitments"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,13 @@
+{
+  "event_id": "ev-cl-0001",
+  "at": "2026-12-04T09:00:00-05:00",
+  "operation": "counterline.commitment.performance_reported",
+  "payload": {
+    "commitment_id": "cm-0001",
+    "provider_id": "issuer-larchmont",
+    "reference_id": "POST-301",
+    "amount_minor": 12500,
+    "currency": "USD",
+    "status": "reported"
+  }
+}

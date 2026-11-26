@@ -1,0 +1,16 @@
+{
+  "people": [
+    {
+      "person_id": "person-jordan",
+      "name": "Jordan"
+    }
+  ],
+  "accounts": [
+    {
+      "app_id": "counterline",
+      "account_id": "counterline-jordan",
+      "owner_person_id": "person-jordan"
+    }
+  ],
+  "objects": {}
+}

@@ -1,0 +1,40 @@
+{
+  "scenario": {
+    "allow": [
+      "counterline.help.search",
+      "counterline.help.get",
+      "counterline.cases.list",
+      "counterline.cases.get",
+      "counterline.offers.get",
+      "counterline.commitments.list",
+      "counterline.commitments.get",
+      "counterline.cases.open"
+    ],
+    "constraints": {}
+  },
+  "sandbox": {
+    "allow": [
+      "counterline.help.search",
+      "counterline.help.get",
+      "counterline.cases.list",
+      "counterline.cases.get",
+      "counterline.offers.get",
+      "counterline.commitments.list",
+      "counterline.commitments.get",
+      "counterline.cases.open"
+    ],
+    "constraints": {}
+  },
+  "read_only": {
+    "allow": [
+      "counterline.help.search",
+      "counterline.help.get",
+      "counterline.cases.list",
+      "counterline.cases.get",
+      "counterline.offers.get",
+      "counterline.commitments.list",
+      "counterline.commitments.get"
+    ],
+    "constraints": {}
+  }
+}

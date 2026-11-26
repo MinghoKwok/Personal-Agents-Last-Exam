@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "app_id": "counterline",
+  "version": "0.1.0",
+  "core_api_version": "1.2.0",
+  "maintainer": {
+    "contact": "Repository issue / PR tagged app:counterline"
+  },
+  "license": "MIT",
+  "entrypoint": "plugin.cjs",
+  "service": "service.cjs",
+  "tools": "tools.json",
+  "schemas": {
+    "seed": "schemas/seed.schema.json",
+    "state": "schemas/state.schema.json",
+    "events": "schemas/events.schema.json"
+  },
+  "fixtures": {
+    "seed": "fixtures/minimal.json",
+    "binding": "fixtures/binding.json",
+    "policies": "fixtures/policies.json"
+  },
+  "dependencies": [],
+  "event_types": [
+    "counterline.commitment.performance_reported",
+    "counterline.case.followup"
+  ],
+  "capabilities": {
+    "modes": [
+      "synthetic"
+    ],
+    "resources": false,
+    "ui": "none",
+    "real_delivery": false
+  },
+  "limitations": [
+    "Skeleton: reads, cases.open and two Infra events only; the remaining operations in the approved plan are not implemented yet.",
+    "No language model; replies come from provider scripts.",
+    "No account ledger or balances."
+  ],
+  "dataset": "contribution/dataset.json",
+  "contribution": "contribution/contribution.json"
+}
