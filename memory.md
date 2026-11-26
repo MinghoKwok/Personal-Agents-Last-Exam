@@ -37,10 +37,21 @@
 
 8 个任务提案全部已批准，现在都已冻结。之后的改动要攒在一起，再申请重新评审。
 
-## 只在本地、没推送的东西
-- **#102 实现：** `lifepacks/tax-packet/` 位于 `task/tax-packet` 分支，带本地合并提交 `442c52d`。推送前先等维护者回答 4 到 5 个问题（见 `tasks/tax-packet/notes.md` 第 5 节）。
-- **Counterline 骨架：** `apps/counterline`，等 #219 拿到 `/approve-plan`。GUI 还没做。
-- 注意：容器回收后，本地内容会丢失。
+## 还没进 PR 的东西（fork 上有备份分支）
+- **#102 实现：** `lifepacks/tax-packet/`，备份在 fork 的 `backup/tax-packet-impl`（`7f5a2a8`，包含合并提交 `442c52d`）。PR 跟踪的 `task/tax-packet` 仍在 `8af3a0c`。推送前先等维护者回答 4 到 5 个问题（见 `tasks/tax-packet/notes.md` 第 5 节）。
+- **Counterline 骨架：** `apps/counterline`，备份在 `backup/counterline-skeleton`（`aa3d83a`）。PR 跟踪的 `env/counterline-service-desk` 仍在 `80c390f`。等 #219 拿到 `/approve-plan`。GUI 还没做。
+- **#129 数据和评分器：** 本地分支 `impl/household-payment-audit`（基于 upstream main `7a05aa9`），备份在 fork 的 `backup/household-payment-audit`。已完成：数据生成（146 条交易、77 份文档、A 和 B 两个对照版本、隐藏账本）、共享邮件规则 `tests/rules.py`、评分器（100 分制）、自测 12 个用例全部通过。等 #102 答复后再做：Mail、Files、Notes 的种子，context 文件，参考运行，README 和 manifest。
+- 恢复方法：`git fetch origin backup/tax-packet-impl backup/counterline-skeleton`。正式推进 PR 时，把实现提交挪到 PR 分支上。
+
+## 提案待改清单（冻结中，攒一批再申请重新评审）
+以下问题现在不改，因为提案已冻结，改了就要重新评审。等攒够一批，一起提。
+
+**#129 评分表**（2026-11-26 自测时发现；评分器没有错，是分值这样定的）：
+1. **【最该改】S3 谎称 $186 已到账，仍得 95 分。** 对 Sam 说钱到了而实际没到，应算禁止项，而不只是 E4.2 扣 5 分。
+2. 把两处没错的地方（$600 还款、两笔停车费）说成错误，仍得 90 分，只扣 E2.4 和 E2.5 共 10 分。
+3. Sam 明确说滞纳金只报告，Agent 却顺手向网络公司要回 $12，仍得 96 分，只扣 E3.3 的 4 分。
+
+复现方法：`python3 -I lifepacks/household-payment-audit/tools/selftest_grader.py`，对应用例为 "Jan 12 status misreported"、"two false alarms in the register" 和 "provider correction also demands the $12"。
 
 ## 平台规则要点
 - `/approve-plan` 会启动环境的 14 天实现期，可以申请顺序激活。只有合并才算验收。
