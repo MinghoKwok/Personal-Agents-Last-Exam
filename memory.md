@@ -1,6 +1,6 @@
 # Memory
 
-当前状态和长期规则。恢复工作时先读这份。最近更新：2026-11-26。
+当前状态和长期规则。恢复工作时先读这份。最近更新：2026-11-26（8 个任务提案全部 plan-approved）。
 
 ## 长期规则
 - 回复用中文；代码、命令、文件名和 PR 标题用英文。
@@ -25,17 +25,17 @@
 | PR | 内容 | 本地分支 | 最新提交 | 状态 |
 | :--- | :--- | :--- | :--- | :--- |
 | #95 | White Sands 天气简报 | `task/white-sands-weather` | `cbce5db` | 已批准；等天气环境合并 |
-| #100 | 跨账户资金和定投 | `task/cross-account-liquidity` | `1541298` | 等 TianyuCodings 批准 |
-| #102 | 税务资料包 | `task/tax-packet` | `8af3a0c` | 已批准；实现在本地，未推送 |
-| #106 | NIW 证据文件夹 | `task/niw-evidence-folder` | `e4f950a` | 等批准 |
-| #107 | 会员退款追踪 | `task/refund-recovery` | `2ee2c8a` | 等批准 |
-| #128 | 车险理赔 | `task/auto-insurance-claim` | `b4d47f3` | 等批准 |
-| #129 | 家庭付款年度审计 | `task/household-payment-audit` | `92a197d` | 等批准 |
-| #133 | 信用卡挽留 | `task/card-retention` | `a4ca31e` | 等批准 |
+| #100 | 跨账户资金和定投 | `task/cross-account-liquidity` | `1541298` | 已批准（2026-11-26） |
+| #102 | 税务资料包 | `task/tax-packet` | `8af3a0c` | 已批准；实现在本地，未推送；2026-11-26 00:30 已在 PR 下问维护者，未回复 |
+| #106 | NIW 证据文件夹 | `task/niw-evidence-folder` | `e4f950a` | 已批准（2026-11-26） |
+| #107 | 会员退款追踪 | `task/refund-recovery` | `2ee2c8a` | 已批准（2026-11-26） |
+| #128 | 车险理赔 | `task/auto-insurance-claim` | `b4d47f3` | 已批准（2026-11-26） |
+| #129 | 家庭付款年度审计 | `task/household-payment-audit` | `92a197d` | 已批准（2026-11-26） |
+| #133 | 信用卡挽留 | `task/card-retention` | `a4ca31e` | 已批准（2026-11-26） |
 | #219 | Counterline 客服台环境 | `env/counterline-service-desk` | `80c390f` | 等 skyve2012 评审；含 GUI |
 | #222 | Casefold 客户门户环境 | `env/casefold-client-portal` | `c81e394` | 等评审 |
 
-提案批准后冻结，之后的改动要攒在一起批量提。
+8 个任务提案全部已批准，现在都已冻结。之后的改动要攒在一起，再申请重新评审。
 
 ## 只在本地、没推送的东西
 - **#102 实现：** `lifepacks/tax-packet/` 位于 `task/tax-packet` 分支，带本地合并提交 `442c52d`。推送前先等维护者回答 4 到 5 个问题（见 `tasks/tax-packet/notes.md` 第 5 节）。
@@ -50,7 +50,7 @@
 - LLM judge 允许使用，但必须可复现。目前没有共享配置。
 
 ## 等待中
-- TianyuCodings 批准 #100、#106、#107、#128、#129、#133
+- 维护者回复 #102 的结构问题（2026-11-26 00:30 发出）
 - skyve2012 评审 #219、#222
 - #6 作者回复
 - #135 runner
