@@ -1,0 +1,112 @@
+flowchart LR
+  classDef task fill:#e8f0fe,stroke:#3b6fd8,color:#111
+  classDef mine fill:#fff1c2,stroke:#c98a00,stroke-width:3px,color:#111
+  classDef merged fill:#d9f2de,stroke:#2e8b47,color:#111
+  classDef val fill:#e3f4e6,stroke:#5aa86b,stroke-dasharray:4 2,color:#111
+  classDef plan fill:#eef6ff,stroke:#5b8fd6,color:#111
+  classDef review fill:#f3eefc,stroke:#8a6cc9,color:#111
+  classDef gap fill:#fde2e1,stroke:#d0453a,color:#111
+
+  subgraph T["我的 8 个 Task"]
+    direction TB
+    T95["#95 White Sands 天气"]
+    T100["#100 跨账户流动性"]
+    T102["#102 税务资料包"]
+    T106["#106 NIW 证据文件夹"]
+    T107["#107 退款追踪"]
+    T128["#128 车险理赔追加"]
+    T129["#129 家庭账务审计"]
+    T133["#133 信用卡挽留"]
+  end
+
+  E219["#219 Counterline 客服台<br/>（我的 Environment，待评审）"]
+
+  subgraph M["已合并（main）"]
+    direction TB
+    MAIL["Mail / Calendar<br/>examples/apps"]
+    MSG["Messages<br/>apps/messages"]
+    FILES["Files<br/>apps/files"]
+  end
+
+  subgraph V["已提交实现（Validation）"]
+    direction TB
+    E126["#126 Gustline 天气"]
+    E123["#123 Rainshadow 天气"]
+    E181["#181 Alderbrook 理赔"]
+  end
+
+  subgraph P["Plan approved（12 月初交付）"]
+    direction TB
+    E6["#6 Finance Workspace<br/>银行 + 券商"]
+    E33["#33 Personal Records<br/>文档库"]
+    E42["#42 Concur 报销"]
+  end
+
+  subgraph R["Design review"]
+    direction TB
+    E182["#182 Brindle Card<br/>信用卡账本"]
+    E187["#187 Tillbrook 账单支付"]
+    E183["#183 Payleaf 薪资"]
+    E148["#148 SubmissionDesk<br/>论文投稿"]
+  end
+
+  subgraph G["缺口：任务自建，没有环境"]
+    direction TB
+    G95["公园状态（很小）"]
+    G100["#6 的三项扩展<br/>扣款失败 / 最低余额 / 转账时段"]
+    GPORTAL["专业人士客户门户<br/>CPA 门户 + 律师门户"]
+    G102["发行方税表下载页"]
+    G106["Scholar / 预印本 / 出版商页面"]
+    G128["修理厂工单"]
+  end
+
+  T95 --> E126
+  T95 -.-> E123
+  T95 --> MAIL
+  T95 --> MSG
+  T95 --> G95
+
+  T100 --> E6
+  T100 --> G100
+  T100 -.-> E182
+  T100 -.-> E187
+
+  T102 --> E33
+  T102 -.-> FILES
+  T102 --> MAIL
+  T102 --> GPORTAL
+  T102 --> G102
+
+  T106 --> MAIL
+  T106 -.-> E33
+  T106 --> G106
+  T106 --> GPORTAL
+  T106 -.-> E148
+
+  T107 --> E182
+  T107 --> E219
+  T107 --> MAIL
+
+  T128 --> E181
+  T128 --> G128
+
+  T129 --> E219
+  T129 -.-> FILES
+  T129 -.-> E33
+  T129 -.-> E187
+  T129 -.-> E42
+  T129 -.-> E183
+
+  T133 --> E219
+  T133 --> E182
+
+  E219 -. "commitment_id 关联" .-> E182
+  E219 -. "可选通知" .-> MAIL
+
+  class T95,T100,T102,T106,T107,T128,T129,T133 task
+  class E219 mine
+  class MAIL,MSG,FILES merged
+  class E126,E123,E181 val
+  class E6,E33,E42 plan
+  class E182,E187,E183,E148 review
+  class G95,G100,GPORTAL,G102,G106,G128 gap
