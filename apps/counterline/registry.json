@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "apps": [
+    {
+      "app_id": "counterline",
+      "version": "0.1.0",
+      "path": "."
+    }
+  ],
+  "initial_time": "2026-12-02T09:00:00-05:00"
+}

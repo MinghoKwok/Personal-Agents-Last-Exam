@@ -28,7 +28,7 @@
     "Normalize timestamps and account identifiers."
   ],
   "expected_counts": {
-    "records": 7,
+    "records": 8,
     "assets": 0
   },
   "quality_policy": {

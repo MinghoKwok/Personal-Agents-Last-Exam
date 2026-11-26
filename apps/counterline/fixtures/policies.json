@@ -8,7 +8,16 @@
       "counterline.offers.get",
       "counterline.commitments.list",
       "counterline.commitments.get",
-      "counterline.cases.open"
+      "counterline.cases.open",
+      "counterline.cases.send_message",
+      "counterline.cases.take_action",
+      "counterline.cases.close",
+      "counterline.cases.reopen",
+      "counterline.identity.provide",
+      "counterline.offers.accept",
+      "counterline.offers.decline",
+      "counterline.commitments.contest",
+      "counterline.preferences.update"
     ],
     "constraints": {}
   },
@@ -21,7 +30,16 @@
       "counterline.offers.get",
       "counterline.commitments.list",
       "counterline.commitments.get",
-      "counterline.cases.open"
+      "counterline.cases.open",
+      "counterline.cases.send_message",
+      "counterline.cases.take_action",
+      "counterline.cases.close",
+      "counterline.cases.reopen",
+      "counterline.identity.provide",
+      "counterline.offers.accept",
+      "counterline.offers.decline",
+      "counterline.commitments.contest",
+      "counterline.preferences.update"
     ],
     "constraints": {}
   },

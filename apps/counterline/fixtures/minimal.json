@@ -46,12 +46,14 @@
       {
         "topic_id": "annual_fee",
         "title": "Annual fee question",
-        "greeting_script_id": "greet-fee"
+        "greeting_script_id": "greet-fee",
+        "identity_required": true
       },
       {
         "topic_id": "refund_status",
         "title": "Status of a promised credit or refund",
-        "greeting_script_id": "greet-status"
+        "greeting_script_id": "greet-status",
+        "identity_required": false
       }
     ],
     "scripts": [
@@ -70,8 +72,107 @@
       {
         "script_id": "followup-credit-processed",
         "text": "Good news: your statement credit has been processed."
+      },
+      {
+        "script_id": "greet-review",
+        "text": "Hello, this is Account Review at Larchmont Card Services. I have your case and I'm reviewing the options for your annual fee."
+      }
+    ],
+    "offer_catalog": [
+      {
+        "catalog_id": "cat-fee-f1",
+        "topic_id": "annual_fee",
+        "tier": "frontline",
+        "stage": "initial",
+        "kind": "statement_credit",
+        "title": "Statement credit",
+        "terms": "A 75.00 statement credit for keeping the card open. No spending required.",
+        "value": {
+          "amount_minor": 7500,
+          "currency": "USD"
+        },
+        "conditions": [],
+        "group": "fee-relief",
+        "expires_hours": 48,
+        "perform_days": 7
+      },
+      {
+        "catalog_id": "cat-fee-f2",
+        "topic_id": "annual_fee",
+        "tier": "frontline",
+        "stage": "better",
+        "kind": "statement_credit",
+        "title": "Larger statement credit",
+        "terms": "A 125.00 statement credit for keeping the card open. No spending required.",
+        "value": {
+          "amount_minor": 12500,
+          "currency": "USD"
+        },
+        "conditions": [],
+        "group": "fee-relief",
+        "expires_hours": 48,
+        "perform_days": 7
+      },
+      {
+        "catalog_id": "cat-fee-f3",
+        "topic_id": "annual_fee",
+        "tier": "frontline",
+        "stage": "better",
+        "kind": "conditional_credit",
+        "title": "Spend bonus credit",
+        "terms": "A 300.00 statement credit after 3,000.00 in purchases within 90 days of accepting.",
+        "value": {
+          "amount_minor": 30000,
+          "currency": "USD"
+        },
+        "conditions": [
+          "3,000.00 in purchases within 90 days of accepting"
+        ],
+        "group": "fee-relief",
+        "expires_hours": 48,
+        "perform_days": 7
+      },
+      {
+        "catalog_id": "cat-fee-f4",
+        "topic_id": "annual_fee",
+        "tier": "frontline",
+        "stage": "better",
+        "kind": "product_change",
+        "title": "Switch to the Classic card",
+        "terms": "Move this account to the Classic card, which has no annual fee. The rewards rate drops to 1%.",
+        "value": null,
+        "conditions": [],
+        "group": "fee-relief",
+        "expires_hours": 48,
+        "perform_days": 14
+      },
+      {
+        "catalog_id": "cat-fee-s1",
+        "topic_id": "annual_fee",
+        "tier": "specialist",
+        "stage": "transfer",
+        "kind": "fee_waiver",
+        "title": "Annual fee waiver",
+        "terms": "This year's 250.00 annual fee is waived in full. No spending required.",
+        "value": {
+          "amount_minor": 25000,
+          "currency": "USD"
+        },
+        "conditions": [],
+        "group": "fee-relief",
+        "expires_hours": 48,
+        "perform_days": 7
       }
     ]
+  },
+  "customer_record": {
+    "full_name": "Jordan Avery",
+    "last_four": "1234",
+    "billing_zip": "02139",
+    "date_of_birth": null
+  },
+  "preferences": {
+    "email_copies": false
   },
   "help_articles": [
     {
@@ -103,6 +204,16 @@
         "refunds",
         "timing"
       ]
+    },
+    {
+      "article_id": "kb-transfers",
+      "title": "Talking to the right team",
+      "body": "Most questions are answered by Customer Care. Fee reviews and requests to close an account are handled by Account Review, also called the retention team. In chat, ask to be transferred and name the team.",
+      "tags": [
+        "transfer",
+        "account review",
+        "chat"
+      ]
     }
   ],
   "cases": [
@@ -114,6 +225,20 @@
       "tier": "frontline",
       "opened_at": "2026-12-01T10:00:00-05:00",
       "closed_at": null,
+      "identity": {
+        "verified": true,
+        "disclosures": [
+          {
+            "at": "2026-12-01T10:00:00-05:00",
+            "fields": [
+              "last_four",
+              "billing_zip"
+            ],
+            "not_needed": [],
+            "matched": true
+          }
+        ]
+      },
       "transcript": [
         {
           "turn_id": "t-0001",
@@ -161,7 +286,10 @@
       "tier": "frontline",
       "presented_at": "2026-12-01T10:00:00-05:00",
       "expires_at": "2026-12-08T23:59:59-05:00",
-      "state": "accepted"
+      "state": "accepted",
+      "catalog_id": null,
+      "stage": null,
+      "perform_days": null
     },
     {
       "offer_id": "of-0002",
@@ -180,7 +308,10 @@
       "tier": "frontline",
       "presented_at": "2026-12-01T10:00:00-05:00",
       "expires_at": "2026-12-08T23:59:59-05:00",
-      "state": "unavailable"
+      "state": "unavailable",
+      "catalog_id": null,
+      "stage": null,
+      "perform_days": null
     }
   ],
   "commitments": [
@@ -207,7 +338,9 @@
           "event_id": null,
           "note": "Accepted in chat."
         }
-      ]
+      ],
+      "contest": null
     }
-  ]
+  ],
+  "confirmations": []
 }

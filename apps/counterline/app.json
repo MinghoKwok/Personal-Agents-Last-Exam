@@ -23,20 +23,24 @@
   "dependencies": [],
   "event_types": [
     "counterline.commitment.performance_reported",
-    "counterline.case.followup"
+    "counterline.case.followup",
+    "counterline.commitment.condition_missed",
+    "counterline.commitment.revoked",
+    "counterline.contest.answered",
+    "counterline.offer.added"
   ],
   "capabilities": {
     "modes": [
       "synthetic"
     ],
     "resources": false,
-    "ui": "none",
+    "ui": "web app (shared Web Host) and reviewer renderer",
     "real_delivery": false
   },
   "limitations": [
-    "Skeleton: reads, cases.open and two Infra events only; the remaining operations in the approved plan are not implemented yet.",
-    "No language model; replies come from provider scripts.",
-    "No account ledger or balances."
+    "No language model; replies come from the provider's records and a deterministic recognizer.",
+    "No account ledger or balances; settlement is shown only by the owning App's records.",
+    "Optional Mail copies are stored as a preference but not yet delivered."
   ],
   "dataset": "contribution/dataset.json",
   "contribution": "contribution/contribution.json"

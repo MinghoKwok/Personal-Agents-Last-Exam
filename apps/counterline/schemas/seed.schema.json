@@ -140,12 +140,16 @@
               "greeting_script_id": {
                 "type": "string",
                 "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+              },
+              "identity_required": {
+                "type": "boolean"
               }
             },
             "required": [
               "topic_id",
               "title",
-              "greeting_script_id"
+              "greeting_script_id",
+              "identity_required"
             ],
             "additionalProperties": false
           }
@@ -171,6 +175,138 @@
             ],
             "additionalProperties": false
           }
+        },
+        "offer_catalog": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "catalog_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+              },
+              "topic_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+              },
+              "tier": {
+                "enum": [
+                  "frontline",
+                  "specialist"
+                ]
+              },
+              "stage": {
+                "enum": [
+                  "initial",
+                  "better",
+                  "transfer"
+                ]
+              },
+              "kind": {
+                "enum": [
+                  "statement_credit",
+                  "conditional_credit",
+                  "fee_waiver",
+                  "refund",
+                  "product_change",
+                  "hold"
+                ]
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              "terms": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4000
+              },
+              "value": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "amount_minor": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "currency": {
+                        "type": "string",
+                        "pattern": "^[A-Z]{3}$"
+                      }
+                    },
+                    "required": [
+                      "amount_minor",
+                      "currency"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "conditions": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 400
+                }
+              },
+              "group": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "expires_hours": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 8760
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "perform_days": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 365
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "catalog_id",
+              "topic_id",
+              "tier",
+              "stage",
+              "kind",
+              "title",
+              "terms",
+              "value",
+              "conditions",
+              "group",
+              "expires_hours",
+              "perform_days"
+            ],
+            "additionalProperties": false
+          }
         }
       },
       "required": [
@@ -182,7 +318,59 @@
         "identity_policy",
         "departments",
         "topics",
-        "scripts"
+        "scripts",
+        "offer_catalog"
+      ],
+      "additionalProperties": false
+    },
+    "customer_record": {
+      "type": "object",
+      "properties": {
+        "full_name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "last_four": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4
+        },
+        "billing_zip": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 10
+        },
+        "date_of_birth": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 10
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "full_name",
+        "last_four",
+        "billing_zip",
+        "date_of_birth"
+      ],
+      "additionalProperties": false
+    },
+    "preferences": {
+      "type": "object",
+      "properties": {
+        "email_copies": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "email_copies"
       ],
       "additionalProperties": false
     },
@@ -271,6 +459,69 @@
               }
             ]
           },
+          "identity": {
+            "type": "object",
+            "properties": {
+              "verified": {
+                "type": "boolean"
+              },
+              "disclosures": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "at": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "fields": {
+                      "type": "array",
+                      "items": {
+                        "enum": [
+                          "full_name",
+                          "last_four",
+                          "billing_zip",
+                          "date_of_birth",
+                          "full_card_number",
+                          "ssn",
+                          "one_time_code"
+                        ]
+                      }
+                    },
+                    "not_needed": {
+                      "type": "array",
+                      "items": {
+                        "enum": [
+                          "full_name",
+                          "last_four",
+                          "billing_zip",
+                          "date_of_birth",
+                          "full_card_number",
+                          "ssn",
+                          "one_time_code"
+                        ]
+                      }
+                    },
+                    "matched": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "at",
+                    "fields",
+                    "not_needed",
+                    "matched"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "verified",
+              "disclosures"
+            ],
+            "additionalProperties": false
+          },
           "transcript": {
             "type": "array",
             "items": {
@@ -345,6 +596,7 @@
           "tier",
           "opened_at",
           "closed_at",
+          "identity",
           "transcript"
         ],
         "additionalProperties": false
@@ -362,6 +614,31 @@
           "case_id": {
             "type": "string",
             "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+          },
+          "catalog_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "stage": {
+            "anyOf": [
+              {
+                "enum": [
+                  "initial",
+                  "better",
+                  "transfer"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "kind": {
             "enum": [
@@ -448,6 +725,18 @@
               }
             ]
           },
+          "perform_days": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 365
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "state": {
             "enum": [
               "presented",
@@ -460,6 +749,8 @@
         "required": [
           "offer_id",
           "case_id",
+          "catalog_id",
+          "stage",
           "kind",
           "title",
           "terms",
@@ -469,6 +760,7 @@
           "tier",
           "presented_at",
           "expires_at",
+          "perform_days",
           "state"
         ],
         "additionalProperties": false
@@ -650,6 +942,69 @@
               ],
               "additionalProperties": false
             }
+          },
+          "contest": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "reason": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "prior_status": {
+                    "enum": [
+                      "pending",
+                      "reported_performed",
+                      "partially_reported",
+                      "condition_missed",
+                      "revoked",
+                      "contested"
+                    ]
+                  },
+                  "answered_at": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "outcome": {
+                    "anyOf": [
+                      {
+                        "enum": [
+                          "reissued",
+                          "upheld"
+                        ]
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "at",
+                  "reason",
+                  "prior_status",
+                  "answered_at",
+                  "outcome"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
         "required": [
@@ -665,7 +1020,63 @@
           "perform_by",
           "status",
           "reports",
-          "history"
+          "history",
+          "contest"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "confirmations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+          },
+          "offer_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+          },
+          "case_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+          },
+          "issued_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "used_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "commitment_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "token",
+          "offer_id",
+          "case_id",
+          "issued_at",
+          "used_at",
+          "commitment_id"
         ],
         "additionalProperties": false
       }
@@ -675,10 +1086,13 @@
     "account_id",
     "owner_person_id",
     "provider",
+    "customer_record",
+    "preferences",
     "help_articles",
     "cases",
     "offers",
-    "commitments"
+    "commitments",
+    "confirmations"
   ],
   "additionalProperties": false
 }

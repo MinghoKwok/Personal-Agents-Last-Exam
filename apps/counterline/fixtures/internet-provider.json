@@ -1,0 +1,198 @@
+{
+  "account_id": "counterline-jordan",
+  "owner_person_id": "person-jordan",
+  "provider": {
+    "provider_id": "isp-kestrel",
+    "name": "Kestrel Fiber",
+    "kind": "internet_provider",
+    "time_zone": "America/New_York",
+    "reopen_days": 30,
+    "identity_policy": {
+      "required": [
+        "full_name",
+        "billing_zip"
+      ],
+      "accepted": [
+        "full_name",
+        "billing_zip",
+        "last_four"
+      ]
+    },
+    "departments": [
+      {
+        "department_id": "dep-billing",
+        "name": "Billing Support",
+        "aliases": [
+          "billing"
+        ],
+        "tier": "frontline",
+        "transfer": "allowed"
+      },
+      {
+        "department_id": "dep-review",
+        "name": "Billing Review",
+        "aliases": [
+          "supervisor",
+          "manager",
+          "escalations"
+        ],
+        "tier": "specialist",
+        "transfer": "refused"
+      }
+    ],
+    "topics": [
+      {
+        "topic_id": "refund_status",
+        "title": "Status of a refund",
+        "greeting_script_id": "greet-status",
+        "identity_required": false
+      },
+      {
+        "topic_id": "billing_review",
+        "title": "A charge on my bill",
+        "greeting_script_id": "greet-billing",
+        "identity_required": true
+      }
+    ],
+    "scripts": [
+      {
+        "script_id": "greet-status",
+        "text": "Thanks for contacting Kestrel Fiber. I can check on a refund or credit we promised you."
+      },
+      {
+        "script_id": "greet-billing",
+        "text": "Thanks for contacting Kestrel Fiber billing. To look at your bill, please confirm the name on the account and your billing ZIP code."
+      },
+      {
+        "script_id": "followup-refund-processed",
+        "text": "Your refund has been processed."
+      }
+    ],
+    "offer_catalog": []
+  },
+  "customer_record": {
+    "full_name": "Jordan Avery",
+    "last_four": "7731",
+    "billing_zip": "02139",
+    "date_of_birth": null
+  },
+  "preferences": {
+    "email_copies": false
+  },
+  "help_articles": [
+    {
+      "article_id": "kb-refunds",
+      "title": "Refund timing",
+      "body": "Refunds we promise in chat are sent to your payment method within 10 days. Your bank statement is the record that the money arrived.",
+      "tags": [
+        "refund",
+        "timing"
+      ]
+    },
+    {
+      "article_id": "kb-escalation",
+      "title": "Escalations",
+      "body": "Billing questions are handled by Billing Support. Chat agents do not transfer cases to Billing Review; to request a review, describe the charge and the invoices it appears on.",
+      "tags": [
+        "escalation",
+        "billing review"
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "cs-0101",
+      "topic_id": "billing_review",
+      "account_ref": "kestrel:acct-55120",
+      "status": "resolved",
+      "tier": "frontline",
+      "opened_at": "2026-11-25T14:00:00-05:00",
+      "closed_at": null,
+      "identity": {
+        "verified": true,
+        "disclosures": [
+          {
+            "at": "2026-11-25T14:01:00-05:00",
+            "fields": [
+              "full_name",
+              "billing_zip"
+            ],
+            "not_needed": [],
+            "matched": true
+          }
+        ]
+      },
+      "transcript": [
+        {
+          "turn_id": "t-0001",
+          "at": "2026-11-25T14:00:00-05:00",
+          "speaker": "customer",
+          "text": "My last bill charged me twice for the router.",
+          "source": "text",
+          "recognized": [],
+          "rule": null
+        },
+        {
+          "turn_id": "t-0002",
+          "at": "2026-11-25T14:03:00-05:00",
+          "speaker": "representative",
+          "text": "I see the duplicate router line. I've arranged a 40.00 refund to your card, due by December 10.",
+          "source": "script",
+          "recognized": [],
+          "rule": "topic:billing_review:refund"
+        }
+      ]
+    }
+  ],
+  "offers": [
+    {
+      "offer_id": "of-0101",
+      "case_id": "cs-0101",
+      "catalog_id": null,
+      "stage": null,
+      "kind": "refund",
+      "title": "Refund of the duplicate router charge",
+      "terms": "A 40.00 refund to the card on file within 10 days.",
+      "value": {
+        "amount_minor": 4000,
+        "currency": "USD"
+      },
+      "conditions": [],
+      "group": null,
+      "tier": "frontline",
+      "presented_at": "2026-11-25T14:03:00-05:00",
+      "expires_at": null,
+      "perform_days": null,
+      "state": "accepted"
+    }
+  ],
+  "commitments": [
+    {
+      "commitment_id": "cm-0101",
+      "offer_id": "of-0101",
+      "case_id": "cs-0101",
+      "provider_id": "isp-kestrel",
+      "account_ref": "kestrel:acct-55120",
+      "kind": "refund",
+      "value": {
+        "amount_minor": 4000,
+        "currency": "USD"
+      },
+      "conditional": false,
+      "accepted_at": "2026-11-25T14:03:00-05:00",
+      "perform_by": "2026-12-10T23:59:59-05:00",
+      "status": "pending",
+      "reports": [],
+      "history": [
+        {
+          "at": "2026-11-25T14:03:00-05:00",
+          "status": "pending",
+          "event_id": null,
+          "note": "Agreed in chat."
+        }
+      ],
+      "contest": null
+    }
+  ],
+  "confirmations": []
+}

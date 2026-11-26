@@ -55,6 +55,51 @@
           "name": "counterline.cases.open",
           "effect": "write",
           "caller": "agent"
+        },
+        {
+          "name": "counterline.cases.send_message",
+          "effect": "write",
+          "caller": "agent"
+        },
+        {
+          "name": "counterline.cases.take_action",
+          "effect": "write",
+          "caller": "agent"
+        },
+        {
+          "name": "counterline.cases.close",
+          "effect": "write",
+          "caller": "agent"
+        },
+        {
+          "name": "counterline.cases.reopen",
+          "effect": "write",
+          "caller": "agent"
+        },
+        {
+          "name": "counterline.identity.provide",
+          "effect": "write",
+          "caller": "agent"
+        },
+        {
+          "name": "counterline.offers.accept",
+          "effect": "write",
+          "caller": "agent"
+        },
+        {
+          "name": "counterline.offers.decline",
+          "effect": "write",
+          "caller": "agent"
+        },
+        {
+          "name": "counterline.commitments.contest",
+          "effect": "write",
+          "caller": "agent"
+        },
+        {
+          "name": "counterline.preferences.update",
+          "effect": "write",
+          "caller": "agent"
         }
       ]
     },
@@ -126,6 +171,26 @@
         "type": "counterline.case.followup",
         "schema_ref": "schemas/events.schema.json",
         "status": "implemented"
+      },
+      {
+        "type": "counterline.commitment.condition_missed",
+        "schema_ref": "schemas/events.schema.json",
+        "status": "implemented"
+      },
+      {
+        "type": "counterline.commitment.revoked",
+        "schema_ref": "schemas/events.schema.json",
+        "status": "implemented"
+      },
+      {
+        "type": "counterline.contest.answered",
+        "schema_ref": "schemas/events.schema.json",
+        "status": "implemented"
+      },
+      {
+        "type": "counterline.offer.added",
+        "schema_ref": "schemas/events.schema.json",
+        "status": "implemented"
       }
     ],
     "emits": [],
@@ -139,7 +204,7 @@
       "assets.catalog.json"
     ]
   },
-  "gui_ref": null,
+  "gui_ref": "gui.json",
   "notification_channels": [],
   "subscriptions": {
     "business_owner": "source_app",

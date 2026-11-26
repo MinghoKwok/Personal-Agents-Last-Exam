@@ -18,6 +18,8 @@ function validateSeed(ctx, data) {
   const scripts = new Set(p.scripts.map(s => s.script_id));
   for (const t of p.topics) if (!scripts.has(t.greeting_script_id)) fail('invalid_seed', `Topic ${t.topic_id} names a missing greeting script.`);
   if (p.identity_policy.required.some(f => !p.identity_policy.accepted.includes(f))) fail('invalid_seed', 'Every required identity field must also be accepted.');
+  unique(p.offer_catalog, 'catalog_id', 'catalog offer');
+  for (const e of p.offer_catalog) if (!p.topics.some(t => t.topic_id === e.topic_id)) fail('invalid_seed', `Catalog offer ${e.catalog_id} names an unknown topic.`);
   unique(data.help_articles, 'article_id', 'article');
   unique(data.cases, 'case_id', 'case');
   unique(data.offers, 'offer_id', 'offer');
@@ -40,7 +42,14 @@ function validateSeed(ctx, data) {
       acceptedGroups.add(key);
     }
   }
+  const catalogIds = new Set(p.offer_catalog.map(e => e.catalog_id));
+  for (const o of data.offers) if (o.catalog_id !== null && !catalogIds.has(o.catalog_id)) fail('invalid_seed', `Offer ${o.offer_id} names an unknown catalog offer.`);
   const offers = new Map(data.offers.map(o => [o.offer_id, o]));
+  for (const x of data.confirmations) {
+    const o = offers.get(x.offer_id);
+    if (!o || o.case_id !== x.case_id) fail('invalid_seed', `Confirmation ${x.token} names an unknown offer.`);
+    if ((x.used_at === null) !== (x.commitment_id === null)) fail('invalid_seed', `Confirmation ${x.token} is used exactly when it names a commitment.`);
+  }
   for (const m of data.commitments) {
     const o = offers.get(m.offer_id);
     if (!o || o.state !== 'accepted') fail('invalid_seed', `Commitment ${m.commitment_id} must name an accepted offer.`);
@@ -50,12 +59,13 @@ function validateSeed(ctx, data) {
     if (m.conditional !== (o.conditions.length > 0)) fail('invalid_seed', `Commitment ${m.commitment_id} conditional flag does not match its offer.`);
     const reported = m.reports.reduce((sum, r) => sum + r.amount_minor, 0);
     if (m.value && (reported > m.value.amount_minor || m.reports.some(r => r.currency !== m.value.currency))) fail('invalid_seed', `Commitment ${m.commitment_id} reports exceed or mismatch its value.`);
-    if (m.status === 'pending' && m.reports.length) fail('invalid_seed', `Commitment ${m.commitment_id} has reports but is still pending.`);
+    if (m.status === 'pending' && m.reports.length && !(m.contest && m.contest.outcome === 'reissued')) fail('invalid_seed', `Commitment ${m.commitment_id} has reports but is still pending.`);
+    if ((m.status === 'contested') !== (m.contest !== null && m.contest.outcome === null)) fail('invalid_seed', `Commitment ${m.commitment_id} must carry an open contest exactly when it is contested.`);
     ordered([m.accepted_at, ...m.history.map(h => h.at)], `Commitment ${m.commitment_id} history`);
     if (!m.history.length || m.history[m.history.length - 1].status !== m.status) fail('invalid_seed', `Commitment ${m.commitment_id} history must end with its current status.`);
   }
 }
-const records = data => [...data.help_articles, ...data.cases, ...data.offers, ...data.commitments];
+const records = data => [...data.help_articles, ...data.cases, ...data.offers, ...data.commitments, ...data.confirmations];
 const objects = data => [
   ...data.help_articles.map(a => a.article_id), ...data.cases.map(c => c.case_id),
   ...data.offers.map(o => o.offer_id), ...data.commitments.map(m => m.commitment_id)

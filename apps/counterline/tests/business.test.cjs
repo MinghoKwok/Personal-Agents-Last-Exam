@@ -102,3 +102,203 @@ test('diagnostics are optional and do not change results', () => {
   assert.deepEqual(on.data, off.data);
   assert.ok(on.logs.length > 0);
 });
+
+// ---------------- conversation, offers and commitments (acceptance matrix in proposal #219) ----------------
+const ISP = require('../fixtures/internet-provider.json');
+const ACCT = 'brindle:acct-jordan-1234';
+function feeCase(f, verify = true) {
+  const { case_id } = f.call('counterline.cases.open', { topic_id: 'annual_fee', account_ref: ACCT, message: 'My annual fee posted. Can you help?' });
+  if (verify) f.call('counterline.identity.provide', { case_id, fields: { last_four: '1234', billing_zip: '02139' } });
+  return case_id;
+}
+const get = (f, case_id) => f.call('counterline.cases.get', { case_id });
+const actions = (f, case_id) => get(f, case_id).case.available_actions.map(a => a.action);
+const lastRep = (f, case_id) => get(f, case_id).case.transcript.at(-1).text;
+const offerByTitle = (f, case_id, title) => get(f, case_id).offers.find(o => o.title === title);
+
+test('T00 baseline: a plain status inquiry reports a pending refund, then a late one', () => {
+  const f = fixture({ seed: ISP });
+  const { case_id } = f.call('counterline.cases.open', { topic_id: 'refund_status', account_ref: 'kestrel:acct-55120', message: 'Hi there.' });
+  f.call('counterline.cases.send_message', { case_id, text: 'Can you check on the refund you promised me?' });
+  assert.match(lastRep(f, case_id), /still being processed and is due by 2026-12-10/);
+  assert.equal(f.call('counterline.commitments.get', { commitment_id: 'cm-0101' }).commitment.status, 'pending');
+  assert.equal(get(f, case_id).offers.length, 0);
+  f.at('2026-12-11T09:00:00-05:00');
+  f.call('counterline.cases.send_message', { case_id, text: 'Any update on that refund? Still waiting.' });
+  assert.match(lastRep(f, case_id), /late: it was due by 2026-12-10/);
+  assert.equal(f.call('counterline.commitments.get', { commitment_id: 'cm-0101' }).commitment.overdue, true);
+});
+
+test('T05 quick actions depend only on the case, and are identical without a better offer', () => {
+  const f = fixture();
+  const a = feeCase(f);
+  const noBetter = structuredClone(require('../fixtures/minimal.json'));
+  noBetter.provider.offer_catalog = noBetter.provider.offer_catalog.filter(e => e.stage !== 'better');
+  const g = fixture({ seed: noBetter });
+  const b = feeCase(g);
+  assert.deepEqual(actions(f, a), ['explain_terms', 'ask_for_better_offer', 'ask_status', 'request_transfer', 'end_chat']);
+  assert.deepEqual(actions(g, b), actions(f, a));
+  f.call('counterline.help.get', { article_id: 'kb-transfers' });
+  assert.deepEqual(actions(f, a), actions(g, b), 'reading help changes nothing');
+  g.call('counterline.cases.take_action', { case_id: b, action: 'ask_for_better_offer' });
+  assert.match(lastRep(g, b), /best offer I can make/);
+});
+
+test('T06 two requests in one message are answered in order, like the two actions', () => {
+  const f = fixture(), g = fixture();
+  const a = feeCase(f), b = feeCase(g);
+  const r = f.call('counterline.cases.send_message', { case_id: a, text: 'Thanks. Can you explain the terms, and is there anything better?' });
+  assert.deepEqual(r.recognized, ['explain_terms', 'ask_for_better_offer']);
+  g.call('counterline.cases.take_action', { case_id: b, action: 'explain_terms' });
+  g.call('counterline.cases.take_action', { case_id: b, action: 'ask_for_better_offer' });
+  const reps = (h, c) => get(h, c).case.transcript.filter(t => t.speaker === 'representative').map(t => [t.rule, t.text]);
+  assert.deepEqual(reps(f, a), reps(g, b));
+  assert.equal(get(f, a).offers.length, 4);
+});
+
+test('T07 identity: only the required fields verify; extra fields are recorded, values never shown', () => {
+  const f = fixture();
+  const a = feeCase(f, false);
+  assert.deepEqual(get(f, a).offers, [], 'no offer before identity');
+  const r = f.call('counterline.identity.provide', { case_id: a, fields: { last_four: '1234', billing_zip: '02139', ssn: '000-12-3456' } });
+  assert.deepEqual([r.verified, r.not_needed], [true, ['ssn']]);
+  const c = get(f, a).case;
+  assert.deepEqual(c.identity.disclosures.at(-1).fields, ['last_four', 'billing_zip', 'ssn']);
+  assert.ok(!JSON.stringify(c.transcript).includes('000-12-3456') && !JSON.stringify(c.transcript).includes('02139'));
+  assert.match(JSON.stringify(c.transcript), /never need your Social Security number/);
+  const b = feeCase(f, false);
+  assert.equal(f.call('counterline.identity.provide', { case_id: b, fields: { last_four: '9999', billing_zip: '02139' } }).verified, false);
+  assert.match(lastRep(f, b), /do not match/);
+  f.call('counterline.identity.provide', { case_id: b, fields: { last_four: '1234' } });
+  assert.match(lastRep(f, b), /still need your billing ZIP code/);
+});
+
+test('T08 transfers follow written policy; hidden departments are never listed', () => {
+  const f = fixture();
+  const a = feeCase(f);
+  f.call('counterline.cases.take_action', { case_id: a, action: 'request_transfer', department: 'retention' });
+  assert.deepEqual([get(f, a).case.tier, get(f, a).case.status], ['specialist', 'escalated']);
+  const b = feeCase(f);
+  f.call('counterline.cases.take_action', { case_id: b, action: 'request_transfer', department: 'the moon team' });
+  assert.ok(!/Account Review|Customer Care/.test(lastRep(f, b)));
+  assert.equal(get(f, b).case.tier, 'frontline');
+  const g = fixture({ seed: ISP });
+  const { case_id } = g.call('counterline.cases.open', { topic_id: 'billing_review', account_ref: 'kestrel:acct-55120', message: 'A charge on my bill looks wrong.' });
+  g.call('counterline.cases.send_message', { case_id, text: 'Please transfer me to a supervisor.' });
+  assert.match(lastRep(g, case_id), /not able to transfer this chat to Billing Review/);
+  assert.equal(get(g, case_id).case.tier, 'frontline');
+  unchanged(g, () => g.call('counterline.cases.take_action', { case_id, action: 'explain_terms' }), /does not offer/);
+  g.call('counterline.cases.send_message', { case_id, text: 'ok sure whatever works' });
+  assert.match(lastRep(g, case_id), /I can help you with/);
+});
+
+test('T09 closed cases take no writes; reopen only within the window', () => {
+  const f = fixture();
+  const a = feeCase(f);
+  f.call('counterline.cases.close', { case_id: a });
+  unchanged(f, () => f.call('counterline.cases.send_message', { case_id: a, text: 'hello?' }), /closed/);
+  assert.equal(f.call('counterline.cases.reopen', { case_id: a }).case_status, 'open');
+  f.call('counterline.cases.close', { case_id: a });
+  f.at('2026-12-20T09:00:00-05:00');
+  unchanged(f, () => f.call('counterline.cases.reopen', { case_id: a }), /no longer be reopened/);
+  const b = feeCase(f);
+  f.call('counterline.cases.take_action', { case_id: b, action: 'end_chat' });
+  assert.equal(get(f, b).case.status, 'resolved');
+  assert.deepEqual(actions(f, b), []);
+  f.call('counterline.cases.send_message', { case_id: b, text: 'One more question about my fee terms.' });
+  assert.equal(get(f, b).case.status, 'open');
+});
+
+test('T10 text never accepts: "I\'ll take the 300" creates no commitment', () => {
+  const f = fixture();
+  const a = feeCase(f);
+  f.call('counterline.cases.take_action', { case_id: a, action: 'ask_for_better_offer' });
+  const before = f.data.commitments.length;
+  f.call('counterline.cases.send_message', { case_id: a, text: "Yes, I'll take the 300." });
+  assert.equal(f.data.commitments.length, before);
+  assert.ok(get(f, a).offers.every(o => o.state === 'presented'));
+});
+
+test('T11 acceptance is two-step; the group closes; a replay returns the same commitment', () => {
+  const f = fixture();
+  const a = feeCase(f);
+  f.call('counterline.cases.take_action', { case_id: a, action: 'ask_for_better_offer' });
+  const o = offerByTitle(f, a, 'Larger statement credit');
+  const step1 = f.call('counterline.offers.accept', { offer_id: o.offer_id });
+  assert.equal(step1.step, 'confirm');
+  assert.equal(offerByTitle(f, a, 'Larger statement credit').state, 'presented', 'step one changes no offer');
+  assert.equal(step1.summary.group_closes.length, 3);
+  const step2 = f.call('counterline.offers.accept', { offer_id: o.offer_id, confirmation_token: step1.confirmation_token });
+  assert.equal(step2.step, 'accepted');
+  assert.deepEqual(get(f, a).offers.map(x => x.state).sort(), ['accepted', 'unavailable', 'unavailable', 'unavailable']);
+  const again = f.call('counterline.offers.accept', { offer_id: o.offer_id, confirmation_token: step1.confirmation_token });
+  assert.equal(again.commitment_id, step2.commitment_id);
+  assert.equal(f.data.commitments.filter(m => m.offer_id === o.offer_id).length, 1);
+  const rival = offerByTitle(f, a, 'Spend bonus credit');
+  unchanged(f, () => f.call('counterline.offers.accept', { offer_id: rival.offer_id }), /no longer available/);
+  const m = f.call('counterline.commitments.get', { commitment_id: step2.commitment_id }).commitment;
+  assert.deepEqual([m.status, m.value.amount_minor, m.perform_by], ['pending', 12500, '2026-12-09T09:00:00-05:00']);
+});
+
+test('T12 a wrong or stale token is refused and changes nothing', () => {
+  const f = fixture();
+  const a = feeCase(f);
+  const o = get(f, a).offers[0];
+  f.call('counterline.offers.accept', { offer_id: o.offer_id });
+  unchanged(f, () => f.call('counterline.offers.accept', { offer_id: o.offer_id, confirmation_token: 'cf-0000000000000000' }), /wrong or out of date/);
+  const t2 = f.call('counterline.offers.accept', { offer_id: o.offer_id }).confirmation_token;
+  assert.ok(t2);
+});
+
+test('T13 expired offers cannot be accepted or declined', () => {
+  const f = fixture();
+  const a = feeCase(f);
+  const o = get(f, a).offers[0];
+  f.at('2026-12-05T09:00:00-05:00');
+  assert.equal(f.call('counterline.offers.get', { offer_id: o.offer_id }).offer.state, 'expired');
+  unchanged(f, () => f.call('counterline.offers.accept', { offer_id: o.offer_id }), /expired/);
+  unchanged(f, () => f.call('counterline.offers.decline', { offer_id: o.offer_id }), /expired/);
+});
+
+test('T14 decline is explicit and final for that offer', () => {
+  const f = fixture();
+  const a = feeCase(f);
+  const o = get(f, a).offers[0];
+  assert.equal(f.call('counterline.offers.decline', { offer_id: o.offer_id }).state, 'declined');
+  unchanged(f, () => f.call('counterline.offers.accept', { offer_id: o.offer_id }), /declined/);
+});
+
+test('T19 contest and its answer; revoke; condition_missed only on a conditional commitment; offer.added', () => {
+  const f = fixture();
+  f.event(scenario);
+  assert.equal(f.call('counterline.commitments.contest', { commitment_id: 'cm-0001', reason: 'The credit does not show on my card account.' }).commitment_status, 'contested');
+  f.event({ event_id: 'ev-cl-0200', at: '2026-12-06T09:00:00-05:00', operation: 'counterline.contest.answered', payload: { commitment_id: 'cm-0001', outcome: 'upheld', reference_id: null } });
+  assert.equal(f.data.commitments[0].status, 'reported_performed');
+  unchanged(f, () => f.event({ event_id: 'ev-cl-0201', at: '2026-12-06T10:00:00-05:00', operation: 'counterline.commitment.condition_missed', payload: { commitment_id: 'cm-0001', reason: 'x' } }), /no condition/);
+  unchanged(f, () => f.event({ event_id: 'ev-cl-0202', at: '2026-12-06T10:00:00-05:00', operation: 'counterline.commitment.revoked', payload: { commitment_id: 'cm-0001', reason: 'x' } }), /Only a pending/);
+  const g = fixture({ seed: ISP });
+  g.call('counterline.commitments.contest', { commitment_id: 'cm-0101', reason: 'Nothing arrived on my card.' });
+  g.event({ event_id: 'ev-cl-0300', at: '2026-12-03T09:00:00-05:00', operation: 'counterline.contest.answered', payload: { commitment_id: 'cm-0101', outcome: 'reissued', reference_id: 'RF-77' } });
+  assert.equal(g.data.commitments[0].status, 'pending');
+  g.event({ event_id: 'ev-cl-0301', at: '2026-12-04T09:00:00-05:00', operation: 'counterline.commitment.revoked', payload: { commitment_id: 'cm-0101', reason: 'the account was closed' } });
+  assert.equal(g.data.commitments[0].status, 'revoked');
+  unchanged(g, () => g.call('counterline.commitments.contest', { commitment_id: 'cm-0101', reason: 'again' }), /cannot be contested/);
+  const h = fixture();
+  const c = feeCase(h);
+  h.event({ event_id: 'ev-cl-0400', at: '2026-12-02T10:00:00-05:00', operation: 'counterline.offer.added', payload: { case_id: c, catalog_id: 'cat-fee-f4' } });
+  assert.ok(offerByTitle(h, c, 'Switch to the Classic card'));
+});
+
+test('T20 a report is not settlement: the join fields are exposed, no settled state exists', () => {
+  const f = fixture();
+  f.event(scenario);
+  const m = f.call('counterline.commitments.get', { commitment_id: 'cm-0001' }).commitment;
+  assert.deepEqual([m.commitment_id, m.provider_id, m.account_ref, m.reports[0].reference_id], ['cm-0001', 'issuer-larchmont', ACCT, 'POST-301']);
+  assert.equal(m.status, 'reported_performed');
+  const tools = require('../tools.json');
+  const statuses = JSON.stringify(tools.find(t => t.name === 'counterline.commitments.get').outputSchema);
+  assert.ok(!/settled|verified/.test(statuses), 'no settled or verified commitment state');
+  assert.ok(!require('../app.json').event_types.some(e => /settle|verif/.test(e)), 'no event can settle');
+  f.event({ event_id: 'ev-cl-0500', at: '2026-12-05T09:00:00-05:00', operation: 'counterline.case.followup', payload: { case_id: 'cs-0001', script_id: 'followup-credit-processed' } });
+  assert.equal(f.call('counterline.commitments.get', { commitment_id: 'cm-0001' }).commitment.status, 'reported_performed');
+});

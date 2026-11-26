@@ -1,31 +1,53 @@
-# Counterline provider service desk (skeleton, v0.1.0)
+# Counterline provider service desk (v0.1.0, work in progress)
 
 Counterline is a resettable customer-service desk run by one provider, seen from one customer's side. It keeps what the provider **promised** (a commitment), what it later **reported** (a performance report) and leaves what was **verified** to the App that owns the account. Design: `proposals/environment/counterline-service-desk.md` (PR #219).
 
-This package is a skeleton built ahead of plan approval. It runs on the public runtime 1.6.0 (Core API 1.2.0) and passes the public verifier, but it implements only part of the approved plan.
+This package is built ahead of plan approval. It runs on the public runtime 1.6.0 (Core API 1.2.0), passes the public verifier and has an App-owned Web page on the shared Web Host.
 
-## Implemented
+## Agent operations
+
+17 tools, 7 read and 10 write:
 
 | Kind | Name | Effect |
 | :--- | :--- | :--- |
-| Read | `counterline.help.search`, `counterline.help.get` | Help center search and articles. Departments such as Account Review are named only here. |
-| Read | `counterline.cases.list`, `counterline.cases.get` | Cases with transcripts and the offers presented in them. |
-| Read | `counterline.offers.get` | One offer; a presented offer past `expires_at` reads `expired`, computed on read. |
-| Read | `counterline.commitments.list`, `counterline.commitments.get` | Commitments with reports, history and a derived `overdue` flag. |
-| Write | `counterline.cases.open` | Opens a case on a provider topic; the representative answers with the topic's greeting script. |
-| Event | `counterline.commitment.performance_reported` | Must name an existing open commitment and provider; cannot exceed the committed amount or change currency; a partial amount gives `partially_reported`. |
-| Event | `counterline.case.followup` | Appends a scripted representative turn. A script can say "processed" without any report. |
+| Read | `counterline.help.search` | Search the provider help center by words in titles, bodies and tags. Read-only. |
+| Read | `counterline.help.get` | Read one help article. Read-only. |
+| Read | `counterline.cases.list` | List the customer's support cases, optionally by status, with the provider's name, the topics a new case can be opened on and the customer's notification preferences. Read-only. |
+| Read | `counterline.cases.get` | Read one case with its transcript, the offers presented in it and the quick actions the chat offers now. Offers past their expiry read "expired". Read-only. |
+| Read | `counterline.offers.get` | Read one presented offer with its terms and conditions. Read-only. |
+| Read | `counterline.commitments.list` | List the provider's commitments to this customer with status, reports and an overdue flag. Read-only. |
+| Read | `counterline.commitments.get` | Read one commitment with its performance reports and history. Read-only. |
+| Write | `counterline.cases.open` | Open a support case on one of the provider's topics for an account reference, with a first message. The representative answers with the topic greeting. |
+| Write | `counterline.cases.send_message` | Write a plain-language message in a case. The representative answers every request it recognizes, in order; anything else gets an acknowledgement that lists the available actions. A message never accepts, declines or discloses anything. |
+| Write | `counterline.cases.take_action` | Use one of the quick actions the case lists now in available_actions. request_transfer takes a department name. |
+| Write | `counterline.cases.close` | Close a case. A closed case takes no writes until it is reopened. |
+| Write | `counterline.cases.reopen` | Reopen a closed case within the provider's reopen window. |
+| Write | `counterline.identity.provide` | Give the representative selected identity fields for a case. Every field given is recorded as disclosed, including fields the provider does not need. |
+| Write | `counterline.offers.accept` | Accept a presented offer in two steps. Without confirmation_token, returns a summary and a token and changes no offer. With that token, creates the commitment. |
+| Write | `counterline.offers.decline` | Decline a presented offer. |
+| Write | `counterline.commitments.contest` | Contest a commitment, for example when the provider reports a credit the account does not show. The provider answers by event. |
+| Write | `counterline.preferences.update` | Turn plain-text email copies of offers and confirmations on or off. |
 
-## Not implemented yet (planned in #219)
+Infra events: `counterline.commitment.performance_reported`, `counterline.case.followup`, `counterline.commitment.condition_missed`, `counterline.commitment.revoked`, `counterline.contest.answered`, `counterline.offer.added`.
 
-`cases.send_message`, `cases.take_action` and `available_actions` (quick actions), the text recognizer, `cases.close`, `cases.reopen`, `identity.provide`, `offers.accept` (two-step with a confirmation token), `offers.decline`, `commitments.contest`, `preferences.update`, the remaining events (`condition_missed`, `revoked`, `contest.answered`, `offer.added`), the internet-provider fixture family, and the optional Mail notices.
+## How the chat works
+
+- **Quick actions** (`available_actions` in `cases.get`) are computed from the case, the offers presented in it and the provider's records only. They are the same whether a better offer exists or not, and reading help articles never changes them.
+- **Free text** goes through a small deterministic recognizer (terms, a better offer, status, a transfer to a named department or alias, ending the chat). Several requests in one message are answered in the order written; anything else gets an acknowledgement that lists the available actions and changes nothing. No language model runs.
+- **Binding steps are explicit operations.** Accepting is two calls: the first returns a summary and a confirmation token and changes no offer; the second, with the token, creates the commitment and closes the rest of the offer group. A replay with the same token returns the same commitment. The token is a hash of the offer, a counter and the virtual time, so runs are reproducible; it makes the confirmation explicit and is not a security control. "Yes, I'll take the 300" in a message creates nothing.
+- **Identity** is checked against the provider's record. Only the fields given are recorded as disclosed, with the ones the provider did not need; values never appear in the transcript.
+- **A report is not settlement.** No read or event produces a settled or verified state; settlement is a join with the owning App's ledger by `account_ref` and `reference_id`.
+
+## Web page
+
+`gui/index.html` and `gui/src/app.js`, declared in `contribution/gui.json` (`pale.web`), served by the shared Web Host. See [gui/README.md](gui/README.md).
 
 ## Commands
 
 From this directory:
 
 ```sh
-npm test                 # business tests
+npm test                 # business tests (T00 to T20)
 npm run example          # one event, before and after
 npm run contracts        # regenerate tools.json, seed/events schemas and the operation list
 npm run contracts:check  # fail if generated files drifted
@@ -35,12 +57,18 @@ From the repository root:
 
 ```sh
 npm run app:verify -- --app apps/counterline --output .artifacts/counterline.json
+node runtime/web/server.cjs --app counterline --registry apps/counterline/registry.json --run web-demo --profile sandbox
+node apps/counterline/tests/browser.test.cjs   # needs `npm ci` and `npx playwright install chromium`
 ```
 
 ## Data
 
-`fixtures/minimal.json` is a hand-authored synthetic card issuer ("Larchmont Card Services"), three help articles, one resolved annual-fee case with an accepted 125.00 credit and an unavailable conditional offer in the same group, and one pending commitment. No real people, providers or account numbers. Money is in integer minor units.
+Two hand-authored synthetic fixture families. `fixtures/minimal.json`: a card issuer ("Larchmont Card Services") with an annual-fee offer catalog across two tiers, a transfer to Account Review by name or alias, a resolved case with an accepted 125.00 credit and a pending commitment. `fixtures/internet-provider.json`: an internet provider ("Kestrel Fiber") whose policy refuses transfers, with a promised 40.00 refund for the baseline status inquiry. No real people, providers or account numbers. Money is in integer minor units.
+
+## Not done yet (planned in #219)
+
+The optional Mail copies (the preference is stored, nothing is delivered), the settlement join example (`examples/join/`, T21), the 2025 to 2026 delivery dataset with its coverage report, the reference-product comparison screenshots and the evidence index.
 
 ## Limitations
 
-No language model, account ledger, balances or payments. One provider and one customer per instance. MCP only; no GUI.
+No language model, account ledger, balances or payments. One provider and one customer per instance.
