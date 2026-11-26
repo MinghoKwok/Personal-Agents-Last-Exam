@@ -27,7 +27,8 @@
     "counterline.commitment.condition_missed",
     "counterline.commitment.revoked",
     "counterline.contest.answered",
-    "counterline.offer.added"
+    "counterline.offer.added",
+    "counterline.notification.delivery_recorded"
   ],
   "capabilities": {
     "modes": [
@@ -40,7 +41,7 @@
   "limitations": [
     "No language model; replies come from the provider's records and a deterministic recognizer.",
     "No account ledger or balances; settlement is shown only by the owning App's records.",
-    "Optional Mail copies are stored as a preference but not yet delivered."
+    "Mail copies are queued by Counterline and published by its outbound adapter (src/publisher.cjs); automatic invocation after each commit belongs to the planned runner."
   ],
   "dataset": "contribution/dataset.json",
   "contribution": "contribution/contribution.json"

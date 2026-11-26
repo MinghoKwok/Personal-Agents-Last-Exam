@@ -58,6 +58,16 @@ function describe(o) {
   return `${o.title}${value}: ${o.terms}${cond}${until}`;
 }
 
+// Queue a plain-text Mail copy while the customer has email_copies on. One copy per presentation or confirmation.
+function queueCopy(data, now, kind, c, ref_id, title, body) {
+  if (!data.preferences.email_copies) return;
+  const notification_id = `ntf-${ref_id}`;
+  if (data.outbox.some(n => n.notification_id === notification_id)) return;
+  data.outbox.push({ notification_id, kind, case_id: c.case_id, ref_id, title: `${data.provider.name}: ${title}`,
+    body: `${body}\n\nCase ${c.case_id}. This is a copy for your records; reply in the support chat.`, time: now,
+    recipient_person_id: data.owner_person_id, status: 'pending_delivery', outcome: null });
+}
+
 // Present catalog offers in a case. An offer whose group already has an accepted offer is not shown.
 function present(data, c, now, entries) {
   const taken = new Set(data.offers.map(o => o.offer_id));
@@ -86,6 +96,7 @@ function presentStage(data, c, now, stage, lead) {
   const shown = present(data, c, now, catalog(data, c, stage));
   if (!shown.length) return 0;
   say(c, now, `${lead} ${shown.map(describe).join(' ')}`, `offers:${stage}:${c.tier}`);
+  queueCopy(data, now, 'offer_presented', c, shown[0].offer_id, 'new offers in your case', shown.map(describe).join('\n'));
   return 1;
 }
 
@@ -103,6 +114,7 @@ function perform(data, c, now, action, dept, recognized) {
       if (!mayOffer(data, c)) { say(c, now, 'I need to verify your identity before I can look at offers.', rule('identity_first'), recognized); return 1; }
       const shown = present(data, c, now, catalog(data, c, 'better'));
       say(c, now, shown.length ? `Here is what else I can offer. ${shown.map(describe).join(' ')}` : 'That is the best offer I can make on this case.', rule(shown.length ? 'presented' : 'none'), recognized);
+      if (shown.length) queueCopy(data, now, 'offer_presented', c, shown[0].offer_id, 'new offers in your case', shown.map(describe).join('\n'));
       return 1;
     }
     case 'ask_status': {
@@ -137,4 +149,4 @@ function perform(data, c, now, action, dept, recognized) {
   }
 }
 
-module.exports = { LABELS, recognize, department, availableActions, perform, present, presentStage, live, turn, say, describe, list };
+module.exports = { queueCopy, LABELS, recognize, department, availableActions, perform, present, presentStage, live, turn, say, describe, list };

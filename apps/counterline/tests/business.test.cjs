@@ -302,3 +302,27 @@ test('T20 a report is not settlement: the join fields are exposed, no settled st
   f.event({ event_id: 'ev-cl-0500', at: '2026-12-05T09:00:00-05:00', operation: 'counterline.case.followup', payload: { case_id: 'cs-0001', script_id: 'followup-credit-processed' } });
   assert.equal(f.call('counterline.commitments.get', { commitment_id: 'cm-0001' }).commitment.status, 'reported_performed');
 });
+
+test('T22 Mail copies are queued only while email_copies is on, once per presentation or confirmation', () => {
+  const off = fixture();
+  feeCase(off);
+  assert.equal(off.data.outbox.length, 0, 'no copies while the preference is off');
+  const f = fixture();
+  f.call('counterline.preferences.update', { email_copies: true });
+  const a = feeCase(f);
+  assert.deepEqual(f.data.outbox.map(n => n.kind), ['offer_presented']);
+  const o = get(f, a).offers[0];
+  const t = f.call('counterline.offers.accept', { offer_id: o.offer_id }).confirmation_token;
+  const { commitment_id } = f.call('counterline.offers.accept', { offer_id: o.offer_id, confirmation_token: t });
+  const copy = f.data.outbox.find(n => n.kind === 'commitment_confirmed');
+  assert.equal(copy.ref_id, commitment_id);
+  assert.match(copy.body, new RegExp(commitment_id));
+  assert.equal(copy.recipient_person_id, 'person-jordan');
+  f.event({ event_id: 'ev-cl-0600', at: '2026-12-02T09:10:00-05:00', operation: 'counterline.notification.delivery_recorded',
+    payload: { notification_id: copy.notification_id, status: 'committed', code: null, stop_run: false, router_event_id: 'rt-1' } });
+  assert.equal(f.data.outbox.find(n => n.notification_id === copy.notification_id).status, 'delivered');
+  unchanged(f, () => f.event({ event_id: 'ev-cl-0601', at: '2026-12-02T09:11:00-05:00', operation: 'counterline.notification.delivery_recorded',
+    payload: { notification_id: copy.notification_id, status: 'rejected', code: 'x', stop_run: false, router_event_id: null } }), /already delivered/);
+  unchanged(f, () => f.event({ event_id: 'ev-cl-0602', at: '2026-12-02T09:11:00-05:00', operation: 'counterline.notification.delivery_recorded',
+    payload: { notification_id: 'ntf-missing', status: 'committed', code: null, stop_run: false, router_event_id: null } }), /existing notification/);
+});

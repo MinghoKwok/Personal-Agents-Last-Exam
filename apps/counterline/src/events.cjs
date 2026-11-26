@@ -76,12 +76,23 @@ function offerAdded(data, event) {
   const shown = present(data, c, event.at, [{ ...e, tier: c.tier }]);
   if (!shown.length) fail('invalid_event', 'An offer in this group was already accepted.');
   say(c, event.at, `I can also offer: ${describe(shown[0])}`, 'offers:added');
+  require('./policy.cjs').queueCopy(data, event.at, 'offer_presented', c, shown[0].offer_id, 'a new offer in your case', describe(shown[0]));
+}
+// Infra records the Messaging outcome of one Mail copy. Counterline's own commit and Mail's receipt are separate.
+function deliveryRecorded(data, event) {
+  const p = event.payload;
+  const n = data.outbox.find(x => x.notification_id === p.notification_id);
+  if (!n) fail('invalid_event', 'The outcome must name an existing notification.');
+  if (n.status !== 'pending_delivery') fail('invalid_event', `Notification ${n.notification_id} is already ${n.status}.`);
+  n.status = { committed: 'delivered', rejected: 'delivery_failed' }[p.status] || 'delivery_unknown';
+  n.outcome = { status: p.status, code: p.code, router_event_id: p.router_event_id, recorded_at: event.at };
 }
 
 const HANDLERS = {
   [`${APP}.commitment.performance_reported`]: performanceReported, [`${APP}.case.followup`]: followup,
   [`${APP}.commitment.condition_missed`]: conditionMissed, [`${APP}.commitment.revoked`]: revoked,
-  [`${APP}.contest.answered`]: contestAnswered, [`${APP}.offer.added`]: offerAdded
+  [`${APP}.contest.answered`]: contestAnswered, [`${APP}.offer.added`]: offerAdded,
+  [`${APP}.notification.delivery_recorded`]: deliveryRecorded
 };
 function applyEvent(ctx, data, event) {
   const handler = HANDLERS[event.operation];

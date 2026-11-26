@@ -1,0 +1,8 @@
+{
+  "description": "Synthetic owning-ledger records, shaped like a card ledger (for example Brindle #182). Keyed by account_ref and reference_id. Used only by the settlement join check; Counterline never reads it.",
+  "records": [
+    {"account_ref": "brindle:acct-jordan-1234", "reference_id": "POST-301", "kind": "statement_credit", "amount_minor": 12500, "currency": "USD", "posted_at": "2026-12-04T09:00:00-05:00"},
+    {"account_ref": "brindle:acct-jordan-1234", "reference_id": "POST-302", "kind": "statement_credit", "amount_minor": 10000, "currency": "USD", "posted_at": "2026-12-05T09:00:00-05:00"},
+    {"account_ref": "brindle:acct-other-9999", "reference_id": "POST-303", "kind": "statement_credit", "amount_minor": 12500, "currency": "USD", "posted_at": "2026-12-05T09:00:00-05:00"}
+  ]
+}

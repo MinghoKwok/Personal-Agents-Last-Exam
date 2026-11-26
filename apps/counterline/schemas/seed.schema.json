@@ -1080,6 +1080,126 @@
         ],
         "additionalProperties": false
       }
+    },
+    "outbox": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "notification_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+          },
+          "kind": {
+            "enum": [
+              "offer_presented",
+              "commitment_confirmed"
+            ]
+          },
+          "case_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+          },
+          "ref_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "body": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "time": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "recipient_person_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,99}$"
+          },
+          "status": {
+            "enum": [
+              "pending_delivery",
+              "delivered",
+              "delivery_failed",
+              "delivery_unknown"
+            ]
+          },
+          "outcome": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "committed",
+                      "rejected",
+                      "unknown",
+                      "halted"
+                    ]
+                  },
+                  "code": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 120
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "router_event_id": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 200
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "recorded_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  }
+                },
+                "required": [
+                  "status",
+                  "code",
+                  "router_event_id",
+                  "recorded_at"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "notification_id",
+          "kind",
+          "case_id",
+          "ref_id",
+          "title",
+          "body",
+          "time",
+          "recipient_person_id",
+          "status",
+          "outcome"
+        ],
+        "additionalProperties": false
+      }
     }
   },
   "required": [
@@ -1092,7 +1212,8 @@
     "cases",
     "offers",
     "commitments",
-    "confirmations"
+    "confirmations",
+    "outbox"
   ],
   "additionalProperties": false
 }

@@ -194,5 +194,6 @@
       "contest": null
     }
   ],
-  "confirmations": []
+  "confirmations": [],
+  "outbox": []
 }

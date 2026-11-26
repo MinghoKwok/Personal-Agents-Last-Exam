@@ -42,6 +42,12 @@ function validateSeed(ctx, data) {
       acceptedGroups.add(key);
     }
   }
+  unique(data.outbox, 'notification_id', 'notification');
+  for (const n of data.outbox) {
+    if (!cases.has(n.case_id)) fail('invalid_seed', `Notification ${n.notification_id} names an unknown case.`);
+    if (n.recipient_person_id !== data.owner_person_id) fail('invalid_seed', 'Mail copies go to the account owner.');
+    if ((n.status === 'pending_delivery') !== (n.outcome === null)) fail('invalid_seed', `Notification ${n.notification_id} has an outcome exactly when it is no longer pending.`);
+  }
   const catalogIds = new Set(p.offer_catalog.map(e => e.catalog_id));
   for (const o of data.offers) if (o.catalog_id !== null && !catalogIds.has(o.catalog_id)) fail('invalid_seed', `Offer ${o.offer_id} names an unknown catalog offer.`);
   const offers = new Map(data.offers.map(o => [o.offer_id, o]));
@@ -65,7 +71,7 @@ function validateSeed(ctx, data) {
     if (!m.history.length || m.history[m.history.length - 1].status !== m.status) fail('invalid_seed', `Commitment ${m.commitment_id} history must end with its current status.`);
   }
 }
-const records = data => [...data.help_articles, ...data.cases, ...data.offers, ...data.commitments, ...data.confirmations];
+const records = data => [...data.help_articles, ...data.cases, ...data.offers, ...data.commitments, ...data.confirmations, ...data.outbox];
 const objects = data => [
   ...data.help_articles.map(a => a.article_id), ...data.cases.map(c => c.case_id),
   ...data.offers.map(o => o.offer_id), ...data.commitments.map(m => m.commitment_id)

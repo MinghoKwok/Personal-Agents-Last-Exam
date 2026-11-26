@@ -78,11 +78,19 @@ const commitment = obj({
 });
 const confirmation = obj({ token: id, offer_id: id, case_id: id, issued_at: time, used_at: nullable(time), commitment_id: nullable(id) });
 const preferences = obj({ email_copies: { type: 'boolean' } });
+// Plain-text copies for Mail, queued only while email_copies is on. Title, body and time are frozen,
+// so a retry publishes identical bytes; Infra records each Messaging outcome by event.
+const DELIVERY = ['committed', 'rejected', 'unknown', 'halted'];
+const notification = obj({
+  notification_id: id, kind: { enum: ['offer_presented', 'commitment_confirmed'] }, case_id: id, ref_id: id, title: text(200), body: text(),
+  time, recipient_person_id: id, status: { enum: ['pending_delivery', 'delivered', 'delivery_failed', 'delivery_unknown'] },
+  outcome: nullable(obj({ status: { enum: DELIVERY }, code: nullable(text(120)), router_event_id: nullable(text(200)), recorded_at: time }))
+});
 const seed = {
   $schema: 'https://json-schema.org/draft/2020-12/schema',
   ...obj({
     account_id: id, owner_person_id: id, provider, customer_record: customerRecord, preferences,
-    help_articles: arr(article), cases: arr(caseRecord), offers: arr(offer), commitments: arr(commitment), confirmations: arr(confirmation)
+    help_articles: arr(article), cases: arr(caseRecord), offers: arr(offer), commitments: arr(commitment), confirmations: arr(confirmation), outbox: arr(notification)
   })
 };
 
@@ -167,7 +175,8 @@ const events = {
     event(`${APP}.commitment.condition_missed`, obj({ commitment_id: id, reason: text(400) })),
     event(`${APP}.commitment.revoked`, obj({ commitment_id: id, reason: text(400) })),
     event(`${APP}.contest.answered`, obj({ commitment_id: id, outcome: { enum: ['reissued', 'upheld'] }, reference_id: nullable(id) })),
-    event(`${APP}.offer.added`, obj({ case_id: id, catalog_id: id }))
+    event(`${APP}.offer.added`, obj({ case_id: id, catalog_id: id })),
+    event(`${APP}.notification.delivery_recorded`, obj({ notification_id: id, status: { enum: DELIVERY }, code: nullable(text(120)), stop_run: { type: 'boolean' }, router_event_id: nullable(text(200)) }))
   ]
 };
 const eventTypes = events.anyOf.map(e => e.properties.operation.const);

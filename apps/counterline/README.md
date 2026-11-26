@@ -28,7 +28,7 @@ This package is built ahead of plan approval. It runs on the public runtime 1.6.
 | Write | `counterline.commitments.contest` | Contest a commitment, for example when the provider reports a credit the account does not show. The provider answers by event. |
 | Write | `counterline.preferences.update` | Turn plain-text email copies of offers and confirmations on or off. |
 
-Infra events: `counterline.commitment.performance_reported`, `counterline.case.followup`, `counterline.commitment.condition_missed`, `counterline.commitment.revoked`, `counterline.contest.answered`, `counterline.offer.added`.
+Infra events: `counterline.commitment.performance_reported`, `counterline.case.followup`, `counterline.commitment.condition_missed`, `counterline.commitment.revoked`, `counterline.contest.answered`, `counterline.offer.added`, `counterline.notification.delivery_recorded`.
 
 ## How the chat works
 
@@ -36,7 +36,8 @@ Infra events: `counterline.commitment.performance_reported`, `counterline.case.f
 - **Free text** goes through a small deterministic recognizer (terms, a better offer, status, a transfer to a named department or alias, ending the chat). Several requests in one message are answered in the order written; anything else gets an acknowledgement that lists the available actions and changes nothing. No language model runs.
 - **Binding steps are explicit operations.** Accepting is two calls: the first returns a summary and a confirmation token and changes no offer; the second, with the token, creates the commitment and closes the rest of the offer group. A replay with the same token returns the same commitment. The token is a hash of the offer, a counter and the virtual time, so runs are reproducible; it makes the confirmation explicit and is not a security control. "Yes, I'll take the 300" in a message creates nothing.
 - **Identity** is checked against the provider's record. Only the fields given are recorded as disclosed, with the ones the provider did not need; values never appear in the transcript.
-- **A report is not settlement.** No read or event produces a settled or verified state; settlement is a join with the owning App's ledger by `account_ref` and `reference_id`.
+- **A report is not settlement.** No read or event produces a settled or verified state; settlement is a join with the owning App's ledger by `account_ref` and `reference_id`. `examples/join/` shows it (T21): through real MCP reads, a report matched on a synthetic ledger file is settled, while a report with no ledger record, a different amount or another account is not, although Counterline reads `reported_performed` in every case. This is a contract test, not a delivered integration with #182.
+- **Mail copies (optional).** While `email_copies` is on, a presented offer or a confirmed commitment queues a plain-text copy. `src/publisher.cjs` publishes pending copies as Mail's `channel.email` message (`urn:pale:email-message:2`, declared in `messaging.publishes`) with the copy's ID as `request_id`, and records each Messaging outcome with `counterline.notification.delivery_recorded`. `examples/mail-integration/` runs it against the real Mail App: copies reach the inbox with committed receipts, a republish is a duplicate, an ungranted recipient is refused with the case unchanged, and nothing is queued while copies are off.
 
 ## Web page
 
@@ -47,7 +48,7 @@ Infra events: `counterline.commitment.performance_reported`, `counterline.case.f
 From this directory:
 
 ```sh
-npm test                 # business tests (T00 to T20)
+npm test                 # business tests (T00 to T20, T22)
 npm run example          # one event, before and after
 npm run contracts        # regenerate tools.json, seed/events schemas and the operation list
 npm run contracts:check  # fail if generated files drifted
@@ -59,6 +60,8 @@ From the repository root:
 npm run app:verify -- --app apps/counterline --output .artifacts/counterline.json
 node runtime/web/server.cjs --app counterline --registry apps/counterline/registry.json --run web-demo --profile sandbox
 node apps/counterline/tests/browser.test.cjs   # needs `npm ci` and `npx playwright install chromium`
+node apps/counterline/examples/join/run.cjs     # T21 settlement join, real MCP
+node apps/counterline/examples/mail-integration/run.cjs   # Counterline → Messaging → Mail
 ```
 
 ## Data
@@ -67,7 +70,7 @@ Two hand-authored synthetic fixture families. `fixtures/minimal.json`: a card is
 
 ## Not done yet (planned in #219)
 
-The optional Mail copies (the preference is stored, nothing is delivered), the settlement join example (`examples/join/`, T21), the 2025 to 2026 delivery dataset with its coverage report, the reference-product comparison screenshots and the evidence index.
+The 2025 to 2026 delivery dataset with its coverage report, the reference-product comparison screenshots and the evidence index.
 
 ## Limitations
 

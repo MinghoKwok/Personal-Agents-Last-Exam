@@ -191,6 +191,11 @@
         "type": "counterline.offer.added",
         "schema_ref": "schemas/events.schema.json",
         "status": "implemented"
+      },
+      {
+        "type": "counterline.notification.delivery_recorded",
+        "schema_ref": "schemas/events.schema.json",
+        "status": "implemented"
       }
     ],
     "emits": [],
@@ -239,7 +244,16 @@
     "max_bundle_bytes": 1048576
   },
   "messaging": {
-    "publishes": [],
+    "publishes": [
+      {
+        "channel": "channel.email",
+        "schema_id": "urn:pale:email-message:2",
+        "schema_ref": "schemas/mail-router-message.schema.json",
+        "status": "implemented",
+        "event_type": "org.pale.mail.notification.v1",
+        "payload_schema_id": "urn:pale:email-payload:1"
+      }
+    ],
     "receives": [],
     "envelope": "cloudevents/1.0"
   }

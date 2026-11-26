@@ -10,6 +10,8 @@
     "test": "node --test tests/business.test.cjs",
     "example": "node examples/run.cjs",
     "contracts": "node examples/build-contracts.cjs",
-    "contracts:check": "node examples/build-contracts.cjs --check"
+    "contracts:check": "node examples/build-contracts.cjs --check",
+    "join": "node examples/join/run.cjs",
+    "integration": "node examples/mail-integration/run.cjs"
   }
 }

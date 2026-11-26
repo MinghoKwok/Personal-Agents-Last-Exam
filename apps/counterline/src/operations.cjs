@@ -159,7 +159,9 @@ const writes = {
     o.state = 'accepted';
     for (const x of rivals) x.state = 'unavailable';
     Object.assign(pending, { used_at: now, commitment_id });
-    P.say(c, now, `Your ${o.title}${o.value ? ` (${money(o.value)})` : ''} is confirmed${perform_by ? ` and is due by ${perform_by.slice(0, 10)}` : ''}.`, 'offer:accepted');
+    const confirmed = `Your ${o.title}${o.value ? ` (${money(o.value)})` : ''} is confirmed${perform_by ? ` and is due by ${perform_by.slice(0, 10)}` : ''}.`;
+    P.say(c, now, confirmed, 'offer:accepted');
+    P.queueCopy(data, now, 'commitment_confirmed', c, commitment_id, `${o.title} confirmed`, `${confirmed}\nCommitment ${commitment_id}. ${o.terms}`);
     return { offer_id: o.offer_id, step: 'accepted', confirmation_token: pending.token, summary: null, commitment_id };
   },
 
