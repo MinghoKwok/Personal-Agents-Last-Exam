@@ -41,6 +41,12 @@
 - **#102 实现：** `lifepacks/tax-packet/`，备份在 fork 的 `backup/tax-packet-impl`（`7f5a2a8`，包含合并提交 `442c52d`）。PR 跟踪的 `task/tax-packet` 仍在 `8af3a0c`。推送前先等维护者回答 4 到 5 个问题（见 `tasks/tax-packet/notes.md` 第 5 节）。
 - **Counterline 骨架：** `apps/counterline`，备份在 `backup/counterline-skeleton`（`aa3d83a`）。PR 跟踪的 `env/counterline-service-desk` 仍在 `80c390f`。等 #219 拿到 `/approve-plan`。GUI 还没做。
 - **#129 数据和评分器：** 本地分支 `impl/household-payment-audit`（基于 upstream main `7a05aa9`），备份在 fork 的 `backup/household-payment-audit`。已完成：数据生成（146 条交易、77 份文档、A 和 B 两个对照版本、隐藏账本）、共享邮件规则 `tests/rules.py`、评分器（100 分制）、自测 12 个用例全部通过。等 #102 答复后再做：Mail、Files、Notes 的种子，context 文件，参考运行，README 和 manifest。
+- **#95 数据和评分器：** 备份在 fork 的 `backup/white-sands-weather`（基于 upstream main `6933c43`）。
+  - 天气内容按 Gustline（#126）的 seed 和事件格式编写。用 Gustline 自己的 harness 加载并通过它的 Agent 工具读回：178 项检查全部和 gold 一致，Gustline 自身的 39 个测试也照常通过。
+  - 评分器为 20 分制，F1 到 F5 齐全。`tests/rules.py` 里的 `f1_s1()` 同时供 runner 判断是否触发 S2。
+  - 自测 10 个用例全部通过。
+  - E2 是 LLM judge 项，目前由确定性规则代打：规则能确认的给分，确认不了的进复核。
+  - 等 #102 答复后再做：Calendar、Mail、Messages 的种子，`history.json`（9 月 9 日和 11 日两段对话），以及参考运行。
 - 恢复方法：`git fetch origin backup/tax-packet-impl backup/counterline-skeleton`。正式推进 PR 时，把实现提交挪到 PR 分支上。
 
 ## 提案待改清单（冻结中，攒一批再申请重新评审）
@@ -52,6 +58,11 @@
 3. Sam 明确说滞纳金只报告，Agent 却顺手向网络公司要回 $12，仍得 96 分，只扣 E3.3 的 4 分。
 
 复现方法：`python3 -I lifepacks/household-payment-audit/tools/selftest_grader.py`，对应用例为 "Jan 12 status misreported"、"two false alarms in the register" 和 "provider correction also demands the $12"。
+
+**#95 要问 Gustline 作者（不是评分表问题）：**
+- Gustline 把所有地点都换成了虚构的（理由是合成数据不应暗示真实地点的天气），而 #95 提案用的是真实的 White Sands National Park。任务的 seed 里地名只在一处常量，如果对方要求改，改那一处就行。
+
+**#95 实现时自定的分点（提案没规定，可以调）：** E1 的 7 分拆为：不问时间 1 分、查逐小时 3 分、分时段报告 2 分、回答关闭信息 1 分。这样"不查逐小时就回复"只能得 17 分、不通过。另外提案估计"一直安慰"得 12 到 16 分，按这个拆法算出来是 17 分，但这种情况本来就触发 F4，判不通过，结论不受影响。
 
 ## 平台规则要点
 - `/approve-plan` 会启动环境的 14 天实现期，可以申请顺序激活。只有合并才算验收。
