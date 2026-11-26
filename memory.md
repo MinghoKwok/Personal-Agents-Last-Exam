@@ -32,14 +32,14 @@
 | #128 | 车险理赔 | `task/auto-insurance-claim` | `b4d47f3` | 已批准（2026-11-26） |
 | #129 | 家庭付款年度审计 | `task/household-payment-audit` | `92a197d` | 已批准（2026-11-26） |
 | #133 | 信用卡挽留 | `task/card-retention` | `a4ca31e` | 已批准（2026-11-26） |
-| #219 | Counterline 客服台环境 | `env/counterline-service-desk` | `b3ea9cd` | skyve2012 第一轮评审（针对 80c390f）的两点已处理：结清与报告的区分写进 acceptance matrix（T20 到 T21，e967b82；b3ea9cd 只调了措辞），数据计划在 eb01cd4；2026-11-26 23:55 已回复（对应 e967b82）；等复审 |
+| #219 | Counterline 客服台环境 | `env/counterline-service-desk` | `b3ea9cd` | **2026-11-27 00:18 plan-approved（skyve2012，/approve-plan b3ea9cd）；14 天实现期至 12-11 前后**。实现和证据放进同一个 PR |
 | #222 | Casefold 客户门户环境 | `env/casefold-client-portal` | `bc509fd` | 等评审；已按 #260 补证据计划 |
 
 8 个任务提案全部已批准，现在都已冻结。之后的改动要攒在一起，再申请重新评审。
 
 ## 还没进 PR 的东西（fork 上有备份分支）
 - **#102 实现：** `lifepacks/tax-packet/`，备份在 fork 的 `backup/tax-packet-impl`（`7f5a2a8`，包含合并提交 `442c52d`）。PR 跟踪的 `task/tax-packet` 仍在 `8af3a0c`。推送前先等维护者回答 4 到 5 个问题（见 `tasks/tax-packet/notes.md` 第 5 节）。
-- **Counterline 骨架：** `apps/counterline`，备份在 `backup/counterline-skeleton`（`aa3d83a`）。PR 跟踪的 `env/counterline-service-desk` 仍在 `80c390f`。等 #219 拿到 `/approve-plan`。GUI 还没做。
+- **Counterline 实现：** `apps/counterline`，备份在 `backup/counterline-skeleton`（`301997a`）。17 个工具全部实现，有 App 自己的 Web 页面（通过包内 `registry.json` 挂在共享 Web Host 上）；业务测试 23 个（T00 到 T20），浏览器测试 29 项，官方验证器 53 项全部通过。还没做：Mail 抄送、T21 结清对账示例、2025 到 2026 交付数据集和覆盖报告、原产品对照截图和证据索引。PR 跟踪的 `env/counterline-service-desk` 不受影响，等 #219 批准后再推进 PR。
 - **#129 数据和评分器：** 本地分支 `impl/household-payment-audit`（基于 upstream main `7a05aa9`），备份在 fork 的 `backup/household-payment-audit`。已完成：数据生成（146 条交易、77 份文档、A 和 B 两个对照版本、隐藏账本）、共享邮件规则 `tests/rules.py`、评分器（100 分制）、自测 12 个用例全部通过。等 #102 答复后再做：Mail、Files、Notes 的种子，context 文件，参考运行，README 和 manifest。
 - **#95 数据和评分器：** 备份在 fork 的 `backup/white-sands-weather`（基于 upstream main `6933c43`）。
   - 天气内容按 Gustline（#126）的 seed 和事件格式编写。用 Gustline 自己的 harness 加载并通过它的 Agent 工具读回：178 项检查全部和 gold 一致，Gustline 自身的 39 个测试也照常通过。
