@@ -1,0 +1,22 @@
+{
+ "people": [
+  {
+   "person_id": "person-kai",
+   "name": "Kai"
+  }
+ ],
+ "accounts": [
+  {
+   "app_id": "gustline",
+   "account_id": "gustline-kai",
+   "owner_person_id": "person-kai"
+  }
+ ],
+ "objects": {
+  "gustline": [
+   "pl-white-sands",
+   "pl-las-cruces",
+   "pl-fort-stockton"
+  ]
+ }
+}
